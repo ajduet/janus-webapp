@@ -63,9 +63,9 @@ export class TimelineComponent implements AfterViewInit, OnInit {
   ) { }
 
   ngOnInit() {
-    this.setCurriculmList();
+    this.setCurriculumList();
     this.setLocationList();
-    this.setBuldingList();
+    this.setBuildingList();
     this.setFocusList();
   }
 
@@ -292,7 +292,7 @@ export class TimelineComponent implements AfterViewInit, OnInit {
     });
   }
 
-  setCurriculmList() {
+  setCurriculumList() {
     this.curriculumService.getAll().subscribe(curriculumData => {
       this.curriculums = curriculumData;
       for (const entry of this.curriculums) {
@@ -312,7 +312,7 @@ export class TimelineComponent implements AfterViewInit, OnInit {
     });
   }
 
-  setBuldingList() {
+  setBuildingList() {
     this.buildingService.getAll().subscribe(buildingData => {
       this.buldings = buildingData;
       for (const entry of this.buldings) {

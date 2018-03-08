@@ -395,31 +395,28 @@ export class ReplogicService {
                 for ( let z = 0; z < batch.length; z++ ) {
                   if ( this.curricula[x].currId === this.batch[z].curriculum ) {
                     const mt = y - 1;
-                    let jan = 0;
-                    let feb = 0;
+                    let january = 0;
+                    let february = 0;
                     let march = 0;
                     let april = 0;
                     let may = 0;
                     let june = 0;
-                    let jully = 0;
+                    let july = 0;
                     let august = 0;
                     let september = 0;
                     let october = 0;
                     let november = 0;
                     let december = 0;
                     for ( let td = 0; td < batch.length; td++) {
-                      console.log('This Zainab');
                       if ( this.batch[z].endDate.getUTCMonth() === this.batch[td].endDate.getUTCMonth()
                        && this.batch[td].endDate.getUTCMonth() === 0) {
-                        jan += 1;
-                        this.Trainer_Element[mt].january = this.setting[0].reportIncomingGrads * jan;
-                        console.log('shahak1');
+                        january += 1;
+                        this.Trainer_Element[mt].january = this.setting[0].reportIncomingGrads * january;
                         console.log(this.Trainer_Element[mt].january);
-                        console.log('shahak2');
                       }
                       if ( this.batch[z].endDate.getUTCMonth() === 1) {
-                        feb += 1;
-                        this.Trainer_Element[mt].february = this.setting[0].reportIncomingGrads * feb;
+                        february += 1;
+                        this.Trainer_Element[mt].february = this.setting[0].reportIncomingGrads * february;
                       }
                       if ( this.batch[z].endDate.getUTCMonth() === 2) {
                         march += 1;
@@ -433,15 +430,13 @@ export class ReplogicService {
                        && this.batch[td].endDate.getUTCMonth() === 4) {
                         may += 1;
                         this.Trainer_Element[mt].may = this.setting[0].reportIncomingGrads * (may + may);
-                        console.log('gajini');
                         console.log(td);
-                        console.log('ek tha tiger');
                       }if ( this.batch[z].endDate.getUTCMonth() === 5) {
                         june += 1;
                         this.Trainer_Element[mt].june = this.setting[0].reportIncomingGrads * june;
                       }if ( this.batch[z].endDate.getUTCMonth() === 6) {
-                        jully += 1;
-                        this.Trainer_Element[mt].july = this.setting[0].reportIncomingGrads * jully;
+                        july += 1;
+                        this.Trainer_Element[mt].july = this.setting[0].reportIncomingGrads * july;
                       }if ( this.batch[z].endDate.getUTCMonth() === 7) {
                         august += 1;
                         this.Trainer_Element[mt].august = this.setting[0].reportIncomingGrads * august;
