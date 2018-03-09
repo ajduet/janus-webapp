@@ -72,7 +72,7 @@ export class LocationsComponent implements OnInit {
           }
         }
       }, err => {
-        console.log(err);
+     //   console.log(err);
         this.showToast('Failed to fetch locations');
       });
   }

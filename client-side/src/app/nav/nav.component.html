@@ -14,7 +14,7 @@
       <li ngbDropdown class="d-inline-block">
         <a class="nav-link dropdown-toggle c-pointer janus-links-collapse-support shift-down" id="dropdownBasic1" ngbDropdownToggle>{{currentApp}}</a>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1" (click)="toggleCollapse()">
-          <a *ngFor="let app of apps" class="dropdown-item dropdown-size" [routerLink]="app.homeUrl" (click)="keepLinkActive()"> {{ app.name }} </a>
+          <a *ngFor="let app of apps" class="dropdown-item dropdown-size" [routerLink]="app.homeUrl" > {{ app.name }} </a>
         </div>
       </li>
     </ul>
