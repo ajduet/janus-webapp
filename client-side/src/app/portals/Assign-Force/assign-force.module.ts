@@ -66,6 +66,7 @@ import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
 import { AssignForceComponent } from './assign-force.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './assign-force.routes';
+import { CalendarComponent } from './calendar/calendar.component';
 
 
 
@@ -100,6 +101,7 @@ import { routes } from './assign-force.routes';
     TimelineComponent,
     PtoComponent,
     LoginSuccessComponent,
+    CalendarComponent
   ],
   imports: [
     HttpClientModule,
