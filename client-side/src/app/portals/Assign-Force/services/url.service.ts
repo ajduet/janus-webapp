@@ -13,6 +13,8 @@ export class UrlService {
     getUrl() {
       return this.url;
     }
+
+
     /*
     testCors1(): Observable<any> {
       return this.http.get(this.url);
