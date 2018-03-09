@@ -9,7 +9,7 @@
             </mat-panel-title>
             <mat-panel-description>
               <span class="fill-space"></span>
-              <mat-icon matTooltip="Add Location" class="material-icons" (click)="openAddLocationDialog($event)" *ngIf="userRole === 'VP of Technology'"> add_location</mat-icon>
+              <mat-icon svgIcon="add" matTooltip="Add Location" class="material-icons" (click)="openAddLocationDialog($event)" *ngIf="userRole === 'VP of Technology'"></mat-icon>
             </mat-panel-description>
           </mat-expansion-panel-header>
         </mat-expansion-panel>
@@ -27,9 +27,9 @@
                 </mat-panel-title>
                 <mat-panel-description>
                   <span class="fill-space"></span>
-                  <mat-icon matTooltip="Add Building" class="material-icons" (click)="openAddBuildingDialog($event, location)" *ngIf="userRole === 'VP of Technology'"> add_circle</mat-icon>
-                  <mat-icon matTooltip="Remove Location" class="material-icons" (click)="openDeleteLocationDialog($event, location)" *ngIf="userRole === 'VP of Technology'"> location_off</mat-icon>
-                  <mat-icon matTooltip="Edit Location" class="material-icons" (click)="openEditLocationDialog($event, location)" *ngIf="userRole === 'VP of Technology'"> edit</mat-icon>
+                  <mat-icon svgIcon="add" matTooltip="Add Building" class="material-icons" (click)="openAddBuildingDialog($event, location)" *ngIf="userRole === 'VP of Technology'"></mat-icon>
+                  <mat-icon svgIcon="cancel" matTooltip="Remove Location" class="material-icons" (click)="openDeleteLocationDialog($event, location)" *ngIf="userRole === 'VP of Technology'"></mat-icon>
+                  <mat-icon svgIcon="edit" matTooltip="Edit Location" class="material-icons" (click)="openEditLocationDialog($event, location)" *ngIf="userRole === 'VP of Technology'"></mat-icon>
                 </mat-panel-description>
               </mat-expansion-panel-header>
               <div style="padding-top: .5%" >
@@ -43,19 +43,19 @@
                         </mat-panel-title>
                         <mat-panel-description>
                           <span class="fill-space"></span>
-                          <mat-icon matTooltip="Add Room" class="material-icons" (click)="openAddRoomDialog($event, building)" *ngIf="userRole === 'VP of Technology'"> add_circle_outline</mat-icon>
-                          <mat-icon matTooltip="Remove Building" class="material-icons" (click)="openDeleteBuildingDialog($event, building)" *ngIf="userRole === 'VP of Technology'"> remove_circle</mat-icon>
-                          <mat-icon matTooltip="Edit Building" class="material-icons" (click)="openEditBuildingDialog($event, building)" *ngIf="userRole === 'VP of Technology'"> edit</mat-icon>
+                          <mat-icon svgIcon="add" matTooltip="Add Room" class="material-icons" (click)="openAddRoomDialog($event, building)" *ngIf="userRole === 'VP of Technology'"> add_circle_outline</mat-icon>
+                          <mat-icon svgIcon="cancel" matTooltip="Remove Building" class="material-icons" (click)="openDeleteBuildingDialog($event, building)" *ngIf="userRole === 'VP of Technology'"> remove_circle</mat-icon>
+                          <mat-icon svgIcon="edit" matTooltip="Edit Building" class="material-icons" (click)="openEditBuildingDialog($event, building)" *ngIf="userRole === 'VP of Technology'"> edit</mat-icon>
                         </mat-panel-description>
                       </mat-expansion-panel-header>
 
                       <div style="padding-top: .5%" *ngFor="let room of building.rooms">
                         <mat-list *ngIf="room.active === true">
                           <mat-list-item >
-                            <h4 mat-line><mat-icon style="color: black">store</mat-icon>{{room.roomName}}</h4>
+                            <h4 mat-line><mat-icon svgIcon="room" style="color: black"></mat-icon>{{room.roomName}}</h4>
                             <span class="fill-space"></span>
-                            <mat-icon matTooltip="Remove Room" class="material-icons" style="color: #f26a25; cursor: pointer" (click)="openDeleteRoomDialog($event, room)" *ngIf="userRole === 'VP of Technology'"> remove_circle_outline</mat-icon>
-                            <mat-icon matTooltip="Edit Room" class="material-icons"style="color: #f26a25; cursor: pointer" (click)="openEditRoomDialog($event, room)" *ngIf="userRole === 'VP of Technology'"> edit</mat-icon>
+                            <mat-icon svgIcon="cancel" matTooltip="Remove Room" class="material-icons" style="color: #f26a25; cursor: pointer" (click)="openDeleteRoomDialog($event, room)" *ngIf="userRole === 'VP of Technology'"> remove_circle_outline</mat-icon>
+                            <mat-icon svgIcon="edit" matTooltip="Edit Room" class="material-icons"style="color: #f26a25; cursor: pointer" (click)="openEditRoomDialog($event, room)" *ngIf="userRole === 'VP of Technology'"> edit</mat-icon>
                           </mat-list-item>
                           <mat-divider></mat-divider>
                         </mat-list>

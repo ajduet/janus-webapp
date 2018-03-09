@@ -20,7 +20,7 @@ export class UserInfoService {
   }
 
   getUser() {
-	  //Added this spoofed user to better identify errors.
+    // Added this spoofed user to better identify errors.
     const user: User = {
         id: '1',
         role: '1',
@@ -32,7 +32,7 @@ export class UserInfoService {
         thumbnail: '1'
       };
       localStorage.setItem('user', JSON.stringify(user));
-	  //Code above this was added.
+      // Code above this was added.
       return JSON.parse(localStorage.getItem('user'));
   }
 

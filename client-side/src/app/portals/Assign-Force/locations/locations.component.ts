@@ -34,13 +34,17 @@ export class LocationsComponent implements OnInit {
               public dialog: MatDialog) {
     iconRegistry.addSvgIcon(
       'location',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/img/ic_location_city_black_48px.svg'));
+      sanitizer.bypassSecurityTrustResourceUrl('../../../assets/img/ic_location_city_black_48px.svg'));
     iconRegistry.addSvgIcon(
       'building',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/img/ic_business_black_48px.svg'));
+      sanitizer.bypassSecurityTrustResourceUrl('../../../assets/img/ic_business_black_48px.svg'));
     iconRegistry.addSvgIcon(
       'room',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/img/ic_business_black_48px.svg'));
+      sanitizer.bypassSecurityTrustResourceUrl('../../../assets/img/ic_business_black_48px.svg'));
+
+    iconRegistry.addSvgIcon('add', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/img/ic_add_circle_outline_white_24px.svg'));
+    iconRegistry.addSvgIcon('cancel', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/img/ic_cancel_white_24px.svg'));
+    iconRegistry.addSvgIcon('edit', sanitizer.bypassSecurityTrustResourceUrl('../../../assets/img/ic_edit_white_24px.svg'));
   }
   ngOnInit() {
     this.getAllLocations();

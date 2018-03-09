@@ -1,5 +1,5 @@
 import {AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource, MatIconRegistry} from '@angular/material';
 import {FormControl, Validators} from '@angular/forms';
 import {Angular2Csv} from 'angular2-csv';
 import {BatchService} from '../services/batch.service';
@@ -14,6 +14,7 @@ import {Chart} from 'angular-highcharts';
 import {SettingsService} from '../services/global-settings.service';
 import {GlobalSettings} from '../domain/global-settings';
 import {UserInfoService} from '../services/user-info.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-reports',
@@ -64,7 +65,12 @@ export class ReportsComponent implements OnInit, AfterViewInit, AfterViewChecked
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(public skills: ReplogicService, private ref: ChangeDetectorRef, private settingService: SettingsService,
               private batchService: BatchService, private curriculaService: CurriculaService, private userInfoService: UserInfoService,
-              private trainerService: TrainerService, private notificationService: NotificationService) {
+              private trainerService: TrainerService, private notificationService: NotificationService,
+              private mat: MatIconRegistry, private dom: DomSanitizer) {
+                mat.addSvgIcon('add', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_add_circle_outline_white_24px.svg'));
+                mat.addSvgIcon('settings', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_settings_white_24px.svg'));
+                mat.addSvgIcon('cancel', dom.bypassSecurityTrustResourceUrl('../../../assets/img/letter-x.svg'));
+                mat.addSvgIcon('export', dom.bypassSecurityTrustResourceUrl('../../../assets/img/export.svg'));
     this.getAllCurriculum();
     this.getAllBatches();
     this.getAllTrainer();
@@ -72,6 +78,7 @@ export class ReportsComponent implements OnInit, AfterViewInit, AfterViewChecked
     this.skills.getList();
     this.skills.getTrainerList();
   }
+
   displayedColumns = ['Ciriculam', 'jan', 'febuaray', 'march', 'april', 'may', 'june',
     'july', 'august', 'september', 'october', 'november', 'december'];
   dataSource = new MatTableDataSource(this.skills.getElement());

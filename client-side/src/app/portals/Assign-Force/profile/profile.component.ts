@@ -11,6 +11,8 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
 import {UserInfoService} from '../services/user-info.service';
 import {User} from '../domain/user';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -39,8 +41,17 @@ export class ProfileComponent implements OnInit {
               private userInfoService: UserInfoService,
               private route: ActivatedRoute,
               private router: Router,
-              private location: Location) {
-  }
+              private location: Location,
+              private mat: MatIconRegistry, private dom: DomSanitizer) {
+                mat.addSvgIcon('add', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_add_circle_outline_white_24px.svg'));
+                mat.addSvgIcon('cancel', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_cancel_white_24px.svg'));
+                mat.addSvgIcon('edit', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_edit_white_24px.svg'));
+                mat.addSvgIcon('back', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_arrow_back_black_24px.svg'));
+                mat.addSvgIcon('save', dom.bypassSecurityTrustResourceUrl('../../../assets/img/save.svg'));
+                mat.addSvgIcon('sim', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_sim_card_black_24px.svg'));
+                mat.addSvgIcon('x', dom.bypassSecurityTrustResourceUrl('../../../assets/img/letter-x.svg'));
+                mat.addSvgIcon('star', dom.bypassSecurityTrustResourceUrl('../../../assets/img/star.svg'));
+              }
 
   ngOnInit() {
     this.user = this.userInfoService.getUser();

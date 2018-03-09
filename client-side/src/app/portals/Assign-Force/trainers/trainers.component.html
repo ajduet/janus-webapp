@@ -6,10 +6,10 @@
       <span> Trainers </span>
       <span class="md-toolbar-spacer"> </span>
       <button mat-icon-button *ngIf="isManager==true" (click)="addTrainer($event)"  matTooltip="Add Trainer">
-        <mat-icon>add_circle</mat-icon>
+        <mat-icon svgIcon="add"></mat-icon>
       </button>
       <button mat-icon-button (click)="showCalendar()" matTooltip="View PTO Calendar">
-        <mat-icon>perm_contact_calendar</mat-icon>
+        <mat-icon svgIcon="calendar"></mat-icon>
       </button>
 
       <!--<button class="mat-icon-button" ng-click="tCtrl.googleAuth()">-->
@@ -22,17 +22,17 @@
   <mat-card-content *ngIf="trainers != undefined">
     <mat-list *ngFor="let trainer of trainers">
       <mat-list-item mat-ripple="#ff0000" *ngIf="trainer.active" (click)="goToTrainer(trainer)">
-        <mat-icon matListIcon style="color: #000;" >people</mat-icon>
+        <mat-icon svgIcon="people" matListIcon style="color: #000;" ></mat-icon>
           <h4 matLine> {{ trainer.firstName }} {{ trainer.lastName }} </h4>
           <p *ngIf="trainer.skills.length > 0" matLine> Skills: {{ joinObjArrayByName(trainer.skillsObject) }} </p>
           <p *ngIf="trainer.skills.length <= 0" matLine> Skills: none </p>
         <span class="md-toolbar-spacer"> </span>
 
         <button mat-icon-button (click)="grabS3Resume(trainer)" matTooltip="Download Resume">
-          <mat-icon class="revOrange">file_download</mat-icon>
+          <mat-icon svgIcon="download" class="revOrange">file_download</mat-icon>
         </button>
         <button mat-icon-button (click)="removeTrainer(trainer)" *ngIf="isManager==true" matTooltip="Deactivate Trainer">
-          <mat-icon class="revOrange">remove_circle</mat-icon>
+          <mat-icon svgIcon="cancel" class="revOrange">remove_circle</mat-icon>
         </button>
       </mat-list-item>
     </mat-list>
@@ -54,14 +54,14 @@
   <mat-card-content class="md-padding" *ngIf="trainers != undefined">
     <mat-list *ngFor=" let trainer of trainers">
       <mat-list-item class="md-2-line" mat-ripple="#ff0000" *ngIf="trainer.active==false">
-        <mat-icon matListIcon style="color: #000;" >people</mat-icon>
+        <mat-icon svgIcon="people" matListIcon style="color: #000;" ></mat-icon>
           <h4 matLine> {{ trainer.firstName }} {{ trainer.lastName }} </h4>
           <p *ngIf="trainer.skills.length > 0" matLine> Skills: {{ joinObjArrayByName(trainer.skillsObject) }} </p>
           <p *ngIf="trainer.skills.length <= 0" matLine> Skills: none </p>
         <span class="md-toolbar-spacer"> </span>
         <!--button activates a Trainer-->
         <button mat-icon-button (click)="activateTrainer(trainer)" *ngIf="isManager==true" matTooltip="Reactivate Trainer">
-          <mat-icon class="revOrange">add_circle</mat-icon>
+          <mat-icon svgIcon="add" class="revOrange"></mat-icon>
         </button>
       </mat-list-item>
     </mat-list>

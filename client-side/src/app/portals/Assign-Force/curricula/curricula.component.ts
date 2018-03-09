@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {Curriculum} from '../domain/curriculum';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatIconRegistry} from '@angular/material';
 import {FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {S3CredentialService} from '../services/s3-credential.service';
@@ -9,6 +9,7 @@ import {NotificationService} from '../services/notification.service';
 import {Skill} from '../domain/skill';
 import {SkillService} from '../services/skill.service';
 import {UserInfoService} from '../services/user-info.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -58,7 +59,12 @@ export class CurriculaComponent implements OnInit {
               private curriculaService: CurriculaService,
               private skillService: SkillService,
               private notificationService: NotificationService,
-              private userInfoService: UserInfoService) { }
+              private userInfoService: UserInfoService,
+              private mat: MatIconRegistry, private dom: DomSanitizer) {
+                mat.addSvgIcon('add', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_add_circle_outline_white_24px.svg'));
+                mat.addSvgIcon('cancel', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_cancel_white_24px.svg'));
+                mat.addSvgIcon('edit', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_edit_white_24px.svg'));
+              }
 
   ngOnInit() {
     this.isAdmin = false;

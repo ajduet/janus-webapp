@@ -41,7 +41,7 @@ import {
   MatListModule,
   MatMenuModule, MatPaginatorModule, MatProgressBarModule,
   MatProgressSpinnerModule, MatSortModule, MatTableModule, MatTabsModule, MatToolbarModule, MatTooltipModule, MatSnackBarModule,
-  MatDialogModule
+  MatDialogModule, MatIconRegistry
 } from '@angular/material';
 import {MatSelectModule} from '@angular/material/select';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -154,7 +154,8 @@ import { CalendarComponent } from './calendar/calendar.component';
     LocationService,
     BuildingService,
     RoomService,
-    SettingsService
+    SettingsService,
+    MatIconRegistry
   ],
   entryComponents: [
     TrainerDialogComponent,

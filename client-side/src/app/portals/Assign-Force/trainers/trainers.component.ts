@@ -5,13 +5,14 @@ import {NotificationService} from '../services/notification.service';
 import {TrainerService} from '../services/trainer.service';
 import {NavigationExtras, Params, Router} from '@angular/router';
 import {S3CredentialService} from '../services/s3-credential.service';
-import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatIconRegistry} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
 import {PtoService} from '../services/pto.service';
 import * as AWS from 'aws-sdk';
 import {S3Credential} from '../domain/s3-credential';
 import {SkillService} from '../services/skill.service';
 import {UserInfoService} from '../services/user-info.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-trainers',
@@ -31,8 +32,15 @@ export class TrainersComponent implements OnInit {
               private userInfoService: UserInfoService,
               private http: HttpClient,
               public dialog: MatDialog,
-              private router: Router) {
-  }
+              private router: Router,
+              private mat: MatIconRegistry, private dom: DomSanitizer) {
+                mat.addSvgIcon('add', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_add_circle_outline_white_24px.svg'));
+                mat.addSvgIcon('cancel', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_cancel_white_24px.svg'));
+                mat.addSvgIcon('calendar',
+                 dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_perm_contact_calendar_white_24px.svg'));
+                mat.addSvgIcon('people', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_people_black_48px.svg'));
+                mat.addSvgIcon('download', dom.bypassSecurityTrustResourceUrl('../../../assets/img/download.svg'));
+              }
 
   ngOnInit() {
     this.isManager = false;

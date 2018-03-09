@@ -90,8 +90,14 @@ export class BatchesComponent implements OnInit, AfterViewInit {
               private roomService: RoomService,
               public dialog: MatDialog,
               private notificationService: NotificationService,
-              private userInfoService: UserInfoService) {
-  }
+              private userInfoService: UserInfoService,
+              private mat: MatIconRegistry, private dom: DomSanitizer) {
+                mat.addSvgIcon('add', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_add_circle_outline_white_24px.svg'));
+                mat.addSvgIcon('complete', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_done_white_24px.svg'));
+                mat.addSvgIcon('cancel', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_cancel_white_24px.svg'));
+                mat.addSvgIcon('edit', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_edit_white_24px.svg'));
+                mat.addSvgIcon('copy', dom.bypassSecurityTrustResourceUrl('../../../assets/img/ic_content_copy_white_24px.svg'));
+              }
 
   ngOnInit() {
     this.getAll();

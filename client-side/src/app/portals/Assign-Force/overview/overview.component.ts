@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource, MatIconRegistry} from '@angular/material';
 import {Angular2Csv } from 'angular2-csv/Angular2-csv';
 import {BatchService} from '../services/batch.service';
 import {Batch} from '../domain/batch';
@@ -14,6 +14,7 @@ import {LocationService} from '../services/location.service';
 
 import {UrlService} from '../services/url.service';
 import { DatePipe } from '@angular/common';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -35,13 +36,18 @@ export class OverviewComponent implements OnInit, AfterViewInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
+  // All components which use mat-icon must register them directly in the constructor
   constructor(private batchService: BatchService,
                 private curriculaService: CurriculaService,
                 private trainerService: TrainerService,
                 private locationService: LocationService,
                 private buildingService: BuildingService,
                 private roomService: RoomService,
-                private notificationService: NotificationService) {}
+                private notificationService: NotificationService,
+                private mat: MatIconRegistry, private dom: DomSanitizer) {
+                  mat.addSvgIcon('export', dom.bypassSecurityTrustResourceUrl('../../../assets/img/export.svg'));
+                  mat.addSvgIcon('menu', dom.bypassSecurityTrustResourceUrl('../../../assets/img/filter.svg'));
+                }
 
   ngOnInit() {
     this.getAll();
