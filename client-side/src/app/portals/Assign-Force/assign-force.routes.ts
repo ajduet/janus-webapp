@@ -24,6 +24,11 @@ export const routes: Routes = [
         component: LoginSuccessComponent
       },
       {
+        path: 'calendar',
+        component: CalendarComponent,
+        pathMatch: 'full'
+      },
+      {
         path: 'overview',
         component: OverviewComponent,
         canActivate: [AuthGuardService],
