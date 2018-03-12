@@ -9,7 +9,7 @@ export const environment = {
   production: false,
   context: context, // change for what the production environment would actually be
   bam: bam,
-  url: '35.183.9.62:8081/',
+  url: 'http://35.183.9.62:8081/',
 
   assessment: {
     fetchByBatchIdByWeek: (batchId: number, week: number) => `${context}trainer/assessment/${batchId}/${week}`,

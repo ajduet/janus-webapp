@@ -13,37 +13,32 @@ export class CurriculaService {
   constructor(private http: HttpClient,
               private urlService: UrlService) { }
 
-  /* services */
-
-
-  // Get all curricula
+  /** Get all curricula from the curriculum service */
   getAll(): Observable<Curriculum[]> {
     return this.http.get<Curriculum[]>(`${this.url}`);
   }
 
-  // Get all active curricula
+  /** Get all active curriculum from the curriculum service */
   getAllActive(): Observable<Curriculum[]> {
     return this.http.get<Curriculum[]>(`${this.url}/active`);
   }
 
-  // Get curriculum by id
-
+  /** Get curriculum by ID from the curriculum service */
   getById(id): Observable<Curriculum> {
     return this.http.get<Curriculum>(`${this.url}/${id}`);
   }
 
-  // Create new curriculum
+  /** Create new curriculum in the curriculum service */
   create(curriculum: Curriculum): Observable<Curriculum> {
     return this.http.post<Curriculum>(`${this.url}`, curriculum);
   }
 
-
-  // Update Curriculum
+  /** Update a curriculum in the curriculum service */
   update(curriculum: Curriculum): Observable<Curriculum> {
     return this.http.put<Curriculum>(`${this.url}`, curriculum);
   }
 
-  // Delete Curriculum
+  /** Delete curriculum from the curriculum service */
   delete(currId): Observable<object> {
     return this.http.delete<Object>(`${this.url}/${currId}`);
   }

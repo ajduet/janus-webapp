@@ -13,27 +13,27 @@ export class LocationService {
               private urlService: UrlService) {
   }
 
-  // Gets all Locations in the database
+  /** Gets all locations in the database */
   getAll(): Observable<Locations[]> {
     return this.http.get<Locations[]>(`${this.url}`);
   }
 
-  // Gets 1 Locations by their ID
+  /** Gets a location by ID */
   getById(id): Observable<Locations> {
     return this.http.get<Locations>(`${this.url}/${id}`);
   }
 
-
-  // Adds a new Locations to the database
+  /** Adds a new Locations to the database */
   create(location: Locations): Observable<any> {
     return this.http.post<any>(`${this.url}`, location);
   }
 
-  // Updates information about a given Locations
+  /** Updates information about a given Locations */
   update(location: Locations): Observable<any> {
     return this.http.put<any>(`${this.url}`, location);
   }
 
+  /** Delete location from the database */
   delete(location: Locations): Observable<any> {
     return this.http.delete<any>(`${this.url}/${location.id}`);
   }
