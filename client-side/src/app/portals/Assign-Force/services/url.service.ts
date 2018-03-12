@@ -9,8 +9,8 @@ export class UrlService {
 
     constructor(private http: HttpClient) { }
 
-    /** Returns the current URL listed in this file (Deprecated, use environment instead) */
-    getUrl() {
+    /** Returns the current URL listed in this file */
+    getUrl(): string {
       return this.url;
     }
 

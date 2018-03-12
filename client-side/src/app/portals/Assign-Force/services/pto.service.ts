@@ -32,7 +32,7 @@ export class PtoService {
     return [year, month, day].join('-');
   }
 
-  /** Create a  */
+  /** Create a  thingy... */
   addPto(trainer, startDate, endDate) {
 
     startDate = this.formatDate(startDate);
@@ -52,7 +52,6 @@ export class PtoService {
     this.http.post(this.url.getUrl() + '/api/uavailable' + '/api/v2/google/addEvent', {}, options)
       .subscribe(data => {
         console.log('Success');
-
       },
         error => {
           console.error('not logged in');

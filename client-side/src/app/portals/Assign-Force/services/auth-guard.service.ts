@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {AuthService} from './auth.service';
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 
 /** Service for authenticating with AuthService and telling Janus applications
    if they are already logged in. */

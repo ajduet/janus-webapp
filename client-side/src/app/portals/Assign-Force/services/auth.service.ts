@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {UrlService} from './url.service';
+import { Injectable } from '@angular/core';
+import { UrlService } from './url.service';
 
 /** AuthService manages the logged in token saved on the local system.
    This is used to prevent unecessary re-authorization traffic to and
@@ -8,8 +8,7 @@ import {UrlService} from './url.service';
 @Injectable()
 export class AuthService {
 
-  constructor(private url: UrlService) {
-  }
+  constructor(private url: UrlService) { }
 
   /** getToken returns the current, local login token */
   getToken() {
