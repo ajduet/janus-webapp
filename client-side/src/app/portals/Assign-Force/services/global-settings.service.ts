@@ -14,13 +14,13 @@ export class SettingsService {
   constructor(private http: HttpClient,
               private urlService: UrlService) { }
 
-  // Gets all settings, open up possibilities for future development
+  /** Returns settings from settings service */
   getSettings(): Observable<GlobalSettings[]> {
     return this.http.get<GlobalSettings[]>(`${this.url}`);
 
   }
 
-  // Updates settings
+  /** Save settings to settings service */
   saveSettings(settings: GlobalSettings): Observable<any> {
     return this.http.put<any>(`${this.url}`, settings);
   }

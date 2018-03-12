@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 
-
 @Injectable()
 export class UrlService {
 
@@ -10,6 +9,7 @@ export class UrlService {
 
     constructor(private http: HttpClient) { }
 
+    /** Returns the current URL listed in this file (Deprecated, use environment instead) */
     getUrl() {
       return this.url;
     }

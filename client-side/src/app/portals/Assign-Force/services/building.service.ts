@@ -13,26 +13,27 @@ export class BuildingService {
               private urlService: UrlService) {
   }
 
-  // Gets all Building in the database
+  /** Get all buidings from the building service */
   getAll(): Observable<Building[]> {
     return this.http.get<Building[]>(`${this.url}`);
   }
 
-  // Gets 1 Building by their ID
+  /** Get a building from the building service */
   getById(id): Observable<Building> {
     return this.http.get<Building>(`${this.url}/${id}`);
   }
 
-  // Adds a new Building to the database
+  /** Add a new building to the building service */
   create(building: Building): Observable<any> {
     return this.http.post<any>(`${this.url}`, building);
   }
 
-  // Updates information about a given Building
+  /** Update a building on the building service */
   update(building: Building): Observable<any> {
     return this.http.put<any>(`${this.url}`, building);
   }
 
+  /** Delete a building from the building service */
   delete(building: Building): Observable<any> {
     return this.http.delete<any>(`${this.url}/${building.id}`);
   }
