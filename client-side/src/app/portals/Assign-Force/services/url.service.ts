@@ -14,7 +14,6 @@ export class UrlService {
       return this.url;
     }
 
-
     /*
     testCors1(): Observable<any> {
       return this.http.get(this.url);
