@@ -11,13 +11,13 @@
           <mat-panel-description>
             <span class="fill-space"></span>
             <div [hidden]="!isCreating()" (click)="beginCreation($event)">
-              <mat-icon  matTooltip="create new batch">add_circle</mat-icon>
+              <mat-icon  svgIcon="add" matTooltip="create new batch"></mat-icon>
             </div>
             <div [hidden]="isCreating()" (click)="create($event)">
-              <mat-icon  [matTooltip]="this.finalize">done_white</mat-icon>
+              <mat-icon svgIcon="complete" [matTooltip]="this.finalize"></mat-icon>
             </div>
             <div [hidden]="isCreating()" (click)="cancel($event)">
-              <mat-icon matTooltip="cancel">cancel_white</mat-icon>
+              <mat-icon svgIcon="cancel" matTooltip="cancel"></mat-icon>
             </div>
           </mat-panel-description>
         </mat-panel-title>
@@ -221,13 +221,13 @@
             <mat-cell *matCellDef="let batch">
               <div [hidden]="!isAuthorized()">
               <button mat-icon-button color (click)="EditBatch(batch.id)">
-                <mat-icon id="buttonIcon" matTooltip="Edit" matTooltipPosition="above">mode_edit</mat-icon>
+                <mat-icon svgIcon="edit" id="buttonIcon" matTooltip="Edit" matTooltipPosition="above"></mat-icon>
               </button>
-              <button mat-icon-button color (click)="CloneBatch(batch.id)">
-                <mat-icon id="buttonIcon" matTooltip="Clone" matTooltipPosition="above">filter_none</mat-icon>
+              <button mat-icon-button (click)="CloneBatch(batch.id)">
+                <mat-icon svgIcon="copy" id="buttonIcon" matTooltip="Clone" matTooltipPosition="above"></mat-icon>
               </button>
               <button mat-icon-button color (click)="DeleteBatch(batch.id, $event)">
-                <mat-icon id="buttonIcon" matTooltip="Delete" matTooltipPosition="above">delete</mat-icon>
+                <mat-icon svgIcon="cancel" id="buttonIcon" matTooltip="Delete" matTooltipPosition="above"></mat-icon>
               </button>
               </div>
               <!--<button mat-icon-button color (click)="Synchronize()">

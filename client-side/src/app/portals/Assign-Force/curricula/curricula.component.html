@@ -16,7 +16,7 @@
             <mat-panel-description>
               <span class="fill-space"></span>
               <button mat-icon-button (click)="createCore($event)" [hidden]="!isAdmin">
-                <mat-icon class="icon-margin-fix-header" matTooltip="Add New Core">add_circle_outline</mat-icon>
+                <mat-icon svgIcon="add" class="icon-margin-fix-header" matTooltip="Add New Core"></mat-icon>
               </button>
             </mat-panel-description>
           </mat-expansion-panel-header>
@@ -36,10 +36,10 @@
                       </div>
                       <span class="fill-space"></span>
                       <!--<button mat-icon-button class="button-orange"  >-->
-                        <mat-icon class="icon-margin-fix" matTooltip="Edit Curriculum" (click)="editCurr($event,curr)" [hidden]="!isAdmin">edit</mat-icon>
+                        <mat-icon svgIcon="edit" class="icon-margin-fix" matTooltip="Edit Curriculum" (click)="editCurr($event,curr)" [hidden]="!isAdmin"></mat-icon>
                       <!--</button>-->
                       <!--<button mat-icon-button class="button-orange" >-->
-                        <mat-icon class="icon-margin-fix" matTooltip="Remove Core" (click)="removeCurr($event, curr)" [hidden]="!isAdmin" >remove_circle</mat-icon>
+                        <mat-icon svgIcon="cancel" class="icon-margin-fix" matTooltip="Remove Core" (click)="removeCurr($event, curr)" [hidden]="!isAdmin"></mat-icon>
                       <!--</button>-->
                   </mat-list-item>
                   <hr>
@@ -63,7 +63,7 @@
               <mat-panel-description>
                 <span class="fill-space"></span>
                 <button mat-icon-button (click)="createFocus($event)" [hidden]="!isAdmin">
-                  <mat-icon class="icon-margin-fix-header" matTooltip="Add New Focus">add_circle_outline</mat-icon>
+                  <mat-icon svgIcon="add" class="icon-margin-fix-header" matTooltip="Add New Focus"></mat-icon>
                 </button>
               </mat-panel-description>
             </mat-expansion-panel-header>
@@ -83,10 +83,10 @@
                       </div>
                       <span class="fill-space"></span>
                       <!--<button mat-icon-button class="button-orange" >-->
-                        <mat-icon class="icon-margin-fix" matTooltip="Edit Curriculum" (click)="editCurr($event, curr)" [hidden]="!isAdmin">edit</mat-icon>
+                        <mat-icon svgIcon="edit" class="icon-margin-fix" matTooltip="Edit Curriculum" (click)="editCurr($event, curr)" [hidden]="!isAdmin"></mat-icon>
                       <!--</button>-->
                       <!--<button mat-icon-button class="button-orange" >-->
-                        <mat-icon class="icon-margin-fix" matTooltip="Remove Focus" (click)="removeCurr($event, curr)" [hidden]="!isAdmin">remove_circle</mat-icon>
+                        <mat-icon svgIcon="cancel" class="icon-margin-fix" matTooltip="Remove Focus" (click)="removeCurr($event, curr)" [hidden]="!isAdmin"></mat-icon>
                       <!--</button>-->
                     </mat-list-item>
                     <hr>
@@ -109,7 +109,7 @@
             <mat-panel-description>
               <span class="fill-space"></span>
               <button mat-icon-button (click)="createSkill($event)" [hidden]="!isAdmin">
-                <mat-icon class="icon-margin-fix-header" matTooltip="Add New Skill">add_circle_outline</mat-icon>
+                <mat-icon svgIcon="add" class="icon-margin-fix-header" matTooltip="Add New Skill"></mat-icon>
               </button>
             </mat-panel-description>
           </mat-expansion-panel-header>

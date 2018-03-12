@@ -39,7 +39,7 @@ export class SettingsComponent implements OnInit {
     this.locationService.getAll().subscribe((list) => {
       this.locations = list;
     }, (err) => {
-      this.showToast('Failed to fetch Locations');
+      this.showToast('Failed to fetch locations');
     });
     this.settingsService.getSettings().subscribe((settings) => {
       this.settings = settings[0];
@@ -64,7 +64,7 @@ export class SettingsComponent implements OnInit {
         this.showToast('Failed to fetch the location');
       });
     }, (err) => {
-      this.showToast('Failed to fetch Settings.');
+      this.showToast('Failed to fetch settings.');
     });
   }
 

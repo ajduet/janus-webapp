@@ -7,10 +7,9 @@
         </mat-panel-title>
         <mat-panel-description>
           <span class="fill-space"></span>
-          <mat-icon matTooltip="Export to CSV"  (click)="exportToCSV($event)">get_app</mat-icon>
+          <mat-icon matTooltip="Export to CSV" svgIcon="export" (click)="exportToCSV($event)"></mat-icon>
 
-          <mat-icon [matMenuTriggerFor]="menu" matTooltip="Filter"  (click)="openMenu($event)">
-            menu
+          <mat-icon [matMenuTriggerFor]="menu" svgIcon="menu" matTooltip="Filter"  (click)="openMenu($event)">
           </mat-icon>
           <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="filterByProgress()">

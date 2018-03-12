@@ -45,7 +45,7 @@ The second md-card/ng-show is for other users to look at other trainers profiles
             <div>
               <button mat-icon-button (click)="inputResume.click()">
                 <input class="inputFile" #inputResume type="file" (change)="getFiles($event)">
-                <mat-icon matTooltip="Add/Update Resume" position="below" class="revOrange">add_circle</mat-icon>
+                <mat-icon svgIcon="add" matTooltip="Add/Update Resume" position="below" class="revOrange"></mat-icon>
               </button>
             </div>
             <div *ngIf="myFile != undefined">
@@ -63,7 +63,7 @@ The second md-card/ng-show is for other users to look at other trainers profiles
         <span>Skills</span>
         <span class="md-toolbar-spacer"></span>
         <button mat-icon-button (click)="saveTSkills()">
-          <mat-icon matTooltip="Save Skills">save</mat-icon>
+          <mat-icon svgIcon="save" matTooltip="Save Skills"></mat-icon>
         </button>
       </mat-toolbar>
     </mat-toolbar-row>
@@ -80,7 +80,7 @@ The second md-card/ng-show is for other users to look at other trainers profiles
         <h2 matSubheader>Current skills:</h2>
         <mat-list>
           <button mat-button class="md-list-item" *ngFor="let skill of trainer.skillsObject | orderBy: 'name'" (click)="removeSkill(skill)">
-            <mat-icon style="color: #FB8C00">stars</mat-icon>
+            <mat-icon svgIcon="star" style="color: #FB8C00"></mat-icon>
             <h5>{{skill.name}}</h5>
           </button>
         </mat-list>
@@ -94,7 +94,7 @@ The second md-card/ng-show is for other users to look at other trainers profiles
         <span class="md-toolbar-spacer"></span>
         <button mat-icon-button (click)="inputCert.click()">
           <input class="inputFile" #inputCert  type="file" (change)="getCert($event)">
-          <mat-icon matTooltip="Add Certification" class="md-toolbar-icon">add_circle</mat-icon>
+          <mat-icon svgIcon="add" matTooltip="Add Certification" class="md-toolbar-icon"></mat-icon>
         </button>
       </mat-toolbar>
     </mat-toolbar-row>
@@ -119,11 +119,11 @@ The second md-card/ng-show is for other users to look at other trainers profiles
           </span>
         <mat-list>
           <mat-list-item *ngFor="let cert of trainer.certifications">
-            <mat-icon matListIcon style="color: black;">insert_drive_file</mat-icon>
+            <mat-icon svgIcon="sim" matListIcon style="color: black;"></mat-icon>
             <h3 matLine>{{cert.name}}</h3>
             <span class="md-toolbar-spacer"></span>
             <button mat-icon-button class="md-icon-button" (click)="removeCertification(cert)">
-              <mat-icon matTooltip="Remove Certification" style="color: black">remove_circle</mat-icon>
+              <mat-icon svgIcon="x" matTooltip="Remove Certification" style="color: black"></mat-icon>
             </button>
           </mat-list-item>
         </mat-list>
@@ -147,7 +147,7 @@ The second md-card/ng-show is for other users to look at other trainers profiles
           <span>Profile</span>
           <span class="md-toolbar-spacer"></span>
           <button mat-icon-button (click)="backClick()">
-            <mat-icon matTooltip="Back" class="md-toolbar-icon">arrow_back</mat-icon>
+            <mat-icon svgIcon="back" matTooltip="Back" class="md-toolbar-icon"></mat-icon>
           </button>
         </mat-toolbar>
       </mat-toolbar-row>
@@ -186,7 +186,7 @@ The second md-card/ng-show is for other users to look at other trainers profiles
           <h2 matSubheader>Current Skills:</h2>
           <mat-list>
             <button mat-button class="md-list-item" *ngFor="let skill of trainer.skillsObject | orderBy: 'name'">
-              <mat-icon style="color: #FB8C00">stars</mat-icon>
+              <mat-icon svgIcon="star" style="color: #FB8C00"></mat-icon>
               <h5>{{skill.name}}</h5>
             </button>
           </mat-list>
@@ -209,7 +209,7 @@ The second md-card/ng-show is for other users to look at other trainers profiles
             </span>
             <mat-list>
               <mat-list-item *ngFor="let cert of trainer.certifications">
-                <mat-icon matListIcon style="color: black;">insert_drive_file</mat-icon>
+                <mat-icon svgIcon="sim" matListIcon style="color: black;"></mat-icon>
                 <h3 matLine>{{cert.name}}</h3>
               </mat-list-item>
             </mat-list>
