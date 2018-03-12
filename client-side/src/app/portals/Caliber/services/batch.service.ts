@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-//Interfaces
+// Interfaces
 import { CRUD } from '../interfaces/api.interface';
 
 // rxjs
@@ -39,7 +39,7 @@ export class BatchService implements CRUD<Batch> {
       this.deletedSubject = new Subject();
     }
 
-    public getList(){
+    public getList() {
       // this.listSubject.next(data);
       return this.listSubject.asObservable();
     }
@@ -140,7 +140,7 @@ export class BatchService implements CRUD<Batch> {
      *
      * @return any
      */
-    protected prepareForApi(batch: Batch){
+    protected prepareForApi(batch: Batch) {
       const output: any = {};
       Object.assign(output, batch);
 

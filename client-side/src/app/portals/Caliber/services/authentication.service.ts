@@ -44,13 +44,21 @@ export class AuthenticationService {
      * service and pushes it on the userSubject
      */
     public fetchCurrentUser(): void {
-      const url = '[unknown]';
+      const u = new User();
+      u.email = 'thisis@email.com';
+      u.name = 'Josolph Statler';
+      u.tier = '1';
+      u.title = 'VP';
+      u.trainerId = 2;
+      this.userSubject = new BehaviorSubject<User>(u);
+      /*const url = '[unknown]';
 
       this.http.get<User>(url).subscribe( (user) => {
           this.userSubject.next(user);
         }, (error) => {
           this.userSubject.next(null);
         });
+      */
     }
 
 }

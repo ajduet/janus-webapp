@@ -134,16 +134,17 @@ h3, .h3 {
     Footer
 ******************************************/
 /*Tags*/
-body, html {
+html, body {
     height: 100%;
 }
 
 footer {
-    min-height: 128px;
     padding: 10px;
     background-color: #474C55;
-    font-size: .75em;
-    max-width: 100%;
+    font-size: .70em;
+    width: 100%;
+    position: relative;
+    bottom: 0px;
 }
 
 footer a, footer a:hover {
@@ -442,4 +443,8 @@ html {
 
 .mat-icon {
   color: #E0E4E6;
+}
+
+.icons {
+    font-size: 6px;
 }
