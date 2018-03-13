@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {LocationService} from '../services/location.service';
-import {Locations} from '../domain/locations';
-import {NotificationService} from '../services/notification.service';
-import {Building} from '../domain/building';
-import {GlobalSettings} from '../domain/global-settings';
-import {SettingsService} from '../services/global-settings.service';
-import {UserInfoService} from '../services/user-info.service';
+import { LocationService } from '../services/location.service';
+import { Locations } from '../domain/locations';
+import { NotificationService } from '../services/notification.service';
+import { Building } from '../domain/building';
+import { GlobalSettings } from '../domain/global-settings';
+import { SettingsService } from '../services/global-settings.service';
+import { UserInfoService } from '../services/user-info.service';
 
 @Component({
   selector: 'app-settings',
@@ -16,8 +16,8 @@ export class SettingsComponent implements OnInit {
   selectedLocation = 'None';
   selectedBuilding = 'None';
   location: Locations;
-  locations: Locations [];
-  building: Building [];
+  locations: Locations[];
+  building: Building[];
   settings: any;
   trainersPerPage: number;
   reportGrads: number;
@@ -30,9 +30,9 @@ export class SettingsComponent implements OnInit {
   defaultLocation: number;
 
   constructor(private locationService: LocationService,
-              private notificationService: NotificationService,
-              private settingsService: SettingsService,
-              private userInfo: UserInfoService) {}
+    private notificationService: NotificationService,
+    private settingsService: SettingsService,
+    private userInfo: UserInfoService) { }
 
 
   ngOnInit() {

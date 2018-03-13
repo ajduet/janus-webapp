@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { showWarningOnce } from 'tslint/lib/error';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
-import { CalendarDialogComponent } from '../pto/pto.component';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
+
+/* Components */
+import { CalendarDialogComponent } from '../pto/pto.component';
+
+/* Services */
 import { UrlService } from './url.service';
 
 @Injectable()
@@ -14,12 +17,22 @@ export class PtoService {
     private url: UrlService) {
   }
 
-  /** Get Google Calendar implementation URL */
+  /*
+  =====================
+    BEGIN: API calls
+  =====================
+  */
+
+  /**
+   * Get Google Calendar implementation URL
+   */
   getGoogle() {
     this.router.navigate(['api/v2/google/google']);
   }
 
-  /** format a date for use with Google Calendar */
+  /**
+   * Format a date for use with Google Calendar
+   */
   formatDate(date: Date) {
     const d = new Date(date), year = d.getFullYear();
     let month = '' + (d.getMonth() + 1), day = '' + (d.getDate());
@@ -32,7 +45,9 @@ export class PtoService {
     return [year, month, day].join('-');
   }
 
-  /** Create a  thingy... */
+  /**
+   * Create a  thingy...
+   */
   addPto(trainer, startDate, endDate) {
 
     startDate = this.formatDate(startDate);
