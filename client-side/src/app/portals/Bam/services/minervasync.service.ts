@@ -4,7 +4,7 @@ import { environment } from '../../../../environments/environment';
 
 
 @Injectable()
-export class AssignforcesyncService {
+export class MinervasyncService {
   constructor(private http: HttpClient) { }
 
   /**
@@ -14,7 +14,7 @@ export class AssignforcesyncService {
    * @param
    */
   refreshBatches() {
-    this.http.get(environment.assignForce.refreshBatches()).map(
+    this.http.get(environment.minerva.refreshBatches()).map(
       data => {
         return data;
       }

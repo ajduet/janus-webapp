@@ -60,15 +60,15 @@ import { SubtopicService } from './services/subtopic.service';
 import { HttpClient, HttpHandler, HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ChildrenOutletContexts } from '@angular/router';
-import { AssignforcesyncService } from './services/assignforcesync.service';
+import { MinervasyncService } from './services/minervasync.service';
 import { BoomComponent } from './components/boom/boom.component';
-//import { OrderByPipe } from '../Caliber/pipes/order-by.pipe';
-import { ChartsModule } from 'ng2-charts/ng2-charts'; 
-import { Ng2OrderModule } from 'ng2-order-pipe'; 
+// import { OrderByPipe } from '../Caliber/pipes/order-by.pipe';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { Ng2OrderModule } from 'ng2-order-pipe';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { AlertService } from './services/alert.service';
 import { ExistingSubtopicModalComponent } from './components/calendar/existing-subtopic-modal/existing-subtopic-modal.component';
- 
+
 
 export const Dependencies = {
   imports: [
@@ -146,7 +146,7 @@ export const Dependencies = {
     TopicService,
     SubtopicService,
     ChildrenOutletContexts,
-    AssignforcesyncService,
+    MinervasyncService,
     AlertService,
   ],
   exports: [

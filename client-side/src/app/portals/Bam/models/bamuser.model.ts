@@ -13,7 +13,7 @@ export class BamUser {
     phone2: string;
     skype: string;
     pwd2: string;
-    assignForceID: number;
+    minervaID: number;
 
     constructor(userId: number,
         fName: string,
@@ -27,7 +27,7 @@ export class BamUser {
         phone2: string,
         skype: string,
         pwd2: string,
-        assignForceID: number) {
+        minervaID: number) {
             this.userId = userId;
             this.fName = fName;
             this.mName = mName;
@@ -40,6 +40,6 @@ export class BamUser {
             this.phone2 = phone2;
             this.skype = skype;
             this.pwd2 = pwd2;
-            this.assignForceID = assignForceID;
+            this.minervaID = minervaID;
     }
 }

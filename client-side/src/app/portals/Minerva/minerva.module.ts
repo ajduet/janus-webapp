@@ -63,16 +63,16 @@ import { LoginSuccessComponent } from './login-success/login-success.component';
 import {SettingsService} from './services/global-settings.service';
 import {ReplogicService} from './replogic.service';
 import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
-import { AssignForceComponent } from './assign-force.component';
+import { MinervaComponent } from './minerva.component';
 import { RouterModule } from '@angular/router';
-import { routes } from './assign-force.routes';
+import { routes } from './minerva.routes';
 import { CalendarComponent } from './calendar/calendar.component';
 
 
 
 @NgModule({
   declarations: [
-    AssignForceComponent,
+    MinervaComponent,
     OverviewComponent,
     BatchesComponent,
     BatchDeleteDialogComponent,
@@ -175,8 +175,8 @@ import { CalendarComponent } from './calendar/calendar.component';
     CalendarDialogComponent,
     PtoDialogComponent
   ],
-  bootstrap: [AssignForceComponent]
+  bootstrap: [MinervaComponent]
 })
 
-export class AssignForceModule {
+export class MinervaModule {
 }

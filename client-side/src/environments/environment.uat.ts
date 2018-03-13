@@ -229,7 +229,7 @@ export const environment = {
         addTopicsUrl: () => `${bam}/calendar/addtopics`,
     },
 
-    assignForce: {
+    minerva: {
         refreshBatches: () => `${bam}/refreshbatches`
     },
 

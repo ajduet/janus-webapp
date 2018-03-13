@@ -4,10 +4,10 @@ import { App } from '../app/entities/App';
 export const janusGlobal = {
   apps: [
     {
-      name: 'Assign Force',
-      homeUrl: '/AssignForce/overview',
-      baseUrl: '/AssignForce',
-      imgUrl: '../../assets/assign-force.png'
+      name: 'Minerva',
+      homeUrl: '/Minerva/overview',
+      baseUrl: '/Minerva',
+      imgUrl: '../../assets/minerva.png'
     },
     {
       name: 'Caliber',

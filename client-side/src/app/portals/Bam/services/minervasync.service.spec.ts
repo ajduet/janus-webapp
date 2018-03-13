@@ -3,17 +3,17 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 
 
-import { AssignforcesyncService } from './assignforcesync.service';
+import { MinervasyncService } from './minervasync.service';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { Dependencies } from '../bam.test.module';
 
-describe('AssignforcesyncService', () => {
+describe('MinervasyncService', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule(Dependencies).compileComponents();
   }), 1440000);
 
-  it('should be created', inject([AssignforcesyncService], (service: AssignforcesyncService) => {
+  it('should be created', inject([MinervasyncService], (service: MinervasyncService) => {
     expect(service).toBeTruthy();
   }));
 });

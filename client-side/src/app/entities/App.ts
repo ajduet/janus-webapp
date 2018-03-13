@@ -14,7 +14,7 @@ export class App {
   /**
    * The base url for the application
    * For example:
-   *  '/AssignForce'
+   *  '/Minerva'
    */
   baseUrl: string;
 

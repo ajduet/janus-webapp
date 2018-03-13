@@ -17,7 +17,6 @@ import { Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NavModule } from './nav/nav.module';
 import { JanusComponent } from './Janus/janus.component';
-import { ChuckNorrisService } from './services/chuck-norris.service';
 import { CategoriesService } from './portals/Caliber/services/categories.service';
 import { Trainer } from './entities/Trainer';
 
@@ -40,7 +39,7 @@ const routes: Routes = [
     children: [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'Caliber', loadChildren: './portals/Caliber/caliber.module#CaliberModule' },
-      { path: 'AssignForce', loadChildren: './portals/Assign-Force/assign-force.module#AssignForceModule' },
+      { path: 'Minerva', loadChildren: './portals/Minerva/minerva.module#MinervaModule' },
       { path: 'TrackForce', loadChildren: './portals/Track-Force/track-force.module#TrackForceModule' },
       { path: 'Bam', loadChildren: './portals/Bam/bam.module#BamModule' },
       { path: '**', pathMatch: 'full', redirectTo: '/dashboard' }
@@ -69,7 +68,6 @@ const routes: Routes = [
     JanusComponent
   ],
   providers: [
-    ChuckNorrisService,
     ReportingService,
     PDFService,
     RoleGuard,

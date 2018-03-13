@@ -224,7 +224,7 @@ apiFetchAllQCBatchNotes: (batchId: Number, weekId: Number) =>
         addTopicsUrl: () => `${bam}/calendar/addtopics`,
     },
 
-    assignForce: {
+    minerva: {
         refreshBatches: () => `${bam}/refreshbatches`
     },
 

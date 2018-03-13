@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {TrainersComponent} from './trainers.component';
-import {AssignForceModule} from '../assign-force.module';
+import {MinervaModule} from '../minerva.module';
 import {APP_BASE_HREF} from '@angular/common';
 import {Trainer} from '../domain/trainer';
 import {Skill} from '../domain/skill';
@@ -13,7 +13,7 @@ describe('TrainersComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [],
-      imports: [AssignForceModule],
+      imports: [MinervaModule],
       providers: [{provide: APP_BASE_HREF, useValue: '/'}]
     })
       .compileComponents();

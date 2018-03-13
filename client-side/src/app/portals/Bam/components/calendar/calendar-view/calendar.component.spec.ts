@@ -16,7 +16,7 @@ import { CalendarStatusService } from '../../../services/calendar-status.service
 import { AddSubtopicService } from '../../../services/add-subtopic.service';
 import { SubtopicService } from '../../../services/subtopic.service';
 import { BamUser } from '../../../models/bamuser.model';
-import { Subject } from 'rxjs';
+import { Subject } from 'rxjs/Rx';
 import { Batch } from '../../../models/batch.model';
 import { BatchType } from '../../../models/batchtype.model';
 
@@ -45,7 +45,7 @@ export class StubSessionService {
         'phone2': '8675309',
         'skype': 'rl_skype',
         'pwd2': null,
-        'assignForceID': 9
+        'minervaID': 9
     };
   }
 

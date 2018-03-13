@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
 import { CalendarComponent } from './calendar/calendar.component';
-import { AssignForceComponent } from './assign-force.component';
+import { MinervaComponent } from './minerva.component';
 import { LoginSuccessComponent } from './login-success/login-success.component';
 import { OverviewComponent } from './overview/overview.component';
 import { AuthGuardService } from './services/auth-guard.service';
@@ -17,7 +16,7 @@ import { LoginComponent } from './login/login.component';
 export const routes: Routes = [
   {
     path: '',
-    component: AssignForceComponent,
+    component: MinervaComponent,
     children: [
       {
         path: 'loginsuccess',

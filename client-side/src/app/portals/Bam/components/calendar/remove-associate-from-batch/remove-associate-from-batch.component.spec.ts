@@ -14,14 +14,14 @@ import { BatchType } from '../../../models/batchtype.model';
 /**
  * @author David Graves, Cristian Hermida
  * @batch 1712
- * Had to stub SessionService. It retrieved an object from sessionStorage, 
+ * Had to stub SessionService. It retrieved an object from sessionStorage,
  * which is not available during testing. Had to provide mock data.
  */
 
 export class StubSessionService {
   bamUser: BamUser;
   stubBatch: Batch;
- 
+
   constructor() {
       this.bamUser = {
         'userId': 3,
@@ -36,7 +36,7 @@ export class StubSessionService {
         'phone2': '8675309',
         'skype': 'rl_skype',
         'pwd2': null,
-        'assignForceID': 9
+        'minervaID': 9
     };
   }
 

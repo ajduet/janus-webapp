@@ -26,7 +26,7 @@ export class SessionService {
       'phone2': '8675309',
       'skype': 'rl_skype',
       'pwd2': null,
-      'assignForceID': 9
+      'minervaID': 9
     };
     sessionStorage.setItem('bamUser', JSON.stringify(this.bamUser));
   }
