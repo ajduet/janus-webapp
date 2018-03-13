@@ -21,7 +21,7 @@
 
     <div class="shift-dropdown toggable-shadow calibar-nav-bg" (click)="toggleCollapse()">
       <app-caliber-nav class="align-v-janus-links" [collapsed]="collapsed" (collapse)="toggleClose($event)" *ngIf="currentApp==='Caliber'"></app-caliber-nav>
-      <app-minerva-nav *ngIf="currentApp==='Assign Force'"></app-minerva-nav>
+      <app-minerva-nav *ngIf="currentApp==='Minerva'"></app-minerva-nav>
       <app-track-force-nav *ngIf="currentApp==='Track Force'"></app-track-force-nav>
       <app-bam-nav class="align-v-janus-links" [collapsed]="collapsed" (collapse)="toggleClose($event)" *ngIf="currentApp==='Bam'"></app-bam-nav>
     </div>
