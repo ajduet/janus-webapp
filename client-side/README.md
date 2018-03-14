@@ -25,3 +25,13 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Further iterations: next steps
+
+Find all hydra-(blank)-service repositories as they are all used by the Janus application, with the current exception of the Salesforce service which is as of yet unused.
+
+For our showcase, this application and our microservices were run locally. Our first suggestion is to serve these onto an EC2 to make them available on more than a single machine. Many beans which were consolidated on the server-side of the architecture were not yet consolidated on the Angular side. Specifically, Minerva and Caliber will share data types on the Java side (among them: Trainer, Batch, and others). These should be consolidated into a single shared models.
+
+Authentication / log-in should also be implemented.
+
+Best of luck! -The January Batch
