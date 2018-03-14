@@ -1,44 +1,44 @@
 <div>
-  <mat-form-field>
+  <mat-form-field class="my-3 mx-1">
     <input matInput [matDatepicker]="start" [(ngModel)]="startDate" name="startDate" placeholder="Start date">
     <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
     <mat-datepicker #start></mat-datepicker>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="my-3 mx-1">
     <input matInput [matDatepicker]="end" [(ngModel)]="endDate" placeholder="End date">
     <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
     <mat-datepicker #end></mat-datepicker>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="my-3 mx-1">
     <mat-select placeholder="Curriculum" [formControl]="curriculum" multiple>
       <mat-option *ngFor="let curriculum of curriculumList" [value]="curriculum">{{curriculum}}</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="my-3 mx-1">
     <mat-select placeholder="Focus" [formControl]="focus" multiple>
       <mat-option *ngFor="let focus of focusList" [value]="focus">{{focus}}</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="my-3 mx-1">
     <mat-select placeholder="Location" [formControl]="location" multiple>
       <mat-option *ngFor="let location of locationList" [value]="location">{{location}}</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
+  <mat-form-field class="my-3 mx-1">
     <mat-select placeholder="Bulding" [formControl]="bulding" multiple>
       <mat-option *ngFor="let bulding of buldingList" [value]="bulding">{{bulding}}</mat-option>
     </mat-select>
   </mat-form-field>
 
-  <button mat-button (click)="updateTimeline()">Update</button>
-  <mat-checkbox (click)="hide()">Hide Concluded Batches</mat-checkbox>
-  <mat-checkbox (click)="hideBatchlessTrainers()">Hide Batchless Trainers</mat-checkbox>
-  <mat-checkbox (click)="setRandomDate()">Select Dates Automatically</mat-checkbox>
+  <button mat-button (click)="updateTimeline()" class="my-3 mx-1">Update</button>
+  <mat-checkbox (click)="hide()" class="my-3 mx-1">Hide Concluded Batches</mat-checkbox>
+  <mat-checkbox (click)="hideBatchlessTrainers()" class="my-3 mx-1">Hide Batchless Trainers</mat-checkbox>
+  <mat-checkbox (click)="setRandomDate()" class="my-3 mx-1">Select Dates Automatically</mat-checkbox>
 </div>
 
 <div>

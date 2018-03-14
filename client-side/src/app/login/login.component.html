@@ -1,17 +1,11 @@
 <div class="container">
-
   <form class="form-signin" (submit)="submit()">
-    <h2 class="form-signin-heading">Please sign in</h2>
-    <label for="inputEmail" class="sr-only">Username</label>
-    <input [(ngModel)]="credential.username" name="username" type="username" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input [(ngModel)]="credential.password" name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    <div class="checkbox">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
-    </div>
-    <button (click)="submit()" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <h2 class="form-signin-heading mb-3">Please sign in</h2>
+    <label for="inputEmail" class="sr-only mt-3">Username</label>
+    <input [(ngModel)]="credential.username" name="username" type="username" id="inputEmail" class="form-control mb-2" placeholder="Username" required autofocus>
+    <label for="inputPassword" class="sr-only mt-2">Password</label>
+    <input [(ngModel)]="credential.password" name="password" type="password" id="inputPassword" class="form-control mb-2" placeholder="Password" required>
+    <button (click)="submit()" class="btn btn-lg btn-primary btn-block my-2" type="submit">Sign in</button>
   </form>
 
 </div>
