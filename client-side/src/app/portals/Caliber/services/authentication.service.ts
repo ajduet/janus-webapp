@@ -46,7 +46,7 @@ export class AuthenticationService {
     public fetchCurrentUser(): void {
       const u = new User();
       u.email = 'thisis@email.com';
-      u.name = 'Josolph Statler';
+      u.name = 'Mansome Lichtenstein';
       u.tier = '1';
       u.title = 'VP';
       u.trainerId = 2;
