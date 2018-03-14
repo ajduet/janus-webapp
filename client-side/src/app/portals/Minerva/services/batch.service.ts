@@ -15,7 +15,7 @@ import { UrlService } from './url.service';
 @Injectable()
 export class BatchService {
 
-  url = this.urlService.getUrl() + '/api/batch/api/v2/batch';
+  url = this.urlService.getUrl() + '/batch/batch';
 
   constructor(private http: HttpClient,
     private urlService: UrlService) { }

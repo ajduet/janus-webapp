@@ -1,7 +1,7 @@
 <div style="margin-top: 5%">
 
-  <!--------Create New Batch ------->
-  <!-- Only Appears if they are admin ------>
+  <!--Create New Batch -->
+  <!-- Only Appears if they are admin -->
   <mat-accordion>
     <div id="auth" [hidden]="!isAuthorized()">
     <mat-expansion-panel>
@@ -132,7 +132,7 @@
 
 
         </div>
-        <!--Coriculum <input type="text" name="coriculum">-->
+        <!-- Coriculum <input type="text" name="coriculum"> -->
       </form>
 
     </mat-expansion-panel>
@@ -141,8 +141,8 @@
     </div>
   </mat-accordion>
 
-  <!------All Batches------->
-  <!------This has some Admin properties------->
+  <!-- All Batches -->
+  <!-- This has some Admin properties -->
   <mat-accordion>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
@@ -151,7 +151,7 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <div class="example-container_mat-elevation-z8">
-        <mat-table #table [dataSource]="batchData" matSort>
+        <mat-table #table [dataSource]="batchData">
 
           <!-- Checkbox Column -->
           <ng-container matColumnDef="Checkbox">
@@ -244,7 +244,7 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <!-----Batch TimeLine------>
+  <!-- Batch TimeLine -->
   <mat-accordion>
     <mat-expansion-panel class="my-2">
       <mat-expansion-panel-header>

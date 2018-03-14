@@ -16,7 +16,7 @@ import { UrlService } from './url.service';
 @Injectable()
 export class CurriculaService {
 
-  url = this.urlService.getUrl() + '/api/curriculum/api/v2/curriculum';
+  url = this.urlService.getUrl() + '/curriculum/api/v2/curriculum';
 
   constructor(private http: HttpClient,
     private urlService: UrlService) { }

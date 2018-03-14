@@ -13,7 +13,7 @@ export const urls = {
     },
 
     batch: {
-        fetchAllByTrainer: () => `${context}trainer/batch/all`,
+        fetchAllByTrainer: () => `${context}batch/batch`,
         fetchAll: () => `${context}vp/batch/all`,
         save: () => `${context}all/batch/create`,
         update: () => `${context}all/batch/update`,
