@@ -85,9 +85,9 @@ export class CurriculaComponent implements OnInit {
           for (const curr of this.curricula){
             console.log(curr);
             if (curr.skills.length !== 0) {
-              const v: number[] = [];
+              var v: number[] = [];
               for (let i = 0; i < curr.skills.length; i++) {
-                v.concat(curr.skills[i].skillId);
+                v.push(curr.skills[i]);
               }
               console.log(v);
               this.skillService.getSkillsByIds(v)
