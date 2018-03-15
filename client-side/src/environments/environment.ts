@@ -3,13 +3,13 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 // const context = 'http://ec2-18-216-169-252.us-east-2.compute.amazonaws.com:8080/';
-const context = 'http://localhost:8081/';
+const context = 'http://192.168.61.9:8081/';
 const bam = 'http://18.219.59.193:9001/api/v1';
 export const environment = {
   production: false,
   context: context, // change for what the production environment would actually be
   bam: bam,
-  url: 'http://localhost:8081/',
+  url: 'http://192.168.61.9:8081/',
 
   assessment: {
     fetchByBatchIdByWeek: (batchId: number, week: number) => `${context}trainer/assessment/${batchId}/${week}`,
