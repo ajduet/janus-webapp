@@ -1,5 +1,5 @@
-export class Category {
-    categoryId: number;
-    skillCategory: string;
+export class Skill {
+    skillId: number;
+    skillName: string;
     active: boolean;
 }
