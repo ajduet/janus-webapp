@@ -83,9 +83,8 @@ export class CurriculaComponent implements OnInit {
       .subscribe(data => {
           this.curricula = data;
           for (const curr of this.curricula){
-            console.log(curr);
             if (curr.skills.length !== 0) {
-              var v: number[] = [];
+              let v: number[] = [];
               for (let i = 0; i < curr.skills.length; i++) {
                 v.push(curr.skills[i]);
               }
@@ -112,9 +111,9 @@ export class CurriculaComponent implements OnInit {
           this.curricula = data;
           for (const curr of this.curricula){
             if (curr.skills.length !== 0) {
-              const v: number[] = [];
+              let v: number[] = [];
               for (let i = 0; i < curr.skills.length; i++) {
-                v.concat(curr.skills[i].skillId);
+                v.push(curr.skills[i]);
               }
               console.log(v);
               this.skillService.getSkillsByIds(v)
