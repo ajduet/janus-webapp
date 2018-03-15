@@ -29,9 +29,9 @@ export const urls = {
     },
 
     location: {
-        fetchAll: () => `${context}all/location/all`,
-        save: () => `${context}vp/location/create`,
-        update: () => `${context}vp/location/update`,
+        fetchAll: () => `${context}address/all/location/all`,
+        save: () => `${context}address/vp/location/create`,
+        update: () => `${context}address/vp/location/update`,
     },
 
     note: {

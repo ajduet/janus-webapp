@@ -5,7 +5,7 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class UrlService {
 
-    url = 'http://localhost:8081';
+    url = 'http://192.168.61.9:8081';
 
     constructor(private http: HttpClient) { }
 
