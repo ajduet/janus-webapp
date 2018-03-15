@@ -7,11 +7,11 @@ import { Observable } from 'rxjs/Observable';
 
 // services
 import { environment } from '../../../../environments/environment';
-import { CategoryService } from './category.service';
+import { SkillsService } from './category.service';
 
 
 // entities
-import { Category } from '../entities/Category';
+import { Skill } from '../entities/Category';
 import { AlertsService } from './alerts.service';
 
 /**
@@ -23,7 +23,7 @@ import { AlertsService } from './alerts.service';
 * for Category objects
 */
 @Injectable()
-export class CategoriesService extends CategoryService {
+export class CategoriesService extends SkillsService {
 
   constructor(httpClient: HttpClient, alertService: AlertsService) {
     super(httpClient, alertService);
@@ -36,11 +36,11 @@ export class CategoriesService extends CategoryService {
   }
 
   // adds a new category to the database
-  public addNewCategory(category: Category): void {
+  public addNewCategory(category: Skill): void {
     super.create(category);
   }
 
-  public editCurrentCategory(category: Category): void {
+  public editCurrentCategory(category: Skill): void {
     super.update(category);
   }
 }

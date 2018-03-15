@@ -20,12 +20,12 @@ export const urls = {
         delete: (batchId) => `${context}all/batch/delete/${batchId}`,
     },
 
-    category: {
-        fetchAll: () => `${context}vp/category`,
-        fetchAllActive: () => `${context}category/all`,
-        fetchById: (id: number) => `${context}category/${id}`,
-        save: () => `${context}vp/category`,
-        update: () => `${context}vp/category/update`,
+    skills: {
+        fetchAll: () => `${context}skills/vp/skill`,
+        fetchAllActive: () => `${context}skills/skill/all`,
+        fetchById: (id: number) => `${context}skills/skill/${id}`,
+        save: () => `${context}skills/vp/skill`,
+        update: () => `${context}skills/vp/skill/update`,
     },
 
     location: {

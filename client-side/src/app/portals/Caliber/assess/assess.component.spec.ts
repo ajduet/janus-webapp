@@ -4,7 +4,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BatchService } from '../services/batch.service';
 import { AssessmentService } from '../services/assessment.service';
 import { GradeService } from '../services/grade.service';
-import { CategoryService } from '../services/category.service';
+import { SkillsService } from '../services/category.service';
 import { NoteService } from '../services/note.service';
 import { FormBuilder, FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';

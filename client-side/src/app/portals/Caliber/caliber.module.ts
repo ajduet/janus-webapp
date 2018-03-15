@@ -29,7 +29,7 @@ import { PanelService } from './services/panel.service';
 import { GradeService } from './services/grade.service';
 import { NoteService } from './services/note.service';
 import { GranularityService } from './reports/services/granularity.service';
-import { CategoryService } from './services/category.service';
+import { SkillsService } from './services/category.service';
 import { SkillService } from './services/skill.service';
 import { TrainingTypeService } from './services/training-type.service';
 import { ColorService } from './services/colors/color.service';
@@ -235,7 +235,7 @@ import { CannotDeleteTraineeModalComponent } from './manage/cannot-delete-traine
     ColorService,
     TrainerService,
     LocationService,
-    CategoryService,
+    SkillsService,
     CategoriesService,
     GranularityService,
     AlertsService,

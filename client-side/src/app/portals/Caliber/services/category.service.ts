@@ -11,7 +11,7 @@ import { AlertsService } from './alerts.service';
 import { environment } from '../../../../environments/environment';
 
 // entities
-import { Category } from '../entities/Category';
+import { Skill } from '../entities/Category';
 import { CRUD } from '../interfaces/api.interface';
 import { urls } from './urls';
 
@@ -20,9 +20,9 @@ import { urls } from './urls';
 * for Category objects
 */
 @Injectable()
-export class CategoryService implements CRUD<Category> {
+export class SkillsService implements CRUD<Skill> {
 
-  public listSubject = new BehaviorSubject<Category[]>([]);
+  public listSubject = new BehaviorSubject<Skill[]>([]);
 
   constructor(public httpClient: HttpClient, public alertService: AlertsService) {
     this.listSubject = new BehaviorSubject([]);
@@ -40,8 +40,8 @@ export class CategoryService implements CRUD<Category> {
  * spring-security: @PreAuthorize("hasAnyRole('VP', 'QC', 'TRAINER', 'STAGING','PANEL')")
  *
  */
- public fetchAll(): Observable<Category[]> {
-   this.httpClient.get<Category[]>(urls.category.fetchAll()).subscribe(res => this.listSubject.next(res));
+ public fetchAll(): Observable<Skill[]> {
+   this.httpClient.get<Skill[]>(urls.skills.fetchAll()).subscribe(res => this.listSubject.next(res));
    return this.listSubject.asObservable();
  }
 
@@ -51,9 +51,9 @@ export class CategoryService implements CRUD<Category> {
  * spring-security: @PreAuthorize("hasAnyRole('VP', 'QC', 'TRAINER', 'STAGING','PANEL')")
  *
  */
- public fetchAllActive(): Observable<Category[]> {
-   const url = urls.category.fetchAllActive();
-   this.httpClient.get<Category[]>(url)
+ public fetchAllActive(): Observable<Skill[]> {
+   const url = urls.skills.fetchAllActive();
+   this.httpClient.get<Skill[]>(url)
    .subscribe((results) => this.listSubject.next(results));
    return this.listSubject.asObservable();
  }
@@ -67,9 +67,9 @@ export class CategoryService implements CRUD<Category> {
  *
  * @return Observable<Category>
  */
- public fetchById(id: number): Observable<Category> {
-   const url = urls.category.fetchById(id);
-   return this.httpClient.get<Category>(url);
+ public fetchById(id: number): Observable<Skill> {
+   const url = urls.skills.fetchById(id);
+   return this.httpClient.get<Skill>(url);
  }
 
   /**
@@ -79,9 +79,9 @@ export class CategoryService implements CRUD<Category> {
   *
   * @param category: Category
   */
-  public create(category: Category): Observable<Category> {
-    const url = urls.category.save();
-    return this.httpClient.post<Category>(url, JSON.stringify(category));
+  public create(category: Skill): Observable<Skill> {
+    const url = urls.skills.save();
+    return this.httpClient.post<Skill>(url, JSON.stringify(category));
   }
 
   /**
@@ -91,12 +91,12 @@ export class CategoryService implements CRUD<Category> {
    *
    * @param category: Category
    */
-  public update(category: Category): Observable<Category> {
-    const url = urls.category.update();
-    return this.httpClient.put<Category>(url, JSON.stringify(category));
+  public update(category: Skill): Observable<Skill> {
+    const url = urls.skills.update();
+    return this.httpClient.put<Skill>(url, JSON.stringify(category));
   }
 
-  public delete(category: Category): Observable<Category> {
+  public delete(category: Skill): Observable<Skill> {
     return Observable.of(category);
   }
 }

@@ -9,11 +9,11 @@ import { Subscription } from 'rxjs/Subscription';
 
 // services
 import { CategoriesService } from '../../services/categories.service';
-import { CategoryService } from '../../services/category.service';
+import { SkillsService } from '../../services/category.service';
 import { environment } from '../../../../../environments/environment';
 
 // entities
-import { Category } from '../../entities/Category';
+import { Skill } from '../../entities/Category';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
 
 @Component({
@@ -23,18 +23,18 @@ import { NgForm } from '@angular/forms/src/directives/ng_form';
 })
 
 export class CategoriesComponent implements OnInit {
-  newCategory: Category = new Category();
+  newCategory: Skill = new Skill();
 
   addForm: FormGroup;
   private categorySubscription: Subscription;
 
-  categories: Category[];
-  currentCategory: Category;
+  categories: Skill[];
+  currentCategory: Skill;
   isActive: boolean;
   tableLogic: any = [];
   columns;
   numColumns: number;
-  constructor(private categoriesService: CategoriesService, private categoryService: CategoryService, private modalService: NgbModal,
+  constructor(private categoriesService: CategoriesService, private categoryService: SkillsService, private modalService: NgbModal,
     private fb: FormBuilder) {
   }
 
@@ -61,7 +61,7 @@ export class CategoriesComponent implements OnInit {
   }
   initFormControl() {
     this.addForm = this.fb.group({
-      'name': [this.newCategory.skillCategory, Validators.required]
+      'name': [this.newCategory.skillName, Validators.required]
     });
   }
 
@@ -71,7 +71,7 @@ export class CategoriesComponent implements OnInit {
    * @memberof CategoriesComponent
    */
   addNewCategory(value) {
-    this.newCategory.skillCategory = value.name;
+    this.newCategory.skillName = value.name;
     this.newCategory.active = true;
     this.categoryService.create(this.newCategory).subscribe((succ) =>
       this.categoriesService.fetchAll());
@@ -94,7 +94,7 @@ export class CategoriesComponent implements OnInit {
    * @memberof CategoriesComponent
    */
   editCurrentCategory(nameChange) {
-    this.currentCategory.skillCategory = nameChange.value.skillCategory;
+    this.currentCategory.skillName = nameChange.value.skillName;
     this.currentCategory.active = this.isActive;
     this.categoryService.update(this.currentCategory).subscribe((resp) =>
       this.categoriesService.fetchAll());
@@ -152,10 +152,10 @@ export class CategoriesComponent implements OnInit {
   /**
    * Open the edit modal
    * @param {any} content
-   * @param {Category} index
+   * @param {Skill} index
    * @memberof CategoriesComponent
    */
-  editopen(content, index: Category) {
+  editopen(content, index: Skill) {
     this.currentCategory = index;
     this.isActive = index.active;
     this.modalService.open(content);

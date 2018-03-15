@@ -238,7 +238,7 @@ export class TrainersComponent implements OnInit {
     }
     let skillslist = '';
     for (let i = 0; i < Skillz.length; i++) {
-      skillslist += Skillz[i].name;
+      skillslist += Skillz[i].skillName;
       if (i !== Skillz.length - 1) {
         skillslist += ', ';
       }
