@@ -401,7 +401,7 @@ export class CurriculaCreateSkillDialogComponent {
   skillFormCtrl = new FormControl();
   newSkill: Skill = {
     skillId: null,
-    name: null,
+    skillName: null,
     active: true
   };
   skills: Skill[] = this.data;
@@ -420,20 +420,20 @@ export class CurriculaCreateSkillDialogComponent {
   }
 
   createSkill() {
-    this.newSkill.name = this.skillFormCtrl.value;
+    this.newSkill.skillName = this.skillFormCtrl.value;
     console.log('New Skill: ');
     console.log(this.newSkill);
     for (let i = 0; i < this.skills.length; i++) {
-      if (this.skills[i].name === this.newSkill.name) {
+      if (this.skills[i].skillName === this.newSkill.skillName) {
         this.found = true;
-        this.showToast('Skill: ' + this.newSkill.name + ' already exist!');
+        this.showToast('Skill: ' + this.newSkill.skillName + ' already exist!');
         this.dialogRef.close(false);
       }
     }
     if (this.found === false) {
       this.skillService.create(this.newSkill)
         .subscribe(retData => {
-          this.showToast('Skill: ' + retData.name + ' created. ');
+          this.showToast('Skill: ' + retData.skillName + ' created. ');
         }, error => {
           this.showToast('Failed to create new skill. ');
         });

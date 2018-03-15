@@ -73,7 +73,7 @@ describe('TrainersComponent', () => {
     it('Testing to see if null is returned', function () {
       const elem: Skill[] = [{
         skillId: 1,
-        name: null,
+        skillName: null,
         active: true
       }];
       const actual = component.joinObjArrayByName(elem);
@@ -83,7 +83,7 @@ describe('TrainersComponent', () => {
     it('Testing to see if 45 is returned', function () {
       const elem: Skill[] = [{
         skillId: 1,
-        name: '45',
+        skillName: '45',
         active: true
       }];
       const actual = component.joinObjArrayByName(elem);

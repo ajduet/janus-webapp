@@ -7,7 +7,7 @@ import { UrlService } from './url.service';
 @Injectable()
 export class SkillService {
 
-  url = this.urlService.getUrl() + '/skills/skill';
+  url = this.urlService.getUrl() + '/skills/api/v2/skill';
 
   constructor(private http: HttpClient,
     private urlService: UrlService) { }
@@ -19,12 +19,12 @@ export class SkillService {
 
   /** Get all skills from the database */
   getAll(): Observable<Skill[]> {
-    return this.http.get<Skill[]>(this.url + '/all');
+    return this.http.get<Skill[]>(this.url);
   }
 
   /** Get skills by ID number from the database */
   getSkillsByIds(ids): Observable<Skill[]> {
-    return this.http.post<Skill[]>('api/v2/skill/ids', ids);
+    return this.http.post<Skill[]>(this.url + '/ids', ids);
   }
 
   /** Get a single skill by it's ID number */

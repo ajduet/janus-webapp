@@ -200,7 +200,7 @@ export class ProfileComponent implements OnInit {
       this.trainer.skillsObject = [];
     }
     for (let i = 0; i < this.skills.length; i++) {
-      if (this.skills[i].name === skill) {
+      if (this.skills[i].skillName === skill) {
         this.trainer.skills.push(this.skills[i].skillId);
         this.trainer.skillsObject.push(this.skills[i]);
         break;
@@ -300,7 +300,7 @@ export class ProfileComponent implements OnInit {
     this.skillsList = undefined;
     this.skillService.getAll().subscribe(response => {
         this.skills = response;
-        this.skillsList = response.map(a => a.name);
+        this.skillsList = response.map(a => a.skillName);
       },
       () => this.showToast('Could not fetch skills.'));
   }
@@ -325,7 +325,7 @@ export class ProfileComponent implements OnInit {
       this.skills = response;
       for (let i = 0; i < this.skills.length; i++) {
         if ((this.trainer.skills.filter(a => this.skills[i].skillId === a)).length === 0) {
-          this.skillsList.push(this.skills[i].name);
+          this.skillsList.push(this.skills[i].skillName);
         }
       }
     }, () => this.showToast('Could not fetch skills.'));
