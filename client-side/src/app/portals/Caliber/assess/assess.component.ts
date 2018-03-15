@@ -10,8 +10,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GradeService } from '../services/grade.service';
 import { Grade } from '../entities/Grade';
 import { Trainee } from '../entities/Trainee';
-import { CategoryService } from '../services/category.service';
-import { Category } from '../entities/Category';
+import { SkillsService } from '../services/category.service';
+import { Skill } from '../entities/Category';
 import { Note } from '../entities/Note';
 import { NoteService } from '../services/note.service';
 import * as $ from 'jquery';
@@ -47,7 +47,7 @@ export class AssessComponent implements OnInit {
   grades: Grade[] = [];
   updatingGrades: Set<Grade> = new Set<Grade>();
   selectedWeek: number;
-  categories: Category[] = [];
+  categories: Skill[] = [];
   notes: Note[] = [];
   rForm: FormGroup;
 
@@ -61,7 +61,7 @@ export class AssessComponent implements OnInit {
   selectedTrainees: Trainee[] = [];
 
   constructor(private modalService: NgbModal, private batchService: BatchService, private assessmentService: AssessmentService,
-  private gradeService: GradeService, private categoryService: CategoryService, private noteService: NoteService,
+  private gradeService: GradeService, private categoryService: SkillsService, private noteService: NoteService,
   private fb: FormBuilder, private datePipe: DatePipe) {
 
   }
@@ -190,11 +190,11 @@ export class AssessComponent implements OnInit {
     this.newAssessment.category = this.findCategory(newCategory);
   }
 
-  findCategory(category: any): Category {
+  findCategory(category: any): Skill {
     let matchingCat;
     this.categories.forEach(element => {
 
-      if (element.skillCategory === category) {
+      if (element.skillName === category) {
         matchingCat = element;
       }
     });

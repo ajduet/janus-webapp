@@ -29,7 +29,7 @@ import { NoteService } from './services/note.service';
 import { GranularityService } from './reports/services/granularity.service';
 import { ReportingService } from '../../services/reporting.service';
 import { PDFService } from '../../services/pdf.service';
-import { CategoryService } from './services/category.service';
+import { SkillsService } from './services/category.service';
 import { SkillService } from './services/skill.service';
 import { TrainingTypeService } from './services/training-type.service';
 import { ColorService } from './services/colors/color.service';
@@ -234,7 +234,7 @@ export const Dependencies = {
     ColorService,
     TrainerService,
     LocationService,
-    CategoryService,
+    SkillsService,
     CategoriesService,
     GranularityService,
     AlertsService,

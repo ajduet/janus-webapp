@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 import { HttpClientModule, HttpClient} from '@angular/common/http';
 import { AlertsService } from '../services/alerts.service';
-import { CategoryService } from './category.service';
+import { SkillsService } from './category.service';
 
 xdescribe('CategoryService', () => {
   beforeEach(() => {
@@ -10,14 +10,14 @@ xdescribe('CategoryService', () => {
         HttpClientModule
       ],
       providers: [
-        CategoryService,
+        SkillsService,
         HttpClient,
         AlertsService
       ]
     });
   });
 
-  it('should be created', inject([CategoryService], (service: CategoryService) => {
+  it('should be created', inject([SkillsService], (service: SkillsService) => {
     expect(service).toBeTruthy();
   }));
 });
