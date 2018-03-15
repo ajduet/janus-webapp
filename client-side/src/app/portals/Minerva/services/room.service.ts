@@ -7,7 +7,7 @@ import { UrlService } from './url.service';
 @Injectable()
 export class RoomService {
 
-  url = this.urlService.getUrl() + '/api/location/api/v2/room';
+  url = this.urlService.getUrl() + '/address/api/v2/room';
 
   constructor(private http: HttpClient,
     private urlService: UrlService) {
@@ -15,6 +15,7 @@ export class RoomService {
 
   /** Gets all Rooms from the room service */
   getAll(): Observable<Room[]> {
+    console.log('Get all');
     return this.http.get<Room[]>(this.url);
   }
 

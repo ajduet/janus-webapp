@@ -16,7 +16,7 @@ import { UrlService } from './url.service';
 @Injectable()
 export class BuildingService {
 
-  url = this.urlService.getUrl() + '/address/building';
+  url = this.urlService.getUrl() + '/address//api/v2/building';
 
   constructor(private http: HttpClient,
     private urlService: UrlService) {
