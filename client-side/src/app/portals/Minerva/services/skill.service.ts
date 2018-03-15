@@ -24,7 +24,7 @@ export class SkillService {
 
   /** Get skills by ID number from the database */
   getSkillsByIds(ids): Observable<Skill[]> {
-    return this.http.post<Skill[]>(this.url + '/ids', ids);
+    return this.http.post<Skill[]>('api/v2/skill/ids', ids);
   }
 
   /** Get a single skill by it's ID number */

@@ -9,7 +9,7 @@ import { ReportsService } from '../../services/reports.service';
 import { ColorService } from '../../services/colors/color.service';
 
 import { VpPanelGraphComponent } from './vp-panel-graph.component';
-import { HomeComponent } from '../../../Minerva/home/home.component';
+import { HomeComponent } from '../../../Caliber/home/home.component';
 // import { ReportingService } from '../../../services/reporting.service';
 
 xdescribe('VpPanelGraphComponent', () => {

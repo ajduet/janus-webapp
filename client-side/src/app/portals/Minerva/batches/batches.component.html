@@ -155,69 +155,69 @@
 
           <!-- Checkbox Column -->
           <ng-container matColumnDef="Checkbox">
-            <mat-header-cell *matHeaderCellDef mat-sort-header id="check"> </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef id="check"> </mat-header-cell>
             <mat-cell *matCellDef="let batch" id="checkcell"> <mat-checkbox></mat-checkbox> </mat-cell>
           </ng-container>
 
 
           <!-- Name Column -->
           <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
             <mat-cell *matCellDef="let batch"> {{batch.name}} </mat-cell>
           </ng-container>
 
           <!-- Curriculum Column -->
           <ng-container matColumnDef="curriculumName">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Curriculum </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Curriculum </mat-header-cell>
             <mat-cell *matCellDef="let batch"> {{batch.curriculumName}} </mat-cell>
           </ng-container>
 
           <!-- Focus Column -->
           <ng-container matColumnDef="focusName">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Focus </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Focus </mat-header-cell>
             <mat-cell *matCellDef="let batch"> {{batch.focusName}} </mat-cell>
           </ng-container>
 
           <!-- Trainer Column -->
           <ng-container matColumnDef="trainerName">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Trainer/Co Trainer </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Trainer/Co Trainer </mat-header-cell>
             <mat-cell *matCellDef="let batch"> {{batch.trainerName}} / {{batch.cotrainerName}}</mat-cell>
           </ng-container>
 
           <!-- Location Column -->
           <ng-container matColumnDef="location">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Location </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
             <mat-cell *matCellDef="let batch"> {{batch.batchLocation.locationName}} </mat-cell>
           </ng-container>
 
           <!-- Building Column -->
           <ng-container matColumnDef="building">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Building </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Building </mat-header-cell>
             <mat-cell *matCellDef="let batch"> {{batch.batchLocation.buildingName}} </mat-cell>
           </ng-container>
 
           <!-- Room Column -->
           <ng-container matColumnDef="room">
-            <mat-header-cell *matHeaderCellDef mat-sort-header > Room </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef > Room </mat-header-cell>
             <mat-cell *matCellDef="let batch"> {{batch.batchLocation.roomName}} </mat-cell>
           </ng-container>
 
           <!-- StartDate Column -->
           <ng-container matColumnDef="startDate">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> StartDate </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> StartDate </mat-header-cell>
             <mat-cell *matCellDef="let batch"> {{batch.startDate| date : 'MM/dd/yyyy'}}</mat-cell>
           </ng-container>
 
           <!-- EndDate Column -->
           <ng-container matColumnDef="endDate">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> EndDate </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> EndDate </mat-header-cell>
             <mat-cell *matCellDef="let batch"> {{batch.endDate| date : 'MM/dd/yyyy'}} </mat-cell>
           </ng-container>
 
 
           <!-- Buttons -->
           <ng-container matColumnDef="Icons">
-            <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+            <mat-header-cell *matHeaderCellDef></mat-header-cell>
             <mat-cell *matCellDef="let batch">
               <div [hidden]="!isAuthorized()">
               <button mat-icon-button color (click)="EditBatch(batch.id)">
