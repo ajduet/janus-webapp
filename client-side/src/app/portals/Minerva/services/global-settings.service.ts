@@ -14,7 +14,7 @@ import { UrlService } from './url.service';
 @Injectable()
 export class SettingsService {
 
-  url = this.urlService.getUrl() + '/api/settings/api/v2/setting';
+  url = this.urlService.getUrl() + '/settings/api/v2/setting';
 
   constructor(private http: HttpClient,
     private urlService: UrlService) { }
