@@ -1,7 +1,7 @@
 import {Question} from "./question";
 
 //A filtered topic for internal Screener usage ONLY
-export interface screenerBucket{
+export interface ScreenerBucket{
     bucketID: number;
     questions: Question[];
 }
