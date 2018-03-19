@@ -1,4 +1,4 @@
-import {Question} from "./question";
+import {QuestionScore} from "./questionScore";
 
 //A list of questions answered by the candidate
 export interface ScreenerBucket{
