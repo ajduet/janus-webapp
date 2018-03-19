@@ -6,4 +6,5 @@ export interface Bucket{
     bucketCategory: string;
     bucketDescription: string;
     isActive: boolean;
+    questions: Question[];
 }
