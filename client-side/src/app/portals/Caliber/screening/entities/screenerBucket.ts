@@ -1,6 +1,6 @@
 import {Question} from "./question";
 
-//A filtered topic for internal Screener usage ONLY
+//A list of questions answered by the candidate
 export interface ScreenerBucket{
     bucketID: number;
     questions: Question[];
