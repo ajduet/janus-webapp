@@ -10,7 +10,7 @@ export interface Question{
     sampleAnswer4: string;
     sampleAnswer5: string;
     isActive: boolean; //For Admin UI team
-    bucketId: Bucket; //For Database consistency SUBJECT TO CHANGE
+    bucketId: number; //For Database consistency SUBJECT TO CHANGE
 
 
 }
