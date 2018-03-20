@@ -120,8 +120,6 @@ import { CannotDeleteModalComponent } from './manage/cannot-delete-modal/cannot-
 import { DeleteTraineeModalComponent } from './manage/delete-trainee-modal/delete-trainee-modal.component';
 import { CannotDeleteTraineeModalComponent } from './manage/cannot-delete-trainee-modal/cannot-delete-trainee-modal.component';
 import { CandidatesScreeningListComponent } from './screening/components/candidates-screening-list/candidates-screening-list.component';
-import { CandidateAssessmentSummaryComponent } from './screening/components/candidate-assessment-summary/candidate-assessment-summary.component';
-import { ScreeningComponent } from './screening/components/screening/screening.component';
 import { GeneralCommentsComponent } from './screening/components/general-comments/general-comments.component';
 
 @NgModule({
