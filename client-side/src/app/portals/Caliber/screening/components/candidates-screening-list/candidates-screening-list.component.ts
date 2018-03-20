@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { Candidate } from '../../models/candidate';
-import { SearchPipe } from './search.pipe';
+import { SimpleTrainee } from '../../entities/simpleTrainee';
+import { SearchPipe } from '../../util/search.pipe';
+// npm install ngx-pagination --save
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
-import { NAMES } from './dummy-data';
+import { NAMES } from '../../mock-data/mock-candidates';
 @Component({
   selector: 'app-candidates-screening-list',
   templateUrl: './candidates-screening-list.component.html',
