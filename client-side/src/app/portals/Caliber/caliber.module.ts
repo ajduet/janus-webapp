@@ -120,6 +120,7 @@ import { CannotDeleteModalComponent } from './manage/cannot-delete-modal/cannot-
 import { DeleteTraineeModalComponent } from './manage/delete-trainee-modal/delete-trainee-modal.component';
 import { CannotDeleteTraineeModalComponent } from './manage/cannot-delete-trainee-modal/cannot-delete-trainee-modal.component';
 import { CandidatesScreeningListComponent } from './screening/components/candidates-screening-list/candidates-screening-list.component';
+import { GeneralCommentsComponent } from './screening/components/general-comments/general-comments.component';
 
 @NgModule({
   imports: [
@@ -218,6 +219,7 @@ import { CandidatesScreeningListComponent } from './screening/components/candida
     CannotDeleteModalComponent,
     DeleteTraineeModalComponent,
     CannotDeleteTraineeModalComponent,
+    GeneralCommentsComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpringInterceptor, multi: true },  // interceptor for all HTTP requests
