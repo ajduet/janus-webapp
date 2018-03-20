@@ -43,6 +43,7 @@ export class CaliberNavComponent implements OnInit, OnDestroy {
   showAssess: boolean= this.userRole == 'ROLE_VP' || this.userRole == 'ROLE_TRAINER';
   showQuality: boolean= this.userRole == 'ROLE_VP' || this.userRole == 'ROLE_QC';
   showPanel: boolean= this.userRole == 'ROLE_VP' || this.userRole == 'ROLE_PANEL';
+  showScreening: boolean= this.userRole == 'ROLE_VP' || this.userRole == 'ROLE_SCREENER';
   showReports= true;
 
   routes: Routes;

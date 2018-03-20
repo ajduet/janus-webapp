@@ -13,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 import { SimpleNotificationsModule } from 'angular2-notifications-lite';
 import { ScrollEventModule } from 'ngx-scroll-event';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
+import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
 
 // routing
@@ -61,6 +62,7 @@ import { FilterByPipe } from './pipes/filter-by.pipe';
 import { ToolbarFilterPipe } from './pipes/toolbar-filter.pipe';
 import { AddressToStringPipe } from './pipes/address-to-string.pipe';
 import { TraineeSearch } from './pipes/trainee-search.pipe';
+import { SearchPipe } from './screening/util/search.pipe';
 
 // components
 import { CaliberComponent } from './caliber.component';
@@ -122,6 +124,7 @@ import { CannotDeleteTraineeModalComponent } from './manage/cannot-delete-traine
 import { CandidatesScreeningListComponent } from './screening/components/candidates-screening-list/candidates-screening-list.component';
 import { GeneralCommentsComponent } from './screening/components/general-comments/general-comments.component';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -134,7 +137,8 @@ import { GeneralCommentsComponent } from './screening/components/general-comment
     ReactiveFormsModule,
     SimpleNotificationsModule.forRoot(),
     ScrollEventModule,
-    Ng2PageScrollModule
+    Ng2PageScrollModule,
+    NgxPaginationModule,
   ],
   declarations: [
     // pipes
@@ -159,6 +163,7 @@ import { GeneralCommentsComponent } from './screening/components/general-comment
     ToolbarFilterPipe,
     TraineeSearch,
     ArrToStringPipe,
+    SearchPipe,
 
     // components
     CaliberComponent,
@@ -220,6 +225,7 @@ import { GeneralCommentsComponent } from './screening/components/general-comment
     DeleteTraineeModalComponent,
     CannotDeleteTraineeModalComponent,
     GeneralCommentsComponent,
+    CandidatesScreeningListComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpringInterceptor, multi: true },  // interceptor for all HTTP requests

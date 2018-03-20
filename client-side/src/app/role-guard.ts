@@ -49,4 +49,5 @@ export const roles = {
   qcRole: 'ROLE_QC',
   trainerRole: 'ROLE_TRAINER',
   stagingRole: 'ROLE_STAGING',
+  screenerRole: 'ROLE_SCREENER',
 };
