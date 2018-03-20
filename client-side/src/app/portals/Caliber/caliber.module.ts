@@ -119,6 +119,9 @@ import { DeleteBatchModalComponent } from './manage/delete-batch-modal/delete-ba
 import { CannotDeleteModalComponent } from './manage/cannot-delete-modal/cannot-delete-modal.component';
 import { DeleteTraineeModalComponent } from './manage/delete-trainee-modal/delete-trainee-modal.component';
 import { CannotDeleteTraineeModalComponent } from './manage/cannot-delete-trainee-modal/cannot-delete-trainee-modal.component';
+import { CandidatesScreeningListComponent } from './screening/components/candidates-screening-list/candidates-screening-list.component';
+import { CandidateAssessmentSummaryComponent } from './screening/components/candidate-assessment-summary/candidate-assessment-summary.component';
+import { ScreeningComponent } from './screening/components/screening/screening.component';
 
 @NgModule({
   imports: [
