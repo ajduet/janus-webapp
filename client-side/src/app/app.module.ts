@@ -27,6 +27,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { RoleGuard } from './role-guard';
 import { CookieService } from 'ngx-cookie-service';
 
+import { ViolationTypeService } from './portals/Caliber/screening/services/violationType.service';
+import { QuestionService } from './portals/Caliber/screening/services/question.service';
+import { BucketService } from './portals/Caliber/screening/services/bucket.service';
+
 
 // loading routes from child modules this way will lazy load them
 const routes: Routes = [
