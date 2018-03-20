@@ -15,6 +15,7 @@ import { QualityComponent } from './quality/quality.component';
 import { PanelComponent } from './panel/panel/panel.component';
 import { TrainerProfilesComponent } from './settings/trainer-profile/trainer-profile.component';
 import { RoleGuard, roles } from '../../role-guard';
+import { CandidatesScreeningListComponent } from './screening/components/candidates-screening-list/candidates-screening-list.component';
 
 export const routes: Routes = [
   {
@@ -64,6 +65,16 @@ export const routes: Routes = [
           roles: [
             roles.vpRole,
             roles.panelRole
+          ]
+        }
+      },
+      {
+        path: 'screening',
+        component: CandidatesScreeningListComponent,
+        canActivate: [RoleGuard],
+        data: {
+          roles: [
+            roles.screenerRole, roles.vpRole
           ]
         }
       },
