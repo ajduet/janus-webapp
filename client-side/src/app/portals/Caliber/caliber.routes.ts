@@ -18,6 +18,7 @@ import { RoleGuard, roles } from '../../role-guard';
 import { ScreeningComponent } from './screening/components/screening/screening.component';
 import { CandidatesScreeningListComponent } from './screening/components/candidates-screening-list/candidates-screening-list.component';
 import { QuestionsTableComponent } from './screening/components/questions-table/questions-table.component';
+import { FinalReportComponent } from './screening/components/final-report/final-report.component';
 
 export const routes: Routes = [
   {
@@ -87,6 +88,10 @@ export const routes: Routes = [
           {
             path: 'questions',
             component: QuestionsTableComponent,
+          },
+          {
+            path: 'finalReport',
+            component: FinalReportComponent,
           }
         ]
       },

@@ -128,9 +128,8 @@ import { CannotDeleteTraineeModalComponent } from './manage/cannot-delete-traine
 import { ScreeningComponent } from './screening/components/screening/screening.component';
 import { CandidatesScreeningListComponent } from './screening/components/candidates-screening-list/candidates-screening-list.component';
 import { QuestionsTableComponent } from './screening/components/questions-table/questions-table.component';
-import { GeneralCommentsComponent } from './screening/components/general-comments/general-comments.component';
-
 import { QuestionsToBucketsUtil } from './screening/util/questionsToBuckets.util';
+import { FinalReportComponent } from './screening/components/final-report/final-report.component';
 
 @NgModule({
   imports: [
@@ -234,7 +233,7 @@ import { QuestionsToBucketsUtil } from './screening/util/questionsToBuckets.util
     ScreeningComponent,
     CandidatesScreeningListComponent,
     QuestionsTableComponent,
-    GeneralCommentsComponent,
+    FinalReportComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpringInterceptor, multi: true },  // interceptor for all HTTP requests
