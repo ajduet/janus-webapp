@@ -13,4 +13,10 @@ export const BUCKETS: Bucket[] = [
       isActive: true,
       questions: null
     },
+    { bucketID: 3,
+      bucketCategory: 'JavaScript',
+      bucketDescription: 'JavaScript questions',
+      isActive: true,
+      questions: null
+    },
   ];

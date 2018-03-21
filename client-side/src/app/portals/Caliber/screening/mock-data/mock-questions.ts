@@ -21,4 +21,14 @@ export const QUESTIONS: Question[] = [
     isActive: true,
     bucketId: 1
   },
+  { questionID: 13,
+    questionText: 'What is Abstraction?',
+    sampleAnswer1: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, voluptatem.',
+    sampleAnswer2: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, voluptatem.',
+    sampleAnswer3: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, voluptatem.',
+    sampleAnswer4: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, voluptatem.',
+    sampleAnswer5: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, voluptatem.',
+    isActive: true,
+    bucketId: 2
+  },
 ];

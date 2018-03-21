@@ -1,12 +1,6 @@
 <div id="candidates-container" class="animated fadeIn">
   <h1 class="header-h1">Screening Candidates</h1>
-
   <div class="filters">
-    <div class="filter-buttons">
-        <button class="btn" value="{{today}}" (click)="getTodaysDate()">Today</button>
-        <button class="btn" (click)="getTomorrow()">Tomorrow</button>
-        <button class="btn" (click)="getNext3Days()">Next 3 Days</button>
-    </div>
     <!-- Search Bar -->
     <input [(ngModel)]="searchText" placeholder="Search for Candidate..." class="search-bar">
   </div>
@@ -15,14 +9,16 @@
     <thead>
       <tr>
         <th scope="col">Name</th>
+        <th scope="col">Track</th>
         <th scope="col">Date</th>
       </tr>
     </thead>
     <tbody>
-      <ng-container *ngFor="let candidate of candidates | searchPipe: searchText | paginate: { itemsPerPage: 5, currentPage: p } ">
+      <ng-container *ngFor="let i = index; let candidate of candidates | searchPipe: searchText | paginate: { itemsPerPage: 5, currentPage: p } ">
         <tr (click)="beginScreening = !beginScreening">
-          <td>{{candidate}}</td>
-          <td>{{candidates[i]}}</td>
+          <td>{{candidate.firstname}} {{candidate.lastname}}</td>
+          <td>{{tracks[candidate.trackId-1].trackName}}</td>
+          <td>{{candidate.schedule | date:'short'}}</td>
         </tr>
       </ng-container>
     </tbody>
@@ -39,6 +35,6 @@
     </div>
   </div>
   <!-- Pagination section -->
-  <pagination-controls class="pagination" (pageChange)="p = $event" maxSize="5"></pagination-controls>
+  <pagination-controls class="pagination" (pageChange)="p = $event" maxSize="5" previousLabel="" nextLabel=""></pagination-controls>
 
 </div>
