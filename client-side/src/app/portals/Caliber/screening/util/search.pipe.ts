@@ -1,15 +1,24 @@
 import { Pipe, PipeTransform } from "@angular/core";
+import { SimpleTrainee } from '../entities/simpleTrainee';
 
 @Pipe({
   name: "searchPipe"
 })
 export class SearchPipe implements PipeTransform {
-  transform(items: any[], searchText: string): any[] {
+  // the array of candidates is passed to the pipe and fed as the 'items' param.
+  // the screener input in the searchbar is passed to the pipe as 'searchText' 
+  transform(items: SimpleTrainee[], searchText: string): any[] {
+    // if there are no pending screenings, return an empty array
     if (!items) return [];
+    // if the search bar is empty, do not change the current screenings being displayed
     if (!searchText) return items;
+    // otherwise, convert the search text to lowercase
     searchText = searchText.toLowerCase();
+    // for each item in the array...
     return items.filter(it => {
-      return it.toLowerCase().includes(searchText);
+      // return only the screenings whose firstname includes the search text
+      // or last name includes the search text. 
+      return it.firstname.toLowerCase().includes(searchText) || it.lastname.toLowerCase().includes(searchText);
     });
   }
 }
