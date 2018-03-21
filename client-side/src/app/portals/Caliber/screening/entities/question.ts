@@ -11,6 +11,4 @@ export interface Question{
     sampleAnswer5: string;
     isActive: boolean; //For Admin UI team
     bucketId: number; //For Database consistency SUBJECT TO CHANGE
-
-
 }

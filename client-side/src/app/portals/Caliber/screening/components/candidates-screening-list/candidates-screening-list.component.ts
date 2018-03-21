@@ -9,9 +9,9 @@ import { SearchPipe } from '../../util/search.pipe';
 import { SimpleTrainee } from '../../entities/simpleTrainee';
 import { Track } from '../../entities/track';
 
-// Mock Data
-import { CANDIDATES } from '../../mock-data/mock-candidates';
-import { TRACKS } from '../../mock-data/mock-tracks';
+// Services
+import { SimpleTraineeService } from '../../services/simple-trainee.service';
+import { TrackService } from '../../services/track.service';
 
 // Installed Modules
 // npm install ngx-pagination --save
@@ -29,40 +29,29 @@ export class CandidatesScreeningListComponent implements OnInit {
   ########################### */
   //  Dummy data for testing search bar
   candidates: SimpleTrainee[];
-  tracks: Track[] = TRACKS;
-
-  candidatesLength: number;
-
-  // Filtering data by dates
-  date = new Date();
-  today = this.date.getTime();
-  tomorrow = this.date.setDate(this.date.getDate() + 1);
-  dayAfterTomorrow = this.date.setDate(this.date.getDate() + 3);
+  tracks: Track[];
 
   beginScreening = false;
 
   /* ###########################
        CONSTRUCTOR and INIT
   ########################### */
-  constructor(private http: HttpClientModule) {
-    this.candidates = CANDIDATES;
-    this.candidatesLength = this.candidates.length;
-    this.tracks = TRACKS;
-    
+  constructor(private http: HttpClientModule, private simpleTraineeService: SimpleTraineeService,
+    private trackService: TrackService) {
   }
 
   ngOnInit() {
-    this.sortByDate();
+    this.simpleTraineeService.getSimpleTrainees().subscribe(data => {
+      this.candidates =  data;
+    });
+    this.trackService.getTracks().subscribe(data => {
+      this.tracks = data;
+    });
   }
 
   /* ###########################
         FUNCTIONS
   ########################### */
-  public sortByDate(): void {
-    this.candidates.sort((trainee1: SimpleTrainee, trainee2: SimpleTrainee) => {
-      return trainee1.schedule.getTime() - trainee2.schedule.getTime();
-    });
-}
 
   // [style.background-color]="beginScreeningPrompt()"
   beginScreeningPrompt() {

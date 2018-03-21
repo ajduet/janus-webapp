@@ -15,7 +15,9 @@ import { QualityComponent } from './quality/quality.component';
 import { PanelComponent } from './panel/panel/panel.component';
 import { TrainerProfilesComponent } from './settings/trainer-profile/trainer-profile.component';
 import { RoleGuard, roles } from '../../role-guard';
+import { ScreeningComponent } from './screening/components/screening/screening.component';
 import { CandidatesScreeningListComponent } from './screening/components/candidates-screening-list/candidates-screening-list.component';
+import { QuestionsTableComponent } from './screening/components/questions-table/questions-table.component';
 
 export const routes: Routes = [
   {
@@ -70,13 +72,23 @@ export const routes: Routes = [
       },
       {
         path: 'screening',
-        component: CandidatesScreeningListComponent,
+        component: ScreeningComponent,
         canActivate: [RoleGuard],
         data: {
           roles: [
             roles.screenerRole, roles.vpRole
           ]
-        }
+        },
+        children: [
+          {
+            path: 'pendingScreeningsList',
+            component: CandidatesScreeningListComponent,
+          },
+          {
+            path: 'questions',
+            component: QuestionsTableComponent,
+          }
+        ]
       },
       {
         path: 'settings',

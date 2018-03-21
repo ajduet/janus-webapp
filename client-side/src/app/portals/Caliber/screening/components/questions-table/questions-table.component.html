@@ -1,0 +1,31 @@
+<div id="q-and-a-container">
+  <h1>Screening Candidates</h1>
+  <div id="q-and-a-content">
+    <h2>Categories</h2>
+    <p>Select a category to begin asking questions</p>
+    <div id="bucket-buttons">
+      <button class="btn" *ngFor="let bucket of buckets" (click)="setBucket(bucket.bucketID)">{{bucket.bucketCategory}}</button>
+    </div>
+    <div *ngIf="currentCategory != undefined" id="table-container">
+      <table class="table table-hover" id="questions-table">
+        <thead>
+          <tr>
+            <th scope="col" class="question-col">Question Bank</th>
+            <th scope="col" class="question-col"></th>
+          </tr>
+        </thead>
+        <tbody class="question-transition">
+          <ng-container *ngFor="let question of currentCategory.questions; let i = index">
+            <tr class="pointer" (click)="open(question)">
+              <td class="question">{{question.questionText}}</td>
+              <td>
+                <span *ngIf="answeredQuestions != undefined && isAnsweredQuestion(question)" style="color: #81f575" class="fa fa-check fa-2x"
+                  aria-hidden="true"></span>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

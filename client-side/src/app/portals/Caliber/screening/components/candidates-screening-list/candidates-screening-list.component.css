@@ -1,33 +1,35 @@
 /* #############################
         GENERAL STYLES
 ############################# */
-#candidates-container{
+#pending-screening-list-container{
     margin: 25px 10%;
-    padding: 25px 5%;
     min-width: 400px;
     max-height: 90vh;
     max-width: 95vw;
     border-style: solid;
-    border-width: 5px;
-    border-color: #f26925;
-    overflow: auto;
+    border-width: 1px;
+    border-color: #ddd;
+    border-radius: 4px;
+    overflow-y: auto;
 }
 h1{
     background: #f26925;
     color: white;
     min-width: 260px;
     text-align: center;
-    font-size: 36px;
-    border-radius: .25rem;
+    font-size: 25px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
     width: 100%;
-    background: #f26925;
     border-color: #f26925;
     margin-bottom: 20px;
     padding: 12px;
     white-space:nowrap;
 }
-.btn:not(:disabled):not(.disabled){
-    cursor: context-menu;
+
+
+#pending-screening-list-contents{
+    padding: 25px 5%;
 }
 /* #############################
         SEARCH BAR STYLES
@@ -42,7 +44,7 @@ h1{
 /* #############################
         TABLE STYLES
 ############################# */
-#candidates-table{
+#screenings-table{
     max-height: 300px;
     margin-bottom: 20px;
 }
@@ -110,10 +112,10 @@ h1{
 .modal-content {
     text-align: center;
     background-color: #fefefe;
-    margin: 50% auto; /* 15% from the top and centered */
+    margin: 300px auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+    width: 350px; /* Could be more or less, depending on screen size */
 }
 h2{
     font-size: 1.25em;
@@ -144,11 +146,6 @@ h2{
         grid-template-columns: 1fr 1fr 1fr;
         grid-gap: 10px;
         margin-bottom: 0px;
-    }
-}
-@media(max-width: 550px){
-    h1{
-        font-size: 25px;
     }
 }
 @media(max-width: 508px){
