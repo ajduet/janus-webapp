@@ -44,6 +44,10 @@ import { AlertsService } from './services/alerts.service';
 import { EvaluationService } from './services/evaluation.service';
 import { QCStatusService } from './services/qcstatus.service';
 import { TraineeStatusService } from './services/trainee-status.service';
+import { SimpleTraineeService } from './screening/services/simple-trainee.service';
+import { TrackService } from './screening/services/track.service';
+import { BucketService } from './screening/services/bucket.service';
+import { QuestionService } from './screening/services/question.service';
 
 //N.T.
 import { ApiService } from './util/api.service';
@@ -121,9 +125,12 @@ import { DeleteBatchModalComponent } from './manage/delete-batch-modal/delete-ba
 import { CannotDeleteModalComponent } from './manage/cannot-delete-modal/cannot-delete-modal.component';
 import { DeleteTraineeModalComponent } from './manage/delete-trainee-modal/delete-trainee-modal.component';
 import { CannotDeleteTraineeModalComponent } from './manage/cannot-delete-trainee-modal/cannot-delete-trainee-modal.component';
+import { ScreeningComponent } from './screening/components/screening/screening.component';
 import { CandidatesScreeningListComponent } from './screening/components/candidates-screening-list/candidates-screening-list.component';
+import { QuestionsTableComponent } from './screening/components/questions-table/questions-table.component';
 import { GeneralCommentsComponent } from './screening/components/general-comments/general-comments.component';
 
+import { QuestionsToBucketsUtil } from './screening/util/questionsToBuckets.util';
 
 @NgModule({
   imports: [
@@ -224,8 +231,10 @@ import { GeneralCommentsComponent } from './screening/components/general-comment
     CannotDeleteModalComponent,
     DeleteTraineeModalComponent,
     CannotDeleteTraineeModalComponent,
-    GeneralCommentsComponent,
+    ScreeningComponent,
     CandidatesScreeningListComponent,
+    QuestionsTableComponent,
+    GeneralCommentsComponent,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpringInterceptor, multi: true },  // interceptor for all HTTP requests
@@ -256,7 +265,12 @@ import { GeneralCommentsComponent } from './screening/components/general-comment
     ReportsService,
     QCStatusService,
     TraineeStatusService,
-    ApiService
+    ApiService,
+    SimpleTraineeService,
+    TrackService,
+    BucketService,
+    QuestionService,
+    QuestionsToBucketsUtil
   ],
   bootstrap: [
     TrainersComponent
