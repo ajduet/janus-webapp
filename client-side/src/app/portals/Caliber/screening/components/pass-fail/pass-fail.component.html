@@ -1,0 +1,32 @@
+<div id="pass-fail-container">
+  <h2>Soft Skills Evaluation</h2>
+  <div id="pass-fail-buttons">
+    <button (click)="pass()">Pass Soft Skills</button>
+    <button (click)="fail()">Fail Soft Skills</button>
+  </div>
+  <div id="violationTable" *ngIf="violations[]">
+    <table class="table table-hover" id="table-container">
+      <thead>
+        <tr>
+            <th scope="col">Violation Type</th>
+            <th scope="col">Violation Time</th>
+            <th scope="col">Comment </th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let violation of violations">
+          <tr class="violation">
+            <td>
+              <span>{{violation.violationType.violationType}}</span>
+              <span>{{violation.Time}}</span>
+              <span>{{violation.Comment}}</span>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  <div id="view-summary-button">
+    <button (click)="viewSummary()">View Summary</button>
+  </div>
+</div>
