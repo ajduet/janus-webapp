@@ -65,3 +65,37 @@ p{
     border-top: 1px solid #b1b8bd;
     border-bottom: 1px solid #7f97a8;
 }
+
+/* Submit Button */
+#center-submit{
+    text-align:center;
+    margin:auto;
+}
+
+#submit-button{
+    margin: auto 5px;
+    width: 120px;
+    background: #f26925;
+    border-color: #f26925;
+    color: white;
+}
+
+
+/* Footer */
+
+#gfooter{
+	position: fixed;
+	bottom: 160px;
+	text-align: center;
+}
+
+#footsie{
+	resize: none;
+	height: 10em;
+	font-size: 16px;
+	border-style: solid;
+	border-color: orange;
+}
+h3{
+	font-size: 24px;
+}

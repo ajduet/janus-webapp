@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GeneralCommentsComponent } from './general-comments.component';
+import { FinalReportComponent } from './final-report.component';
 
-describe('GeneralCommentsComponent', () => {
-  let component: GeneralCommentsComponent;
-  let fixture: ComponentFixture<GeneralCommentsComponent>;
+describe('FinalReportComponent', () => {
+  let component: FinalReportComponent;
+  let fixture: ComponentFixture<FinalReportComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GeneralCommentsComponent ]
+      declarations: [ FinalReportComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GeneralCommentsComponent);
+    fixture = TestBed.createComponent(FinalReportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
