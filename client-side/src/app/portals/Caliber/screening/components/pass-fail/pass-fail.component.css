@@ -1,0 +1,18 @@
+/* #############################
+    QUESTION TABLE STYLES 
+############################# */
+#table-container{
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+.table[_ngcontent-c11] thead[_ngcontent-c11] th[_ngcontent-c11], 
+.table[_ngcontent-c11] td[_ngcontent-c11], 
+.table[_ngcontent-c11] th[_ngcontent-c11] {
+    border-top:0px;
+}
+.table thead th, .table td, .table th{
+    border-top: 1px solid #b1b8bd;
+    border-bottom: 1px solid #7f97a8;
+}
+
