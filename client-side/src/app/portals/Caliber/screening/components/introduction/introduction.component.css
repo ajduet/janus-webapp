@@ -6,6 +6,11 @@
   margin: 25px 5%;
 }
 
+#introduction-content {
+  text-align: center;
+  padding: auto 25%;
+}
+
 h1{
   background: #f26925;
   color: white;
