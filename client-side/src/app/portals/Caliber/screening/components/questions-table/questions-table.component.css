@@ -25,11 +25,13 @@ h1{
     white-space:nowrap;
 }
 h2{
-    font-size: 20px
+    font-size: 20px;
+    text-align: center;
 }
 p{
     font-size: 15px;
     margin-bottom: 5px;
+    text-align: center;
 }
 #q-and-a-content{
     padding: 25px 5%;
@@ -38,14 +40,16 @@ p{
     CATEGORY BUTTON TABS STYLES
 ############################# */
 #bucket-buttons{
+    width: 100%;
     display: inline-flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: auto;
     margin-bottom: 10px;
 }
 
 .btn{
     margin: auto 5px;
-    width: 100%;
     background: #f26925;
     border-color: #f26925;
     color: white;
