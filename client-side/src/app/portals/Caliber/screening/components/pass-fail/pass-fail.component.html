@@ -12,7 +12,21 @@
           </tr>
         </thead>
         <tbody>
+          <!--
           <ng-container *ngIf="hasViolations()">
+            <tr class="violation" *ngFor="let violation of violations | async">
+              <td>
+                <span>{{violation.violationType.violationType}}</span>
+              </td>
+              <td>
+                <span>{{violation.Time}}</span>
+              </td>
+              <td>
+                <span>{{violation.Comment}}</span>
+              </td>
+            </tr>
+          -->
+            <!-- Dummy data to remove -->
             <tr class="violation" *ngFor="let violation of violations">
               <td>
                 <span>{{violation.violationType.violationType}}</span>
@@ -23,19 +37,8 @@
               <td>
                 <span>{{violation.Comment}}</span>
               </td>
-              
-            </tr>
-
-            <!-- Dummy data to remove -->
-            <tr>
               <td>
-                <span>Profanity</span>
-              </td>
-              <td>
-                <span> 25:00 </span>
-              </td>
-              <td>
-                <span> Candidate said the a-word</span>
+                <button class="btn" (click)="deleteViolation(violation)">Remove</button>
               </td>
             </tr>
             <tr>
@@ -48,6 +51,9 @@
               <td>
                 <span> Candidate talked for 5 hours on a single question </span>
               </td>
+              <td>
+                <button class="btn" (click)="deleteViolation([violation.violationID])">Remove</button>
+              </td>
             </tr>
             <tr>
               <td>
@@ -58,6 +64,9 @@
               </td>
               <td>
                 <span> Candidate referred to me as a plebian </span>
+              </td>
+              <td>
+                <button class="btn" (click)=violations.remove(this)>Remove</button>
               </td>
             </tr>
             <!-- End of dummy data to remove -->
