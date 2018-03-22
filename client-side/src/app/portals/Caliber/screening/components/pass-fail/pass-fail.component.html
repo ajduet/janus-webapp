@@ -16,10 +16,52 @@
             <tr class="violation" *ngFor="let violation of violations">
               <td>
                 <span>{{violation.violationType.violationType}}</span>
+              </td>
+              <td>
                 <span>{{violation.Time}}</span>
+              </td>
+              <td>
                 <span>{{violation.Comment}}</span>
               </td>
+              
             </tr>
+
+            <!-- Dummy data to remove -->
+            <tr>
+              <td>
+                <span>Profanity</span>
+              </td>
+              <td>
+                <span> 25:00 </span>
+              </td>
+              <td>
+                <span> Candidate said the a-word</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>Rambling</span>
+              </td>
+              <td>
+                <span> 34:00 </span>
+              </td>
+              <td>
+                <span> Candidate talked for 5 hours on a single question </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span> Stuck-up</span>
+              </td>
+              <td>
+                <span> 5:35:31 </span>
+              </td>
+              <td>
+                <span> Candidate referred to me as a plebian </span>
+              </td>
+            </tr>
+            <!-- End of dummy data to remove -->
+
           </ng-container>
         </tbody>
       </table>
@@ -39,7 +81,7 @@
       <h2>Do you want to Submit?</h2>
       <div class="buttons">
         <button class="btn" type="submit" 
-          routerLink="/Caliber/screening/finalReport" 
+          routerLink="/Caliber/screening/finalReport"
           routerLinkActive="activeLink">Submit</button>
         <button class="btn" (click)="endScreening = !endScreening">Cancel</button>
       </div>
