@@ -19,6 +19,7 @@ import { ScreeningComponent } from './screening/components/screening/screening.c
 import { CandidatesScreeningListComponent } from './screening/components/candidates-screening-list/candidates-screening-list.component';
 import { QuestionsTableComponent } from './screening/components/questions-table/questions-table.component';
 import { FinalReportComponent } from './screening/components/final-report/final-report.component';
+import { IntroductionComponent } from './screening/components/introduction/introduction.component';
 import { PassFailComponent } from './screening/components/pass-fail/pass-fail.component';
 
 export const routes: Routes = [
@@ -95,9 +96,12 @@ export const routes: Routes = [
             component: FinalReportComponent,
           },
           {
+            path: 'introduction',
+            component: IntroductionComponent,
+          },
+          {
             path: 'passFail',
             component: PassFailComponent
-          
           }
         ]
       },

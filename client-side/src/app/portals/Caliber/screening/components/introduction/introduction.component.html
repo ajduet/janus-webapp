@@ -1,0 +1,16 @@
+<div>
+    <h3>Candidate's Self-Introduction Form</h3>
+    <div>
+      <label>Name</label>
+      <p>{{traineeName}}</p>
+      <label>Track</label>
+      <p>{{traineeTrack}}</p>
+    </div>
+    <div *ngFor="let tag of tagList; let i = index">
+      <!-- Create a checkbox for each tag using ngFor. Toggle buttons instead of checkboxes! -->
+      <div class="switch">
+        <input type="checkbox" id="cmn-toggle-{{i}}" class="cmn-toggle cmn-toggle-round" (change)="updateTagList(tag, $event.target.checked)"> {{tag.tagName}} <br>
+        <label class="onoffswitch-label" for="cmn-toggle-{{i}}"></label>
+      </div>
+    </div>
+  </div>
