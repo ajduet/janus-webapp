@@ -11,6 +11,12 @@ import { QuestionService } from '../../services/question.service';
 // Utility Class (setting up buckets and questions based on selected tags)
 import { QuestionsToBucketsUtil } from '../../util/questionsToBuckets.util';
 
+// Modal for answering the question
+import { AnswerComponent } from '../answer/answer.component';
+
+// ngbootstrap modal
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-questions-table',
   templateUrl: './questions-table.component.html',
@@ -21,7 +27,7 @@ export class QuestionsTableComponent implements OnInit {
   answeredQuestions: Question[] = [];
   buckets: Bucket[];
   currentCategory: Bucket;
-  constructor(private bucketService: BucketService, private questionService: QuestionService, private filteredBuckets: QuestionsToBucketsUtil) {
+  constructor(private bucketService: BucketService, private questionService: QuestionService, private filteredBuckets: QuestionsToBucketsUtil, private modalService: NgbModal) {
     let tempBuckets: Bucket[];
     this.bucketService.getBuckets().subscribe(data => {
       tempBuckets = data;
@@ -44,6 +50,8 @@ export class QuestionsTableComponent implements OnInit {
 
   open(question:Question){
     this.answeredQuestions.push(question);
+    const modalRef = this.modalService.open(AnswerComponent);
+    modalRef.componentInstance.question = question;
   }
 
   isAnsweredQuestion(question: Question): boolean{

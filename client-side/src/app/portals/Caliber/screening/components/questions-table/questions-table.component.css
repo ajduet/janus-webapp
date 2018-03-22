@@ -117,3 +117,6 @@ textarea{
     width: 80%;
     min-width: 400px;
 }
+.pointer{
+    cursor: pointer;
+}

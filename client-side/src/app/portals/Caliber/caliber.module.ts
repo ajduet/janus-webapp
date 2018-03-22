@@ -130,6 +130,7 @@ import { CandidatesScreeningListComponent } from './screening/components/candida
 import { QuestionsTableComponent } from './screening/components/questions-table/questions-table.component';
 import { QuestionsToBucketsUtil } from './screening/util/questionsToBuckets.util';
 import { FinalReportComponent } from './screening/components/final-report/final-report.component';
+import { AnswerComponent } from './screening/components/answer/answer.component';
 import { PassFailComponent } from './screening/components/pass-fail/pass-fail.component';
 
 @NgModule({
@@ -236,6 +237,7 @@ import { PassFailComponent } from './screening/components/pass-fail/pass-fail.co
     CandidatesScreeningListComponent,
     QuestionsTableComponent,
     FinalReportComponent,
+    AnswerComponent,
     PassFailComponent
   ],
   providers: [
@@ -286,7 +288,8 @@ import { PassFailComponent } from './screening/components/pass-fail/pass-fail.co
     DeleteBatchModalComponent,
     CannotDeleteModalComponent,
     DeleteTraineeModalComponent,
-    CannotDeleteTraineeModalComponent
+    CannotDeleteTraineeModalComponent,
+    AnswerComponent
   ],
 })
 export class CaliberModule { }
