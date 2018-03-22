@@ -1,68 +1,68 @@
 import { SimpleTrainee } from '../entities/simpleTrainee';
 
 let temp: Date = new Date();
-export const CANDIDATES: SimpleTrainee[] = [
+export const TRAINEES: SimpleTrainee[] = [
     {
         traineeID: 1,
         firstname: 'Jimmy',
         lastname: 'John',
-        trackId: 1,
+        skillTypeID: 1,
         schedule: new Date(2018, 2, 22, 13)
     },
     {
         traineeID: 2,
         firstname: 'Isabella',
         lastname: 'Dougherty',
-        trackId: 2,
+        skillTypeID: 2,
         schedule: new Date(2018, 2, 22, 9)
     },
     {
         traineeID: 3,
         firstname: 'Clarissa',
         lastname: 'Gonzales',
-        trackId: 3,
+        skillTypeID: 3,
         schedule: new Date(2018, 2, 23, 10)
     },
     {
         traineeID: 5,
         firstname: 'Catherine',
         lastname: 'Malzareh',
-        trackId: 2,
+        skillTypeID: 2,
         schedule: new Date(2018, 2, 23, 14)
     },
     {
         traineeID: 6,
         firstname: 'Pietro',
         lastname: 'Vietre',
-        trackId: 6,
+        skillTypeID: 6,
         schedule: new Date(2018, 2, 26, 15)
     },
     {
         traineeID: 7,
         firstname: 'John',
         lastname: 'Doe',
-        trackId: 5,
+        skillTypeID: 5,
         schedule: new Date(2018, 2, 26, 12)
     },
     {
         traineeID: 8,
         firstname: 'Lana',
         lastname: 'Yea',
-        trackId: 5,
+        skillTypeID: 5,
         schedule: new Date(2018, 2, 15)
     },
     {
         traineeID: 9,
         firstname: 'Kevin',
         lastname: 'Brainer',
-        trackId: 4,
+        skillTypeID: 4,
         schedule: new Date(2018, 2, 17)
     },
     {
         traineeID: 10,
         firstname: 'Lucy',
         lastname: 'Sgod',
-        trackId: 6,
+        skillTypeID: 6,
         schedule: new Date(2018, 2, 16)
     }
 ];

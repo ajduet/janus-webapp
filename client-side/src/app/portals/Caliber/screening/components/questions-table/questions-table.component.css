@@ -7,14 +7,11 @@
     border-width: 1px;
     border-color: #ddd;
     border-radius: 4px;
-    position: relative;
-    z-index: 1;
 }
 h1{
     background: #f26925;
     color: white;
     min-width: 260px;
-    text-align: center;
     font-size: 25px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -25,7 +22,7 @@ h1{
     white-space:nowrap;
 }
 h2{
-    font-size: 20px
+    font-size: 20px;
 }
 p{
     font-size: 15px;
@@ -39,13 +36,14 @@ p{
 ############################# */
 #bucket-buttons{
     display: inline-flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    margin: auto;
     margin-bottom: 10px;
 }
 
 .btn{
     margin: auto 5px;
-    width: 100%;
     background: #f26925;
     border-color: #f26925;
     color: white;
@@ -93,18 +91,14 @@ p{
     border-width: 0px;
     border-top-width: 2px;
     background-color: white;
-    z-index: 2;
 }
 #gfooter{
-    padding-bottom: 150px;
-	position: fixed;
-	/* bottom: 115px; */
+	position: sticky;
     text-align: center;
 }
 
 #footsie{
 	resize: none;
-	/* height: 10em; */
 	font-size: 16px;
 	border: 1px solid #ccc;
     border-radius: 4px;

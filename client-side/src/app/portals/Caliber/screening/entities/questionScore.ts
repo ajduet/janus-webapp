@@ -4,7 +4,7 @@ import {Screening} from './screening';
 //Used for saving answered questions, consistent with DB
 export interface QuestionScore{
         qSID: number; //Question Score ID consistent with DB naming
-        questionID: Question;  
+        questionID: number;  
         screeningID: Screening;
         score: number;
         commentary: string;

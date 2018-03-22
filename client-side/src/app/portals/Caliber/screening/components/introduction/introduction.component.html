@@ -1,29 +1,45 @@
 <div id="introduction-container">
-    <h1>Candidate's Self-Introduction Form</h1>
-    <div>
-      <label>Name</label>
-      <p>{{traineeName}}</p>
-      <label>Track</label>
-      <p>{{traineeTrack}}</p>
-    </div>
-    <div *ngFor="let tag of tagList; let i = index">
-      <!-- Create a checkbox for each tag using ngFor. Toggle buttons instead of checkboxes! -->
-      <div class="switch">
-        <!-- <input type="checkbox" id="cmn-toggle-{{i}}" class="cmn-toggle cmn-toggle-round" (change)="updateTagList(tag, $event.target.checked)"> {{tag.tagName}} <br>
-        <label class="onoffswitch-label" for="cmn-toggle-{{i}}"></label> -->
-        <input type="checkbox" (change)="updateTagList(tag, $event.target.checked)"> {{tag.tagName}} <br>
+  <h1>Candidate's Self-Introduction Form</h1>
+  <div id="introduction-content">
+    <div class="info">
+      <div class="name">
+        <label>Name:</label>
+        <p>{{traineeName}}</p>
       </div>
+      <div class="skillType">
+        <label>Track:</label>
+        <p>{{traineeTrack}}</p>
+      </div>
+    </div>
+    
+    <div id="skills-checkbox">
+        <label>Skills</label>
+      <div class="skill" *ngFor="let tag of tagList; let i = index">
+        <!-- Create a checkbox for each tag using ngFor. Toggle buttons instead of checkboxes! -->
+        <span>
+          {{tag.tagName}}
+          <label class="switch">
+            <input type="checkbox" (change)="updateTagList(tag, $event.target.checked)" id="checkbox{{i}}">
+            <span class="slider round"></span>
+          </label>
+        </span>
 
+      </div>
     </div>
     <div>
-      <form (ngSubmit)="onSubmit()" [formGroup]="form">
+      <form (ngSubmit)="onSubmit()" [formGroup]="form" id="commentForm">
         <div class="form-group">
+          <br>
           <label for="inputComment">Introductory Comments</label>
-          <input formControlName="comment" type="text" id="inputComment" placeholder="Any comments regarding the candidate's self-introduction">
+          <br>
+          <textarea formControlName="comment" id="inputComment" name="commentBox" form="commentForm" placeholder="Any comments regarding the candidate's self-introduction"></textarea>
+
         </div>
         <button type="submit" id="submit-button" routerLink="/Caliber/screening/questions" routerLinkActive="activeLink">Next</button>
       </form>
-        <label>Introductory Comments</label>
+
 
     </div>
   </div>
+
+</div>
