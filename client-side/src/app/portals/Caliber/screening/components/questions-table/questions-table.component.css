@@ -7,6 +7,8 @@
     border-width: 1px;
     border-color: #ddd;
     border-radius: 4px;
+    position: relative;
+    z-index: 1;
 }
 h1{
     background: #f26925;
@@ -70,6 +72,7 @@ p{
 #center-submit{
     text-align:center;
     margin:auto;
+    margin-bottom: 10px;
 }
 
 #submit-button{
@@ -80,22 +83,37 @@ p{
     color: white;
 }
 
-
 /* Footer */
-
+.footer{
+    margin-top: 20px;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-style: solid;
+    border-color: #474c55;
+    border-width: 0px;
+    border-top-width: 2px;
+    background-color: white;
+    z-index: 2;
+}
 #gfooter{
+    padding-bottom: 150px;
 	position: fixed;
-	bottom: 160px;
-	text-align: center;
+	/* bottom: 115px; */
+    text-align: center;
 }
 
 #footsie{
 	resize: none;
-	height: 10em;
+	/* height: 10em; */
 	font-size: 16px;
-	border-style: solid;
-	border-color: orange;
+	border: 1px solid #ccc;
+    border-radius: 4px;
 }
 h3{
-	font-size: 24px;
+    font-size: 18px;
+    white-space: nowrap;
+}
+textarea{
+    width: 80%;
+    min-width: 400px;
 }

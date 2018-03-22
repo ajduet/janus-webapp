@@ -140,7 +140,10 @@ footer {
     padding: 10px;
     background-color: #474C55;
     font-size: .75em;
+    width: 100%;
     max-width: 100%;
+    position: fixed;
+    z-index: 3;
 }
 
 footer a, footer a:hover {
