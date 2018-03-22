@@ -273,7 +273,8 @@ import { IntroductionComponent } from './screening/components/introduction/intro
     TrackService,
     BucketService,
     QuestionService,
-    QuestionsToBucketsUtil
+    QuestionsToBucketsUtil,
+    TagService
   ],
   bootstrap: [
     TrainersComponent

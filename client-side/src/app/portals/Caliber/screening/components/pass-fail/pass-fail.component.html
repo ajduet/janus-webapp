@@ -1,10 +1,10 @@
 <div id="pass-fail-container">
   <h2>Soft Skills Evaluation</h2>
   <div id="pass-fail-buttons">
-    <button (click)="pass()">Pass Soft Skills</button>
-    <button (click)="fail()">Fail Soft Skills</button>
+    <button (click)="beginScreeningPrompt()"  (click)="beginScreening = !beginScreening">Pass Soft Skills</button>
+    <button (click)="beginScreeningPrompt()" (click)="beginScreening = !beginScreening">Fail Soft Skills</button>
   </div>
-  <div id="violationTable" *ngIf="violations[]">
+  <div id="violationTable" *ngIf="violations != undefined">
     <table class="table table-hover" id="table-container">
       <thead>
         <tr>
@@ -14,8 +14,8 @@
         </tr>
       </thead>
       <tbody>
-        <ng-container *ngFor="let violation of violations">
-          <tr class="violation">
+        <ng-container *ngIf="violations != undefined">
+          <tr class="violation" *ngFor="let violation of violations">
             <td>
               <span>{{violation.violationType.violationType}}</span>
               <span>{{violation.Time}}</span>
@@ -26,7 +26,14 @@
       </tbody>
     </table>
   </div>
-  <div id="view-summary-button">
-    <button (click)="viewSummary()">View Summary</button>
+  <div id="myModal" class="modal animated fadeIn" [style.display]="beginScreeningPrompt()">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <h2>Do you want to submit?</h2>
+      <div class="buttons">
+        <button class="btn" type="submit" routerLink="/Caliber/screening/finalReport" routerLinkActive="activeLink">Submit</button>
+        <button class="btn" (click)="beginScreening = !beginScreening">Cancel</button>
+      </div>
+    </div>
   </div>
 </div>
