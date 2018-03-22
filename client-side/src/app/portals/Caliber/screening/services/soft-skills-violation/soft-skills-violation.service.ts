@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
-import { ViolationType } from '../../entities/violationType'
-import { SoftSkillViolation } from '../../entities/softSkillViolation';
+import { SoftSkillViolation } from '../../entities/softSkillViolation'
 
 @Injectable()
 export class SoftSkillsViolationService {
@@ -12,14 +11,12 @@ export class SoftSkillsViolationService {
 
   public timestampList : Date[];
   public violationComments : string;
-  public allViolations : ViolationType[];
-  public selectedViolationTypes : ViolationType[];
+  public allViolations : SoftSkillViolation[];
+  public selectedViolations : SoftSkillViolation[];
 
   public userSoftSkillViolations : SoftSkillViolation[];
 
-
-
-  addViolations(newViolations : ViolationType[], comments : string){
+  addViolations(newViolations : SoftSkillViolation[], comments : string){
     //Loop through newViolations and add any that are not already in selectedViolations.
     let exists : boolean = false;
     let currentSoftSkillViolation : SoftSkillViolation;
@@ -70,6 +67,10 @@ export class SoftSkillsViolationService {
 
   addTimestamp(){
     this.timestampList.push(new Date());
+  }
+
+  deleteViolation(violationID: number){
+      
   }
 
 
