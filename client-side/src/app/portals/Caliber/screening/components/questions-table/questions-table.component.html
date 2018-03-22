@@ -1,16 +1,23 @@
 <div id="q-and-a-container">
-  <!-- <h1>Screening Candidates</h1> -->
+  <h1>Question & Answers</h1>
   <div id="q-and-a-content">
     <h2>Categories</h2>
     <p>Select a category to begin asking questions</p>
     <div id="bucket-buttons">
-      <button class="btn" *ngFor="let bucket of buckets" (click)="setBucket(bucket.bucketID)">{{bucket.bucketCategory}}</button>
+      <ul class="nav nav-tabs">
+        <li *ngFor="let bucket of buckets">
+          <!-- <button class="btn" *ngFor="let bucket of buckets" (click)="setBucket(bucket.bucketID)">{{bucket.bucketCategory}}</button> -->
+          <a class="nav-link" [class.active]="bucket.bucketID == currentCategory.bucketID" 
+            [class.inActive]="bucket.bucketID != currentCategory.bucketID" (click)="setBucket(bucket.bucketID)">{{bucket.bucketCategory}}</a>
+        </li>
+      </ul>
     </div>
+    <h3 id="question-table-title">Question Bank</h3>
     <div *ngIf="currentCategory != undefined" id="table-container">
       <table class="table table-hover" id="questions-table">
         <thead>
           <tr>
-            <th scope="col" class="question-col">Question Bank</th>
+            <th scope="col" class="question-col"></th>
             <th scope="col" class="question-col"></th>
           </tr>
         </thead>
@@ -27,13 +34,13 @@
         </tbody>
       </table>
     </div>
+    <!-- <div class="footer fixed-bottom text-center" id="gfooter"> -->
+    <div class="footer text-center" id="gfooter">
+      <h3>Overall Feedback</h3>
+      <textarea id="footsie" rows="3" maxlength="4000" placeholder="Enter your overall feedback for the candidate"></textarea>
+    </div>
+    <div id="center-submit">
+      <button id="submit-button" type="submit" routerLink="/Caliber/screening/passFail" routerLinkActive="activeLink">Submit</button>
+    </div>
   </div>
-  <div id="center-submit">
-    <button id="submit-button" type="submit" routerLink="/Caliber/screening/passFail" routerLinkActive="activeLink">Submit</button>
-  </div>
-</div>
-<div class="footer fixed-bottom text-center" id="gfooter">
-  <h3>General Notes (Salesforce Notes)</h3>
-  <textarea id = "footsie" cols="80" rows="2">
-  </textarea>
 </div>

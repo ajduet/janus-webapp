@@ -57,6 +57,8 @@ export class QuestionsTableComponent implements OnInit {
       tempQuestions,
       tempBuckets
     );
+    if(this.buckets.length > 0)
+      this.currentCategory = this.buckets[0];
     // update the answeredQuestions variable in our service to track the
     // questions that have been given a score by the screener.
     this.questionScoreService.currentQuestionScores.subscribe(
