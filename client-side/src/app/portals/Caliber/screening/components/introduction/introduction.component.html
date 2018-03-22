@@ -13,4 +13,15 @@
         <label class="onoffswitch-label" for="cmn-toggle-{{i}}"></label>
       </div>
     </div>
+    <div>
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div class="form-group">
+          <label for="inputComment">Introductory Comments</label>
+          <input formControlName="comment" type="text" id="inputComment" placeholder="Any comments regarding the candidate's self-introduction">
+        </div>
+        <button type="submit">Next</button>
+      </form>
+        <label>Introductory Comments</label>
+
+    </div>
   </div>
