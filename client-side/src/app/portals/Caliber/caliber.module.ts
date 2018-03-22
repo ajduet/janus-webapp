@@ -131,6 +131,7 @@ import { QuestionsTableComponent } from './screening/components/questions-table/
 import { QuestionsToBucketsUtil } from './screening/util/questionsToBuckets.util';
 import { FinalReportComponent } from './screening/components/final-report/final-report.component';
 import { AnswerComponent } from './screening/components/answer/answer.component';
+import { PassFailComponent } from './screening/components/pass-fail/pass-fail.component';
 
 @NgModule({
   imports: [
@@ -146,6 +147,7 @@ import { AnswerComponent } from './screening/components/answer/answer.component'
     ScrollEventModule,
     Ng2PageScrollModule,
     NgxPaginationModule,
+
   ],
   declarations: [
     // pipes
@@ -235,7 +237,8 @@ import { AnswerComponent } from './screening/components/answer/answer.component'
     CandidatesScreeningListComponent,
     QuestionsTableComponent,
     FinalReportComponent,
-    AnswerComponent
+    AnswerComponent,
+    PassFailComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpringInterceptor, multi: true },  // interceptor for all HTTP requests

@@ -12,6 +12,7 @@ export class PassFailComponent implements OnInit {
 
   passOrFail: string;
   violations: SoftSkillViolation[] = [];
+  beginScreening = false;
   // need a SoftSkillViolationService to get the data
   constructor() {
     
@@ -28,8 +29,12 @@ export class PassFailComponent implements OnInit {
     this.passOrFail = "fail";
   }
 
-  viewSummary() {
-    
+  beginScreeningPrompt() {
+    if (this.beginScreening) {
+      return "block";
+    } else {
+      return "none";
+    }
   }
 
   
