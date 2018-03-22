@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-//import { FormBuilder, FormControl, FormArray, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormArray, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs';
 
@@ -23,11 +23,18 @@ export class IntroductionComponent implements OnInit {
 
   public tagList: Tag[];
 
+  form = new FormGroup({
+    comment: new FormControl("", []),
+  })
+
   ngOnInit() {
     //Get candidate name from another component
     //Initialize the tag lists
     this.tagService.tagList = [];
     this.tagService.tagListChecked = [];
+
+    this.traineeName = "Tommy";
+    this.traineeTrack = "Business Analyst";
 
     //Get all tags
     /*this.tagList = [];
@@ -49,5 +56,11 @@ export class IntroductionComponent implements OnInit {
       this.tagService.tagListChecked.splice(index);
     }
     console.log(changedTag.tagName);
+  }
+
+  onSubmit(){
+    let introComments = this.form.get("comment").value;
+
+    //Send the comments to the appropriate service method saves them to the DB
   }
 }
