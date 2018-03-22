@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
-import { ViolationType } from '../../entities/violationType'
-import { SoftSkillViolation } from '../../entities/softSkillViolation';
+import { SoftSkillViolation } from '../../entities/softSkillViolation'
 
 @Injectable()
 export class SoftSkillsViolationService {
@@ -12,14 +11,12 @@ export class SoftSkillsViolationService {
 
   public timestampList : Date[];
   public violationComments : string;
-  public allViolations : ViolationType[];
-  public selectedViolationTypes : ViolationType[];
+  public allViolations : SoftSkillViolation[];
+  public selectedViolations : SoftSkillViolation[];
 
   public userSoftSkillViolations : SoftSkillViolation[];
 
-
-
-  addViolations(newViolations : ViolationType[], comments : string){
+  addViolations(newViolations : SoftSkillViolation[], comments : string){
     //Loop through newViolations and add any that are not already in selectedViolations.
     let exists : boolean = false;
     let currentSoftSkillViolation : SoftSkillViolation;
@@ -29,21 +26,21 @@ export class SoftSkillsViolationService {
       exists = false;
 
       //Loop through the existing violations
-      for(let j = 0; j < this.selectedViolationTypes.length; j++ ){
+      for(let j = 0; j < this.selectedViolations.length; j++ ){
 
-        //If the violation type already exists in the selectedViolationTypes array, set exists to true 
-        if(newViolations[i].violationType === this.selectedViolationTypes[j].violationType){
+        //If the violation type already exists in the selectedViolations array, set exists to true 
+        if(newViolations[i].violationType === this.selectedViolations[j].violationType){
           exists = true;
         }
       }
 
       //If the violation type is new, add it to the selectedViolationTypes array.
       if(!exists){
-        this.selectedViolationTypes.push(newViolations[i]);
+        this.selectedViolations.push(newViolations[i]);
       }
 
       //Populate the currentSoftSkillViolation object
-      currentSoftSkillViolation.violationType = newViolations[i];
+      currentSoftSkillViolation.violationType = newViolations[i].violationType;
       currentSoftSkillViolation.Comment = comments;
       currentSoftSkillViolation.Time = new Date();
       currentSoftSkillViolation.violationID = null;
@@ -58,8 +55,8 @@ export class SoftSkillsViolationService {
   //Takes the selectedViolationTypes array and sends only an array of their IDs in a POST request.
   sendViolationIDs() {
     let violationIDArray : number[];
-    for(let i = 0; i < this.selectedViolationTypes.length; i++){
-      violationIDArray.push(this.selectedViolationTypes[i].violationID);
+    for(let i = 0; i < this.selectedViolations.length; i++){
+      violationIDArray.push(this.selectedViolations[i].violationID);
     }
     this.http.post('',violationIDArray);
   }
@@ -70,6 +67,10 @@ export class SoftSkillsViolationService {
 
   addTimestamp(){
     this.timestampList.push(new Date());
+  }
+
+  deleteViolation(violationID: number){
+      
   }
 
 
