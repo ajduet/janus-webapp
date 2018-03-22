@@ -19,7 +19,7 @@
         <ng-container *ngFor="let i = index; let candidate of candidates | searchPipe: searchText | paginate: { itemsPerPage: 5, currentPage: p } ">
           <tr (click)="beginScreening = !beginScreening">
             <td>{{candidate.firstname}} {{candidate.lastname}}</td>
-            <td>{{tracks[candidate.trackId-1].trackName}}</td>
+            <td>{{skillTypes[candidate.skillTypeID-1].skillTypeName}}</td>
             <td>{{candidate.schedule | date:'short'}}</td>
           </tr>
         </ng-container>
@@ -31,7 +31,7 @@
       <div class="modal-content">
         <h2>Click "Begin" to begin screening.</h2>
         <div class="buttons">
-          <button class="btn" type="submit" routerLink="/Caliber/screening/questions" routerLinkActive="activeLink">Begin</button>
+          <button class="btn" type="submit" routerLink="/Caliber/screening/introduction" routerLinkActive="activeLink">Begin</button>
           <button class="btn" (click)="beginScreening = !beginScreening">Back</button>
         </div>
       </div>
