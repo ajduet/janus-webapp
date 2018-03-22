@@ -52,6 +52,7 @@ import { QuestionScoreService } from './screening/services/question-score/questi
 import { SkillTypeService } from './screening/services/skillType/skill-type.service';
 import { TagService } from './screening/services/tag/tag.service';
 import { SoftSkillsService } from './screening/services/soft-skills/soft-skills.service';
+import { SoftSkillsViolationService } from './screening/services/soft-skills-violation/soft-skills-violation.service'
 import { ViolationTypeService } from './screening/services/violationType/violationType.service';
 import { ScreeningService } from './screening/services/screening/screenings.service'
 
@@ -286,6 +287,7 @@ import { PassFailComponent } from './screening/components/pass-fail/pass-fail.co
     QuestionScoreService,
     SkillTypeService,
     SoftSkillsService,
+    SoftSkillsViolationService,
     ViolationTypeService,
     ScreeningService
   ],
