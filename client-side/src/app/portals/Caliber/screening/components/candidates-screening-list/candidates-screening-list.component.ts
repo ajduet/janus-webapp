@@ -7,11 +7,11 @@ import { SearchPipe } from '../../util/search.pipe';
 
 // Classes
 import { SimpleTrainee } from '../../entities/simpleTrainee';
-import { Track } from '../../entities/track';
+import { SkillType } from '../../entities/skillType';
 
 // Services
-import { SimpleTraineeService } from '../../services/simple-trainee.service';
-import { TrackService } from '../../services/track.service';
+import { SimpleTraineeService } from '../../services/simpleTrainee/simple-trainee.service';
+import { SkillTypeService } from '../../services/skillType/skill-type.service';
 
 // Installed Modules
 // npm install ngx-pagination --save
@@ -29,22 +29,22 @@ export class CandidatesScreeningListComponent implements OnInit {
   ########################### */
   //  Dummy data for testing search bar
   candidates: SimpleTrainee[];
-  tracks: Track[];
+  skillTypes: SkillType[];
   beginScreening = false;
 
   /* ###########################
        CONSTRUCTOR and INIT
   ########################### */
   constructor(private http: HttpClientModule, private simpleTraineeService: SimpleTraineeService,
-    private trackService: TrackService) {
+    private skillTypeService: SkillTypeService) {
   }
 
   ngOnInit() {
     this.simpleTraineeService.getSimpleTrainees().subscribe(data => {
       this.candidates = data;
     });
-    this.trackService.getTracks().subscribe(data => {
-      this.tracks = data;
+    this.skillTypeService.getSkillTypes().subscribe(data => {
+      this.skillTypes = data;
     });
   }
 

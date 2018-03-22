@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ViolationType } from '../../entities/violationType';
-import { ViolationTypeService } from '../../services/violationType.service';
+import { ViolationTypeService } from '../../services/violationType/violationType.service';
 import { SoftSkillViolation } from '../../entities/softSkillViolation';
 
 @Component({

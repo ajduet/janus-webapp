@@ -19,7 +19,7 @@
             <tr class="pointer" (click)="open(question)">
               <td class="question">{{question.questionText}}</td>
               <td>
-                <span *ngIf="answeredQuestions != undefined && isAnsweredQuestion(question)" style="color: #81f575" class="fa fa-check fa-2x"
+                <span *ngIf="questionScores != undefined && isAnsweredQuestion(question)" style="color: #81f575" class="fa fa-check fa-2x"
                   aria-hidden="true"></span>
               </td>
             </tr>
