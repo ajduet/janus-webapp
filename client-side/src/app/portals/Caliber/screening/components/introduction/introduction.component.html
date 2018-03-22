@@ -1,5 +1,5 @@
-<div>
-    <h3>Candidate's Self-Introduction Form</h3>
+<div id="introduction-container">
+    <h1>Candidate's Self-Introduction Form</h1>
     <div>
       <label>Name</label>
       <p>{{traineeName}}</p>
@@ -9,9 +9,11 @@
     <div *ngFor="let tag of tagList; let i = index">
       <!-- Create a checkbox for each tag using ngFor. Toggle buttons instead of checkboxes! -->
       <div class="switch">
-        <input type="checkbox" id="cmn-toggle-{{i}}" class="cmn-toggle cmn-toggle-round" (change)="updateTagList(tag, $event.target.checked)"> {{tag.tagName}} <br>
-        <label class="onoffswitch-label" for="cmn-toggle-{{i}}"></label>
+        <!-- <input type="checkbox" id="cmn-toggle-{{i}}" class="cmn-toggle cmn-toggle-round" (change)="updateTagList(tag, $event.target.checked)"> {{tag.tagName}} <br>
+        <label class="onoffswitch-label" for="cmn-toggle-{{i}}"></label> -->
+        <input type="checkbox" (change)="updateTagList(tag, $event.target.checked)"> {{tag.tagName}} <br>
       </div>
+
     </div>
     <div>
       <form (ngSubmit)="onSubmit()" [formGroup]="form">
@@ -19,7 +21,7 @@
           <label for="inputComment">Introductory Comments</label>
           <input formControlName="comment" type="text" id="inputComment" placeholder="Any comments regarding the candidate's self-introduction">
         </div>
-        <button type="submit">Next</button>
+        <button type="submit" id="submit-button" routerLink="/Caliber/screening/questions" routerLinkActive="activeLink">Next</button>
       </form>
         <label>Introductory Comments</label>
 
