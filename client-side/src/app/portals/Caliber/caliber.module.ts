@@ -48,6 +48,8 @@ import { SimpleTraineeService } from './screening/services/simple-trainee.servic
 import { TrackService } from './screening/services/track.service';
 import { BucketService } from './screening/services/bucket.service';
 import { QuestionService } from './screening/services/question.service';
+import { TagService } from './screening/services/tag/tag.service';
+
 
 //N.T.
 import { ApiService } from './util/api.service';
@@ -130,6 +132,7 @@ import { CandidatesScreeningListComponent } from './screening/components/candida
 import { QuestionsTableComponent } from './screening/components/questions-table/questions-table.component';
 import { QuestionsToBucketsUtil } from './screening/util/questionsToBuckets.util';
 import { FinalReportComponent } from './screening/components/final-report/final-report.component';
+import { IntroductionComponent } from './screening/components/introduction/introduction.component';
 
 @NgModule({
   imports: [
@@ -233,7 +236,8 @@ import { FinalReportComponent } from './screening/components/final-report/final-
     ScreeningComponent,
     CandidatesScreeningListComponent,
     QuestionsTableComponent,
-    FinalReportComponent
+    FinalReportComponent,
+    IntroductionComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpringInterceptor, multi: true },  // interceptor for all HTTP requests
