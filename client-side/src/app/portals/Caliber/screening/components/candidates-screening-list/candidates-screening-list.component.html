@@ -19,7 +19,7 @@
         <ng-container *ngFor="let i = index; let candidate of candidates | searchPipe: searchText | paginate: { itemsPerPage: 5, currentPage: p } ">
           <tr (click)="beginScreening = !beginScreening">
             <td>{{candidate.firstname}} {{candidate.lastname}}</td>
-            <td>{{tracks[candidate.trackId-1].trackName}}</td>
+            <td>{{skillTypes[candidate.skillTypeID-1].skillTypeName}}</td>
             <td>{{candidate.schedule | date:'short'}}</td>
           </tr>
         </ng-container>

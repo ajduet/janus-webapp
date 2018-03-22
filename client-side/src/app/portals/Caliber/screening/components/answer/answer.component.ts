@@ -1,7 +1,12 @@
 import { Component, OnInit, Input} from '@angular/core';
+
+// Entities
 import { QuestionScore } from '../../entities/questionScore';
 import { Question } from '../../entities/question';
-import { QuestionService } from '../../services/question.service';
+
+// Services
+import { QuestionService } from '../../services/question/question.service';
+import { QuestionScoreService } from '../../services/question-score/question-score.service';
 
 // ngbootstrap for modal
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -17,9 +22,10 @@ export class AnswerComponent implements OnInit {
   questionScore: QuestionScore;
   
   // used to exchange data between the answer modal and question table component
-  answeredQuestions: Question[];
+  questionScores: QuestionScore[];
 
-  constructor(public activeModal: NgbActiveModal, private questionService: QuestionService) { }
+  constructor(public activeModal: NgbActiveModal, private questionService: QuestionService,
+    private questionScoreService: QuestionScoreService) { }
 
   ngOnInit() {
     this.questionScore = {
@@ -31,11 +37,19 @@ export class AnswerComponent implements OnInit {
       beginTime: new Date()
     }
     // update answeredQuestions array to match our question service's answeredQuestions array.
-    this.questionService.currentAnsweredQuestions.subscribe(questions => this.answeredQuestions = questions)
+    this.questionScoreService.currentQuestionScores.subscribe(answeredQuestions => this.questionScores = answeredQuestions);
   }
-  // when a score is set and submitted, update the array of answered questions
-  saveQuestion(): void{
-      this.answeredQuestions.push(this.questionService.getSelectedQuestion());
-      this.questionService.updateAnsweredQuestions(Array.from(new Set(this.answeredQuestions)));
+  // when a score is set and submitted, update the array of questions scores
+  saveQuestionScore(): void{
+      //
+      if(this.questionScores.length > 0 ) {
+        for(let q of this.questionScores) 
+          if(q.questionID == this.questionScore.questionID) 
+            this.questionScores.splice(this.questionScores.indexOf(q), 1);
+      }
+      this.questionScores.push(this.questionScore);
+      console.log('Length: ' + this.questionScores.length);
+      console.log('Score: ' + this.questionScore.score);
+      this.questionScoreService.updateQuestionScores(this.questionScores);
   }
 }

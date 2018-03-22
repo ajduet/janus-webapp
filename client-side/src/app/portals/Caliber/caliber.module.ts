@@ -44,11 +44,16 @@ import { AlertsService } from './services/alerts.service';
 import { EvaluationService } from './services/evaluation.service';
 import { QCStatusService } from './services/qcstatus.service';
 import { TraineeStatusService } from './services/trainee-status.service';
-import { SimpleTraineeService } from './screening/services/simple-trainee.service';
-import { TrackService } from './screening/services/track.service';
-import { BucketService } from './screening/services/bucket.service';
-import { QuestionService } from './screening/services/question.service';
+import { SimpleTraineeService } from './screening/services/simpleTrainee/simple-trainee.service';
+import { BucketService } from './screening/services/bucket/bucket.service';
+import { QuestionService } from './screening/services/question/question.service';
+import { QuestionsToBucketsUtil } from './screening/util/questionsToBuckets.util';
+import { QuestionScoreService } from './screening/services/question-score/question-score.service';
+import { SkillTypeService } from './screening/services/skillType/skill-type.service';
 import { TagService } from './screening/services/tag/tag.service';
+import { SoftSkillsService } from './screening/services/soft-skills/soft-skills.service';
+import { ViolationTypeService } from './screening/services/violationType/violationType.service';
+import { ScreeningService } from './screening/services/screening/screenings.service'
 
 
 //N.T.
@@ -130,11 +135,11 @@ import { CannotDeleteTraineeModalComponent } from './manage/cannot-delete-traine
 import { ScreeningComponent } from './screening/components/screening/screening.component';
 import { CandidatesScreeningListComponent } from './screening/components/candidates-screening-list/candidates-screening-list.component';
 import { QuestionsTableComponent } from './screening/components/questions-table/questions-table.component';
-import { QuestionsToBucketsUtil } from './screening/util/questionsToBuckets.util';
 import { FinalReportComponent } from './screening/components/final-report/final-report.component';
 import { IntroductionComponent } from './screening/components/introduction/introduction.component';
 import { AnswerComponent } from './screening/components/answer/answer.component';
 import { PassFailComponent } from './screening/components/pass-fail/pass-fail.component';
+
 
 @NgModule({
   imports: [
@@ -274,11 +279,15 @@ import { PassFailComponent } from './screening/components/pass-fail/pass-fail.co
     TraineeStatusService,
     ApiService,
     SimpleTraineeService,
-    TrackService,
     BucketService,
     QuestionService,
     QuestionsToBucketsUtil,
-    TagService
+    TagService,
+    QuestionScoreService,
+    SkillTypeService,
+    SoftSkillsService,
+    ViolationTypeService,
+    ScreeningService
   ],
   bootstrap: [
     TrainersComponent

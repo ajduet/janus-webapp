@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { Screening } from '../entities/screening';
+// import { Screening } from '../../entities/screening';
 
 @Injectable()
-export class ScreeningsService {
+export class ScreeningService {
 
   constructor(private http : HttpClient) { }
 
