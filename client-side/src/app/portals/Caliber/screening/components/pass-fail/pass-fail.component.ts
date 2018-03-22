@@ -10,9 +10,10 @@ import { SoftSkillViolation } from '../../entities/softSkillViolation';
 })
 export class PassFailComponent implements OnInit {
 
-  passOrFail: string;
+  private passed: boolean;
   violations: SoftSkillViolation[] = [];
-  beginScreening = false;
+  endScreening = false;
+
   // need a SoftSkillViolationService to get the data
   constructor() {
     
@@ -22,15 +23,35 @@ export class PassFailComponent implements OnInit {
   }
 
   pass() {
-    this.passOrFail = "pass";
+    this.passed = true;
+    this.endScreening = true;
   }
 
   fail() {
-    this.passOrFail = "fail";
+    this.passed = false;
+    this.endScreening = true;
   }
 
-  beginScreeningPrompt() {
-    if (this.beginScreening) {
+  hasViolations(): boolean {
+    if(this.violations == undefined){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
+  public getPassed(): string{
+    if(this.passed){
+      return "passed";
+    }
+    else {
+      return "failed";
+    }
+  }
+
+  endScreeningPrompt() {
+    if (this.endScreening) {
       return "block";
     } else {
       return "none";

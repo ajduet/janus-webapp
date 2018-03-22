@@ -1,38 +1,47 @@
-<div id="pass-fail-container">
+<div id="pass-fail-container" class="pass-fail-container">
   <h2>Soft Skills Evaluation</h2>
-  <div id="pass-fail-buttons">
-    <button routerLink="/Caliber/screening/finalReport" routerLinkActive="activeLink">Pass Soft Skills</button>
-    <button routerLink="/Caliber/screening/finalReport" routerLinkActive="activeLink">Fail Soft Skills</button>
-  </div>
-  <div id="violationTable" *ngIf="violations != undefined">
-    <table class="table table-hover" id="table-container">
-      <thead>
-        <tr>
-            <th scope="col">Violation Type</th>
-            <th scope="col">Violation Time</th>
-            <th scope="col">Comment </th>
-        </tr>
-      </thead>
-      <tbody>
-        <ng-container *ngIf="violations != undefined">
-          <tr class="violation" *ngFor="let violation of violations">
-            <td>
-              <span>{{violation.violationType.violationType}}</span>
-              <span>{{violation.Time}}</span>
-              <span>{{violation.Comment}}</span>
-            </td>
+  
+  <div id="table-container" *ngIf="hasViolations()">
+    <div id="violationTable" class="violation-table" >
+      <table class="table table-hover" id="table-container">
+        <thead>
+          <tr>
+              <th scope="col">Violation Type</th>
+              <th scope="col">Violation Time</th>
+              <th scope="col">Comment </th>
           </tr>
-        </ng-container>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <ng-container *ngIf="hasViolations()">
+            <tr class="violation" *ngFor="let violation of violations">
+              <td>
+                <span>{{violation.violationType.violationType}}</span>
+                <span>{{violation.Time}}</span>
+                <span>{{violation.Comment}}</span>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <div id="myModal" class="modal animated fadeIn" [style.display]="beginScreeningPrompt()">
+  <div >
+
+  </div>
+  <div id="pass-fail-button">
+    <button class="btn" (click)="pass()">Pass Soft Skills</button>
+    <button class="btn" (click)="fail()">Fail Soft Skills</button>
+  </div>
+  <!-- The Modal -->
+  <div id="myModal" class="modal" [style.display]="endScreeningPrompt()">
     <!-- Modal content -->
     <div class="modal-content">
-      <h2>Do you want to submit?</h2>
+      <h2>Do you want to Submit?</h2>
       <div class="buttons">
-        <button class="btn" type="submit" routerLink="/Caliber/screening/finalReport" routerLinkActive="activeLink">Submit</button>
-        <button class="btn" (click)="beginScreening = !beginScreening">Cancel</button>
+        <button class="btn" type="submit" 
+          routerLink="/Caliber/screening/finalReport" 
+          routerLinkActive="activeLink">Submit</button>
+        <button class="btn" (click)="endScreening = !endScreening">Cancel</button>
       </div>
     </div>
   </div>
