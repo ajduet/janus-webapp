@@ -130,6 +130,7 @@ import { CandidatesScreeningListComponent } from './screening/components/candida
 import { QuestionsTableComponent } from './screening/components/questions-table/questions-table.component';
 import { QuestionsToBucketsUtil } from './screening/util/questionsToBuckets.util';
 import { FinalReportComponent } from './screening/components/final-report/final-report.component';
+import { AnswerComponent } from './screening/components/answer/answer.component';
 
 @NgModule({
   imports: [
@@ -233,7 +234,8 @@ import { FinalReportComponent } from './screening/components/final-report/final-
     ScreeningComponent,
     CandidatesScreeningListComponent,
     QuestionsTableComponent,
-    FinalReportComponent
+    FinalReportComponent,
+    AnswerComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpringInterceptor, multi: true },  // interceptor for all HTTP requests
@@ -283,7 +285,8 @@ import { FinalReportComponent } from './screening/components/final-report/final-
     DeleteBatchModalComponent,
     CannotDeleteModalComponent,
     DeleteTraineeModalComponent,
-    CannotDeleteTraineeModalComponent
+    CannotDeleteTraineeModalComponent,
+    AnswerComponent
   ],
 })
 export class CaliberModule { }
