@@ -16,11 +16,14 @@
         <label>Skills</label>
       <div class="skill" *ngFor="let tag of tagList; let i = index">
         <!-- Create a checkbox for each tag using ngFor. Toggle buttons instead of checkboxes! -->
-        <div class="switch">
-          <!-- <input type="checkbox" id="cmn-toggle-{{i}}" class="cmn-toggle cmn-toggle-round" (change)="updateTagList(tag, $event.target.checked)"> {{tag.tagName}} <br>
-                <label class="onoffswitch-label" for="cmn-toggle-{{i}}"></label> -->
-          <input type="checkbox" (change)="updateTagList(tag, $event.target.checked)"> {{tag.tagName}}
-        </div>
+        <span>
+          {{tag.tagName}}
+          <label class="switch">
+            <input type="checkbox" (change)="updateTagList(tag, $event.target.checked)" id="checkbox{{i}}">
+            <span class="slider round"></span>
+          </label>
+        </span>
+
       </div>
     </div>
     <div>
