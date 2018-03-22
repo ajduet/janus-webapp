@@ -30,7 +30,6 @@ export class CandidatesScreeningListComponent implements OnInit {
   //  Dummy data for testing search bar
   candidates: SimpleTrainee[];
   tracks: Track[];
-
   beginScreening = false;
 
   /* ###########################
@@ -42,7 +41,7 @@ export class CandidatesScreeningListComponent implements OnInit {
 
   ngOnInit() {
     this.simpleTraineeService.getSimpleTrainees().subscribe(data => {
-      this.candidates =  data;
+      this.candidates = data;
     });
     this.trackService.getTracks().subscribe(data => {
       this.tracks = data;
