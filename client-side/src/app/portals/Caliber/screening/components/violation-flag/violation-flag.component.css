@@ -2,8 +2,7 @@
           CHECK BOXES
   ############################# */
   #violations-checkbox {
-    margin: 15px 10px 0px 10px;
-    width: 66%;
+    width: 100%;
     text-align: center;
     display: inline-flex;
     flex-wrap: wrap;
