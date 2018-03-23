@@ -20,7 +20,9 @@ export class PassFailComponent implements OnInit {
   violations: SoftSkillViolation[];
   endScreening = false;
   public disabled = true;
-  public checked;
+  public passChecked: boolean;
+  public failChecked: boolean;
+  public hasChecked: boolean;
   private screeningID: number;
 
   // need a SoftSkillViolationService to get the data
@@ -28,7 +30,8 @@ export class PassFailComponent implements OnInit {
 
   ngOnInit() {
     this.disabled = true;
-    this.checked = false;
+    this.passChecked = false;
+    this.failChecked = false;
     this.screeningID = 1;
     this.getViolations();
   }
@@ -37,15 +40,27 @@ export class PassFailComponent implements OnInit {
     return this.disabled;
   }
 
-  updateChecked(checked : boolean) {
-    this.checked = checked;
+  updateCheckedPass(checked : boolean) {
+    this.passChecked = true;
+    if(this.failChecked === true) {
+      this.failChecked = false;
+    }
+    this.disabled = false;
+  }
+
+  updateCheckedFail(checked : boolean) {
+    this.failChecked = true;
+    if(this.passChecked === true){
+      this.passChecked = false;
+    }
     this.disabled = false;
   }
 
   submit(){
-    if(this.checked){
+    console.log(this.passChecked);
+    if(this.passChecked){
       this.pass();
-    } else {
+    } else if (this.failChecked){
       this.fail();
     }
   }
