@@ -25,16 +25,17 @@ export class PassFailComponent implements OnInit {
   // need a SoftSkillViolationService to get the data
   constructor(violationService: SoftSkillsViolationService) {
     this.mockViolations = MOCK_VIOLATIONS;
-    this.violations = this.getViolations();
+    //this.violations = this.getViolations();
     this.violationService = violationService;
    }
 
   ngOnInit() {
   }
-
+  /*
   getViolations(): Observable<SoftSkillViolation[]>{
     return this.violationService.getPreviousViolations();
   }
+  */
 
   pass() {
     this.passed = true;
