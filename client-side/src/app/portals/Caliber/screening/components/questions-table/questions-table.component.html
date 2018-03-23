@@ -5,7 +5,7 @@
     <p>Select a category to begin asking questions</p>
     <div id="bucket-buttons">
       <ul class="nav nav-tabs">
-        <li *ngFor="let bucket of buckets">
+        <li class="pointer" *ngFor="let bucket of buckets">
           <!-- <button class="btn" *ngFor="let bucket of buckets" (click)="setBucket(bucket.bucketID)">{{bucket.bucketCategory}}</button> -->
           <a class="nav-link" [class.active]="bucket.bucketID == currentCategory.bucketID" 
             [class.inActive]="bucket.bucketID != currentCategory.bucketID" (click)="setBucket(bucket.bucketID)">{{bucket.bucketCategory}}</a>
