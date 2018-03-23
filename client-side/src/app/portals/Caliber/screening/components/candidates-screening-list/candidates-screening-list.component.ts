@@ -30,8 +30,9 @@ export class CandidatesScreeningListComponent implements OnInit {
   //  Dummy data for testing search bar
   candidates: SimpleTrainee[];
   skillTypes: SkillType[];
-  beginScreening = false;
 
+  selectedCandidate: SimpleTrainee;
+  beginScreening = false;
   /* ###########################
        CONSTRUCTOR and INIT
   ########################### */
@@ -59,5 +60,9 @@ export class CandidatesScreeningListComponent implements OnInit {
     } else {
       return "none";
     }
+  }
+
+  confirmSelectedCandidate(): void {
+    this.simpleTraineeService.setSelectedCandidate(this.selectedCandidate);
   }
 }

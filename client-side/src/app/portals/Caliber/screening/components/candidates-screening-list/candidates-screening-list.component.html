@@ -17,7 +17,7 @@
       </thead>
       <tbody>
         <ng-container *ngFor="let i = index; let candidate of candidates | searchPipe: searchText | paginate: { itemsPerPage: 10, currentPage: p } ">
-          <tr (click)="beginScreening = !beginScreening">
+          <tr (click)="beginScreening = !beginScreening; selectedCandidate = candidate">
             <td>{{candidate.firstname}} {{candidate.lastname}}</td>
             <td>{{skillTypes[candidate.skillTypeID-1].skillTypeName}}</td>
             <td>{{candidate.schedule | date:'short'}}</td>
@@ -31,7 +31,7 @@
       <div class="modal-content">
         <h2>Click "Begin" to begin screening.</h2>
         <div class="buttons">
-          <button class="btn" type="submit" routerLink="/Caliber/screening/introduction" routerLinkActive="activeLink">Begin</button>
+          <button class="btn" type="submit" (click)="confirmSelectedCandidate()" routerLink="/Caliber/screening/introduction" routerLinkActive="activeLink">Begin</button>
           <button class="btn" (click)="beginScreening = !beginScreening">Back</button>
         </div>
       </div>
