@@ -27,6 +27,6 @@ export class TagService {
   }
 
   getCheckedTags(): Tag[] {
-    return this.tagListChecked;
+    return this.tagListChecked; 
   }
 }

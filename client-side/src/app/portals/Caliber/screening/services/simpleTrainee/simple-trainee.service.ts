@@ -14,6 +14,15 @@ export class SimpleTraineeService {
   // Need to change to match the backend
   // private ROOT_URL: string = 'http://localhost:8080/screening';
 
+  selectedCandidate: SimpleTrainee;
+
+  setSelectedCandidate(candidate: SimpleTrainee): void {
+    this.selectedCandidate = candidate;
+  }
+
+  getSelectedCandidate(): SimpleTrainee{
+    return this.selectedCandidate;
+  }
   getSimpleTrainees(): Observable<SimpleTrainee[]> {
     return of(TRAINEES);
   }

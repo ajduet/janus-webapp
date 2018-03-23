@@ -57,8 +57,21 @@ export class QuestionsTableComponent implements OnInit {
       tempQuestions,
       tempBuckets
     );
-    if(this.buckets.length > 0)
-      this.currentCategory = this.buckets[0];
+
+    // FOR FUTURE USE
+    // let tempBuckets: Bucket[];
+    // this.bucketService.getBuckets().subscribe(data => {
+    //   tempBuckets = data;
+    // });
+    // let tempQuestions: Question[];
+    // this.questionService.getFilteredQuestions().subscribe(data => {
+    //   tempQuestions = data;
+    // });
+    // this.buckets = this.filteredBuckets.saveQuestions(
+    //   tempQuestions,
+    //   tempBuckets
+    // );
+    if (this.buckets.length > 0) this.currentCategory = this.buckets[0];
     // update the answeredQuestions variable in our service to track the
     // questions that have been given a score by the screener.
     this.questionScoreService.currentQuestionScores.subscribe(

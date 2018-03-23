@@ -25,11 +25,7 @@ export class ScreeningService {
   beginScreening(traineeID: number, beginTime: Date, trainerID: number, skillTypeID: number): Observable<Screening> {
     return this.httpClient.post<Screening>(
       this.ROOT_URL + "/all/trainee.json",
-      JSON.stringify(`{ "traineeID": traineeID,
-       "beginTime": beginTime,
-        "trainerID": trainerID,
-        "skillTypeID": skillTypeID
-      }`),
+      JSON.stringify(Object.assign({}, traineeID, beginTime, trainerID, skillTypeID)),
       { headers: this.headers }
     );
   }
