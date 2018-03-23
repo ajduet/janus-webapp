@@ -4,28 +4,27 @@
 #pending-screening-list-container{
     margin: 25px 10%;
     min-width: 400px;
-    max-height: 90vh;
     max-width: 95vw;
     border-style: solid;
     border-width: 1px;
     border-color: #ddd;
     border-radius: 4px;
-    overflow-y: auto;
 }
 h1{
     background: #f26925;
     color: white;
     min-width: 260px;
-    text-align: center;
-    font-size: 25px;
+    width: 100%;
+    margin-bottom: 0px;
+    padding: 12px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
-    width: 100%;
     border-color: #f26925;
-    margin-bottom: 20px;
-    padding: 12px;
+    text-align: center;
+    font-size: 25px;
     white-space:nowrap;
 }
+
 
 
 #pending-screening-list-contents{

@@ -1,33 +1,29 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { Tag } from '../../entities/tag';
+import { TAGS } from '../../mock-data/mock-tags';
 
 @Injectable()
 export class TagService {
 
   constructor(private http: HttpClient) { }
 
-  public tagList: Tag[];
   public tagListChecked: Tag[];
-  public sampleTags: Tag[];
 
-  tagList$: Observable<Tag[]>;
-
-  getAllTags(){
-    this.tagList$ = this.http.post<Tag[]>('<endpoint>/tag/all', {});
-    return this.tagList$;
+  /*
+  // Real endpoint for future use
+  getAllTags(): Observable<Tag[]>{
+    return this.http.post<Tag[]>('<endpoint>/tag/all', {});
   }
+  */
 
-  getAllTestTags(): Tag[]{
-    this.sampleTags = [];
-    this.sampleTags[0] = { tagID : 0, tagName : "Polymorphism"};
-    this.sampleTags[1] = { tagID : 1, tagName : "Inheritance"};
-    this.sampleTags[2] = { tagID : 2, tagName : "Encapsulation"};
-    this.sampleTags[3] = { tagID : 3, tagName : "Abstraction"};
-
-    return this.sampleTags;
+  // Fake local data for temp use
+  getAllTags(): Observable<Tag[]>{
+    return of(TAGS);
   }
 
 }
