@@ -26,14 +26,10 @@
       </table>
     </div>
   </div>
-  <div>
-
-  </div>
-
   <app-violation-flag></app-violation-flag>
-  <div>
-    <!-- <button class="btn" (click)="pass()">Pass Soft Skills</button>
-    <button class="btn" (click)="fail()">Fail Soft Skills</button> -->
+  <hr>
+  <div class="text-center">
+    <h2>Did they Pass Soft Skills? (required)</h2>
     <span id="pass-fail-button">
       <label class="switch">
         <input type="radio" [checked]="passChecked" (change)="updateCheckedPass($event.target.checked)"/>
@@ -53,9 +49,13 @@
       </label>
     </span>
     <br>
-    <textarea class="form-control" placeholder="Optional Comment"></textarea>
-    <button class="btn" (click)="submit()" [disabled]="wasClicked()" routerLink="/Caliber/screening/finalReport">Submit</button>
-
+    <hr>
+    <h2>Overall Soft Skill Feedback</h2>
+    <textarea class="form-control" placeholder="Optional Feedback"></textarea>
+    <br>
+    <hr>
+    <button class="btn" (click)="submit()" [disabled]="wasClicked()" routerLink="/Caliber/screening/finalReport">Complete Interview</button>
+    <br><br>
   </div>
   <!-- The Modal -->
   <div id="myModal" class="modal" [style.display]="endScreeningPrompt()">
