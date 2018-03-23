@@ -15,7 +15,8 @@
 <div class="slidecontainer container text-center">
   <input [(ngModel)]="questionScore.score" type="range" min="0" max="5" class="slider" id="score">
 </div>
-
+<app-violation-flag></app-violation-flag>
+<textarea class="form-control" placeholder="Optional Comment"></textarea>
   <div class="modal-footer answer-bank-end">
       <span data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" class="flag-button glyphicon glyphicon-flag color-red"></span>
     <button type="button" class="btn btn-outline-dark" (click)="saveQuestionScore(); activeModal.close('Close click');">Submit Score</button>
