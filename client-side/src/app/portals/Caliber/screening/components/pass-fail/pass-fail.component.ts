@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { ViolationType } from '../../entities/violationType';
 import { ViolationTypeService } from '../../services/violationType/violationType.service';
 import { SoftSkillViolation } from '../../entities/softSkillViolation';
 import { SoftSkillsViolationService } from '../../services/soft-skills-violation/soft-skills-violation.service';
 import { Observable } from 'rxjs/Observable';
 
-// mock data for violations
-import { MOCK_VIOLATIONS } from '../../mock-data/mock-violations';
+
 import { HttpParams } from '@angular/common/http';
 
 @Component({
@@ -17,23 +17,20 @@ import { HttpParams } from '@angular/common/http';
 export class PassFailComponent implements OnInit {
 
   private passed: boolean;
-  violations: Observable<SoftSkillViolation[]>;
-  mockViolations: SoftSkillViolation[] = [];
+  violations: SoftSkillViolation[];
   endScreening = false;
-  violationService: SoftSkillsViolationService;
   public disabled = true;
   public checked;
+  private screeningID: number;
 
   // need a SoftSkillViolationService to get the data
-  constructor(violationService: SoftSkillsViolationService) {
-    this.mockViolations = MOCK_VIOLATIONS;
-    //this.violations = this.getViolations();
-    this.violationService = violationService;
-   }
+  constructor(private violationService: SoftSkillsViolationService) {}
 
   ngOnInit() {
     this.disabled = true;
     this.checked = false;
+    this.screeningID = 1;
+    this.getViolations();
   }
 
   wasClicked(): boolean {
@@ -52,11 +49,14 @@ export class PassFailComponent implements OnInit {
       this.fail();
     }
   }
-  /*
-  getViolations(): Observable<SoftSkillViolation[]>{
-    return this.violationService.getPreviousViolations();
+
+  getViolations(): void {
+    this.violationService.getPreviousViolations(this.screeningID).subscribe(
+      data => {
+        this.violations = data;
+      }
+    );
   }
-  */
 
   pass() {
     this.passed = true;
@@ -68,12 +68,28 @@ export class PassFailComponent implements OnInit {
     this.endScreening = true;
   }
 
-  deleteViolation(violation: SoftSkillViolation) {
-    let param = new HttpParams().set('violationID', violation.violationID.toString());
+  deleteViolation(violationIndex: number) {
+    /*
+    this.violationService.deleteViolation(this.violations[violationIndex].violationID).subscribe(
+      data => {
+        // After subscribed observable returns update array
+        if (this.violations.length > 1) {
+          this.violations.splice(violationIndex, 1);
+        } else {
+          this.violations = [];
+        }
+      }
+    );
+    */
+    if (this.violations.length > 1) {
+      this.violations.splice(violationIndex, 1);
+    } else {
+      this.violations = [];
+    }
   }
 
   hasViolations(): boolean {
-    if(this.violations == undefined){
+    if(this.violations == undefined || this.violations.length < 1){
       return false;
     }
     else{

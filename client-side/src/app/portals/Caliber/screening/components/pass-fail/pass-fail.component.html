@@ -1,84 +1,32 @@
 <div id="pass-fail-container" class="pass-fail-container">
   <h2>Soft Skills Evaluation</h2>
   
-  <div id="table-container" *ngIf="hasViolations()">
+  <div id="table-container" >
     <div id="violationTable" class="violation-table" >
       <table class="table table-hover" id="table-container">
         <thead>
           <tr>
-              <th scope="col">Violation Type</th>
-              <th scope="col">Violation Time</th>
-              <th scope="col">Comment </th>
-              <th scope="col"></th>
+            <th scope="col">Violation Type</th>
+            <th scope="col">Violation Time</th>
+            <th scope="col">Comment </th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-          
-          <!--<ng-container *ngIf="hasViolations()">-->
-            <!--
-            <tr class="violation" *ngFor="let violation of violations | async">
-              <td>
-                <span>{{violation.violationType.violationType}}</span>
-              </td>
-              <td>
-                <span>{{violation.Time}}</span>
-              </td>
-              <td>
-                <span>{{violation.Comment}}</span>
-              </td>
-            </tr>
-            -->
-            <!-- Dummy data to remove -->
-            <tr class="violation" *ngFor="let violation of violations">
-              <td>
-                <span>{{violation.violationType.violationType | async}}</span>
-              </td>
-              <td>
-                <span>{{violation.Time | async}}</span>
-              </td>
-              <td>
-                <span>{{violation.Comment | async}}</span>
-              </td>
-              <td>
-                <button class="btn" (click)="deleteViolation(violation)">Remove</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span>Rambling</span>
-              </td>
-              <td>
-                <span> 34:00 </span>
-              </td>
-              <td>
-                <span> Candidate talked for 5 hours on a single question </span>
-              </td>
-              <td>
-                <button class="btn" (click)="deleteViolation([violation.violationID])">Remove</button>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <span> Stuck-up</span>
-              </td>
-              <td>
-                <span> 5:35:31 </span>
-              </td>
-              <td>
-                <span> Candidate referred to me as a plebian </span>
-              </td>
-              <td>
-                <button class="btn" (click)=violations.remove(this)>Remove</button>
-              </td>
-            </tr>
-            <!-- End of dummy data to remove -->
-
-          <!-- </ng-container> -->
+          <tr class="violation" *ngIf="!hasViolations()">
+            <td colspan="4">No Violations Found</td>
+          </tr>
+          <tr class="violation" *ngFor="let violation of violations; let i = index">
+            <td>{{violation.violationType.violationType}}</td>
+            <td>{{violation.Time | date:'shortTime'}}</td>
+            <td>{{violation.Comment}}</td>
+            <td><button class="btn" (click)="deleteViolation(i)">Remove</button></td>
+          </tr>
         </tbody>
       </table>
     </div>
   </div>
-  <div >
+  <div>
 
   </div>
 
@@ -96,6 +44,7 @@
       </label>
     </span>
     <br>
+    <textarea class="form-control" placeholder="Optional Comment"></textarea>
     <button class="btn" (click)="submit()" [disabled]="wasClicked()" routerLink="/Caliber/screening/finalReport">Submit</button>
     <!-- <span>
       <p>Fail</p>
