@@ -19,10 +19,14 @@ export class TagService {
   getAllTags(): Observable<Tag[]>{
     return this.http.post<Tag[]>('<endpoint>/tag/all', {});
   }
+  
   */
   // Fake local data for temp use
   getAllTags(): Observable<Tag[]>{
     return of(TAGS);
   }
 
+  getCheckedTags(): Tag[] {
+    return this.tagListChecked;
+  }
 }
