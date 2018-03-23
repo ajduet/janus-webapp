@@ -140,6 +140,7 @@ import { FinalReportComponent } from './screening/components/final-report/final-
 import { IntroductionComponent } from './screening/components/introduction/introduction.component';
 import { AnswerComponent } from './screening/components/answer/answer.component';
 import { PassFailComponent } from './screening/components/pass-fail/pass-fail.component';
+import { ViolationFlagComponent } from './screening/components/violation-flag/violation-flag.component';
 
 
 @NgModule({
@@ -247,7 +248,8 @@ import { PassFailComponent } from './screening/components/pass-fail/pass-fail.co
     FinalReportComponent,
     IntroductionComponent,
     AnswerComponent,
-    PassFailComponent
+    PassFailComponent,
+    ViolationFlagComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpringInterceptor, multi: true },  // interceptor for all HTTP requests
