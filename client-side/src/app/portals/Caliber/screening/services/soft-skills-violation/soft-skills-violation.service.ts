@@ -1,77 +1,67 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 
 import { SoftSkillViolation } from '../../entities/softSkillViolation'
+import { ViolationType } from '../../entities/violationType';
 
 @Injectable()
 export class SoftSkillsViolationService {
 
   constructor(private http : HttpClient) { }
 
-  public timestampList : Date[];
-  public violationComments : string;
-  public allViolations : SoftSkillViolation[];
-  public selectedViolations : SoftSkillViolation[];
+  // readonly because why wouldn't they be? 
+  readonly getViolationTypeURL: string = "/violation/all"
+  readonly getViolationURL: string = "/screening/violation";
+  readonly addViolationURL: string = "/violation/flag";
+  readonly deleteViolationURL: string = "/violation/delete";
 
-  public userSoftSkillViolations : SoftSkillViolation[];
 
-  addViolations(newViolations : SoftSkillViolation[], comments : string){
-    //Loop through newViolations and add any that are not already in selectedViolations.
-    let exists : boolean = false;
-    let currentSoftSkillViolation : SoftSkillViolation;
-
-    //Loop through the new violations
-    for(let i = 0; i < newViolations.length; i++ ){
-      exists = false;
-
-      //Loop through the existing violations
-      for(let j = 0; j < this.selectedViolations.length; j++ ){
-
-        //If the violation type already exists in the selectedViolations array, set exists to true 
-        if(newViolations[i].violationType === this.selectedViolations[j].violationType){
-          exists = true;
-        }
-      }
-
-      //If the violation type is new, add it to the selectedViolationTypes array.
-      if(!exists){
-        this.selectedViolations.push(newViolations[i]);
-      }
-
-      //Populate the currentSoftSkillViolation object
-      currentSoftSkillViolation.violationType = newViolations[i].violationType;
-      currentSoftSkillViolation.Comment = comments;
-      currentSoftSkillViolation.Time = new Date();
-      currentSoftSkillViolation.violationID = null;
-      //Update when we decide where to save screeningID
-      currentSoftSkillViolation.screeningID = null;
-
-      //Add the SoftSkillViolation object to the list of the user's soft skill violations.
-      this.userSoftSkillViolations.push(currentSoftSkillViolation);
-    }
+  getPreviousViolations(screeningID: number): Observable<SoftSkillViolation[]>{
+    /*
+      Returning an observable because the relevant template uses the async pipe in the binding
+    */
+    return this.http.get<SoftSkillViolation[]>(this.getViolationURL + `?screeningID=${screeningID.toString()}`);
   }
-
-  //Takes the selectedViolationTypes array and sends only an array of their IDs in a POST request.
-  sendViolationIDs() {
-    let violationIDArray : number[];
-    for(let i = 0; i < this.selectedViolations.length; i++){
-      violationIDArray.push(this.selectedViolations[i].violationID);
-    }
-    this.http.post('',violationIDArray);
-  }
-
-  appendComment(comment : string){
-    this.violationComments.concat(comment);
-  }
-
-  addTimestamp(){
-    this.timestampList.push(new Date());
-  }
-
-  deleteViolation(violationID: number){
+  
+  addViolations(newViolations : ViolationType[], comment : string){
+    /*
+      Screener can use a UI element to select multiple types of violation in the same element
+      (like using checkboxes or toggle switches). In this UI element, there is a single comment box.
+      Each of these checkboxes / toggle switches are stored in the DB as separate rows, and every time 
+      the method is called, the string within the comment box is duplicated into each row. 
       
+      This is why the comment is a single string, but the ViolationType is an array - the comment
+      will be duplicated across the array. 
+    */
+    let violationIdArray: number[];
+    for(let i = 0; i < newViolations.length; i++){
+      violationIdArray[i] = newViolations[i].violationID;
+    }
+
+    // create an Http parameter body with violationID array, append comment and date to body
+    let params = new HttpParams().set('ids', violationIdArray.toLocaleString());
+    params.append('comment', comment);
+    params.append('date', new Date().toDateString());
+
+    // send post request 
+    this.http.post(this.addViolationURL, { params });
   }
 
+  deleteViolation(violationID: number): Observable<SoftSkillViolation[]>{
+    /*
+      Once the screener has completed the question-asking portion, they are directed 
+      to a new component that allows them to view all flagged violation, add a new violation, 
+      and delete a violation that is listed. 
+
+      This method sends the delete request, and it returns an observable because the relevant 
+      template (the html file) uses the async pipe to display the violations. The use of the async
+      pipe requires the binding of an observable in the template, but allows the template to be changed
+      in response to a change in the observable. Hence, deleteViolation returns an Observable. 
+    */
+    let params = new HttpParams().set('id', violationID.toString());
+    return this.http.delete<SoftSkillViolation[]>(this.deleteViolationURL, { params });
+  }
 
 }
