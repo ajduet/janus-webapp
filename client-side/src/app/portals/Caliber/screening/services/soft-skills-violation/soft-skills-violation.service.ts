@@ -79,8 +79,4 @@ export class SoftSkillsViolationService {
     return this.http.delete<SoftSkillViolation[]>(this.violationURL);
   }
 
-  handleDelete404() {
-
-  }
-
 }
