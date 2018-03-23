@@ -4,11 +4,12 @@
 #table-container{
     max-height: 300px;
     overflow-y: scroll;
+    margin-bottom: 10px;
 }
 
 .violation-table{
     align-content: center;
-    max-width: 80%;
+    max-width: 100%;
 }
 
 .table[_ngcontent-c11] thead[_ngcontent-c11] th[_ngcontent-c11], 
