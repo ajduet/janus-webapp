@@ -29,22 +29,21 @@ export class IntroductionComponent implements OnInit {
 
   ngOnInit() {
     //Get candidate name from another component
-    //Initialize the tag lists
-    this.tagService.tagList = [];
     this.tagService.tagListChecked = [];
 
     this.traineeName = "Tommy";
     this.traineeTrack = "Business Analyst";
 
-    //Get all tags
-    /*this.tagList = [];
-    this.tagService.getAllTags().subscribe(data => {
-      this.tagList = data;
-    })*/
-
     //Get all test tags
-    this.tagList = [];
-    this.tagList = this.tagService.getAllTestTags();
+    this.getTags();
+  }
+
+  getTags(): void {
+    this.tagService.getAllTags().subscribe(
+      allTags => {
+        this.tagList = allTags;
+      }
+    );
   }
 
   updateTagList(changedTag : Tag, checked : boolean) {
