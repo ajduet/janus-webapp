@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import "rxjs/Rx";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs/observable/of';
 import { SimpleTrainee } from '../../entities/simpleTrainee';
 import { TRAINEES } from '../../mock-data/mock-simpleTrainees';
@@ -29,6 +29,6 @@ export class SimpleTraineeService {
 
   // Eric
   // getSimpleTrainees(): Observable<SimpleTrainee[]> {
-  //   return this.httpClient.get<SimpleTrainee[]>(this.ROOT_URL + '/all/trainee.json');
+  //   return this.httpClient.get<SimpleTrainee[]>(this.ROOT_URL + '/all/trainee/all.json');
   // }
 }

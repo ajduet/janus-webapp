@@ -6,9 +6,9 @@ import { SkillType } from "./skillType";
 //All Data needed for the screening process
 export interface Screening {
   screeningID: number;
-  traineeID: SimpleTrainee;
-  screenerID: CaliberTrainer;
-  skillTypeID: SkillType;
+  traineeID: number;
+  screenerID: number;
+  skillTypeID: number;
   compositeScore: number;
   aboutMeCommentary: string;
   generalCommentary: string;

@@ -22,11 +22,24 @@ export class ScreeningService {
     return this.screeningID$;
   }
 
-  beginScreening(traineeID: number, beginTime: Date, trainerID: number, skillTypeID: number): Observable<Screening> {
-    return this.httpClient.post<Screening>(
-      this.ROOT_URL + "/all/trainee.json",
-      JSON.stringify(Object.assign({}, traineeID, beginTime, trainerID, skillTypeID)),
-      { headers: this.headers }
-    );
+  beginScreening(
+    traineeID: number,
+    beginTime: Date,
+    trainerID: number,
+    skillTypeID: number
+  ): Observable<Screening> {
+    this.screeningID$ = this.httpClient
+      .post<Screening>(
+        this.ROOT_URL + "/all/trainee.json",
+        JSON.stringify(
+          Object.assign({}, traineeID, beginTime, trainerID, skillTypeID)
+        ),
+        { headers: this.headers }
+      );
+    return this.screeningID$;
+  }
+
+  getScreeningID() {
+    return this.screeningID$;
   }
 }

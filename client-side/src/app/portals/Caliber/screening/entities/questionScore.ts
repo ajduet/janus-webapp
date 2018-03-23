@@ -5,7 +5,7 @@ import {Screening} from './screening';
 export interface QuestionScore{
         qSID: number; //Question Score ID consistent with DB naming
         questionID: number;  
-        screeningID: Screening;
+        screeningID: number;
         score: number;
         commentary: string;
         beginTime: Date;
