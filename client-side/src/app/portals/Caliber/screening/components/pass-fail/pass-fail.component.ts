@@ -3,6 +3,7 @@ import { ViolationType } from '../../entities/violationType';
 import { ViolationTypeService } from '../../services/violationType/violationType.service';
 import { SoftSkillViolation } from '../../entities/softSkillViolation';
 import { SoftSkillsViolationService } from '../../services/soft-skills-violation/soft-skills-violation.service';
+import { Observable } from 'rxjs/Observable';
 
 // mock data for violations
 import { MOCK_VIOLATIONS } from '../../mock-data/mock-violations';
@@ -16,15 +17,18 @@ import { HttpParams } from '@angular/common/http';
 export class PassFailComponent implements OnInit {
 
   private passed: boolean;
-  violations: SoftSkillViolation[] = [];
+  violations: Observable<SoftSkillViolation[]>;
   mockViolations: SoftSkillViolation[] = [];
   endScreening = false;
+  violationService: SoftSkillsViolationService;
   public disabled = true;
   public checked;
 
   // need a SoftSkillViolationService to get the data
-  constructor(softSkillsViolationService: SoftSkillsViolationService) {
+  constructor(violationService: SoftSkillsViolationService) {
     this.mockViolations = MOCK_VIOLATIONS;
+    //this.violations = this.getViolations();
+    this.violationService = violationService;
    }
 
   ngOnInit() {
@@ -48,6 +52,11 @@ export class PassFailComponent implements OnInit {
       this.fail();
     }
   }
+  /*
+  getViolations(): Observable<SoftSkillViolation[]>{
+    return this.violationService.getPreviousViolations();
+  }
+  */
 
   pass() {
     this.passed = true;

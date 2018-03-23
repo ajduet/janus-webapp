@@ -9,11 +9,13 @@
               <th scope="col">Violation Type</th>
               <th scope="col">Violation Time</th>
               <th scope="col">Comment </th>
+              <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-          <!--
+          
           <ng-container *ngIf="hasViolations()">
+            <!--
             <tr class="violation" *ngFor="let violation of violations | async">
               <td>
                 <span>{{violation.violationType.violationType}}</span>
@@ -25,17 +27,17 @@
                 <span>{{violation.Comment}}</span>
               </td>
             </tr>
-          -->
+            -->
             <!-- Dummy data to remove -->
             <tr class="violation" *ngFor="let violation of violations">
               <td>
-                <span>{{violation.violationType.violationType}}</span>
+                <span>{{violation.violationType.violationType | async}}</span>
               </td>
               <td>
-                <span>{{violation.Time}}</span>
+                <span>{{violation.Time | async}}</span>
               </td>
               <td>
-                <span>{{violation.Comment}}</span>
+                <span>{{violation.Comment | async}}</span>
               </td>
               <td>
                 <button class="btn" (click)="deleteViolation(violation)">Remove</button>
@@ -79,6 +81,8 @@
   <div >
 
   </div>
+
+  <app-violation-flag></app-violation-flag>
   <div>
     <!-- <button class="btn" (click)="pass()">Pass Soft Skills</button>
     <button class="btn" (click)="fail()">Fail Soft Skills</button> -->

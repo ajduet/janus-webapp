@@ -1,0 +1,14 @@
+<div id="violations-checkbox">
+  <label>Flags</label>
+<div class="violation" *ngFor="let violationType of violationTypes; let i = index">
+  <!-- Create a checkbox for each tag using ngFor. Toggle buttons instead of checkboxes! -->
+  <span>
+    {{violationType.violationType}}
+    <label class="violation-switch">
+      <input type="checkbox" (change)="updateViolationList(violationType, $event.target.checked)" id="checkbox{{i}}">
+      <span class="violation-slider violation-round"></span>
+    </label>
+  </span>
+
+</div>
+</div>
