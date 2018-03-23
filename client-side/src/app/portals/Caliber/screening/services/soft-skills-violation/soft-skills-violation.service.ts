@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
 import { SoftSkillViolation } from '../../entities/softSkillViolation'
 import { ViolationType } from '../../entities/violationType';
+import { MOCK_VIOLATIONS } from '../../mock-data/mock-violations';
 
 @Injectable()
 export class SoftSkillsViolationService {
@@ -17,12 +19,17 @@ export class SoftSkillsViolationService {
   readonly addViolationURL: string = "/violation/flag";
   readonly deleteViolationURL: string = "/violation/delete";
 
-
+  /*
+  // Real endpoint for future use
   getPreviousViolations(screeningID: number): Observable<SoftSkillViolation[]>{
-    /*
-      Returning an observable because the relevant template uses the async pipe in the binding
-    */
+    // Returning an observable because the relevant template uses the async pipe in the binding
     return this.http.get<SoftSkillViolation[]>(this.getViolationURL + `?screeningID=${screeningID.toString()}`);
+  }
+  */
+
+  // Fake local data for temp use
+  getPreviousViolations(screeningID: number): Observable<SoftSkillViolation[]>{
+    return of(MOCK_VIOLATIONS);
   }
   
   addViolations(newViolations : ViolationType[], comment : string){
