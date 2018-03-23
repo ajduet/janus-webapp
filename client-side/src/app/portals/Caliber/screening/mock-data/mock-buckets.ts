@@ -19,4 +19,28 @@ export const BUCKETS: Bucket[] = [
       isActive: true,
       questions: null
     },
+    { bucketID: 4,
+      bucketCategory: 'HTML',
+      bucketDescription: 'JavaScript questions',
+      isActive: true,
+      questions: null
+    },
+    { bucketID: 5,
+      bucketCategory: 'CSS',
+      bucketDescription: 'JavaScript questions',
+      isActive: true,
+      questions: null
+    },
+    { bucketID: 6,
+      bucketCategory: 'Spring',
+      bucketDescription: 'JavaScript questions',
+      isActive: true,
+      questions: null
+    },
+    { bucketID: 7,
+      bucketCategory: 'Angular',
+      bucketDescription: 'JavaScript questions',
+      isActive: true,
+      questions: null
+    }
   ];

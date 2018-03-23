@@ -4,7 +4,7 @@
     <!-- padding: 25px 5%; -->
     <div class="filters">
       <!-- Search Bar -->
-      <input [(ngModel)]="searchText" placeholder="Search for Candidate..." class="search-bar">
+      <input [(ngModel)]="searchText" placeholder="Search" class="search-bar">
     </div>
     <!-- Table of Pending Screenings -->
     <table class="table table-hover" id="screenings-table">
@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <ng-container *ngFor="let i = index; let candidate of candidates | searchPipe: searchText | paginate: { itemsPerPage: 5, currentPage: p } ">
+        <ng-container *ngFor="let i = index; let candidate of candidates | searchPipe: searchText | paginate: { itemsPerPage: 10, currentPage: p } ">
           <tr (click)="beginScreening = !beginScreening">
             <td>{{candidate.firstname}} {{candidate.lastname}}</td>
             <td>{{skillTypes[candidate.skillTypeID-1].skillTypeName}}</td>
@@ -37,7 +37,7 @@
       </div>
     </div>
     <!-- Pagination section -->
-    <pagination-controls class="pagination" (pageChange)="p = $event" maxSize="5" previousLabel="" nextLabel=""></pagination-controls>
+    <pagination-controls class="pagination" (pageChange)="p = $event" previousLabel="" nextLabel=""></pagination-controls>
   </div>
 
 </div>
