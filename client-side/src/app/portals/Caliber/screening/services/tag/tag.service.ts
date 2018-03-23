@@ -20,7 +20,6 @@ export class TagService {
     return this.http.post<Tag[]>('<endpoint>/tag/all', {});
   }
   */
-
   // Fake local data for temp use
   getAllTags(): Observable<Tag[]>{
     return of(TAGS);
