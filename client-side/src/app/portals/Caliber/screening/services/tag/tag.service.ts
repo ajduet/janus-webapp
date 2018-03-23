@@ -19,7 +19,6 @@ export class TagService {
     this.tagList$ = this.http.post<Tag[]>('<endpoint>/tag/all', {});
     return this.tagList$;
   }
-
   
   getAllTestTags(): Tag[]{
     this.sampleTags = [];
@@ -31,4 +30,7 @@ export class TagService {
     return this.sampleTags;
   }
 
+  getCheckedTags(): Tag[] {
+    return this.tagListChecked;
+  }
 }

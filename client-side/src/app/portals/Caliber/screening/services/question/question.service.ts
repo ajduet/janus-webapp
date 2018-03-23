@@ -27,10 +27,9 @@ export class QuestionService {
   });
   
   getFilteredQuestions(trackID: number): Observable<Question[]> {
-    let tags: Tag[];
-    this.tagService.getAllTags().subscribe(data => tags = data);
+    let tags: Tag[] = this.tagService.getCheckedTags();
     return this.httpClient.post<Question[]>(
-      this.ROOT_URL + '/filtered.json', JSON.stringify(), { headers: this.headers }
+      this.ROOT_URL + '/filtered.json', JSON.stringify(tags), { headers: this.headers }
     );
   }
 }
