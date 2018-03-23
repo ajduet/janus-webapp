@@ -1,6 +1,6 @@
 #q-and-a-container{
     margin: 25px 10%;
-    min-width: 400px;
+    min-width: 360px;
     max-width: 95vw;
     border-style: solid;
     border-width: 1px;
@@ -14,7 +14,7 @@ h1{
     min-width: 260px;
     background: #f26925;
     color: white;  
-    font-size: 25px;
+    font-size: 20px;
     border-color: #f26925;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
@@ -25,7 +25,7 @@ h1{
 }
 h2{
     margin-bottom: 5px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     margin-bottom: 3px;
 }
@@ -67,6 +67,7 @@ li .inActive{
     border-bottom: 1px solid #ddd;
 }
 .nav>li>a, .nav>li>a{
+    margin-top: 5px;
     transition: background-color 1s ease;
 }
 /* #############################
@@ -78,8 +79,9 @@ li .inActive{
 }
 
 #question-table-title{
-    margin-top: 10px;
-    margin-bottom: 2px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 18px;
 }
 .question-col{
     padding: 0px !important;
@@ -150,4 +152,10 @@ textarea{
 }
 .pointer{
     cursor: pointer;
+}
+
+@media(max-width:500px){
+    #q-and-a-container{
+        margin: auto;
+    }
 }
