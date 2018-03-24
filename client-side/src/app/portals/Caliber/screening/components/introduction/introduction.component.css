@@ -49,12 +49,16 @@ p {
   margin: 0 auto;
   justify-content: center;
   white-space: nowrap;
+  font-size: 20px;
+}
+.info div p {
+  font-size: 20px;
 }
 .name,
 .skillType {
   display: grid;
   grid-template-columns: 50px auto;
-  grid-gap: 10px;
+  grid-gap: 20px;
   text-align: left;
 }
 
@@ -69,6 +73,7 @@ p {
   flex-wrap: wrap;
   justify-content: center;
   overflow: hidden;
+  font-size: 20px;
 }
 #skills-checkbox label {
   width: 100%;
@@ -84,8 +89,11 @@ p {
 .form-group{
   margin-bottom: 0px;
 }
-#inputComment{
-  width: 60%;
+
+.comment-container {
+  font-size: 20px;
+  margin-right:10px;
+  margin-left: 10px;
 }
 /* #############################
         SUBMIT BUTTON 
@@ -93,7 +101,7 @@ p {
 
 #submit-button {
   margin: 10px auto 20px auto;
-  width: 120px;
+  width: 160px;
   background: #f26925;
   border-color: #f26925;
   color: white;

@@ -32,6 +32,9 @@ export class QuestionsTableComponent implements OnInit {
   // which questions are displayed in the questions table.
   currentCategory: Bucket;
 
+  // value entered enables finish button
+  generalComment: string;
+
   // Array of questions answered during the interview
   questionScores: QuestionScore[] = [];
 
@@ -106,4 +109,24 @@ export class QuestionsTableComponent implements OnInit {
         return true;
     }
   }
+
+  submitAllowed(): boolean {
+    let allowed: boolean = true;
+    if (this.questionScores) {
+      if (this.questionScores.length < 1) {
+        allowed = false;
+      }
+    } else {
+      allowed = false;
+    }
+    if (this.generalComment){
+      if (this.generalComment.length < 1) {
+        allowed = false;
+      }
+    } else {
+      allowed = false;
+    }
+    return (!allowed);
+  }
+
 }
