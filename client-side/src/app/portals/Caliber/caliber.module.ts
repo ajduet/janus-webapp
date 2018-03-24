@@ -14,6 +14,7 @@ import { SimpleNotificationsModule } from 'angular2-notifications-lite';
 import { ScrollEventModule } from 'ngx-scroll-event';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
+import {ClipboardModule} from 'ngx-clipboard';
 
 
 // routing
@@ -54,7 +55,8 @@ import { TagService } from './screening/services/tag/tag.service';
 import { SoftSkillsService } from './screening/services/soft-skills/soft-skills.service';
 import { SoftSkillsViolationService } from './screening/services/soft-skills-violation/soft-skills-violation.service'
 import { ViolationTypeService } from './screening/services/violationType/violationType.service';
-import { ScreeningService } from './screening/services/screening/screenings.service'
+import { ScreeningService } from './screening/services/screening/screenings.service';
+import { ScreenerBucketsService } from './screening/services/screener-buckets/screener-buckets.service';
 
 
 //N.T.
@@ -157,6 +159,7 @@ import { ViolationFlagComponent } from './screening/components/violation-flag/vi
     ScrollEventModule,
     Ng2PageScrollModule,
     NgxPaginationModule,
+    ClipboardModule
   ],
   declarations: [
     // pipes
@@ -291,7 +294,8 @@ import { ViolationFlagComponent } from './screening/components/violation-flag/vi
     SoftSkillsService,
     SoftSkillsViolationService,
     ViolationTypeService,
-    ScreeningService
+    ScreeningService,
+   // ScreenerBucketsService
   ],
   bootstrap: [
     TrainersComponent
