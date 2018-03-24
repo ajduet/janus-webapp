@@ -1,19 +1,19 @@
 <div id="introduction-container">
-  <h1>Candidate's Self-Introduction Form</h1>
+  <h1>Candidate Introduction</h1>
   <div id="introduction-content">
     <div class="info">
       <div class="name">
-        <label>Name:</label>
+        <label>Name: </label>
         <p>{{traineeName}}</p>
       </div>
       <div class="skillType">
-        <label>Track:</label>
+        <label>Track: </label>
         <p>{{traineeTrack}}</p>
       </div>
     </div>
-    
+    <hr>
     <div id="skills-checkbox">
-        <label>Skills</label>
+        <label>Skills (required)</label>
       <div class="skill" *ngFor="let tag of tagList; let i = index">
         <!-- Create a checkbox for each tag using ngFor. Toggle buttons instead of checkboxes! -->
         <span>
@@ -26,17 +26,19 @@
 
       </div>
     </div>
+    <hr>
     <app-violation-flag></app-violation-flag>
+    <hr>
     <div>
       <form (ngSubmit)="onSubmit()" [formGroup]="form" id="commentForm">
-        <div class="form-group">
+        <div class="form-group comment-container">
           <br>
-          <label for="inputComment">Introductory Comments</label>
+          <label for="inputComment">Overall Introduction Feedback</label>
           <br>
-          <textarea formControlName="comment" id="inputComment" name="commentBox" form="commentForm" placeholder="Any comments regarding the candidate's self-introduction"></textarea>
+          <textarea class="form-control" formControlName="comment" id="inputComment" name="commentBox" form="commentForm" placeholder="Optional Feedback"></textarea>
 
         </div>
-        <button type="submit" id="submit-button" routerLink="/Caliber/screening/questions" routerLinkActive="activeLink">Next</button>
+        <button class="btn" type="submit" id="submit-button" [disabled]="skillChosen()" routerLink="/Caliber/screening/questions" routerLinkActive="activeLink">Begin Questions</button>
       </form>
 
 

@@ -62,4 +62,8 @@ export class IntroductionComponent implements OnInit {
 
     //Send the comments to the appropriate service method saves them to the DB
   }
+
+  skillChosen(): boolean {
+    return (!(this.tagService.tagListChecked.length > 0));
+  }
 }
