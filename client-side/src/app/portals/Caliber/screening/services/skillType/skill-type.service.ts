@@ -11,6 +11,7 @@ export class SkillTypeService {
   private ROOT_URL: string = "http://localhost:8080/skillType";
   private candidateSkillType: Observable<SkillType>;
   constructor(private httpClient: HttpClient) {}
+  
   getSkillTypes(): Observable<SkillType[]> {
     return of(SKILLTYPES);
   }
