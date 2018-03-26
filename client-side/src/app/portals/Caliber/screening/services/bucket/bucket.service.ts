@@ -5,11 +5,12 @@ import "rxjs/Rx";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Bucket } from '../../entities/bucket';
 import { BUCKETS } from '../../mock-data/mock-buckets';
+import { UrlUtilService } from '../UrlUtil/url-util.service';
 
 @Injectable()
 export class BucketService {
 
-  private ROOT_URL: string = "http://localhost:8080/bucket";
+  private ROOT_URL: string = this.urlUtilService.getBase() + "/bucket";
   // buckets necessary for conducting screening interview
   // the buckets contained in filteredBuckets are based on the 
   // skills selected from the candidates skills.
@@ -19,7 +20,8 @@ export class BucketService {
     "Content-type": "application/json"
   });
   
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+              private urlUtilService: UrlUtilService) { }
   
   // getBuckets(skillTypeID: number): Observable<Bucket[]>{
             // change the url to match the service endpoint

@@ -7,17 +7,19 @@ import { of } from 'rxjs/observable/of';
 import { SoftSkillViolation } from '../../entities/softSkillViolation'
 import { ViolationType } from '../../entities/violationType';
 import { MOCK_VIOLATIONS } from '../../mock-data/mock-violations';
+import { UrlUtilService } from '../UrlUtil/url-util.service';
 
 @Injectable()
 export class SoftSkillsViolationService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient,
+    private urlUtilService: UrlUtilService) { }
 
   // readonly because why wouldn't they be? 
-  readonly getViolationTypeURL: string = "/violation/all"
-  readonly getViolationURL: string = "/screening/violation";
-  readonly addViolationURL: string = "/violation/flag";
-  readonly deleteViolationURL: string = "/violation/delete";
+  readonly getViolationTypeURL: string = this.urlUtilService.getBase() + "/violation/all"
+  readonly getViolationURL: string = this.urlUtilService.getBase() + "/screening/violation";
+  readonly addViolationURL: string = this.urlUtilService.getBase() + "/violation/flag";
+  readonly deleteViolationURL: string = this.urlUtilService.getBase() + "/violation/delete";
 
   /*
   // Real endpoint for future use
