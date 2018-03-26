@@ -54,7 +54,8 @@ import { TagService } from './screening/services/tag/tag.service';
 import { SoftSkillsService } from './screening/services/soft-skills/soft-skills.service';
 import { SoftSkillsViolationService } from './screening/services/soft-skills-violation/soft-skills-violation.service'
 import { ViolationTypeService } from './screening/services/violationType/violationType.service';
-import { ScreeningService } from './screening/services/screening/screenings.service'
+import { ScreeningService } from './screening/services/screening/screenings.service';
+import {ScreenerBucketsService} from './screening/services/screener-buckets/screener-buckets.service';
 
 
 //N.T.
@@ -293,7 +294,8 @@ import { SkillTypeBucketService } from './screening/services/skillTypeBucketLook
     SoftSkillsViolationService,
     ViolationTypeService,
     ScreeningService,
-    SkillTypeBucketService
+    SkillTypeBucketService,
+    ScreenerBucketsService
   ],
   bootstrap: [
     TrainersComponent

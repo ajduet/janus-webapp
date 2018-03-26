@@ -1,6 +1,8 @@
 <div id="finalrep">
-	<h1>FINAL SUMMARY: (COPY AND PASTE BELOW TO SALESFORCE)</h1>
-	<br><br>
+	<h1>FINAL SUMMARY:</h1>
+	<br>
+	<p id="candidate-name" class="text-center">{{candidateName}}</p>
+	<br>
 		<div class=".container-fluid" id ="finalcon">
 			<p id="softskills">{{softSkillString}}</p>			
 			<div>
@@ -9,4 +11,13 @@
 			<p id="overallScoreString">{{overallScoreString}}</p>
 			<p id="generalNotesString">{{generalNotesString}}</p>
 		</div>
+</div>
+
+<br>
+<div class="centerit">
+	<input class="copywow" type="button" (click) = "copyToClipboard()" value = "Copy"> 
+</div>
+<br><br>
+<div class="centerit">
+    <button class="copywow" type="submit" routerLink="/Caliber/screening/pendingScreeningsList" routerLinkActive="activeLink">Done</button>
 </div>
