@@ -10,6 +10,7 @@ import { BucketService } from "../../services/bucket/bucket.service";
 import { QuestionService } from "../../services/question/question.service";
 import { QuestionScoreService } from '../../services/question-score/question-score.service';
 import { SkillTypeBucketService } from '../../services/skillTypeBucketLookup/skill-type-bucket.service';
+import { SkillTypeBucketLookUp } from '../../entities/skillTypeBucketLookup';
 
 // Utility Class (setting up buckets and questions based on selected tags)
 import { QuestionsToBucketsUtil } from "../../util/questionsToBuckets.util";
@@ -51,6 +52,20 @@ export class QuestionsTableComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // use skillTypeBucketLookup that provides array of buckets and array of weights
+    let tempSkillTypeBucket: SkillTypeBucketLookUp;
+    // SkillType should come from SimpleTrainee***
+    let thisSkillTypeID = 1;
+    this.SkillTypeBucketService.getSkillTypeBuckets(thisSkillTypeID).subscribe(data => {
+      tempSkillTypeBucket = data;
+      let tempQuestions: Question[];
+      this.questionService.getQuestions().subscribe(data => {
+        tempQuestions = data;
+        this.filteredBuckets.saveQuestions(tempQuestions, tempSkillTypeBucket);
+      });
+    });
+
+    /* old raw buckets with no weights*/
     // let tempBuckets: Bucket[];
     // // change to the getBucketsBySkillTypeID
     // this.bucketService.getBuckets().subscribe(data => {
