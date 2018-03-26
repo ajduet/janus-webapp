@@ -8,7 +8,8 @@ import { QuestionScore } from "../../entities/questionScore";
 // Services
 import { BucketService } from "../../services/bucket/bucket.service";
 import { QuestionService } from "../../services/question/question.service";
-import { QuestionScoreService } from "../../services/question-score/question-score.service";
+import { QuestionScoreService } from '../../services/question-score/question-score.service';
+import { SkillTypeBucketService } from '../../services/skillTypeBucketLookup/skill-type-bucket.service';
 
 // Utility Class (setting up buckets and questions based on selected tags)
 import { QuestionsToBucketsUtil } from "../../util/questionsToBuckets.util";
@@ -45,23 +46,27 @@ export class QuestionsTableComponent implements OnInit {
     private questionScoreService: QuestionScoreService,
     private filteredBuckets: QuestionsToBucketsUtil,
     private modalService: NgbModal,
-    private screeningService: ScreeningService
+    private screeningService: ScreeningService,
+    private SkillTypeBucketService: SkillTypeBucketService,
   ) {}
 
   ngOnInit() {
-    let tempBuckets: Bucket[];
-    this.bucketService.getBuckets().subscribe(data => {
-      tempBuckets = data;
-    });
-    let tempQuestions: Question[];
-    this.questionService.getQuestions().subscribe(data => {
-      tempQuestions = data;
-    });
+    // let tempBuckets: Bucket[];
+    // // change to the getBucketsBySkillTypeID
+    // this.bucketService.getBuckets().subscribe(data => {
+    //   tempBuckets = data;
+    //   let tempQuestions: Question[];
+    //   this.questionService.getQuestions().subscribe(data => {
+    //     tempQuestions = data;
+    //     this.bucketService.setFilteredBuckets(
+    //       this.filteredBuckets.saveQuestions(tempQuestions, tempBuckets)
+    //     );
+    //     this.buckets = this.bucketService.getFilteredBuckets();
+    //   });
+    // });
+
+    
     // set the buckets array to all necessary categories.
-    this.buckets = this.filteredBuckets.saveQuestions(
-      tempQuestions,
-      tempBuckets
-    );
 
     // FOR FUTURE USE
     // let tempBuckets: Bucket[];
@@ -121,14 +126,14 @@ export class QuestionsTableComponent implements OnInit {
     } else {
       allowed = false;
     }
-    if (this.generalComment){
+    if (this.generalComment) {
       if (this.generalComment.length < 1) {
         allowed = false;
       }
     } else {
       allowed = false;
     }
-    return (!allowed);
+    return !allowed;
   }
 
   saveFeedback() {

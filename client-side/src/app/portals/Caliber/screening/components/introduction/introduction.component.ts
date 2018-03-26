@@ -4,9 +4,13 @@ import { FormBuilder, FormControl, FormArray, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { Subscription } from 'rxjs';
 
+import { SimpleTraineeService } from "../../services/simpleTrainee/simple-trainee.service";
+import { SkillTypeService } from '../../services/skillType/skill-type.service';
 import { TagService } from '../../services/tag/tag.service';
+import { BucketService } from "../../services/bucket/bucket.service";
 
 import { Tag } from '../../entities/tag';
+import { SkillType } from '../../entities/skillType';
 
 @Component({
   selector: 'app-introduction',
@@ -15,7 +19,8 @@ import { Tag } from '../../entities/tag';
 })
 export class IntroductionComponent implements OnInit {
 
-  constructor(public tagService : TagService) { }
+  constructor(public tagService : TagService, private simpleTraineeService: SimpleTraineeService,
+    private skillTypeService: SkillTypeService, private bucketService: BucketService) { }
 
 
   public traineeName: string;
@@ -24,15 +29,18 @@ export class IntroductionComponent implements OnInit {
   public tagList: Tag[];
 
   form = new FormGroup({
-    comment: new FormControl("", []),
+    comment: new FormControl("", [])
   })
 
   ngOnInit() {
     //Get candidate name from another component
     this.tagService.tagListChecked = [];
 
-    this.traineeName = "Tommy";
-    this.traineeTrack = "Business Analyst";
+    this.traineeName = this.simpleTraineeService.getSelectedCandidate().firstname + " " 
+      + this.simpleTraineeService.getSelectedCandidate().lastname;
+    let tempSkillTypes: SkillType[];
+    this.skillTypeService.getSkillTypes().subscribe(skillTypes => tempSkillTypes = skillTypes);
+    this.traineeTrack = tempSkillTypes[this.simpleTraineeService.getSelectedCandidate().skillTypeID].skillTypeName;
 
     //Get all test tags
     this.getTags();
