@@ -55,8 +55,9 @@ import { SoftSkillsService } from './screening/services/soft-skills/soft-skills.
 import { SoftSkillsViolationService } from './screening/services/soft-skills-violation/soft-skills-violation.service'
 import { ViolationTypeService } from './screening/services/violationType/violationType.service';
 import { ScreeningService } from './screening/services/screening/screenings.service';
-import {ScreenerBucketsService} from './screening/services/screener-buckets/screener-buckets.service';
-
+import { ScreenerBucketsService } from './screening/services/screener-buckets/screener-buckets.service';
+import { SkillTypeBucketService } from './screening/services/skillTypeBucketLookup/skill-type-bucket.service';
+import { UrlUtilService } from './screening/services/UrlUtil/url-util.service';
 
 //N.T.
 import { ApiService } from './util/api.service';
@@ -142,7 +143,6 @@ import { IntroductionComponent } from './screening/components/introduction/intro
 import { AnswerComponent } from './screening/components/answer/answer.component';
 import { PassFailComponent } from './screening/components/pass-fail/pass-fail.component';
 import { ViolationFlagComponent } from './screening/components/violation-flag/violation-flag.component';
-import { SkillTypeBucketService } from './screening/services/skillTypeBucketLookup/skill-type-bucket.service';
 
 
 @NgModule({
@@ -295,7 +295,8 @@ import { SkillTypeBucketService } from './screening/services/skillTypeBucketLook
     ViolationTypeService,
     ScreeningService,
     SkillTypeBucketService,
-    ScreenerBucketsService
+    ScreenerBucketsService,
+    UrlUtilService
   ],
   bootstrap: [
     TrainersComponent
