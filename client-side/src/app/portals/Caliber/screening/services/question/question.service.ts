@@ -16,9 +16,7 @@ import { SimpleTraineeService } from "../simpleTrainee/simple-trainee.service";
 
 @Injectable()
 export class QuestionService {
-  getQuestions(): Observable<Question[]> {
-    return of(QUESTIONS);
-  }
+  
   constructor(
     private httpClient: HttpClient,
     private tagService: TagService,
@@ -30,17 +28,21 @@ export class QuestionService {
     "Content-type": "application/json"
   });
 
-  getFilteredQuestions(): Observable<Question[]> {
-    return this.httpClient.post<Question[]>(
-      this.ROOT_URL + "/filtered.json",
-      JSON.stringify(
-        Object.assign(
-          {},
-          this.tagService.getCheckedTags(),
-          this.simpleTraineeService.getSelectedCandidate()
-        )
-      ),
-      { headers: this.headers }
-    );
+  getQuestions(): Observable<Question[]> {
+    return of(QUESTIONS);
   }
+
+  // getQuestions(): Observable<Question[]> {
+  //   return this.httpClient.post<Question[]>(
+  //     this.ROOT_URL + "/filtered.json",
+  //     JSON.stringify(
+  //       Object.assign(
+  //         {},
+  //         this.tagService.getCheckedTags(),
+  //         this.simpleTraineeService.getSelectedCandidate()
+  //       )
+  //     ),
+  //     { headers: this.headers }
+  //   );
+  // }
 }
