@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { ViolationType } from '../../entities/violationType';
 import { ViolationTypeService } from '../../services/violationType/violationType.service';
+import { SimpleTraineeService } from '../../services/simpleTrainee/simple-trainee.service';
 import { SoftSkillViolation } from '../../entities/softSkillViolation';
 import { SoftSkillsViolationService } from '../../services/soft-skills-violation/soft-skills-violation.service';
 import { Observable } from 'rxjs/Observable';
@@ -17,6 +18,9 @@ import { ScreeningService } from '../../services/screening/screenings.service';
 })
 export class PassFailComponent implements OnInit {
 
+  //Candidate Name
+  public candidateName: string;
+
   private passed: boolean;
   violations: SoftSkillViolation[];
   endScreening = false;
@@ -28,13 +32,16 @@ export class PassFailComponent implements OnInit {
 
   // need a SoftSkillViolationService to get the data
   constructor(private violationService: SoftSkillsViolationService,
-              private screeningService: ScreeningService
+              private screeningService: ScreeningService,
+              private simpleTraineeService: SimpleTraineeService,
   ) {}
 
   ngOnInit() {
     this.disabled = true;
     this.passChecked = false;
     this.failChecked = false;
+    this.candidateName = this.simpleTraineeService.getSelectedCandidate().firstname + " " +
+                          this.simpleTraineeService.getSelectedCandidate().lastname;
     this.screeningID = 1;
     this.getViolations();
   }

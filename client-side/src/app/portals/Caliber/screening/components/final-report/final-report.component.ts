@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ScreeningService } from '../../services/screening/screenings.service';
+import { SimpleTraineeService } from '../../services/simpleTrainee/simple-trainee.service';
 
 @Component({
   selector: 'app-final-report',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class FinalReportComponent implements OnInit {
-//Strings of each part
+//Candidate's name
+public candidateName: string;
+
+//Individual strings
 softSkillString: string;
 bucketStringArray: string[];
 overallScoreString: string;
@@ -16,16 +21,16 @@ generalNotesString: string;
 allTextString: string;
 
 
-
-
-  constructor() { }
+  constructor(private screeningService: ScreeningService,
+    private simpleTraineeService: SimpleTraineeService) { }
 
   ngOnInit() {
-    //Hardcoded Data
-    this.softSkillString = "Soft Skills: Pass";
-    this.bucketStringArray = ["\n" + "20/30 OOP","\n" +  "24/30 Basics","\n" +  "12/20 Advanced","\n" +  "09/10 SQL","\n" + "06/10 Web"];
+    this.candidateName = this.simpleTraineeService.getSelectedCandidate().firstname + " " +
+                          this.simpleTraineeService.getSelectedCandidate().lastname;
+    this.softSkillString = "Soft Skills: " + this.screeningService.softSkillsResult;
+    this.bucketStringArray = ["20/30 OOP", "24/30 Basics", "12/20 Advanced", "09/10 SQL", "06/10 Web"];
     this.overallScoreString = "Overall: 71%";
-    this.generalNotesString = "Answers were clear and concise. Wonderful attitude.";
+    this.generalNotesString = this.screeningService.generalComments;
     this.allTextString = this.softSkillString + "\n" + this.bucketStringArray + "\n" + this.overallScoreString + "\n" + this.generalNotesString;
     
   }

@@ -20,6 +20,7 @@ import { AnswerComponent } from "../answer/answer.component";
 // ngbootstrap modal
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { ScreeningService } from "../../services/screening/screenings.service";
+import { SimpleTraineeService } from "../../services/simpleTrainee/simple-trainee.service";
 
 @Component({
   selector: "app-questions-table",
@@ -40,6 +41,9 @@ export class QuestionsTableComponent implements OnInit {
   // Array of questions answered during the interview
   questionScores: QuestionScore[] = [];
 
+  // The candidate's name
+  candidateName: string;
+
   constructor(
     private bucketService: BucketService,
     private questionService: QuestionService,
@@ -47,10 +51,15 @@ export class QuestionsTableComponent implements OnInit {
     private filteredBuckets: QuestionsToBucketsUtil,
     private modalService: NgbModal,
     private screeningService: ScreeningService,
+    private simpleTraineeService: SimpleTraineeService,
     private SkillTypeBucketService: SkillTypeBucketService,
   ) {}
 
   ngOnInit() {
+
+    this.candidateName = this.simpleTraineeService.getSelectedCandidate().firstname + " " +
+                          this.simpleTraineeService.getSelectedCandidate().lastname;
+
     // let tempBuckets: Bucket[];
     // // change to the getBucketsBySkillTypeID
     // this.bucketService.getBuckets().subscribe(data => {
@@ -64,6 +73,7 @@ export class QuestionsTableComponent implements OnInit {
     //     this.buckets = this.bucketService.getFilteredBuckets();
     //   });
     // });
+
 
     
     // set the buckets array to all necessary categories.
