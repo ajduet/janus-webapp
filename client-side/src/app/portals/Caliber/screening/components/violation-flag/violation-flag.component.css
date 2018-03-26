@@ -41,7 +41,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: rgb(153, 153, 153);
     width: 60px;
     height: 34px;
     -webkit-transition: .4s;

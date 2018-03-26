@@ -81,7 +81,7 @@ h2{
 }
 
 .btn:disabled {
-    background: #ccc;
+    background: #686868;
     color: white;
     font-weight: strong;
 }
@@ -109,7 +109,7 @@ h2{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #787878;
     width: 103px;
     height: 34px;
     -webkit-transition: .4s;
