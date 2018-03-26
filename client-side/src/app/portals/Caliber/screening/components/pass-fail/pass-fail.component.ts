@@ -8,6 +8,7 @@ import { Observable } from 'rxjs/Observable';
 
 
 import { HttpParams } from '@angular/common/http';
+import { ScreeningService } from '../../services/screening/screenings.service';
 
 @Component({
   selector: 'app-pass-fail',
@@ -26,7 +27,9 @@ export class PassFailComponent implements OnInit {
   private screeningID: number;
 
   // need a SoftSkillViolationService to get the data
-  constructor(private violationService: SoftSkillsViolationService) {}
+  constructor(private violationService: SoftSkillsViolationService,
+              private screeningService: ScreeningService
+  ) {}
 
   ngOnInit() {
     this.disabled = true;
@@ -76,11 +79,13 @@ export class PassFailComponent implements OnInit {
   pass() {
     this.passed = true;
     this.endScreening = true;
+    this.screeningService.softSkillsResult = "Pass";
   }
 
   fail() {
     this.passed = false;
     this.endScreening = true;
+    this.screeningService.softSkillsResult = "Fail";
   }
 
   deleteViolation(violationIndex: number) {

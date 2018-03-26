@@ -15,6 +15,8 @@ export class ScreeningService {
     "Content-type": "application/json"
   });
 
+  public softSkillsResult: string;
+  public generalComments: string;
   public screeningID$: Observable<Screening>;
 
   retrieveScreening(): Observable<Screening> {
