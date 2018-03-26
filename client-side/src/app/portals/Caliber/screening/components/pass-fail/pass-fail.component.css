@@ -27,10 +27,15 @@
 ############################# */
 
 .pass-fail-container {
-    display: block;
-    margin: auto;
-    width: 90%; 
-    height: 90%; 
+    margin: 25px 10%;
+    min-width: 360px;
+    max-width: 95vw;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #ddd;
+    border-radius: 4px;
+    /* padding-bottom: 128px; */
+    overflow: auto;
 }
 
 #pass-fail-button {
@@ -65,9 +70,26 @@
     border: 1px solid #888;
     width: 350px; /* Could be more or less, depending on screen size */
 }
+h1{
+    width: 100%;
+    min-width: 260px;
+    background: #f26925;
+    color: white;  
+    font-size: 20px;
+    border-color: #f26925;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    margin-bottom: 0px;
+    
+    padding: 12px;
+    white-space:nowrap;
+}
 h2{
     font-size: 1.25em;
     margin-bottom: 15px;
+}
+#candidate-name{
+    font-size:20px;
 }
 .buttons{
     display: grid;
