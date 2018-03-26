@@ -5,12 +5,14 @@ import "rxjs/Rx";
 import { HttpClient } from "@angular/common/http";
 import { SkillType } from "../../entities/skillType";
 import { SKILLTYPES } from "../../mock-data/mock-skillTypes";
+import { UrlUtilService } from '../UrlUtil/url-util.service';
 
 @Injectable()
 export class SkillTypeService {
-  private ROOT_URL: string = "http://localhost:8080/skillType";
+  private ROOT_URL: string = this.urlUtilService.getBase() + "/skillType";
   private candidateSkillType: Observable<SkillType>;
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,
+    private urlUtilService: UrlUtilService) {}
   
   getSkillTypes(): Observable<SkillType[]> {
     return of(SKILLTYPES);

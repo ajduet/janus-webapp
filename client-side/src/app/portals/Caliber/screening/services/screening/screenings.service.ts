@@ -4,13 +4,15 @@ import { of } from "rxjs/observable/of";
 import "rxjs/Rx";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Screening } from "../../entities/screening";
+import { UrlUtilService } from '../UrlUtil/url-util.service';
 
 @Injectable()
 export class ScreeningService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient,
+    private urlUtilService: UrlUtilService) {}
 
   // Need to change to match the backend
-  private ROOT_URL: string = "http://localhost:8080/screening";
+  private ROOT_URL: string = this.urlUtilService.getBase() + "/screening";
   headers = new HttpHeaders({
     "Content-type": "application/json"
   });

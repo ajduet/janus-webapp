@@ -13,6 +13,7 @@ import { QUESTIONS } from "../../mock-data/mock-questions";
 // Services
 import { TagService } from "../../services/tag/tag.service";
 import { SimpleTraineeService } from "../simpleTrainee/simple-trainee.service";
+import { UrlUtilService } from '../UrlUtil/url-util.service';
 
 @Injectable()
 export class QuestionService {
@@ -20,10 +21,11 @@ export class QuestionService {
   constructor(
     private httpClient: HttpClient,
     private tagService: TagService,
-    private simpleTraineeService: SimpleTraineeService
+    private simpleTraineeService: SimpleTraineeService,
+    private urlUtilService: UrlUtilService
   ) {}
 
-  private ROOT_URL: string = "http://localhost:8080/question";
+  private ROOT_URL: string = this.urlUtilService.getBase() + "/question";
   headers = new HttpHeaders({
     "Content-type": "application/json"
   });

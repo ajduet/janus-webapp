@@ -6,18 +6,22 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 import { Tag } from '../../entities/tag';
 import { TAGS } from '../../mock-data/mock-tags';
+import { UrlUtilService } from '../UrlUtil/url-util.service';
 
 @Injectable()
 export class TagService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private urlUtilService: UrlUtilService) { }
+
+  private ROOT_URL: string = this.urlUtilService.getBase() + '/tag';
 
   public tagListChecked: Tag[];
 
   /*
   // Real endpoint for future use
   getAllTags(): Observable<Tag[]>{
-    return this.http.post<Tag[]>('<endpoint>/tag/all', {});
+    return this.http.post<Tag[]>(this.ROOT_URL + '/all', {});
   }
   
   */

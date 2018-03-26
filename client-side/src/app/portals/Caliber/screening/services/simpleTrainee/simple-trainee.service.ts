@@ -5,14 +5,16 @@ import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs/observable/of';
 import { SimpleTrainee } from '../../entities/simpleTrainee';
 import { TRAINEES } from '../../mock-data/mock-simpleTrainees';
+import { UrlUtilService } from '../UrlUtil/url-util.service';
 
 @Injectable()
 export class SimpleTraineeService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient,
+              private urlUtilService: UrlUtilService) { }
 
   // Need to change to match the backend
-  // private ROOT_URL: string = 'http://localhost:8080/screening';
+  private ROOT_URL: string = this.urlUtilService.getBase() + '/screening';
 
   selectedCandidate: SimpleTrainee;
 
