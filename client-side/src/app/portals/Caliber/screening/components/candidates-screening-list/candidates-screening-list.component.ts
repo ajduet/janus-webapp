@@ -12,11 +12,12 @@ import { SkillType } from "../../entities/skillType";
 // Services
 import { SimpleTraineeService } from "../../services/simpleTrainee/simple-trainee.service";
 import { SkillTypeService } from "../../services/skillType/skill-type.service";
+import { ScreeningService } from "../../services/screening/screenings.service";
 
 // Installed Modules
 // npm install ngx-pagination --save
 import { NgxPaginationModule } from "ngx-pagination"; // <-- import the module
-import { ScreeningService } from "../../services/screening/screenings.service";
+
 
 @Component({
   selector: "app-candidates-screening-list",

@@ -141,6 +141,7 @@ import { IntroductionComponent } from './screening/components/introduction/intro
 import { AnswerComponent } from './screening/components/answer/answer.component';
 import { PassFailComponent } from './screening/components/pass-fail/pass-fail.component';
 import { ViolationFlagComponent } from './screening/components/violation-flag/violation-flag.component';
+import { SkillTypeBucketService } from './screening/services/skillTypeBucketLookup/skill-type-bucket.service';
 
 
 @NgModule({
@@ -291,7 +292,8 @@ import { ViolationFlagComponent } from './screening/components/violation-flag/vi
     SoftSkillsService,
     SoftSkillsViolationService,
     ViolationTypeService,
-    ScreeningService
+    ScreeningService,
+    SkillTypeBucketService
   ],
   bootstrap: [
     TrainersComponent

@@ -10,19 +10,31 @@ import { BUCKETS } from '../../mock-data/mock-buckets';
 export class BucketService {
 
   private ROOT_URL: string = "http://localhost:8080/bucket";
+  // buckets necessary for conducting screening interview
+  // the buckets contained in filteredBuckets are based on the 
+  // skills selected from the candidates skills.
+  private filteredBuckets: Bucket[];
+  private allBuckets: Bucket[];
   headers = new HttpHeaders({
     "Content-type": "application/json"
   });
   
   constructor(private httpClient: HttpClient) { }
   
-  // getBuckets(): Observable<Bucket[]>{
-  //   return this.httpClient.get<Bucket[]>(this.ROOT_URL + '/all');
+  // getBuckets(skillTypeID: number): Observable<Bucket[]>{
+            // change the url to match the service endpoint
+  //   this.httpClient.post<Bucket[]>(this.ROOT_URL + `/${skillTypeID}`);
   // }
 
   getBuckets(): Observable<Bucket[]> {
     return of(BUCKETS);
   }
 
+  // getBuckets(): Bucket[] {
+  //   return this.filteredBuckets;
+  // }
 
+  setBuckets(buckets: Bucket[]): void {
+    this.filteredBuckets = buckets;
+  }
 }
