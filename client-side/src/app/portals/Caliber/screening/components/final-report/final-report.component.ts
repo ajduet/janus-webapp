@@ -1,26 +1,39 @@
 import { Component, OnInit } from '@angular/core';
+import { ClipboardModule } from 'ngx-clipboard'; //required for copy to clipboard
 
 @Component({
   selector: 'app-final-report',
   templateUrl: './final-report.component.html',
   styleUrls: ['./final-report.component.css']
 })
+
 export class FinalReportComponent implements OnInit {
-softSkillString: String;
-bucketStringArray: String[];
-overallScoreString: String;
-generalNotesString: String;
+//Strings of each part
+softSkillString: string;
+bucketStringArray: string[];
+overallScoreString: string;
+generalNotesString: string;
+//Compounded Strings
+allTextString: string;
+
 
 
 
   constructor() { }
 
   ngOnInit() {
+    //Hardcoded Data
     this.softSkillString = "Soft Skills: Pass";
-    this.bucketStringArray = ["20/30 OOP", "24/30 Basics", "12/20 Advanced", "09/10 SQL", "06/10 Web"];
+    this.bucketStringArray = ["\n" + "20/30 OOP","\n" +  "24/30 Basics","\n" +  "12/20 Advanced","\n" +  "09/10 SQL","\n" + "06/10 Web"];
     this.overallScoreString = "Overall: 71%";
     this.generalNotesString = "Answers were clear and concise. Wonderful attitude.";
-   
+    this.allTextString = this.softSkillString + "\n" + this.bucketStringArray + "\n" + this.overallScoreString + "\n" + this.generalNotesString;
+    
+  }
+
+  //Used for copying the data to the clipboard (this is done using ngx-clipboard)
+  copyToClipboard(){
+    
   }
 
 }
