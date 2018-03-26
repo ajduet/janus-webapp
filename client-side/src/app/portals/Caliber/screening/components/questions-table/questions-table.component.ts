@@ -19,6 +19,7 @@ import { AnswerComponent } from "../answer/answer.component";
 
 // ngbootstrap modal
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { ScreeningService } from "../../services/screening/screenings.service";
 
 @Component({
   selector: "app-questions-table",
@@ -44,8 +45,9 @@ export class QuestionsTableComponent implements OnInit {
     private questionService: QuestionService,
     private questionScoreService: QuestionScoreService,
     private filteredBuckets: QuestionsToBucketsUtil,
+    private modalService: NgbModal,
+    private screeningService: ScreeningService,
     private SkillTypeBucketService: SkillTypeBucketService,
-    private modalService: NgbModal
   ) {}
 
   ngOnInit() {
@@ -133,4 +135,9 @@ export class QuestionsTableComponent implements OnInit {
     }
     return !allowed;
   }
+
+  saveFeedback() {
+    this.screeningService.generalComments = this.generalComment;
+  }
+
 }

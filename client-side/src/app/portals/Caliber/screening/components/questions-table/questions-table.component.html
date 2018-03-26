@@ -40,7 +40,7 @@
       <textarea [(ngModel)]="generalComment" id="footsie" rows="3" maxlength="4000" placeholder="Required Feedback"></textarea>
     </div>
     <div id="center-submit">
-      <button class="btn" id="submit-button" [disabled]="submitAllowed()" type="submit" routerLink="/Caliber/screening/passFail" routerLinkActive="activeLink">Finish</button>
+      <button class="btn" id="submit-button" [disabled]="submitAllowed()" type="submit" routerLink="/Caliber/screening/passFail" routerLinkActive="activeLink" (click)="saveFeedback()">Finish</button>
     </div>
   </div>
 </div>
