@@ -9,7 +9,7 @@ export const MOCK_VIOLATIONS: SoftSkillViolation[] = [
       violationType: "Profanity"
     },
     Time: new Date(),
-    Comment: "Said 'bollocks'"
+    Comment: "Cursed."
   },
   { violationID: 12, 
     screeningID: 1, 
@@ -18,7 +18,7 @@ export const MOCK_VIOLATIONS: SoftSkillViolation[] = [
       violationType: "Dress"
     },
     Time: new Date(), 
-    Comment: "Nude during interview"
+    Comment: "Wearing a t-shirt."
   },
   { violationID: 13, 
     screeningID: 1, 
@@ -27,7 +27,7 @@ export const MOCK_VIOLATIONS: SoftSkillViolation[] = [
       violationType: "Speech"
     },
     Time: new Date(), 
-    Comment: "only spoke in Russian"
+    Comment: "Was very soft-spoken."
   },
   { violationID: 14, 
     screeningID: 1, 
@@ -36,6 +36,6 @@ export const MOCK_VIOLATIONS: SoftSkillViolation[] = [
       violationType: "Misc"
     },
     Time: new Date(), 
-    Comment: "Was drinking vodka during interview"
+    Comment: "Children constantly interrupted the screening."
   }
 ];
