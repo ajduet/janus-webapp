@@ -20,7 +20,7 @@ import { AnswerComponent } from "../answer/answer.component";
 
 // ngbootstrap modal
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { ScreeningService } from "../../services/screening/screenings.service";
+import { ScreeningService } from "../../services/screening/screening.service";
 import { SimpleTraineeService } from "../../services/simpleTrainee/simple-trainee.service";
 
 @Component({

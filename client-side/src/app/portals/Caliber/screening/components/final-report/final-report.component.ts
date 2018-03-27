@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ScreeningService } from '../../services/screening/screenings.service';
+import { ScreeningService } from '../../services/screening/screening.service';
 import { SimpleTraineeService } from '../../services/simpleTrainee/simple-trainee.service';
 import { SkillTypeBucketService } from '../../services/skillTypeBucketLookup/skill-type-bucket.service';
 import { QuestionScoreService } from '../../services/question-score/question-score.service'
