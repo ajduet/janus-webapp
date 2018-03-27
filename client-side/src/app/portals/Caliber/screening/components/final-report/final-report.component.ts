@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ScreeningService } from '../../services/screening/screenings.service';
 import { SimpleTraineeService } from '../../services/simpleTrainee/simple-trainee.service';
+import { SkillTypeBucketService } from '../../services/skillTypeBucketLookup/skill-type-bucket.service';
+import { QuestionScoreService } from '../../services/question-score/question-score.service'
+import { QuestionScore } from '../../entities/questionScore';
+import { ScoresToBucketsUtil } from '../../util/scoresToBuckets.util'
 
 @Component({
   selector: 'app-final-report',
@@ -20,18 +24,36 @@ generalNotesString: string;
 //Compounded Strings
 allTextString: string;
 
+questionScores: QuestionScore[];
 
-  constructor(private screeningService: ScreeningService,
-    private simpleTraineeService: SimpleTraineeService) { }
+
+  constructor(
+    private screeningService: ScreeningService,
+    private simpleTraineeService: SimpleTraineeService,
+    private skillTypeBucketService: SkillTypeBucketService,
+    private questionScoreService: QuestionScoreService,
+    private scoresToBucketsUtil: ScoresToBucketsUtil,
+  ) { }
 
   ngOnInit() {
     this.candidateName = this.simpleTraineeService.getSelectedCandidate().firstname + " " +
                           this.simpleTraineeService.getSelectedCandidate().lastname;
     this.softSkillString = "Soft Skills: " + this.screeningService.softSkillsResult;
-    this.bucketStringArray = ["20/30 OOP", "24/30 Basics", "12/20 Advanced", "09/10 SQL", "06/10 Web"];
-    this.overallScoreString = "Overall: 71%";
+    this.allTextString = this.softSkillString + "\n";
+    this.questionScoreService.currentQuestionScores.subscribe(
+      questionScores => {
+        this.questionScores = questionScores;
+        this.bucketStringArray = this.scoresToBucketsUtil.getFinalBreakdown(this.questionScores, this.skillTypeBucketService.bucketsByWeight);
+        this.overallScoreString = this.bucketStringArray[this.bucketStringArray.length-1];
+        this.bucketStringArray.splice(this.bucketStringArray.length-1, 1);
+        this.bucketStringArray.forEach(bucketString => {
+          this.allTextString += bucketString + "\n";
+        });
+        this.allTextString += this.overallScoreString + "\n";
+      });
+    //this.overallScoreString = "Overall: 71%";
     this.generalNotesString = this.screeningService.generalComments;
-    this.allTextString = this.softSkillString + "\n" + this.bucketStringArray + "\n" + this.overallScoreString + "\n" + this.generalNotesString;
+    this.allTextString += "\"" + this.generalNotesString + "\"";
     
   }
 

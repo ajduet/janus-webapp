@@ -2,7 +2,7 @@ import {Bucket} from '../entities/bucket';
 import {SkillTypeBucketLookUp} from '../entities/skillTypeBucketLookUp';
 import { SkillType } from "../entities/skillType";
 
-export const SKILL_TYPE_BUCKET_LOOKUPS: SkillTypeBucketLookUp = 
+export const SKILL_TYPE_BUCKET_LOOKUP: SkillTypeBucketLookUp = 
     {
       skillTypeBucketLookupID: 1,
       skillType: {
@@ -14,8 +14,8 @@ export const SKILL_TYPE_BUCKET_LOOKUPS: SkillTypeBucketLookUp =
         { bucketID: 1,
           bucketCategory: 'Basic Java',
           bucketDescription: 'OCA level Java questions',
-          isActive: true,
-          questions: null
+          isActive: false,
+          questions: []
         },
         { bucketID: 2,
           bucketCategory: 'SQL',
@@ -54,7 +54,7 @@ export const SKILL_TYPE_BUCKET_LOOKUPS: SkillTypeBucketLookUp =
           questions: null
         }
       ],
-      weight: [14, 14, 14, 14, 14, 14, 16]
+      weights: [14, 14, 14, 14, 14, 14, 16]
     }
     
   ;
