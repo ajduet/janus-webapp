@@ -12,6 +12,7 @@
   #violations-checkbox label {
     width: 100%;
     font-size: 20px;
+    text-align: center;
   }
   .violation {
     width: auto;
@@ -83,6 +84,12 @@
   .violation-slider.violation-round:before {
     border-radius: 50%;
   } 
+  
+  .btn{
+    background: #f26925;
+    color: white;
+    font-weight: strong;
+}
 
   /* #############################
           CANDIDATE NAME 
