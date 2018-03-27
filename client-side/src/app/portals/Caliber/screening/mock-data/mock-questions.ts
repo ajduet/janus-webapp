@@ -39,7 +39,7 @@ export const QUESTIONS: Question[] = [
     sampleAnswer4: 'Hiding of details to prevent user access.',
     sampleAnswer5: 'Concealment of details using access modifiers such as private and protected.',
     isActive: true,
-    bucketId: 1
+    bucketId: 2
   },
   { questionID: 15,
     questionText: 'What is a JOIN statement?',
@@ -49,7 +49,7 @@ export const QUESTIONS: Question[] = [
     sampleAnswer4: 'Joining two tables together in a SQL statement.',
     sampleAnswer5: 'Matching two tables based off of a common column.',
     isActive: true,
-    bucketId: 3
+    bucketId: 2
   },
   { questionID: 16,
     questionText: 'What is the difference between a stored procedure and a function?',
@@ -59,7 +59,7 @@ export const QUESTIONS: Question[] = [
     sampleAnswer4: 'A stored procedure does not return anything and a function must return one thing and one thing only.',
     sampleAnswer5: 'A stored procedure does not have a return though it allows for multiple IN, OUT, and IN/OUT parameters and can be used for DML.  A function must return one thing and one thing only and cannot have DML.',
     isActive: true,
-    bucketId: 1
+    bucketId: 3
   },
   { questionID: 17,
     questionText: 'What are the sublanguages of SQL?',
@@ -69,7 +69,7 @@ export const QUESTIONS: Question[] = [
     sampleAnswer4: 'Data Definition Language, Data Manipulation Language, Data Query Language, and others.',
     sampleAnswer5: 'DDL Data Definition Language, DML Data Manipulation Language, DQL Data Query Language, DCL Data Control Language, and TCL Transaction Control Language',
     isActive: true,
-    bucketId: 1
+    bucketId: 4
   },
   { questionID: 18,
     questionText: 'What are some clauses in SQL?',
@@ -79,7 +79,7 @@ export const QUESTIONS: Question[] = [
     sampleAnswer4: 'SELECT, FROM, and WHERE.',
     sampleAnswer5: 'SELECT, FROM, WHERE/HAVING, GROUP BY/ORDER BY',
     isActive: true,
-    bucketId: 1
+    bucketId: 5
   },
   { questionID: 19,
     questionText: 'What does HTML stand for?',
@@ -89,7 +89,7 @@ export const QUESTIONS: Question[] = [
     sampleAnswer4: 'Hype Text Markup Language.',
     sampleAnswer5: 'Hyper-Text Markup Language.',
     isActive: true,
-    bucketId: 1
+    bucketId: 6
   },
   { questionID: 20,
     questionText: 'What is the first element of a HTML document?',
@@ -99,7 +99,7 @@ export const QUESTIONS: Question[] = [
     sampleAnswer4: 'DocumentType',
     sampleAnswer5: '!DOCTYPE',
     isActive: true,
-    bucketId: 1
+    bucketId: 7
   },
   { questionID: 21,
     questionText: 'Name some HTML tags and explain them.',
@@ -109,7 +109,7 @@ export const QUESTIONS: Question[] = [
     sampleAnswer4: '<HTML>, <head> provides metadata, <body>',
     sampleAnswer5: '<head> provides metadata, <body> the body of the document, <br> provides a single line break, <button> creates a clickable button',
     isActive: true,
-    bucketId: 1
+    bucketId: 7
   },
   
 ];

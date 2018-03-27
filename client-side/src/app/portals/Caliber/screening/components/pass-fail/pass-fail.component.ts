@@ -80,7 +80,6 @@ export class PassFailComponent implements OnInit {
   }
 
   submit(){
-    console.log(this.passChecked);
     if(this.passChecked){
       this.pass();
     } else if (this.failChecked){
