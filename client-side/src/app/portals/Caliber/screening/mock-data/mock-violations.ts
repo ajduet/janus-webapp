@@ -18,7 +18,7 @@ export const MOCK_VIOLATIONS: SoftSkillViolation[] = [
       violationType: "Dress"
     },
     Time: new Date(), 
-    Comment: "Nude during interview"
+    Comment: "Wearing white after labor day. Ghastly."
   },
   { violationID: 13, 
     screeningID: 1, 
@@ -27,7 +27,7 @@ export const MOCK_VIOLATIONS: SoftSkillViolation[] = [
       violationType: "Speech"
     },
     Time: new Date(), 
-    Comment: "only spoke in Russian"
+    Comment: "Mumbled incoherently"
   },
   { violationID: 14, 
     screeningID: 1, 
@@ -36,6 +36,6 @@ export const MOCK_VIOLATIONS: SoftSkillViolation[] = [
       violationType: "Misc"
     },
     Time: new Date(), 
-    Comment: "Was drinking vodka during interview"
+    Comment: "Wasn't always paying attention during interview"
   }
 ];
