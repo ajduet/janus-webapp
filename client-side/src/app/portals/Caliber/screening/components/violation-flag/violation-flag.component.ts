@@ -25,6 +25,7 @@ export class ViolationFlagComponent implements OnInit {
   violationTypes: ViolationType[];
   violationTypesChecked: ViolationType[] = [];
   public candidateName: string;
+  public addViolation: boolean = false;
 
   constructor(
     private simpleTraineeService: SimpleTraineeService,
@@ -52,6 +53,14 @@ export class ViolationFlagComponent implements OnInit {
       this.violationTypesChecked.splice(index);
     }
     console.log(changedViolationType.violationType);
+  }
+
+  submitViolation() {
+    //Send request with the violation + comments to database
+  }
+
+  cancelViolation() {
+    
   }
 
 }
