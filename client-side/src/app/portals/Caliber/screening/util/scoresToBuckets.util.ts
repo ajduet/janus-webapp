@@ -44,7 +44,11 @@ export class ScoresToBucketsUtil {
         let weightedTotal = 0;
         bucketNames.forEach(thisSummary => {
             if (bucketNames[breakdownIndex] != "skip") {
-                breakdowns.push(scores[breakdownIndex] + "/" + totals[breakdownIndex] + " " + bucketNames[breakdownIndex]);
+                let weightedbucket = (bucketsByWeight.weights[breakdownIndex] + normalizeWeight);
+                let weightedscore = scores[breakdownIndex]/totals[breakdownIndex] * weightedbucket;
+
+                //breakdowns.push(scores[breakdownIndex] + "/" + totals[breakdownIndex] + " " + bucketNames[breakdownIndex]);
+                breakdowns.push(Number(weightedscore).toFixed(0) + "/" + Number(weightedbucket).toFixed(0)    + " " + bucketNames[breakdownIndex]);
                 weightedTotal += (scores[breakdownIndex]/totals[breakdownIndex]) * (bucketsByWeight.weights[breakdownIndex] + normalizeWeight);
             }
             breakdownIndex++;
