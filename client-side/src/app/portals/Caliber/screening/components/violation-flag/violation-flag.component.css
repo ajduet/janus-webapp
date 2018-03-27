@@ -19,6 +19,13 @@
     margin: auto 20px;
     display: inline-flex;
   }
+  .violation-container {
+    background-color: #f2692580;
+    border-color: #f2692590;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;
+  }
   
   /* #############################
           TOGGLE BUTTONS 
@@ -188,3 +195,7 @@ input:checked + .slider .off
 .slider.round:before {
   border-radius: 50%;
 } 
+.violation-comment {
+  padding-left: 10px;
+  padding-right: 10px;
+}
