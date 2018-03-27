@@ -7,6 +7,12 @@ import { SimpleTrainee } from '../../entities/simpleTrainee';
 import { TRAINEES } from '../../mock-data/mock-simpleTrainees';
 import { UrlUtilService } from '../UrlUtil/url-util.service';
 
+/*
+Used to obtain the collection of 
+candidates waiting to be screened, 
+set the candidate being screened, 
+and get the candidate being screened
+*/
 @Injectable()
 export class SimpleTraineeService {
 

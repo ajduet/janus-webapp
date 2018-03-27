@@ -4,7 +4,9 @@ import { of } from 'rxjs/observable/of';
 import {ScreenerBucket} from '../../entities/screenerBucket';
 import { SCREENERBUCKETS } from '../../mock-data/mock-screenerBuckets';
 
+/*
 
+*/
 @Injectable()
 export class ScreenerBucketsService {
 

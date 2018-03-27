@@ -9,6 +9,11 @@ import { ViolationType } from '../../entities/violationType';
 import { MOCK_VIOLATIONS } from '../../mock-data/mock-violations';
 import { UrlUtilService } from '../UrlUtil/url-util.service';
 
+/*
+Separate from but related to the Soft Skills service, 
+this is used to create / read / delete flags for soft skill violations. 
+Each time the screener flags a violation, this service is invoked
+*/
 @Injectable()
 export class SoftSkillsViolationService {
 

@@ -29,6 +29,25 @@ import { SimpleTraineeService } from "../../services/simpleTrainee/simple-traine
   templateUrl: "./questions-table.component.html",
   styleUrls: ["./questions-table.component.css"]
 })
+
+/*
+After the candidate has given their introduction, 
+the screener will proceed to the question-and-answer part of the interview. 
+A list of questions will be fetched from the server / database, 
+based on the skills that the screener input on the candidate introduction page. 
+Screener will be able to see a set of category tabs, 
+each of which has a set of questions in a table. 
+
+Screener has the ability to navigate between tabs ad nauseam, 
+asking whichever questions they desire. When a screener asks a question, 
+it will invoke an instance of the question component.
+
+Possible change for the future there are no programmatic constraints 
+on how many questions a screener can ask, nor are there any constraints 
+on what the proportion of questions must be (x% Java, y% HTML, z% SQL, etc). 
+Future iterations may change this.
+*/
+
 export class QuestionsTableComponent implements OnInit, OnDestroy {
   // Used to display the categories
   questionBuckets: Bucket[];

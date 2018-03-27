@@ -7,6 +7,10 @@ import { SkillType } from "../../entities/skillType";
 import { SKILLTYPES } from "../../mock-data/mock-skillTypes";
 import { UrlUtilService } from '../UrlUtil/url-util.service';
 
+/*
+Used to get the mock data to create mock candidates. 
+Code exists in repository, but is being refactored in the Skill Type Bucket Service
+*/
 @Injectable()
 export class SkillTypeService {
   private ROOT_URL: string = this.urlUtilService.getBase() + "/skillType";

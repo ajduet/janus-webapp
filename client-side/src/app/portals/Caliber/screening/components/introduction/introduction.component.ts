@@ -17,6 +17,14 @@ import { SkillType } from '../../entities/skillType';
   templateUrl: './introduction.component.html',
   styleUrls: ['./introduction.component.css']
 })
+
+/*
+  When the interview begins, candidate will give a short intro about themselves 
+  including a list of their technical skills (Java, SQL, HTML, etc). 
+  The screener will check the skills the candidate lists (required), 
+  flag any soft skill violations (optional) and give general 
+  feedback on the candidates introduction (optional).
+*/
 export class IntroductionComponent implements OnInit {
 
   constructor(public tagService : TagService, private simpleTraineeService: SimpleTraineeService,

@@ -7,6 +7,11 @@ import { Bucket } from '../../entities/bucket';
 import { BUCKETS } from '../../mock-data/mock-buckets';
 import { UrlUtilService } from '../UrlUtil/url-util.service';
 
+/*
+Gets / Sets the buckets necessary for conducting the interview. 
+The buckets are chosen when the screener selects 
+tags to interview on upon reviewing the candidate's introduction. 
+*/
 @Injectable()
 export class BucketService {
 
