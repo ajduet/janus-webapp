@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 
 
 import { HttpParams } from '@angular/common/http';
-import { ScreeningService } from '../../services/screening/screenings.service';
+import { ScreeningService } from '../../services/screening/screening.service';
 
 @Component({
   selector: 'app-pass-fail',

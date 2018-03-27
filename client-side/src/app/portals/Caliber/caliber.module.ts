@@ -55,7 +55,7 @@ import { TagService } from './screening/services/tag/tag.service';
 import { SoftSkillsService } from './screening/services/soft-skills/soft-skills.service';
 import { SoftSkillsViolationService } from './screening/services/soft-skills-violation/soft-skills-violation.service'
 import { ViolationTypeService } from './screening/services/violationType/violationType.service';
-import { ScreeningService } from './screening/services/screening/screenings.service';
+import { ScreeningService } from './screening/services/screening/screening.service';
 import { ScreenerBucketsService } from './screening/services/screener-buckets/screener-buckets.service';
 import { SkillTypeBucketService } from './screening/services/skillTypeBucketLookup/skill-type-bucket.service';
 import { UrlUtilService } from './screening/services/UrlUtil/url-util.service';

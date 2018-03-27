@@ -12,7 +12,7 @@ import { SkillType } from "../../entities/skillType";
 // Services
 import { SimpleTraineeService } from "../../services/simpleTrainee/simple-trainee.service";
 import { SkillTypeService } from "../../services/skillType/skill-type.service";
-import { ScreeningService } from "../../services/screening/screenings.service";
+import { ScreeningService } from "../../services/screening/screening.service";
 
 // Installed Modules
 // npm install ngx-pagination --save
