@@ -48,8 +48,6 @@ export class AnswerComponent implements OnInit {
             this.questionScores.splice(this.questionScores.indexOf(q), 1);
       }
       this.questionScores.push(this.questionScore);
-      console.log('Length: ' + this.questionScores.length);
-      console.log('Score: ' + this.questionScore.score);
       this.questionScoreService.updateQuestionScores(this.questionScores);
   }
 }

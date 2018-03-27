@@ -70,7 +70,6 @@ export class IntroductionComponent implements OnInit {
       let index = this.tagService.tagListChecked.findIndex(x => x == changedTag);
       this.tagService.tagListChecked.splice(index,1);
     }
-    console.log(changedTag.tagName);
   }
 
   onSubmit(){
