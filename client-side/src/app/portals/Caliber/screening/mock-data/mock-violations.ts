@@ -18,7 +18,7 @@ export const MOCK_VIOLATIONS: SoftSkillViolation[] = [
       violationType: "Dress"
     },
     Time: new Date(), 
-    Comment: "Wearing white after labor day. Ghastly.
+    Comment: "Wearing white after labor day. Ghastly."
   },
   { violationID: 13, 
     screeningID: 1, 
