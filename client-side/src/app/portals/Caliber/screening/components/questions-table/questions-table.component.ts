@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Subscription } from 'rxjs/Subscription'; 
 
 // Entities
 import { Question } from "../../entities/question";
@@ -20,7 +21,7 @@ import { AnswerComponent } from "../answer/answer.component";
 
 // ngbootstrap modal
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
-import { ScreeningService } from "../../services/screening/screenings.service";
+import { ScreeningService } from "../../services/screening/screening.service";
 import { SimpleTraineeService } from "../../services/simpleTrainee/simple-trainee.service";
 
 @Component({
@@ -28,7 +29,7 @@ import { SimpleTraineeService } from "../../services/simpleTrainee/simple-traine
   templateUrl: "./questions-table.component.html",
   styleUrls: ["./questions-table.component.css"]
 })
-export class QuestionsTableComponent implements OnInit {
+export class QuestionsTableComponent implements OnInit, OnDestroy {
   // Used to display the categories
   questionBuckets: Bucket[];
 
@@ -45,6 +46,8 @@ export class QuestionsTableComponent implements OnInit {
   // The candidate's name
   candidateName: string;
 
+  subscriptions: Subscription[] = [];
+
   constructor(
     private bucketService: BucketService,
     private questionService: QuestionService,
@@ -60,16 +63,16 @@ export class QuestionsTableComponent implements OnInit {
     // use skillTypeBucketLookup that provides array of buckets and array of weights
     // SkillType should come from SimpleTrainee***
     let thisSkillTypeID = 1;
-    this.skillTypeBucketService.getSkillTypeBuckets(thisSkillTypeID).subscribe(bucketsWithWeights => {
+    this.subscriptions.push(this.skillTypeBucketService.getSkillTypeBuckets(thisSkillTypeID).subscribe(bucketsWithWeights => {
       console.log(bucketsWithWeights);
       // save result locally and to service and as buckets
       this.skillTypeBucketService.bucketsByWeight = bucketsWithWeights;
 
-      this.questionService.getQuestions().subscribe(allQuestions => {
+      this.subscriptions.push(this.questionService.getQuestions().subscribe(allQuestions => {
         this.questionBuckets = this.questionsToBucketsUtil.saveQuestions(allQuestions, bucketsWithWeights);
         if (this.questionBuckets.length > 0) this.currentCategory = this.questionBuckets[0];
-      });
-    });
+      }));
+    }));
 
     /* old raw buckets with no weights*/
     // let tempBuckets: Bucket[];
@@ -108,9 +111,17 @@ export class QuestionsTableComponent implements OnInit {
     
     // update the answeredQuestions variable in our service to track the
     // questions that have been given a score by the screener.
-    this.questionScoreService.currentQuestionScores.subscribe(
+    this.subscriptions.push(this.questionScoreService.currentQuestionScores.subscribe(
       questionScores => (this.questionScores = questionScores)
-    );
+    ));
+  }
+
+  //Unsubscribe to prevent memory leaks when component is destroyed
+  ngOnDestroy(){
+    this.subscriptions.forEach(s => s.unsubscribe);
+    for (let bucket of this.questionBuckets) {
+      bucket.questions = [];
+    }
   }
 
   // sets the current category, allowing for dynamic change
