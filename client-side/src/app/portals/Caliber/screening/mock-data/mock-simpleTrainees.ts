@@ -26,7 +26,7 @@ export const TRAINEES: SimpleTrainee[] = [
     {
         traineeID: 5,
         firstname: 'Catherine',
-        lastname: 'Malzareh',
+        lastname: 'Mahzareh',
         skillTypeID: 2,
         schedule: new Date(2018, 2, 23, 14)
     },
