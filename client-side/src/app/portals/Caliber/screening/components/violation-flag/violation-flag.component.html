@@ -1,13 +1,25 @@
+
 <div id="violations-checkbox">
-  <label>Report Soft Skill Violations</label>
-  <div class="violation" *ngFor="let violationType of violationTypes; let i = index">
-    <!-- Create a checkbox for each tag using ngFor. Toggle buttons instead of checkboxes! -->
-    <span>
-      {{violationType.violationType}}
-      <label class="violation-switch">
-        <input type="checkbox" (change)="updateViolationList(violationType, $event.target.checked)" id="checkbox{{i}}">
-        <span class="violation-slider violation-round"></span>
-      </label>
-    </span>
+  <button (click)="addViolation = !addViolation">Report Violation</button>
+  <br>
+  <div *ngIf="addViolation">
+    <label>Report Soft Skill Violations</label>
+    <div class="violation" *ngFor="let violationType of violationTypes; let i = index">
+      <!-- Create a checkbox for each tag using ngFor. Toggle buttons instead of checkboxes! -->
+      <span id="pass-fail-button">
+        <label class="switch">
+          <input type="radio" name="violations"/>
+          <div class="slider round">
+            <span class="on">{{violationType.violationType}}</span>
+            <span class="off">{{violationType.violationType}}</span>
+          </div>
+        </label>
+      </span>
+    </div>
+    <div>
+      <textarea class="form-control"></textarea>
+    </div>
+    <button (click)="submitViolation(); addViolation = !addViolation">Add Violation</button>
+    <button (click)="cancelViolation(); addViolation = !addViolation">Cancel</button>
   </div>
 </div>

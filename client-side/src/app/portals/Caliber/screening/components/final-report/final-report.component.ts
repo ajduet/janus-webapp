@@ -33,6 +33,8 @@ allTextString: string;
 
 questionScores: QuestionScore[];
 
+public checked: string;
+
 
   constructor(
     private screeningService: ScreeningService,
@@ -43,6 +45,7 @@ questionScores: QuestionScore[];
   ) { }
 
   ngOnInit() {
+    this.checked = 'false';
     this.candidateName = this.simpleTraineeService.getSelectedCandidate().firstname + " " +
                           this.simpleTraineeService.getSelectedCandidate().lastname;
     this.softSkillString = "Soft Skills: " + this.screeningService.softSkillsResult;
@@ -66,7 +69,7 @@ questionScores: QuestionScore[];
 
   //Used for copying the data to the clipboard (this is done using ngx-clipboard)
   copyToClipboard(){
-
+    this.checked = 'true';
     let selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';
