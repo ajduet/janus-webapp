@@ -194,3 +194,12 @@ h2{
   .slider.round:before {
     border-radius: 50%;
   } 
+
+  /* #############################
+        FEEDBACK COMMENT
+############################# */
+.form-control{
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+}

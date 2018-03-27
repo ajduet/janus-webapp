@@ -173,13 +173,7 @@ export class QuestionsTableComponent implements OnInit, OnDestroy {
 
   submitAllowed(): boolean {
     let allowed: boolean = true;
-    if (this.questionScores) {
-      if (this.questionScores.length < 1) {
-        allowed = false;
-      }
-    } else {
-      allowed = false;
-    }
+
     if (this.generalComment) {
       if (this.generalComment.length < 1) {
         allowed = false;
