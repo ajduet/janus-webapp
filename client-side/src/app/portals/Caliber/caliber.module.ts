@@ -48,6 +48,7 @@ import { SimpleTraineeService } from './screening/services/simpleTrainee/simple-
 import { BucketService } from './screening/services/bucket/bucket.service';
 import { QuestionService } from './screening/services/question/question.service';
 import { QuestionsToBucketsUtil } from './screening/util/questionsToBuckets.util';
+import { ScoresToBucketsUtil } from './screening/util/scoresToBuckets.util';
 import { QuestionScoreService } from './screening/services/question-score/question-score.service';
 import { SkillTypeService } from './screening/services/skillType/skill-type.service';
 import { TagService } from './screening/services/tag/tag.service';
@@ -287,6 +288,7 @@ import { ViolationFlagComponent } from './screening/components/violation-flag/vi
     BucketService,
     QuestionService,
     QuestionsToBucketsUtil,
+    ScoresToBucketsUtil,
     TagService,
     QuestionScoreService,
     SkillTypeService,

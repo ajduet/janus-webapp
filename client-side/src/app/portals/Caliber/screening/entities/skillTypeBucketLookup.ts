@@ -5,5 +5,5 @@ export interface SkillTypeBucketLookUp{
     skillTypeBucketLookupID: number;
     skillType: SkillType;
     buckets: Bucket[];
-    weight: number[];
+    weights: number[];
 }

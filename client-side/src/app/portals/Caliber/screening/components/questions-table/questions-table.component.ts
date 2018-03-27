@@ -30,7 +30,7 @@ import { SimpleTraineeService } from "../../services/simpleTrainee/simple-traine
 })
 export class QuestionsTableComponent implements OnInit {
   // Used to display the categories
-  buckets: Bucket[];
+  questionBuckets: Bucket[];
 
   // holds the current category. Used to control
   // which questions are displayed in the questions table.
@@ -49,31 +49,29 @@ export class QuestionsTableComponent implements OnInit {
     private bucketService: BucketService,
     private questionService: QuestionService,
     private questionScoreService: QuestionScoreService,
-    private filteredBuckets: QuestionsToBucketsUtil,
+    private questionsToBucketsUtil: QuestionsToBucketsUtil,
     private modalService: NgbModal,
     private screeningService: ScreeningService,
     private simpleTraineeService: SimpleTraineeService,
-    private SkillTypeBucketService: SkillTypeBucketService,
+    private skillTypeBucketService: SkillTypeBucketService,
   ) {}
 
   ngOnInit() {
     // use skillTypeBucketLookup that provides array of buckets and array of weights
-    let tempSkillTypeBucket: SkillTypeBucketLookUp;
     // SkillType should come from SimpleTrainee***
     let thisSkillTypeID = 1;
-    this.SkillTypeBucketService.getSkillTypeBuckets(thisSkillTypeID).subscribe(data => {
-      tempSkillTypeBucket = data;
-      let tempQuestions: Question[];
-      this.questionService.getQuestions().subscribe(data => {
-        tempQuestions = data;
-        this.filteredBuckets.saveQuestions(tempQuestions, tempSkillTypeBucket);
+    this.skillTypeBucketService.getSkillTypeBuckets(thisSkillTypeID).subscribe(bucketsWithWeights => {
+      console.log(bucketsWithWeights);
+      // save result locally and to service and as buckets
+      this.skillTypeBucketService.bucketsByWeight = bucketsWithWeights;
+
+      this.questionService.getQuestions().subscribe(allQuestions => {
+        this.questionBuckets = this.questionsToBucketsUtil.saveQuestions(allQuestions, bucketsWithWeights);
+        if (this.questionBuckets.length > 0) this.currentCategory = this.questionBuckets[0];
       });
     });
 
     /* old raw buckets with no weights*/
-
-    this.candidateName = this.simpleTraineeService.getSelectedCandidate().firstname + " " +
-                          this.simpleTraineeService.getSelectedCandidate().lastname;
     // let tempBuckets: Bucket[];
     // // change to the getBucketsBySkillTypeID
     // this.bucketService.getBuckets().subscribe(data => {
@@ -88,8 +86,10 @@ export class QuestionsTableComponent implements OnInit {
     //   });
     // });
 
-
+    this.candidateName = this.simpleTraineeService.getSelectedCandidate().firstname + " " +
+                          this.simpleTraineeService.getSelectedCandidate().lastname;
     
+
     // set the buckets array to all necessary categories.
 
     // FOR FUTURE USE
@@ -105,7 +105,7 @@ export class QuestionsTableComponent implements OnInit {
     //   tempQuestions,
     //   tempBuckets
     // );
-    if (this.buckets.length > 0) this.currentCategory = this.buckets[0];
+    
     // update the answeredQuestions variable in our service to track the
     // questions that have been given a score by the screener.
     this.questionScoreService.currentQuestionScores.subscribe(
@@ -119,7 +119,7 @@ export class QuestionsTableComponent implements OnInit {
     // iterate through each bucket
     // if the current bucket's id matches the bucket id
     // of the category selected by the user
-    for (let bucket of this.buckets)
+    for (let bucket of this.questionBuckets)
       if (bucket.bucketID == bucketID)
         // set the current category to the current bucket.
         this.currentCategory = bucket;
