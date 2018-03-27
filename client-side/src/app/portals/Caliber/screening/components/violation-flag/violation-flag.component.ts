@@ -8,6 +8,18 @@ import { SimpleTraineeService } from '../../services/simpleTrainee/simple-traine
   templateUrl: './violation-flag.component.html',
   styleUrls: ['./violation-flag.component.css']
 })
+
+/*
+For a given set of "soft skill" violations 
+(using profanity, not professionally dressed, rudeness, etc), 
+the screener is able to add a "flag" for a soft skill violation. 
+Upon a given incident the screener can select the type(s) of violation 
+that occurred and add a message giving specific explanation.
+
+This component is included in several others, 
+to ensure quick access during the entire interview.
+*/
+
 export class ViolationFlagComponent implements OnInit {
 
   violationTypes: ViolationType[];

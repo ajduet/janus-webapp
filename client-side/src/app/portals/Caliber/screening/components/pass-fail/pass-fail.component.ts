@@ -16,6 +16,19 @@ import { ScreeningService } from '../../services/screening/screenings.service';
   templateUrl: './pass-fail.component.html',
   styleUrls: ['./pass-fail.component.css']
 })
+
+/*
+Once the question-and-answer phase has been completed, 
+the screener is directed to this component. 
+All violation flags specified are listed in a table, 
+where the flag can be removed if desired. 
+Screener is able to add any additional flags needed, 
+and is able to provide optional feedback for candidate's soft skills overall.
+
+The screener must specify if the candidate passed or failed the 
+soft skills portion of the interview before they can view the final summary.
+*/
+
 export class PassFailComponent implements OnInit {
 
   //Candidate Name

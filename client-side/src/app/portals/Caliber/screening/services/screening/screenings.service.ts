@@ -6,6 +6,10 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Screening } from "../../entities/screening";
 import { UrlUtilService } from '../UrlUtil/url-util.service';
 
+/*
+Used to begin interviews (transition from list of candidates to evaluation of a candidate's "about me"). 
+Also used to obtain screening ID as an observable.
+*/
 @Injectable()
 export class ScreeningService {
   constructor(private httpClient: HttpClient,

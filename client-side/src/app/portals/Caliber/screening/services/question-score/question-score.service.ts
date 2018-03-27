@@ -5,6 +5,9 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { QuestionScore } from '../../entities/questionScore';
 import { HttpClientModule } from '@angular/common/http';
 
+/*
+Exchanges data between QuestionBank (the table) and Question (the modal) components.
+*/
 @Injectable()
 export class QuestionScoreService {
 

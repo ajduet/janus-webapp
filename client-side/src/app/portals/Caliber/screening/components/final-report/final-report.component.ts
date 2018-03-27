@@ -12,6 +12,13 @@ import { ScoresToBucketsUtil } from '../../util/scoresToBuckets.util'
   styleUrls: ['./final-report.component.css']
 })
 
+/*
+A simple text summary of how the candidate performed 
+in each category on technical skills,the overall feedback thereon, 
+and if the candidate passed or failed their soft skills evaluation. 
+Screener can copy the summary to the clipboard, and return to the candidate list. 
+*/
+
 export class FinalReportComponent implements OnInit {
 //Candidate's name
 public candidateName: string;

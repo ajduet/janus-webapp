@@ -7,6 +7,10 @@ import { SkillTypeBucketLookUp } from '../../entities/skillTypeBucketLookup';
 import { SKILL_TYPE_BUCKET_LOOKUP } from '../../mock-data/mock-skillTypeBucketLookup';
 import { UrlUtilService } from '../UrlUtil/url-util.service';
 
+/*
+Used to move the data for buckets and their related weights. 
+Overall score for the evaluation is a weighted average of the scores for each bucket.
+*/
 @Injectable()
 export class SkillTypeBucketService {
   private ROOT_URL: string = this.urlUtilService.getBase() + "/bucket";
