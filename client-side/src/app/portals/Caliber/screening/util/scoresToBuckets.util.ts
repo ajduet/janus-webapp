@@ -13,7 +13,7 @@ export class ScoresToBucketsUtil {
         let totalWeights = 0;
         let totalBuckets = 0;
         // Loop through the buckets provided by the SkillTypeBucketLookup entity
-        bucketsByWeight.bucket.forEach(thisBucket => {
+        bucketsByWeight.buckets.forEach(thisBucket => {
             questionsAsked = 0;
             totals[bucketIndex] = 0;
             scores[bucketIndex] = 0;
