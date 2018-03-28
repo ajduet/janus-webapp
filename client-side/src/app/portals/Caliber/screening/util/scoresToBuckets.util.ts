@@ -21,7 +21,7 @@ export class ScoresToBucketsUtil {
                 // If the questions array in this bucket is populated, loop through the question
                 thisBucket.questions.forEach(thisQuestion => {
                     let matchingQuestion = questionScores.find(function(element) {
-                        return element.questionID == thisQuestion.questionId;
+                        return element.questionId == thisQuestion.questionId;
                     });
                     // If this question has been answered, add it to the total
                     if (matchingQuestion) {
