@@ -20,7 +20,8 @@ export class ScreeningService {
   public softSkillsResult: string;
   public generalComments: string;
   public screeningID$: Observable<Screening>;
-
+  compositeScore: number;
+  finalSoftSkillComment: string;
   retrieveScreening(): Observable<Screening> {
     this.screeningID$ = this.httpClient.post<Screening>("", {});
     return this.screeningID$;
@@ -46,4 +47,19 @@ export class ScreeningService {
   getScreeningID() {
     return this.screeningID$;
   }
+
+  endScreening(softSkillComment: string, ): void {
+    let screeningId: number;
+    this.screeningID$.subscribe(data => screeningId = screeningId);
+    this.httpClient.post(this.ROOT_URL + '/screening-service/screening/end', Object.assign({}, "complete", this.convertToBoolean(this.softSkillsResult), this.finalSoftSkillComment, new Date(), screeningId, this.compositeScore))
+  }
+
+  convertToBoolean(input: string): boolean | undefined {
+    try {
+        return JSON.parse(input);
+    }
+    catch (e) {
+        return undefined;
+    }
+}
 }

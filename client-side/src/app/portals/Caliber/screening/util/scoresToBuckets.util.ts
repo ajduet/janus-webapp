@@ -56,6 +56,7 @@ export class ScoresToBucketsUtil {
             breakdownIndex++;
         });
         breakdowns.push("Overall: " + Number(weightedTotal).toFixed(1) + "%");
+        breakdowns.push(weightedTotal.toString());
         return breakdowns;
     }
 }

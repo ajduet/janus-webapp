@@ -56,8 +56,14 @@ public checked: string;
       questionScores => {
         this.questionScores = questionScores;
         this.bucketStringArray = this.scoresToBucketsUtil.getFinalBreakdown(this.questionScores, this.skillTypeBucketService.bucketsByWeight);
+        
+        //set the composite score in the screening service
+        this.screeningService.compositeScore = +this.bucketStringArray[this.bucketStringArray.length-1];
+        this.bucketStringArray.splice(this.bucketStringArray.length-1, 1);
+
         this.overallScoreString = this.bucketStringArray[this.bucketStringArray.length-1];
         this.bucketStringArray.splice(this.bucketStringArray.length-1, 1);
+
         this.bucketStringArray.forEach(bucketString => {
           this.allTextString += bucketString + "\n";
         });
