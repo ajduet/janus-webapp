@@ -15,7 +15,7 @@ export class ScheduleScreeningService {
 
   getScheduleScreenings(): Observable<ScheduledScreening[]> {
     return this.httpClient.get<ScheduledScreening[]>(
-      this.urlUtilService.getBase() + "/screening/scheduledScreenings.json"
+      this.urlUtilService.getBase() + "/screening-service/screening/scheduledScreenings"
     );
   }
 }

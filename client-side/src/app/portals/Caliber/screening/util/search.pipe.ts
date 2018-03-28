@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from "@angular/core";
 import { SimpleTrainee } from '../entities/simpleTrainee';
+import { ScheduledScreening } from '../entities/scheduleScreening';
 
 @Pipe({
   name: "searchPipe"
@@ -7,7 +8,7 @@ import { SimpleTrainee } from '../entities/simpleTrainee';
 export class SearchPipe implements PipeTransform {
   // the array of candidates is passed to the pipe and fed as the 'items' param.
   // the screener input in the searchbar is passed to the pipe as 'searchText' 
-  transform(items: SimpleTrainee[], searchText: string): any[] {
+  transform(items: ScheduledScreening[], searchText: string): any[] {
     // if there are no pending screenings, return an empty array
     if (!items) return [];
     // if the search bar is empty, do not change the current screenings being displayed
@@ -18,7 +19,7 @@ export class SearchPipe implements PipeTransform {
     return items.filter(it => {
       // return only the screenings whose firstname includes the search text
       // or last name includes the search text. 
-      return it.firstname.toLowerCase().includes(searchText) || it.lastname.toLowerCase().includes(searchText) || (it.firstname.toLowerCase() + ' ' + it.lastname.toLowerCase()).includes(searchText);
+      return it.trainee.firstname.toLowerCase().includes(searchText) || it.trainee.lastname.toLowerCase().includes(searchText) || (it.trainee.firstname.toLowerCase() + ' ' + it.trainee.lastname.toLowerCase()).includes(searchText);
     });
   }
 }

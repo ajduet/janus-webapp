@@ -17,7 +17,7 @@
       </thead>
       <tbody>
         <ng-container *ngFor="let i = index; let scheduledScreening of scheduledScreenings | searchPipe: searchText | paginate: { itemsPerPage: 10, currentPage: p } ">
-          <tr (click)="showBeginScreeningPrompt = !showBeginScreeningPrompt; selectedCandidate = scheduledScreening.trainee, selectedScheduledScreening = scheduledScreening">
+          <tr (click)="showBeginScreeningPrompt = !showBeginScreeningPrompt; selectedCandidate = scheduledScreening.trainee; selectedScheduledScreening = scheduledScreening">
             <td>{{scheduledScreening.trainee.firstname}} {{scheduledScreening.trainee.lastname}}</td>
             <td>{{scheduledScreening.trainee.skillTypeName}}</td>
             <td>{{scheduledScreening.trainee.schedule | date:'short'}}</td>
