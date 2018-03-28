@@ -24,7 +24,7 @@ export class TagService {
   constructor(private http: HttpClient,
     private urlUtilService: UrlUtilService) { }
 
-  private ROOT_URL: string = this.urlUtilService.getBase() + '/tag';
+  private ROOT_URL: string = this.urlUtilService.getBase();
 
   public tagListChecked: Tag[];
 

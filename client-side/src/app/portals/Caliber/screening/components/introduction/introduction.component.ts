@@ -48,15 +48,16 @@ export class IntroductionComponent implements OnInit {
       + this.simpleTraineeService.getSelectedCandidate().lastname;
     let tempSkillTypes: SkillType[];
     this.skillTypeService.getSkillTypes().subscribe(skillTypes => tempSkillTypes = skillTypes);
-    this.traineeTrack = tempSkillTypes[this.simpleTraineeService.getSelectedCandidate().skillTypeID].skillTypeName;
+    this.traineeTrack = tempSkillTypes[this.simpleTraineeService.getSelectedCandidate().skillTypeID-51].skillTypeName;
 
-    //Get all test tags
+    //Get all tags
     this.getTags();
   }
 
   getTags(): void {
     this.tagService.getAllTags().subscribe(
       allTags => {
+        console.log(allTags);
         this.tagList = allTags;
       }
     );
