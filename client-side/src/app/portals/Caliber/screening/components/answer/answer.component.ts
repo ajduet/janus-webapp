@@ -30,7 +30,7 @@ export class AnswerComponent implements OnInit {
   ngOnInit() {
     this.questionScore = {
       qSID: null,
-      questionID: this.question.questionID,  
+      questionID: this.question.questionId,  
       screeningID: null,
       score: 0,
       commentary: '',
@@ -43,9 +43,11 @@ export class AnswerComponent implements OnInit {
   saveQuestionScore(): void{
       //
       if(this.questionScores.length > 0 ) {
-        for(let q of this.questionScores) 
-          if(q.questionID == this.questionScore.questionID) 
+        for(let q of this.questionScores) {
+          if(q.questionID == this.questionScore.questionID) {
             this.questionScores.splice(this.questionScores.indexOf(q), 1);
+          }
+        }
       }
       this.questionScores.push(this.questionScore);
       this.questionScoreService.updateQuestionScores(this.questionScores);
