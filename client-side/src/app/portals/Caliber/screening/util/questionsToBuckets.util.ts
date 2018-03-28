@@ -10,7 +10,7 @@ export class QuestionsToBucketsUtil {
     allQuestions.forEach(question => {
       // If the buckets array is empty, add this question's bucket to it
       if (this.returnBuckets.length == 0) {
-        let matchingBucket = allBuckets.bucket.find(function(element) {
+        let matchingBucket = allBuckets.buckets.find(function(element) {
           return element.bucketID == question.bucketId;
         });
         // After adding the new bucket, add the current question to the new bucket
@@ -26,7 +26,7 @@ export class QuestionsToBucketsUtil {
         });
         // If this question's bucket is not listed, add it
         if (!existingBucket) {
-          let matchingBucket = allBuckets.bucket.find(function(element) {
+          let matchingBucket = allBuckets.buckets.find(function(element) {
             return element.bucketID == question.bucketId;
           });
           // After adding the new bucket, add the current question to the new bucket
