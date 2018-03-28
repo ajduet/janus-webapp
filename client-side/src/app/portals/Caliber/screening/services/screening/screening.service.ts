@@ -12,7 +12,7 @@ export class ScreeningService {
     private urlUtilService: UrlUtilService) {}
 
   // Need to change to match the backend
-  private ROOT_URL: string = this.urlUtilService.getBase() + "/screening";
+  private ROOT_URL: string = this.urlUtilService.getBase();
   headers = new HttpHeaders({
     "Content-type": "application/json"
   });
@@ -28,20 +28,17 @@ export class ScreeningService {
   }
 
   beginScreening(
-    traineeID: number,
+    traineeId: number,
     beginTime: Date,
-    trainerID: number,
-    skillTypeID: number
-  ): Observable<Screening> {
-    this.screeningID$ = this.httpClient
-      .post<Screening>(
-        this.ROOT_URL + "/all/trainee.json",
-        JSON.stringify(
-          Object.assign({}, traineeID, beginTime, trainerID, skillTypeID)
-        ),
+    trainerId: number,
+    skillTypeId: number
+  ): Observable<Number> {
+    return this.httpClient
+      .post<Number>(
+        this.ROOT_URL + "/screening-service/screening/start",
+        { traineeId : traineeId, beginTime : beginTime, trainerId : trainerId, skillTypeId : skillTypeId },
         { headers: this.headers }
       );
-    return this.screeningID$;
   }
 
   getScreeningID() {
