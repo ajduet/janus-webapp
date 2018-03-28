@@ -79,12 +79,13 @@ export class PassFailComponent implements OnInit {
     this.disabled = false;
   }
 
-  submit(){
+  submit(finalSoftSkillComment: string){
     if(this.passChecked){
       this.pass();
     } else if (this.failChecked){
       this.fail();
     }
+    this.screeningService.finalSoftSkillComment = finalSoftSkillComment;
   }
 
   getViolations(): void {
