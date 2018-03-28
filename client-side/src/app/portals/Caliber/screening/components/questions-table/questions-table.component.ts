@@ -83,9 +83,7 @@ export class QuestionsTableComponent implements OnInit, OnDestroy {
     // SkillType should come from SimpleTrainee***
     this.subscriptions.push(this.skillTypeBucketService.getSkillTypeBuckets(this.simpleTraineeService.getSelectedCandidate().skillTypeID).subscribe(bucketsWithWeights => {
       // save result locally and to service and as buckets
-      this.skillTypeBucketService.bucketsByWeight = bucketsWithWeights;
-      console.log(this.skillTypeBucketService);
-      
+      this.skillTypeBucketService.bucketsByWeight = bucketsWithWeights;      
       this.subscriptions.push(this.questionService.getQuestions().subscribe(allQuestions => {
         this.questionBuckets = this.questionsToBucketsUtil.saveQuestions(allQuestions, bucketsWithWeights);
         this.skillTypeBucketService.bucketsByWeight.bucket = JSON.parse(JSON.stringify(this.questionBuckets));
