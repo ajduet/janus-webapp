@@ -83,6 +83,7 @@ export class QuestionsTableComponent implements OnInit, OnDestroy {
     // SkillType should come from SimpleTrainee***
     this.subscriptions.push(this.skillTypeBucketService.getSkillTypeBuckets(this.simpleTraineeService.getSelectedCandidate().skillTypeID).subscribe(bucketsWithWeights => {
       // save result locally and to service and as buckets
+
       let myBuckets: Bucket[] = [];
       for ( let e of bucketsWithWeights.bucket) {
         myBuckets.push( 
@@ -107,6 +108,7 @@ export class QuestionsTableComponent implements OnInit, OnDestroy {
       this.subscriptions.push(this.questionService.getQuestions().subscribe(allQuestions => {
         this.questionBuckets = this.questionsToBucketsUtil.saveQuestions(allQuestions, this.skillTypeBucketService.bucketsByWeight);
         this.skillTypeBucketService.bucketsByWeight.buckets = JSON.parse(JSON.stringify(this.questionBuckets));
+
         if (this.questionBuckets.length > 0) this.currentCategory = this.questionBuckets[0];
       }));
     }));
@@ -174,6 +176,8 @@ export class QuestionsTableComponent implements OnInit, OnDestroy {
 
   saveFeedback() {
     this.screeningService.generalComments = this.generalComment;
+    console.log(this.screeningService.generalComments);
+    this.screeningService.submitGeneralComment();
   }
 
 }

@@ -33,7 +33,7 @@ export class PassFailComponent implements OnInit {
 
   //Candidate Name
   public candidateName: string;
-
+  previousViolations: Observable<SoftSkillViolation[]>;
   private passed: boolean;
   violations: SoftSkillViolation[];
   endScreening = false;
@@ -42,6 +42,8 @@ export class PassFailComponent implements OnInit {
   public failChecked: boolean;
   public hasChecked: boolean;
   private screeningID: number;
+
+  public softSkillFeedback: string;
 
   // need a SoftSkillViolationService to get the data
   constructor(private violationService: SoftSkillsViolationService,
@@ -79,21 +81,18 @@ export class PassFailComponent implements OnInit {
     this.disabled = false;
   }
 
-  submit(finalSoftSkillComment: string){
+  submit(){
     if(this.passChecked){
       this.pass();
     } else if (this.failChecked){
       this.fail();
     }
-    this.screeningService.finalSoftSkillComment = finalSoftSkillComment;
+    this.screeningService.finalSoftSkillComment = this.softSkillFeedback;
   }
-
-  getViolations(): void {
-    this.violationService.getPreviousViolations(this.screeningID).subscribe(
-      data => {
-        this.violations = data;
-      }
-    );
+ 
+  
+  getViolations(): Observable<SoftSkillViolation[]> {
+    return this.violationService.getPreviousViolations(this.screeningID);
   }
 
   pass() {

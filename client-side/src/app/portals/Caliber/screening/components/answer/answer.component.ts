@@ -41,7 +41,6 @@ export class AnswerComponent implements OnInit {
   }
   // when a score is set and submitted, update the array of questions scores
   saveQuestionScore(): void{
-      //
       if(this.questionScores.length > 0 ) {
         for(let q of this.questionScores) {
           if(q.questionId == this.questionScore.questionId) {
@@ -51,5 +50,7 @@ export class AnswerComponent implements OnInit {
       }
       this.questionScores.push(this.questionScore);
       this.questionScoreService.updateQuestionScores(this.questionScores);
+      let resp = this.questionScoreService.postQuestionScore(this.questionScore);
+      console.log("POST QUESTION RESPONSE IS "+resp);
   }
 }

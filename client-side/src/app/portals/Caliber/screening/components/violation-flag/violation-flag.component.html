@@ -19,10 +19,10 @@
       </span>
     </div>
     <div class="violation-comment">
-      <textarea class="form-control" placeholder="Optional Soft Skill Violation Feedback"></textarea>
+      <textarea class="form-control" (input)="violationComment = $event.target.value" placeholder="Optional Soft Skill Violation Feedback"></textarea>
     </div>
     <br>
-    <button class="btn" (click)="submitViolation(); addViolation = !addViolation">Add Violation</button>
+    <button class="btn" (click)="submitViolation(violationType, violationComment); addViolation = !addViolation">Add Violation</button>
     <button class="btn" (click)="cancelViolation(); addViolation = !addViolation">Cancel</button>
     <br><br>
   </div>

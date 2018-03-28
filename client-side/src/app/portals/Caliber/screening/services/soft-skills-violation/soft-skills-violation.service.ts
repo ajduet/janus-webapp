@@ -20,11 +20,13 @@ export class SoftSkillsViolationService {
   constructor(private http : HttpClient,
     private urlUtilService: UrlUtilService) { }
 
+  
+  
   // readonly because why wouldn't they be? 
   readonly getViolationTypeURL: string = this.urlUtilService.getBase() + "/violation/all"
-  readonly getViolationURL: string = this.urlUtilService.getBase() + "/screening/violation";
-  readonly addViolationURL: string = this.urlUtilService.getBase() + "/violation/flag";
-  readonly deleteViolationURL: string = this.urlUtilService.getBase() + "/violation/delete";
+  readonly getViolationURL: string = this.urlUtilService.getBase() + "/screening-service/screening/violation/";
+  readonly addViolationURL: string = this.urlUtilService.getBase() + "/screening-service/violation/flag";
+  readonly deleteViolationURL: string = this.urlUtilService.getBase() + "/screening-service/violation/delete/";
 
   /*
   // Real endpoint for future use
@@ -36,7 +38,7 @@ export class SoftSkillsViolationService {
 
   // Fake local data for temp use
   getPreviousViolations(screeningID: number): Observable<SoftSkillViolation[]>{
-    return of(MOCK_VIOLATIONS);
+    return this.http.get<SoftSkillViolation[]>(this.getViolationURL+screeningID);
   }
   
   addViolations(newViolations : ViolationType[], comment : string){
@@ -63,6 +65,17 @@ export class SoftSkillsViolationService {
     this.http.post(this.addViolationURL, { params });
   }
 
+  submitViolation(typeID: number, comment: string, screeningID: string ):
+  Observable<SoftSkillViolation[]>{
+      return this.http.post<SoftSkillViolation[]>(this.addViolationURL,
+      {violationTypeId: [typeID],
+        softSkillComment: comment,
+        violationTime: new Date(),
+        screeningId: screeningID
+      },
+    );
+  }
+
   deleteViolation(violationID: number): Observable<SoftSkillViolation[]>{
     /*
       Once the screener has completed the question-asking portion, they are directed 
@@ -74,8 +87,7 @@ export class SoftSkillsViolationService {
       pipe requires the binding of an observable in the template, but allows the template to be changed
       in response to a change in the observable. Hence, deleteViolation returns an Observable. 
     */
-    let params = new HttpParams().set('id', violationID.toString());
-    return this.http.delete<SoftSkillViolation[]>(this.deleteViolationURL, { params });
+    return this.http.get<SoftSkillViolation[]>(this.deleteViolationURL+`?violationId=${violationID}`);
   }
 
 }
