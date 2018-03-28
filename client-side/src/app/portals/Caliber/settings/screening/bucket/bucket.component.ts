@@ -38,7 +38,6 @@ export class BucketComponent implements OnInit {
     this.theBucket=this.bucketService.getCurrentBucket();
   }
 
-
   /*
   routeToBuckets() sends user back to the tabbed page showing Skill Types and Buckets tabs.
 

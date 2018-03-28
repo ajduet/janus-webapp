@@ -69,7 +69,6 @@ export class SkillTypesComponent implements OnInit {
     }
   }
 
-
     /**
     * Opens the modal for creating and editing skill SkillType
     * Resets fields clears the data within set fields

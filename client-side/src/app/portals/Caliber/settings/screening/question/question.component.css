@@ -64,7 +64,7 @@ h6 {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #F26925; 
+  background: #6c757d; 
   border-radius: 5px;
 }
 #penIcon:hover{

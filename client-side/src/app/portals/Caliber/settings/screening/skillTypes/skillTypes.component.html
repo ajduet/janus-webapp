@@ -5,14 +5,14 @@
 
             <h6 class="card-header">Skill Types</h6>
 
-            <div class="card-body">
+            <div class="card-body" id="skillTypesDiv">
                 <div class="list-group">
                     <a class="list-group-item list-group-item-action" *ngFor="let skillType of skillTypes">
                         {{skillType.skillTypeName}}
                         <i id="xIcon">
                             <label class="switch">
-                                <input type="checkbox" [checked]= skillType.isActive (change)="removeElement(skillType)">
-                                <span class="slider round"></span>
+                                <input type="checkbox" [checked]= skillType.isActive (change)="removeElement(skillType)" >
+                                <span class="slider round"placement="top" ngbTooltip="deactivate"></span>
                             </label>
                         </i>
                         <i id="penIcon" class="fa fa-pencil pull-right" (click)="editSkillType(skillType); open(content)" placement="top" ngbTooltip="edit">
@@ -24,7 +24,7 @@
                         <i id="xIcon">
                             <label class="switch">
                                 <input type="checkbox" [checked]= skillType.isActive (change)="removeElement(skillType)">
-                                <span class="slider round"></span>
+                                <span class="slider round" placement="top" ngbTooltip="activate"></span>
                             </label>
                         </i>
                         <i id="penIcon" class="fa fa-pencil pull-right" (click)="editSkillType(skillType); open(content)" placement="top" ngbTooltip="edit">

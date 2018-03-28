@@ -39,7 +39,6 @@ export class QuestionComponent implements OnInit {
     private bucketService: BucketsService,
     private alertsService:AlertsService) { }
 
-
   newTagString : string;
   createQuestion: FormGroup;
   newQuestion: Question;
