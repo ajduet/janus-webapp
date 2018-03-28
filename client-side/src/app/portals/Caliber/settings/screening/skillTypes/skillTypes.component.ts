@@ -73,6 +73,7 @@ export class SkillTypesComponent implements OnInit {
     /**
     * Opens the modal for creating and editing skill SkillType
     * Resets fields clears the data within set fields
+    * Creates a variable to reference the open modal service
     */
     open(content) {
       this.modalServiceRef = this.modalService.open(content);
@@ -162,7 +163,10 @@ export class SkillTypesComponent implements OnInit {
     }
 
     /**
-    *
+    * If there are existing buckets, set the current weight percent to the skill types so when
+    * it combines the buckets and weights fields, it has updated data.
+    * Clear the array holding the buckets and weights information.
+    * Combines the buckets and weights field of the selected skill types
     */
     combineBucketsAndWeights(){
         if(this.bucketsAndWeights.length != 0){
@@ -176,6 +180,10 @@ export class SkillTypesComponent implements OnInit {
         }
     }
 
+    /**
+    * Makes sure that the weight percentage input is within 0 and 100
+    * @param index: Weight percentage of a single bucket.
+    */
     checkMinMax(index: number){
         if(this.bucketsAndWeights[index].weights > 100){
             this.bucketsAndWeights[index].weights = 100;
@@ -184,6 +192,13 @@ export class SkillTypesComponent implements OnInit {
         }
     }
 
+    /**
+    * Updates the selected skill type with the added buckets and bucketWeightSum
+    * If there are buckets added to the skill type, the weight percentage of the buckets
+    * has to sum to 100. When the form is valid, the reference to the open modal will close
+    * and an HTTP Request is sent to the endpoint to update the skill type and relations
+    * If the buckets
+    */
     updateSkillType(modal: SkillType){
         this.skillType = modal;
         this.skillType.skillTypeId = this.singleSkillType.skillTypeId;
@@ -220,13 +235,18 @@ export class SkillTypesComponent implements OnInit {
     }
 
     checkBucketSum(){
+        console.log(this.bucketWeightSum);
         this.bucketWeightSum = 0;
         for(let bucket of this.bucketsAndWeights){
             this.bucketWeightSum += bucket.weights;
         }
-        if(this.bucketWeightSum == 100){
+        if(this.bucketsAndWeights.length == 0){
             this.error = false;
-        } else {
+        }
+        else if(this.bucketWeightSum == 100){
+            this.error = false;
+        }
+        else {
             this.error = true;
         }
     }
