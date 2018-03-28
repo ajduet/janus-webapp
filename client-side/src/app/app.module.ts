@@ -27,6 +27,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RoleGuard } from './role-guard';
 import { CookieService } from 'ngx-cookie-service';
 
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+
 // loading routes from child modules this way will lazy load them
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -46,6 +49,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     HttpModule,
     NgbModule.forRoot(),

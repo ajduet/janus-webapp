@@ -1,0 +1,64 @@
+#ABcontent {
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+
+h6 {
+  text-align: center;
+  color: white;
+}
+
+.card-header {
+  background-color: #F26925;
+}
+#allSkillTypesDiv{
+  overflow : auto;
+  height: 420px;
+}
+
+/*Custom scrollbar*/
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #6c757d; 
+  border-radius: 5px;
+}
+
+#penIcon {
+	color: #F26925;
+	margin-right: 10px;
+}
+
+a {
+  cursor: pointer;
+  cursor: hand;
+}
+
+i {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.modal-header {
+	background-color: #F26925;
+}
+
+.modal-title {
+  text-align: center;
+  color: white;
+}
+
+.close {
+	color: white;
+}

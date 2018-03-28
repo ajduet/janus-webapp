@@ -22,6 +22,11 @@ import { FinalReportComponent } from './screening/components/final-report/final-
 import { IntroductionComponent } from './screening/components/introduction/introduction.component';
 import { PassFailComponent } from './screening/components/pass-fail/pass-fail.component';
 
+import {ScreeningConfigComponent} from './settings/screening/screening.component'
+import { Component } from '@angular/core';
+import {BucketComponent} from './settings/screening/bucket/bucket.component';
+import {SkillTypeBucketsComponent} from './settings/screening/skillType-buckets/skillType-buckets.component';
+
 export const routes: Routes = [
   {
     path: '',
@@ -128,6 +133,21 @@ export const routes: Routes = [
           {
             path: 'trainer-profile',
             component: TrainerProfilesComponent,
+          },
+          {
+            path:'screening',
+            component: ScreeningConfigComponent,
+            children:[
+
+            ]
+          },
+          {
+           path: 'screening/category',
+            component: BucketComponent
+          },
+          {
+            path:'screening/skillTypeTopics',
+            component: SkillTypeBucketsComponent,
           }
         ]
       },

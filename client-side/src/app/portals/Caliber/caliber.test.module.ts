@@ -1,3 +1,4 @@
+
 // modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -124,6 +125,8 @@ import { CannotDeleteTraineeModalComponent } from './manage/cannot-delete-traine
 import { CannotDeleteModalComponent } from './manage/cannot-delete-modal/cannot-delete-modal.component';
 
 
+import { settings } from 'cluster';
+
 export const Dependencies = {
   imports: [
     CommonModule,
@@ -216,6 +219,7 @@ export const Dependencies = {
     DeleteTraineeModalComponent,
     CannotDeleteTraineeModalComponent,
     CannotDeleteModalComponent,
+  
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpringInterceptor, multi: true },  // interceptor for all HTTP requests

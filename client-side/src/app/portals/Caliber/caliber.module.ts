@@ -60,6 +60,18 @@ import { ScreenerBucketsService } from './screening/services/screener-buckets/sc
 import { SkillTypeBucketService } from './screening/services/skillTypeBucketLookup/skill-type-bucket.service';
 import { UrlUtilService } from './screening/services/UrlUtil/url-util.service';
 
+//1801-caliber-dev-angels services
+import { QuestionsService } from './settings/screening/services/questions.service';
+import { SkillTypesService } from './settings/screening/services/skillTypes.service';
+import { BucketsService } from './settings/screening/services/buckets.service';
+import { TagsService } from './settings/screening/services/tags.service';
+import { HttpErrorHandlerService } from './settings/screening/services/http-error-handler.service';
+/** for in memory data service
+  * executed, 'npm i angular-in-memory-web-api --save', remove from packange.json if not in use.
+  */
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService }  from './settings/screening/services/in-memory-data.service';
+
 //N.T.
 import { ApiService } from './util/api.service';
 
@@ -145,6 +157,14 @@ import { AnswerComponent } from './screening/components/answer/answer.component'
 import { PassFailComponent } from './screening/components/pass-fail/pass-fail.component';
 import { ViolationFlagComponent } from './screening/components/violation-flag/violation-flag.component';
 import { ScheduleScreeningService } from './screening/services/schedule-screening/schedule-screening.service';
+// DevAngels
+import { ScreeningConfigComponent } from './settings/screening/screening.component';
+import {SkillTypesComponent} from './settings/screening/skillTypes/skillTypes.component';
+import { BucketComponent } from './settings/screening/bucket/bucket.component';
+import { SkillTypeBucketsComponent } from './settings/screening/skillType-buckets/skillType-buckets.component' ;
+import { QuestionComponent} from './settings/screening/question/question.component'
+import { TagFilterPipe } from './settings/screening/question/question.filter';
+import {BucketFilterPipe} from './settings/screening/skillType-buckets/skillType-buckets.filter';
 
 
 @NgModule({
@@ -161,6 +181,18 @@ import { ScheduleScreeningService } from './screening/services/schedule-screenin
     ScrollEventModule,
     Ng2PageScrollModule,
     NgxPaginationModule,
+
+    //1801-caliber-dev-angels services
+    // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
+    // and returns simulated server responses.
+    // Remove it when a real server is ready to receive requests.
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, {
+        dataEncapsulation: false,
+        passThruUnknownUrl: true,
+        put204: false // return entity after PUT/update
+      }
+    )
   ],
   declarations: [
     // pipes
@@ -186,6 +218,8 @@ import { ScheduleScreeningService } from './screening/services/schedule-screenin
     TraineeSearch,
     ArrToStringPipe,
     SearchPipe,
+    TagFilterPipe,
+    BucketFilterPipe,
 
     // components
     CaliberComponent,
@@ -246,14 +280,20 @@ import { ScheduleScreeningService } from './screening/services/schedule-screenin
     CannotDeleteModalComponent,
     DeleteTraineeModalComponent,
     CannotDeleteTraineeModalComponent,
-    ScreeningComponent,
+    // DevAngels
+    ScreeningConfigComponent,
     CandidatesScreeningListComponent,
     QuestionsTableComponent,
     FinalReportComponent,
     IntroductionComponent,
     AnswerComponent,
     PassFailComponent,
-    ViolationFlagComponent
+    ViolationFlagComponent,
+    SkillTypesComponent,
+    BucketComponent,
+    SkillTypeBucketsComponent,
+    QuestionComponent,
+    ScreeningComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpringInterceptor, multi: true },  // interceptor for all HTTP requests
@@ -300,7 +340,12 @@ import { ScheduleScreeningService } from './screening/services/schedule-screenin
     SkillTypeBucketService,
     ScreenerBucketsService,
     UrlUtilService,
-    ScheduleScreeningService
+    ScheduleScreeningService,
+    QuestionsService,
+    SkillTypesService,
+    BucketsService,
+    TagsService,
+    HttpErrorHandlerService,
   ],
   bootstrap: [
     TrainersComponent
