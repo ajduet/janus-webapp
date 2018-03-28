@@ -2,7 +2,7 @@ import {Bucket} from './bucket';
 
 //Question entity we receive from database, this is used for showing question and answer data to the screener
 export interface Question{
-    questionID: number;
+    questionId: number;
     questionText: string;
     sampleAnswer1: string;
     sampleAnswer2: string;
