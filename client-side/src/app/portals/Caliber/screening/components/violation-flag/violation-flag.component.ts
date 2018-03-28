@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViolationType } from '../../entities/violationType';
 import { ViolationTypeService } from '../../services/violationType/violationType.service';
 import { SimpleTraineeService } from '../../services/simpleTrainee/simple-trainee.service';
+import { AlertsService } from '../../../services/alerts.service'
 
 @Component({
   selector: 'app-violation-flag',
@@ -29,7 +30,9 @@ export class ViolationFlagComponent implements OnInit {
 
   constructor(
     private simpleTraineeService: SimpleTraineeService,
-    private violationTypeService: ViolationTypeService) { }
+    private violationTypeService: ViolationTypeService,
+    private alertsService: AlertsService,
+  ) { }
 
   ngOnInit() {
     this.getViolationTypes();
@@ -57,6 +60,7 @@ export class ViolationFlagComponent implements OnInit {
 
   submitViolation() {
     //Send request with the violation + comments to database
+    this.alertsService.success('Soft Skill Violation Added');
   }
 
   cancelViolation() {

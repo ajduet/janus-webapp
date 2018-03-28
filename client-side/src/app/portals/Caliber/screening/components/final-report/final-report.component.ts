@@ -5,6 +5,7 @@ import { SkillTypeBucketService } from '../../services/skillTypeBucketLookup/ski
 import { QuestionScoreService } from '../../services/question-score/question-score.service'
 import { QuestionScore } from '../../entities/questionScore';
 import { ScoresToBucketsUtil } from '../../util/scoresToBuckets.util'
+import { AlertsService } from '../../../services/alerts.service'
 
 @Component({
   selector: 'app-final-report',
@@ -42,6 +43,7 @@ public checked: string;
     private skillTypeBucketService: SkillTypeBucketService,
     private questionScoreService: QuestionScoreService,
     private scoresToBucketsUtil: ScoresToBucketsUtil,
+    private alertsService: AlertsService,
   ) { }
 
   ngOnInit() {
@@ -81,6 +83,7 @@ public checked: string;
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+    this.alertsService.success('Copied to Clipboard');
 
   }
 
