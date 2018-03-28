@@ -138,8 +138,10 @@ export class QuestionsTableComponent implements OnInit, OnDestroy {
   //Unsubscribe to prevent memory leaks when component is destroyed
   ngOnDestroy(){
     this.subscriptions.forEach(s => s.unsubscribe);
-    for (let bucket of this.questionBuckets) {
-      bucket.questions = [];
+    if(this.questionBuckets != undefined) {
+      for (let bucket of this.questionBuckets) {
+        bucket.questions = [];
+      }
     }
   }
 
