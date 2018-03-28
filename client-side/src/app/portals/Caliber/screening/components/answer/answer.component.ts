@@ -30,7 +30,7 @@ export class AnswerComponent implements OnInit {
   ngOnInit() {
     this.questionScore = {
       qSID: null,
-      questionID: this.question.questionId,  
+      questionId: this.question.questionId,  
       screeningID: null,
       score: 0,
       commentary: '',
@@ -44,7 +44,7 @@ export class AnswerComponent implements OnInit {
       //
       if(this.questionScores.length > 0 ) {
         for(let q of this.questionScores) {
-          if(q.questionID == this.questionScore.questionID) {
+          if(q.questionId == this.questionScore.questionId) {
             this.questionScores.splice(this.questionScores.indexOf(q), 1);
           }
         }

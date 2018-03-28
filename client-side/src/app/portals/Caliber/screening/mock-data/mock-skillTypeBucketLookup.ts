@@ -15,7 +15,7 @@ export const SKILL_TYPE_BUCKET_LOOKUP: SkillTypeBucketLookUp =
           bucketCategory: 'Basic Java',
           bucketDescription: 'OCA level Java questions',
           isActive: false,
-          questions: []
+          questions: null
         },
         { bucketID: 2,
           bucketCategory: 'SQL',
