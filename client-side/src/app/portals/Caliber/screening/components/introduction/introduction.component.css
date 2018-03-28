@@ -5,7 +5,7 @@
 #introduction-container {
   margin: 25px auto;
   min-width: 400px;
-  width: 60%;
+  width: 70%;
   max-width: 95vw;
   text-align: center;
   border-style: solid;
@@ -15,7 +15,7 @@
 }
 
 #introduction-content {
-  padding: auto 25%;
+  padding: auto 15%;
 }
 
 h1 {
@@ -64,12 +64,10 @@ p {
 /* #############################
         CHECK BOXES
 ############################# */
-#skills-checkbox {
-  margin: 15px 10px 0px 10px;
-  width: 66%;
+.skills-checkbox {
+  margin: 5px 5px 5px 5px;
+  width: 90%;
   text-align: center;
-  display: inline-grid;
-  grid-template-columns: auto auto auto auto auto auto;
   flex-wrap: wrap;
   justify-content: center;
   overflow: hidden;
@@ -80,7 +78,7 @@ p {
 }
 .skill {
   width: auto;
-  margin: auto 20px;
+  margin: auto 10px;
   display: inline-flex;
 }
 /* #############################
@@ -178,3 +176,50 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 } 
+
+/*
+    Media queries for Toggle-switch grid (skills-checkbox is the container)
+    To make the design responsive, below are 5 media queries to re-arrange
+    the grid system based on width. 
+    This was mostly trial-and-error to get the numbers.
+
+    The first one in the list is the catch-all, meaning the grid should have
+    at most 6 columns. If your screen has greater resolution than 3450, have fun with that. 
+*/
+@media screen and (max-width: 3450px){
+  div.skills-checkbox{
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto auto auto;
+  }
+}
+/*
+  If the screen resolution is over 1300, use the above query. 
+  If the screen resolution is below 1300, use the below query. 
+*/
+@media screen and (max-width: 1300px){
+  div.skills-checkbox{
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto auto;
+  }
+}
+
+@media screen and (max-width: 1000px){
+  div.skills-checkbox{
+    display: inline-grid;
+    grid-template-columns: auto auto auto auto;
+  }
+}
+
+@media screen and (max-width:800px){
+  div.skills-checkbox{
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+  }
+}
+
+@media screen and (max-width:650px){
+  div.skills-checkbox{
+    display: inline-grid;
+    grid-template-columns: auto auto;
+  }
+}
