@@ -76,6 +76,7 @@ export class SkillTypeBucketsComponent implements OnInit {
       this.getBuckets();
       this.currBucket = undefined;
     }
+    this.savedSuccessfully()
   }
 
   /** Creates new bucket */
