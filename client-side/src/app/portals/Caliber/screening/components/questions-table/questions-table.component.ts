@@ -83,50 +83,38 @@ export class QuestionsTableComponent implements OnInit, OnDestroy {
     // SkillType should come from SimpleTrainee***
     this.subscriptions.push(this.skillTypeBucketService.getSkillTypeBuckets(this.simpleTraineeService.getSelectedCandidate().skillTypeID).subscribe(bucketsWithWeights => {
       // save result locally and to service and as buckets
-      this.skillTypeBucketService.bucketsByWeight = bucketsWithWeights;
-      console.log(this.skillTypeBucketService);
+
+      let myBuckets: Bucket[] = [];
+      for ( let e of bucketsWithWeights.bucket) {
+        myBuckets.push( 
+          {
+            bucketID: e.bucketId,
+            bucketCategory: e.bucketCategory,
+            bucketDescription: e.bucketDescription,
+            isActive: e.isActive,
+            questions: [],
+          }
+        );
+      }
+      
+      this.skillTypeBucketService.bucketsByWeight = 
+      {
+        skillTypeBucketLookupID: bucketsWithWeights.skillTypeBucketLookupID,
+        skillType: JSON.parse(JSON.stringify(bucketsWithWeights.skillType)),
+        buckets: myBuckets,
+        weights: JSON.parse(JSON.stringify(bucketsWithWeights.weight)),
+      }
       
       this.subscriptions.push(this.questionService.getQuestions().subscribe(allQuestions => {
-        this.questionBuckets = this.questionsToBucketsUtil.saveQuestions(allQuestions, bucketsWithWeights);
-        this.skillTypeBucketService.bucketsByWeight.bucket = JSON.parse(JSON.stringify(this.questionBuckets));
+        this.questionBuckets = this.questionsToBucketsUtil.saveQuestions(allQuestions, this.skillTypeBucketService.bucketsByWeight);
+        this.skillTypeBucketService.bucketsByWeight.buckets = JSON.parse(JSON.stringify(this.questionBuckets));
+
         if (this.questionBuckets.length > 0) this.currentCategory = this.questionBuckets[0];
       }));
     }));
 
-    /* old raw buckets with no weights*/
-    // let tempBuckets: Bucket[];
-    // // change to the getBucketsBySkillTypeID
-    // this.bucketService.getBuckets().subscribe(data => {
-    //   tempBuckets = data;
-    //   let tempQuestions: Question[];
-    //   this.questionService.getQuestions().subscribe(data => {
-    //     tempQuestions = data;
-    //     this.bucketService.setFilteredBuckets(
-    //       this.filteredBuckets.saveQuestions(tempQuestions, tempBuckets)
-    //     );
-    //     this.buckets = this.bucketService.getFilteredBuckets();
-    //   });
-    // });
-
     this.candidateName = this.simpleTraineeService.getSelectedCandidate().firstname + " " +
                           this.simpleTraineeService.getSelectedCandidate().lastname;
-    
-
-    // set the buckets array to all necessary categories.
-
-    // FOR FUTURE USE
-    // let tempBuckets: Bucket[];
-    // this.bucketService.getBuckets().subscribe(data => {
-    //   tempBuckets = data;
-    // });
-    // let tempQuestions: Question[];
-    // this.questionService.getFilteredQuestions().subscribe(data => {
-    //   tempQuestions = data;
-    // });
-    // this.buckets = this.filteredBuckets.saveQuestions(
-    //   tempQuestions,
-    //   tempBuckets
-    // );
     
     // update the answeredQuestions variable in our service to track the
     // questions that have been given a score by the screener.

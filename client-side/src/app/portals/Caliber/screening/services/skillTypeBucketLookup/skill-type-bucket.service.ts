@@ -20,11 +20,15 @@ export class SkillTypeBucketService {
   bucketsByWeight: SkillTypeBucketLookUp;
 
   
+  // getSkillTypeBuckets(skillTypeID: number): Observable<any>{
+  //   this.httpClient.get<any>(this.ROOT_URL + `/skillType/getSkillTypeBucketsWithWeights/${skillTypeID}`).subscribe(data => {
+  //     console.log(data);
+  //   })
+  //   return of(SKILL_TYPE_BUCKET_LOOKUP);
+  // }
+
   getSkillTypeBuckets(skillTypeID: number): Observable<any>{
-    this.httpClient.get<any>(this.ROOT_URL + `/skillType/getSkillTypeBucketsWithWeights/${skillTypeID}`).subscribe(data => {
-      console.log(data);
-    })
-    return of(SKILL_TYPE_BUCKET_LOOKUP);
+    return this.httpClient.get<any>(this.ROOT_URL + `/skillType/getSkillTypeBucketsWithWeights/${skillTypeID}`);
   }
   
 /*
