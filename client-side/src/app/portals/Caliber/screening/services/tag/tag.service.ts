@@ -28,17 +28,17 @@ export class TagService {
 
   public tagListChecked: Tag[];
 
-  /*
-  // Real endpoint for future use
-  getAllTags(): Observable<Tag[]>{
-    return this.http.post<Tag[]>(this.ROOT_URL + '/all', {});
-  }
   
-  */
-  // Fake local data for temp use
-  getAllTags(): Observable<Tag[]>{
-    return of(TAGS);
+  
+  getAllTags(): Observable<Tag[]> {
+    return this.http.get<Tag[]>(
+      this.urlUtilService.getBase() + "/question-service/tag/getAllTags", {}
+    );
   }
+  // Fake local data for temp use
+  /*getAllTags(): Observable<Tag[]>{
+    return of(TAGS);
+  }*/
 
   getCheckedTags(): Tag[] {
     return this.tagListChecked; 
