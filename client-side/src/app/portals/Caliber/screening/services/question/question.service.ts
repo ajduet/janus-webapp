@@ -43,7 +43,8 @@ export class QuestionService {
     for(let tag of this.tagService.getCheckedTags()){
       tagArray.push(tag.tagId);
     }
-    let currSkillTypeID = 52;
+    console.log(tagArray);
+    let currSkillTypeID = this.simpleTraineeService.getSelectedCandidate().skillTypeID;
     // let currSkillTypeID = this.simpleTraineeService.getSelectedCandidate().skillTypeID;
     let tagsAndSkill: TagsAndSkill = { tagList : tagArray, skillTypeId : currSkillTypeID };
     return this.httpClient.post<Question[]>(

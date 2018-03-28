@@ -13,15 +13,18 @@ Overall score for the evaluation is a weighted average of the scores for each bu
 */
 @Injectable()
 export class SkillTypeBucketService {
-  private ROOT_URL: string = this.urlUtilService.getBase() + "/skilltype-service/skillType/getSkillTypeBucketsWithWeights";
+  private ROOT_URL: string = this.urlUtilService.getBase() + "/skilltype-service";
   constructor(private httpClient: HttpClient,
     private urlUtilService: UrlUtilService) { }
 
   bucketsByWeight: SkillTypeBucketLookUp;
 
   
-  getSkillTypeBuckets(skillTypeID: number): Observable<SkillTypeBucketLookUp>{
-    return this.httpClient.get<SkillTypeBucketLookUp>(this.ROOT_URL + `/${skillTypeID}`);
+  getSkillTypeBuckets(skillTypeID: number): Observable<any>{
+    this.httpClient.get<any>(this.ROOT_URL + `/skillType/getSkillTypeBucketsWithWeights/${skillTypeID}`).subscribe(data => {
+      console.log(data);
+    })
+    return of(SKILL_TYPE_BUCKET_LOOKUP);
   }
   
 /*
