@@ -8,11 +8,13 @@ import { SearchPipe } from "../../util/search.pipe";
 // Classes
 import { SimpleTrainee } from "../../entities/simpleTrainee";
 import { SkillType } from "../../entities/skillType";
+import { ScheduleScreening } from "../../entities/scheduleScreening";
 
 // Services
 import { SimpleTraineeService } from "../../services/simpleTrainee/simple-trainee.service";
 import { SkillTypeService } from "../../services/skillType/skill-type.service";
 import { ScreeningService } from "../../services/screening/screening.service";
+import { ScheduleScreeningService } from "../../services/schedule-screening/schedule-screening.service";
 
 // Installed Modules
 // npm install ngx-pagination --save
@@ -37,10 +39,11 @@ export class CandidatesScreeningListComponent implements OnInit {
         FIELDS
   ########################### */
   //  Dummy data for testing search bar
+  scheduledScreenings: ScheduleScreening[];
   candidates: SimpleTrainee[];
   skillTypes: SkillType[];
-
   selectedCandidate: SimpleTrainee;
+  selectedScheduledScreening: ScheduleScreening;
   showBeginScreeningPrompt = false;
   
   /* ###########################
@@ -50,13 +53,17 @@ export class CandidatesScreeningListComponent implements OnInit {
     private http: HttpClientModule,
     private simpleTraineeService: SimpleTraineeService,
     private skillTypeService: SkillTypeService,
-    private screeningService: ScreeningService
+    private screeningService: ScreeningService,
+    private scheduleScreeningService: ScheduleScreeningService
   ) {}
 
   ngOnInit() {
-    this.simpleTraineeService.getSimpleTrainees().subscribe(data => {
-      this.candidates = data;
+    this.scheduleScreeningService.getScheduleScreenings().subscribe(data => {
+      this.scheduledScreenings = data;
     });
+    // this.simpleTraineeService.getSimpleTrainees().subscribe(data => {
+    //   this.candidates = data;
+    // });
     // this.skillTypeService.getSkillTypes().subscribe(data => {
     //   this.skillTypes = data;
     // });
@@ -83,7 +90,8 @@ export class CandidatesScreeningListComponent implements OnInit {
     this.screeningService.beginScreening(
         this.selectedCandidate.traineeID,
         new Date(), 1,
-        this.selectedCandidate.skillTypeID
+        this.selectedCandidate.skillTypeID,
+        this.selectedScheduledScreening.scheduleScreeningId
       ).subscribe(data => {
         // retrieve the screening ID from the screening service
         // and save the screening ID as a cookie to localStorage.

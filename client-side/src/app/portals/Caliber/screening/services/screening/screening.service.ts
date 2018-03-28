@@ -32,7 +32,8 @@ export class ScreeningService {
     traineeId: number,
     beginTime: Date,
     trainerId: number,
-    skillTypeId: number
+    skillTypeId: number,
+    scheduledScreeningId: number
   ): Observable<Number> {
     return this.httpClient
       .post<Number>(

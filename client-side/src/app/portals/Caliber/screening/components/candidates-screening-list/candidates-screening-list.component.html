@@ -16,11 +16,11 @@
         </tr>
       </thead>
       <tbody>
-        <ng-container *ngFor="let i = index; let candidate of candidates | searchPipe: searchText | paginate: { itemsPerPage: 10, currentPage: p } ">
-          <tr (click)="showBeginScreeningPrompt = !showBeginScreeningPrompt; selectedCandidate = candidate">
-            <td>{{candidate.firstname}} {{candidate.lastname}}</td>
-            <td>{{candidate.skillTypeName}}</td>
-            <td>{{candidate.schedule | date:'short'}}</td>
+        <ng-container *ngFor="let i = index; let scheduledScreening of scheduledScreenings | searchPipe: searchText | paginate: { itemsPerPage: 10, currentPage: p } ">
+          <tr (click)="showBeginScreeningPrompt = !showBeginScreeningPrompt; selectedCandidate = scheduledScreening.trainee, selectedScheduledScreening = scheduledScreening">
+            <td>{{scheduledScreening.trainee.firstname}} {{scheduledScreening.trainee.lastname}}</td>
+            <td>{{scheduledScreening.trainee.skillTypeName}}</td>
+            <td>{{scheduledScreening.trainee.schedule | date:'short'}}</td>
           </tr>
         </ng-container>
       </tbody>
@@ -37,7 +37,7 @@
       </div>
     </div>
     <!-- Pagination section -->
-    <pagination-controls class="pagination" (pageChange)="p = $event" previousLabel="" nextLabel=""></pagination-controls>
+    <pagination-controls class="pagination" (pageChange)="p = $event" maxSize="5" previousLabel="" nextLabel=""></pagination-controls>
   </div>
 
 </div>
