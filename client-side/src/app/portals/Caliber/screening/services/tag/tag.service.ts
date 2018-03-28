@@ -26,7 +26,7 @@ export class TagService {
 
   private ROOT_URL: string = this.urlUtilService.getBase() + '/tag';
 
-  public tagListChecked: Tag[];
+  public tagListChecked: Tag[] = [];
 
   
   

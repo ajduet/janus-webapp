@@ -16,16 +16,18 @@ export class ScoresToBucketsUtil {
             questionsAsked = 0;
             totals[bucketIndex] = 0;
             scores[bucketIndex] = 0;
-            thisBucket.questions.forEach(thisQuestion => {
-                let matchingQuestion = questionScores.find(function(element) {
-                    return element.questionID == thisQuestion.questionID;
+            if(thisBucket.questions != null) {
+                thisBucket.questions.forEach(thisQuestion => {
+                    let matchingQuestion = questionScores.find(function(element) {
+                        return element.questionID == thisQuestion.questionID;
+                    });
+                    if (matchingQuestion) {
+                        questionsAsked++;
+                        totals[bucketIndex] += 5;
+                        scores[bucketIndex] += matchingQuestion.score;
+                    }
                 });
-                if (matchingQuestion) {
-                    questionsAsked++;
-                    totals[bucketIndex] += 5;
-                    scores[bucketIndex] += matchingQuestion.score;
-                }
-            });
+            }
             if (questionsAsked > 0) {
                 bucketNames[bucketIndex] = thisBucket.bucketCategory;
                 totalWeights += bucketsByWeight.weights[bucketIndex];
