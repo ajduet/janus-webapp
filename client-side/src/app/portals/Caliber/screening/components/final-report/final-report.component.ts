@@ -73,6 +73,7 @@ public checked: string;
     this.generalNotesString = this.screeningService.generalComments;
     this.allTextString += "\"" + this.generalNotesString + "\"";
     
+    this.screeningService.endScreening(this.generalNotesString);
   }
 
   //Used for copying the data to the clipboard (this is done using ngx-clipboard)
