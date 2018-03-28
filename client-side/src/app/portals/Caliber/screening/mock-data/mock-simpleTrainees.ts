@@ -6,7 +6,7 @@ export const TRAINEES: SimpleTrainee[] = [
         traineeID: 1,
         firstname: 'Jimmy',
         lastname: 'John',
-        skillTypeID: 51,
+        skillTypeID: 52,
         schedule: new Date(2018, 0, 21, 9)
     },
     {
@@ -83,7 +83,7 @@ export const TRAINEES: SimpleTrainee[] = [
         traineeID: 13,
         firstname: 'Chad',
         lastname: 'Aldritch',
-        skillTypeID: 51,
+        skillTypeID: 52,
         schedule: new Date(2018, 0 ,22, 16)
     },
 

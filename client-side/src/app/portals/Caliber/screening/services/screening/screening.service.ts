@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import { of } from "rxjs/observable/of";
 import "rxjs/Rx";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Screening } from "../../entities/screening";
 import { UrlUtilService } from '../UrlUtil/url-util.service';
 
@@ -22,6 +22,7 @@ export class ScreeningService {
   public screeningID$: Observable<Screening>;
   compositeScore: number;
   finalSoftSkillComment: string;
+
   retrieveScreening(): Observable<Screening> {
     this.screeningID$ = this.httpClient.post<Screening>("", {});
     return this.screeningID$;
@@ -45,7 +46,7 @@ export class ScreeningService {
     return this.screeningID$;
   }
 
-  endScreening(softSkillComment: string, ): void {
+  endScreening(softSkillComment: string): void {
     let screeningId: number;
     this.screeningID$.subscribe(data => screeningId = screeningId);
     this.httpClient.post(this.ROOT_URL + '/screening-service/screening/end', Object.assign({}, "complete", this.convertToBoolean(this.softSkillsResult), this.finalSoftSkillComment, new Date(), screeningId, this.compositeScore))
@@ -58,5 +59,13 @@ export class ScreeningService {
     catch (e) {
         return undefined;
     }
-}
+  }
+
+  submitIntroComment(comment : string): Observable<String> {
+    console.log(comment + " " + localStorage.getItem("screeningID"));
+    return this.httpClient.post<String>(
+      this.ROOT_URL + "/screening-service/screening/introcomment",
+      { traineeId : localStorage.getItem("screeningID"), softSkillCommentary : comment }
+    );
+  }
 }
