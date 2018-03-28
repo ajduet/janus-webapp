@@ -65,4 +65,11 @@ export class ScreeningService {
       { traineeId : localStorage.getItem("screeningID"), softSkillCommentary : comment }
     );
   }
+
+  submitGeneralComment() {
+    this.httpClient.post<String>(
+      this.ROOT_URL + "/screening-service/screening/generalcomment",
+      { comment : this.generalComments, screeningId : localStorage.getItem("screeningID")}
+    )
+  }
 }
