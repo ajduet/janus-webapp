@@ -3,7 +3,9 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { QuestionScore } from '../../entities/questionScore';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
+
+import { UrlUtilService } from '../UrlUtil/url-util.service';
 
 /*
 Exchanges data between QuestionBank (the table) and Question (the modal) components.
@@ -11,7 +13,8 @@ Exchanges data between QuestionBank (the table) and Question (the modal) compone
 @Injectable()
 export class QuestionScoreService {
 
-  constructor(private htttpClient: HttpClientModule) { }
+  constructor(private httpClient: HttpClient,
+              private urlUtil: UrlUtilService) { }
 
   // BEGIN: EXCHANGING DATA BETWEEN QUESTION TABLE AND ANSWER MODAL
   questionScores: QuestionScore[] = [];
@@ -28,6 +31,17 @@ export class QuestionScoreService {
 
   updateQuestionScores(questionScores: QuestionScore[]){
     this.questionScoresSource.next(questionScores);
+  }
+
+  postQuestionScore(question: QuestionScore){ 
+    let url = this.urlUtil.getBase()+'/question-score-service/question/score';
+    let params = new HttpParams().set("Score", question.score.toString());
+    params.append("Comment", question.commentary);
+    params.append("QuestionID", question.questionId.toString());
+    params.append("BeginTime", question.beginTime.toString());
+    params.append("ScreeningID", question.screeningID.toString());
+
+    this.httpClient.post(url, { params } );
   }
 
   /* Uses currentQuestionScores Observable instead
