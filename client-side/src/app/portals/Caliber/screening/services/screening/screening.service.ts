@@ -5,6 +5,7 @@ import "rxjs/Rx";
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Screening } from "../../entities/screening";
 import { UrlUtilService } from '../UrlUtil/url-util.service';
+import { ScheduledScreening } from "../../entities/scheduleScreening";
 
 @Injectable()
 export class ScreeningService {
@@ -29,15 +30,15 @@ export class ScreeningService {
   }
 
   beginScreening(
-    traineeId: number,
+    scheduledScreening: ScheduledScreening,
     beginTime: Date,
     trainerId: number,
-    skillTypeId: number
+    skillTypeId: number,
   ): Observable<Number> {
     return this.httpClient
       .post<Number>(
         this.ROOT_URL + "/screening-service/screening/start",
-        { traineeId : traineeId, beginTime : beginTime, trainerId : trainerId, skillTypeId : skillTypeId },
+        { "scheduledScreening": scheduledScreening, "beginTime" : beginTime, "trainerId" : trainerId, "skillTypeId" : skillTypeId },
         { headers: this.headers }
       );
   }

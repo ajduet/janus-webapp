@@ -144,6 +144,7 @@ import { IntroductionComponent } from './screening/components/introduction/intro
 import { AnswerComponent } from './screening/components/answer/answer.component';
 import { PassFailComponent } from './screening/components/pass-fail/pass-fail.component';
 import { ViolationFlagComponent } from './screening/components/violation-flag/violation-flag.component';
+import { ScheduleScreeningService } from './screening/services/schedule-screening/schedule-screening.service';
 
 
 @NgModule({
@@ -298,7 +299,8 @@ import { ViolationFlagComponent } from './screening/components/violation-flag/vi
     ScreeningService,
     SkillTypeBucketService,
     ScreenerBucketsService,
-    UrlUtilService
+    UrlUtilService,
+    ScheduleScreeningService
   ],
   bootstrap: [
     TrainersComponent
