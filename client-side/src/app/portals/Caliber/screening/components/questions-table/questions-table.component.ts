@@ -84,10 +84,11 @@ export class QuestionsTableComponent implements OnInit, OnDestroy {
     this.subscriptions.push(this.skillTypeBucketService.getSkillTypeBuckets(this.simpleTraineeService.getSelectedCandidate().skillTypeID).subscribe(bucketsWithWeights => {
       // save result locally and to service and as buckets
       this.skillTypeBucketService.bucketsByWeight = bucketsWithWeights;
+      console.log(this.skillTypeBucketService);
       
       this.subscriptions.push(this.questionService.getQuestions().subscribe(allQuestions => {
         this.questionBuckets = this.questionsToBucketsUtil.saveQuestions(allQuestions, bucketsWithWeights);
-        this.skillTypeBucketService.bucketsByWeight.buckets = JSON.parse(JSON.stringify(this.questionBuckets));
+        this.skillTypeBucketService.bucketsByWeight.bucket = JSON.parse(JSON.stringify(this.questionBuckets));
         if (this.questionBuckets.length > 0) this.currentCategory = this.questionBuckets[0];
       }));
     }));
@@ -187,6 +188,8 @@ export class QuestionsTableComponent implements OnInit, OnDestroy {
 
   saveFeedback() {
     this.screeningService.generalComments = this.generalComment;
+    console.log(this.screeningService.generalComments);
+    this.screeningService.submitGeneralComment();
   }
 
 }

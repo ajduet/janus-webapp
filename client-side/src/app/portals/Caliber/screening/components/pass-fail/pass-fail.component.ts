@@ -43,6 +43,8 @@ export class PassFailComponent implements OnInit {
   public hasChecked: boolean;
   private screeningID: number;
 
+  public softSkillFeedback: string;
+
   // need a SoftSkillViolationService to get the data
   constructor(private violationService: SoftSkillsViolationService,
               private screeningService: ScreeningService,
@@ -79,13 +81,13 @@ export class PassFailComponent implements OnInit {
     this.disabled = false;
   }
 
-  submit(finalSoftSkillComment: string){
+  submit(){
     if(this.passChecked){
       this.pass();
     } else if (this.failChecked){
       this.fail();
     }
-    this.screeningService.finalSoftSkillComment = finalSoftSkillComment;
+    this.screeningService.finalSoftSkillComment = this.softSkillFeedback;
   }
 
   getViolations(): void {
