@@ -40,11 +40,9 @@ export class QuestionService {
 
   getQuestions(): Observable<Question[]> {
     let tagArray: number[] = [];
-    console.log(this.tagService.getCheckedTags());
     for(let tag of this.tagService.getCheckedTags()){
       tagArray.push(tag.tagId);
     }
-    console.log(tagArray);
     let currSkillTypeID = 52;
     // let currSkillTypeID = this.simpleTraineeService.getSelectedCandidate().skillTypeID;
     let tagsAndSkill: TagsAndSkill = { tagList : tagArray, skillTypeId : currSkillTypeID };

@@ -47,9 +47,7 @@ export class ScreeningService {
   }
 
   endScreening(softSkillComment: string): void {
-    let screeningId: number;
-    this.screeningID$.subscribe(data => screeningId = screeningId);
-    this.httpClient.post(this.ROOT_URL + '/screening-service/screening/end', Object.assign({}, "complete", this.convertToBoolean(this.softSkillsResult), this.finalSoftSkillComment, new Date(), screeningId, this.compositeScore))
+    this.httpClient.post(this.ROOT_URL + '/screening-service/screening/end', Object.assign({}, "complete", this.convertToBoolean(this.softSkillsResult), this.finalSoftSkillComment, new Date(), localStorage.getItem("screeningID"), this.compositeScore))
   }
 
   convertToBoolean(input: string): boolean | undefined {
@@ -61,9 +59,8 @@ export class ScreeningService {
     }
   }
 
-  submitIntroComment(comment : string): Observable<String> {
-    console.log(comment + " " + localStorage.getItem("screeningID"));
-    return this.httpClient.post<String>(
+  submitIntroComment(comment : string) {
+    this.httpClient.post<String>(
       this.ROOT_URL + "/screening-service/screening/introcomment",
       { traineeId : localStorage.getItem("screeningID"), softSkillCommentary : comment }
     );

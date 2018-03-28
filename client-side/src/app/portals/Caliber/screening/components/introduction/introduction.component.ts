@@ -78,14 +78,8 @@ export class IntroductionComponent implements OnInit {
   }
 
   onSubmit(){
-    let test : String = "";
     //Send the comments to the appropriate service method saves them to the DB
-    this.screeningService.submitIntroComment(this.comment).subscribe(
-      data => {
-        test = data;
-        console.log(test.toString());
-      }
-    );
+    this.screeningService.submitIntroComment(this.comment);
   }
 
   skillChosen(): boolean {
