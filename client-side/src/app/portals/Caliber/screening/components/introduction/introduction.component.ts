@@ -58,7 +58,6 @@ export class IntroductionComponent implements OnInit {
   getTags(): void {
     this.tagService.getAllTags().subscribe(
       allTags => {
-        console.log(allTags);
         this.tagList = allTags;
       }
     );
