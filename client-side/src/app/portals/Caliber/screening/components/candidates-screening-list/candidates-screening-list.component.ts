@@ -8,7 +8,7 @@ import { SearchPipe } from "../../util/search.pipe";
 // Classes
 import { SimpleTrainee } from "../../entities/simpleTrainee";
 import { SkillType } from "../../entities/skillType";
-import { ScheduleScreening } from "../../entities/scheduleScreening";
+import { ScheduledScreening } from "../../entities/scheduleScreening";
 
 // Services
 import { SimpleTraineeService } from "../../services/simpleTrainee/simple-trainee.service";
@@ -39,11 +39,11 @@ export class CandidatesScreeningListComponent implements OnInit {
         FIELDS
   ########################### */
   //  Dummy data for testing search bar
-  scheduledScreenings: ScheduleScreening[];
+  scheduledScreenings: ScheduledScreening[];
   candidates: SimpleTrainee[];
   skillTypes: SkillType[];
   selectedCandidate: SimpleTrainee;
-  selectedScheduledScreening: ScheduleScreening;
+  selectedScheduledScreening: ScheduledScreening;
   showBeginScreeningPrompt = false;
   
   /* ###########################
@@ -88,10 +88,9 @@ export class CandidatesScreeningListComponent implements OnInit {
   beginScreening(): void {
     // create a new screening entry in the database
     this.screeningService.beginScreening(
-        this.selectedCandidate.traineeID,
+        this.selectedScheduledScreening,
         new Date(), 1,
         this.selectedCandidate.skillTypeID,
-        this.selectedScheduledScreening.scheduleScreeningId
       ).subscribe(data => {
         // retrieve the screening ID from the screening service
         // and save the screening ID as a cookie to localStorage.

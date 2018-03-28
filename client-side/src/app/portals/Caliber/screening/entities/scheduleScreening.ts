@@ -1,10 +1,11 @@
 import { SimpleTrainee } from "./simpleTrainee";
 import { SkillType } from "./skillType";
 
-export interface ScheduleScreening {
-  scheduleScreeningId: number;
+export interface ScheduledScreening {
+  scheduledScreeningId: number;
   trainee: SimpleTrainee;
   track: SkillType;
   status: string;
-  interviewer: string;
+  trainer: number;
+  scheduledDate: Date;
 }
