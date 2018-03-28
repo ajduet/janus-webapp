@@ -19,7 +19,7 @@ export class ScoresToBucketsUtil {
             if(thisBucket.questions != null) {
                 thisBucket.questions.forEach(thisQuestion => {
                     let matchingQuestion = questionScores.find(function(element) {
-                        return element.questionID == thisQuestion.questionID;
+                        return element.questionID == thisQuestion.questionId;
                     });
                     if (matchingQuestion) {
                         questionsAsked++;

@@ -8,6 +8,7 @@ import { SimpleTraineeService } from "../../services/simpleTrainee/simple-traine
 import { SkillTypeService } from '../../services/skillType/skill-type.service';
 import { TagService } from '../../services/tag/tag.service';
 import { BucketService } from "../../services/bucket/bucket.service";
+import { ScreeningService } from '../../services/screening/screening.service';
 
 import { Tag } from '../../entities/tag';
 import { SkillType } from '../../entities/skillType';
@@ -28,13 +29,16 @@ import { SkillType } from '../../entities/skillType';
 export class IntroductionComponent implements OnInit {
 
   constructor(public tagService : TagService, private simpleTraineeService: SimpleTraineeService,
-    private skillTypeService: SkillTypeService, private bucketService: BucketService) { }
+    private skillTypeService: SkillTypeService, private bucketService: BucketService,
+    private screeningService: ScreeningService) { }
 
 
   public traineeName: string;
   public traineeTrack: string;
 
   public tagList: Tag[];
+
+  public comment: string;
 
   form = new FormGroup({
     comment: new FormControl("", [])
@@ -48,7 +52,7 @@ export class IntroductionComponent implements OnInit {
       + this.simpleTraineeService.getSelectedCandidate().lastname;
     let tempSkillTypes: SkillType[];
     this.skillTypeService.getSkillTypes().subscribe(skillTypes => tempSkillTypes = skillTypes);
-    this.traineeTrack = tempSkillTypes[this.simpleTraineeService.getSelectedCandidate().skillTypeID-51].skillTypeName;
+    this.traineeTrack = tempSkillTypes[this.simpleTraineeService.getSelectedCandidate().skillTypeID-52].skillTypeName;
 
     //Get all tags
     this.getTags();
@@ -74,9 +78,14 @@ export class IntroductionComponent implements OnInit {
   }
 
   onSubmit(){
-    let introComments = this.form.get("comment").value;
-
+    let test : String = "";
     //Send the comments to the appropriate service method saves them to the DB
+    this.screeningService.submitIntroComment(this.comment).subscribe(
+      data => {
+        test = data;
+        console.log(test.toString());
+      }
+    );
   }
 
   skillChosen(): boolean {
