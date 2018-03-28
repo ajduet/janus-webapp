@@ -9,6 +9,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Question } from "../../entities/question";
 import { Tag } from "../../entities/tag";
 import { QUESTIONS } from "../../mock-data/mock-questions";
+import { TagsAndSkill } from "../../wrappers/tagsAndSkill"
 
 // Services
 import { TagService } from "../../services/tag/tag.service";
@@ -27,26 +28,28 @@ export class QuestionService {
     private urlUtilService: UrlUtilService
   ) {}
 
-  private ROOT_URL: string = this.urlUtilService.getBase() + "/question";
+  private ROOT_URL: string = this.urlUtilService.getBase();
   headers = new HttpHeaders({
     "Content-type": "application/json"
   });
 
-  getQuestions(): Observable<Question[]> {
-    return of(QUESTIONS);
-  }
-
   // getQuestions(): Observable<Question[]> {
-  //   return this.httpClient.post<Question[]>(
-  //     this.ROOT_URL + "/filtered.json",
-  //     JSON.stringify(
-  //       Object.assign(
-  //         {},
-  //         this.tagService.getCheckedTags(),
-  //         this.simpleTraineeService.getSelectedCandidate()
-  //       )
-  //     ),
-  //     { headers: this.headers }
-  //   );
+  //   return of(QUESTIONS);
   // }
+
+
+  getQuestions(): Observable<Question[]> {
+    let tagArray: number[] = [];
+    console.log(this.tagService.getCheckedTags());
+    for(let tag of this.tagService.getCheckedTags()){
+      tagArray.push(tag.tagId);
+    }
+    console.log(tagArray);
+    let currSkillTypeID = this.simpleTraineeService.getSelectedCandidate().skillTypeID;
+    let tagsAndSkill: TagsAndSkill = { tagList : tagArray, skillTypeId : currSkillTypeID };
+    return this.httpClient.post<Question[]>(
+      this.ROOT_URL + "/question-service/question/filtered",
+      tagsAndSkill
+    );
+  }
 }

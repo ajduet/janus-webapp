@@ -1,6 +1,6 @@
 
 //SimpleTrainee/Candidate skills
 export interface Tag{
-    tagID: number;
+    tagId: number;
     tagName: string;
 }
