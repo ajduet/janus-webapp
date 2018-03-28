@@ -58,7 +58,7 @@ export class PassFailComponent implements OnInit {
     this.candidateName = this.simpleTraineeService.getSelectedCandidate().firstname + " " +
                           this.simpleTraineeService.getSelectedCandidate().lastname;
     this.screeningID = 1;
-    this.getViolations();
+    this.previousViolations = this.getViolations();
   }
 
   wasClicked(): boolean {
@@ -125,6 +125,10 @@ export class PassFailComponent implements OnInit {
     } else {
       this.violations = [];
     }
+  }
+
+  getMessage($event) {
+    this.previousViolations = this.getViolations();
   }
 
   hasViolations(): boolean {

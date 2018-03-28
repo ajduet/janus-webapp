@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { ViolationType } from '../../entities/violationType';
 import { ViolationTypeService } from '../../services/violationType/violationType.service';
 import { SoftSkillsViolationService } from '../../services/soft-skills-violation/soft-skills-violation.service';
@@ -27,8 +27,11 @@ to ensure quick access during the entire interview.
 
 export class ViolationFlagComponent implements OnInit {
 
+  @Output() flagEvent = new EventEmitter<string>();
+
   violationTypes: ViolationType[];
   violationTypesChecked: ViolationType[] = [];
+  selectedViolation: ViolationType;
   public candidateName: string;
   public addViolation: boolean = false;
   public violationComment: string;
@@ -42,8 +45,7 @@ export class ViolationFlagComponent implements OnInit {
 
   ngOnInit() {
     this.getViolationTypes();
-    this.candidateName = this.simpleTraineeService.getSelectedCandidate().firstname + " " +
-                          this.simpleTraineeService.getSelectedCandidate().lastname;
+    this.candidateName = this.simpleTraineeService.getSelectedCandidate().firstname + " " + this.simpleTraineeService.getSelectedCandidate().lastname;
   }
 
   getViolationTypes(): void {
@@ -68,11 +70,16 @@ export class ViolationFlagComponent implements OnInit {
     //Send request with the violation + comments to database
     let screeningID = localStorage.getItem("screeningID");
     this.alertsService.success('Soft Skill Violation Added');
+    this.flagChange();
     return this.violationService.submitViolation(violationType.violationID, comment, screeningID);
   }
 
   cancelViolation() {
     
+  }
+
+  flagChange() {
+    this.flagEvent.emit("update");
   }
 
 }
