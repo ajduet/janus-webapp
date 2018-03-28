@@ -13,13 +13,21 @@ Code exists in repository, but is being refactored in the Skill Type Bucket Serv
 */
 @Injectable()
 export class SkillTypeService {
-  private ROOT_URL: string = this.urlUtilService.getBase() + "/skillType";
+  private ROOT_URL: string = this.urlUtilService.getBase() + '/skilltype-service';
   private candidateSkillType: Observable<SkillType>;
-  constructor(private httpClient: HttpClient,
-    private urlUtilService: UrlUtilService) {}
+  constructor(
+    private httpClient: HttpClient,
+    private urlUtilService: UrlUtilService,
+  ) {}
   
+  /*
   getSkillTypes(): Observable<SkillType[]> {
     return of(SKILLTYPES);
+  }
+  */
+
+  getSkillTypes(): Observable<any[]> {
+    return this.httpClient.get<any[]>(this.ROOT_URL + '/skillType/getSkillTypes/')
   }
 
   // getSkillTypes(): Observable<SkillType[]> {
