@@ -167,7 +167,7 @@ export class QuestionsTableComponent implements OnInit, OnDestroy {
     // iterate through the array of question scores
     for (let q of this.questionScores) {
       // if the current question score's question ID matches the question parameter's id
-      if (q.questionID == question.questionId)
+      if (q.questionId == question.questionId)
         // return true (allows the green check mark to appear)
         return true;
     }

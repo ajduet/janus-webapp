@@ -1,7 +1,7 @@
 import { Question } from '../entities/question';
 
 export const QUESTIONS: Question[] = [
-  { questionID: 11,
+  { questionId: 11,
     questionText: 'What is Inheritance?',
     sampleAnswer1: 'Money from dead relatives',
     sampleAnswer2: 'Genes I got from my parents',
@@ -11,7 +11,7 @@ export const QUESTIONS: Question[] = [
     isActive: true,
     bucketId: 1
   },
-  { questionID: 12,
+  { questionId: 12,
     questionText: 'What is Polymorphism?',
     sampleAnswer1: 'Many forms',
     sampleAnswer2: 'Overloading and Overriding',
@@ -21,7 +21,7 @@ export const QUESTIONS: Question[] = [
     isActive: true,
     bucketId: 1
   },
-  { questionID: 13,
+  { questionId: 13,
     questionText: 'What is Abstraction?',
     sampleAnswer1: 'An abstract action.',
     sampleAnswer2: 'Things are not known.',
@@ -31,7 +31,7 @@ export const QUESTIONS: Question[] = [
     isActive: true,
     bucketId: 1
   },
-  { questionID: 14,
+  { questionId: 14,
     questionText: 'What is Encapsulation?',
     sampleAnswer1: 'A time machine.',
     sampleAnswer2: 'Something inside a capsule.',
@@ -41,7 +41,7 @@ export const QUESTIONS: Question[] = [
     isActive: true,
     bucketId: 2
   },
-  { questionID: 15,
+  { questionId: 15,
     questionText: 'What is a JOIN statement?',
     sampleAnswer1: 'Two statements together.',
     sampleAnswer2: 'Not a UNION statement.',
@@ -51,7 +51,7 @@ export const QUESTIONS: Question[] = [
     isActive: true,
     bucketId: 2
   },
-  { questionID: 16,
+  { questionId: 16,
     questionText: 'What is the difference between a stored procedure and a function?',
     sampleAnswer1: 'Nothing.',
     sampleAnswer2: 'A stored procedure stores things and a function has a function.',
@@ -61,7 +61,7 @@ export const QUESTIONS: Question[] = [
     isActive: true,
     bucketId: 3
   },
-  { questionID: 17,
+  { questionId: 17,
     questionText: 'What are the sublanguages of SQL?',
     sampleAnswer1: 'There are none.',
     sampleAnswer2: 'I know DML is one.',
@@ -71,7 +71,7 @@ export const QUESTIONS: Question[] = [
     isActive: true,
     bucketId: 4
   },
-  { questionID: 18,
+  { questionId: 18,
     questionText: 'What are some clauses in SQL?',
     sampleAnswer1: 'Santa Claus.',
     sampleAnswer2: 'There are a few clauses but SELECT is all I know.',
@@ -81,7 +81,7 @@ export const QUESTIONS: Question[] = [
     isActive: true,
     bucketId: 5
   },
-  { questionID: 19,
+  { questionId: 19,
     questionText: 'What does HTML stand for?',
     sampleAnswer1: 'HTML stands for HTML',
     sampleAnswer2: 'HTML is some kind of language.',
@@ -91,7 +91,7 @@ export const QUESTIONS: Question[] = [
     isActive: true,
     bucketId: 6
   },
-  { questionID: 20,
+  { questionId: 20,
     questionText: 'What is the first element of a HTML document?',
     sampleAnswer1: 'Hydrogen',
     sampleAnswer2: 'HTML',
@@ -101,7 +101,7 @@ export const QUESTIONS: Question[] = [
     isActive: true,
     bucketId: 7
   },
-  { questionID: 21,
+  { questionId: 21,
     questionText: 'Name some HTML tags and explain them.',
     sampleAnswer1: 'I have no idea.',
     sampleAnswer2: 'There is <HTML>',
