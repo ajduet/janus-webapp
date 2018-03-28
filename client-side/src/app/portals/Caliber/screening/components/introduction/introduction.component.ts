@@ -44,11 +44,13 @@ export class IntroductionComponent implements OnInit {
     //Get candidate name from another component
     this.tagService.tagListChecked = [];
 
-    this.traineeName = this.simpleTraineeService.getSelectedCandidate().firstname + " " 
-      + this.simpleTraineeService.getSelectedCandidate().lastname;
+    this.traineeName = this.simpleTraineeService.getSelectedCandidate().firstname + " " + this.simpleTraineeService.getSelectedCandidate().lastname;
+    this.traineeTrack = this.simpleTraineeService.getSelectedCandidate().skillTypeName;
+/*
     let tempSkillTypes: SkillType[];
     this.skillTypeService.getSkillTypes().subscribe(skillTypes => tempSkillTypes = skillTypes);
     this.traineeTrack = tempSkillTypes[this.simpleTraineeService.getSelectedCandidate().skillTypeID-51].skillTypeName;
+    */
 
     //Get all tags
     this.getTags();

@@ -57,9 +57,9 @@ export class CandidatesScreeningListComponent implements OnInit {
     this.simpleTraineeService.getSimpleTrainees().subscribe(data => {
       this.candidates = data;
     });
-    this.skillTypeService.getSkillTypes().subscribe(data => {
-      this.skillTypes = data;
-    });
+    // this.skillTypeService.getSkillTypes().subscribe(data => {
+    //   this.skillTypes = data;
+    // });
   }
 
   /* ###########################
