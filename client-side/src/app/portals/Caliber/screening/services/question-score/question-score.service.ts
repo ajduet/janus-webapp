@@ -33,15 +33,32 @@ export class QuestionScoreService {
     this.questionScoresSource.next(questionScores);
   }
 
-  postQuestionScore(question: QuestionScore){ 
+  postQuestionScore(question: QuestionScore): any{ 
     let url = this.urlUtil.getBase()+'/question-score-service/question/score';
-    let params = new HttpParams().set("Score", question.score.toString());
-    params.append("Comment", question.commentary);
-    params.append("QuestionID", question.questionId.toString());
-    params.append("BeginTime", question.beginTime.toString());
-    params.append("ScreeningID", question.screeningID.toString());
 
-    this.httpClient.post(url, { params } );
+    // the actual parameter to add 
+    //params.append("ScreeningID", question.screeningID.toString());
+
+    if( this.httpClient.post<QuestionScore>(url, { 
+      Score: question.score,
+      Comment: question.commentary,
+      QuestionID: question.questionId,
+      BeginTime: question.beginTime, 
+      ScreeningID: 280001 })){
+        return "SUCCESS!";
+    } else {
+      return "ERROR";
+    }
+
+    /* 
+      return this.httpClient.post<QuestionScore>(url, { 
+      Score: question.score,
+      Comment: question.commentary,
+      QuestionID: question.questionId,
+      BeginTime: question.beginTime, 
+      ScreeningID: question.screeningID
+      });
+    */
   }
 
   /* Uses currentQuestionScores Observable instead
