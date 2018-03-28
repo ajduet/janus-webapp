@@ -10,7 +10,7 @@
       <!-- Create a checkbox for each tag using ngFor. Toggle buttons instead of checkboxes! -->
       <span id="pass-fail-button">
         <label class="switch">
-          <input type="radio" name="violations"/>
+          <input type="radio" name="violations" (click)="selectedViolation = violationType">
           <div class="slider round">
             <span class="on">{{violationType.violationTypeText}}</span>
             <span class="off">{{violationType.violationTypeText}}</span>
@@ -22,7 +22,7 @@
       <textarea class="form-control" (input)="violationComment = $event.target.value" placeholder="Optional Soft Skill Violation Feedback"></textarea>
     </div>
     <br>
-    <button class="btn" (click)="submitViolation(violationType, violationComment); addViolation = !addViolation">Add Violation</button>
+    <button class="btn" (click)="submitViolation(selectedViolation, violationComment); addViolation = !addViolation">Add Violation</button>
     <button class="btn" (click)="cancelViolation(); addViolation = !addViolation">Cancel</button>
     <br><br>
   </div>
