@@ -80,13 +80,16 @@ export class CandidatesScreeningListComponent implements OnInit {
   
   beginScreening(): void {
     // create a new screening entry in the database
-   this.screeningService.beginScreening(
-          this.selectedCandidate.traineeID,
-          new Date(), 1,
-          this.selectedCandidate.skillTypeID
-        );
-    // retrieve the screening ID from the screening service
-    // and save the screening ID as a cookie to localStorage.
-    localStorage.setItem("screeningID", this.screeningService.getScreeningID.toString());
+    this.screeningService.beginScreening(
+        this.selectedCandidate.traineeID,
+        new Date(), 1,
+        this.selectedCandidate.skillTypeID
+      ).subscribe(data => {
+        // retrieve the screening ID from the screening service
+        // and save the screening ID as a cookie to localStorage.
+        localStorage.setItem("screeningID", data.toString());
+      }
+    );
+    // localStorage.setItem("screeningID", this.screeningService.getScreeningID.toString());
   }
 }
