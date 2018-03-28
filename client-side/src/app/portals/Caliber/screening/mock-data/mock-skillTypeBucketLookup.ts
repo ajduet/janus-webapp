@@ -10,7 +10,7 @@ export const SKILL_TYPE_BUCKET_LOOKUP: SkillTypeBucketLookUp =
           skillTypeName: 'Java EE/Microservices',
           isActive: true
       },
-      buckets: [
+      bucket: [
         { bucketID: 1,
           bucketCategory: 'Basic Java',
           bucketDescription: 'OCA level Java questions',
