@@ -111,7 +111,7 @@
                         <div class="form-group row">
                           <!--Corresponding to an array in the backend that removes a tag when one is clicked and adds that tag back to the all tags array-->
                           <span *ngFor="let tag of currentTags">
-                            <span *ngIf = "tag" class="input-group-addon revatureOrange pillButtons" (click)="removeTagFromQuestion(tag)" [innerHTML]="tag.tagName"></span>
+                            <span *ngIf = "tag" class="input-group-addon revatureOrange badge badge-pill" (click)="removeTagFromQuestion(tag)" [innerHTML]="tag.tagName"></span>
                           </span>
                         </div>
                       </div>
@@ -133,7 +133,7 @@
                       <div class="form-group row">
                         <!--Custome filter that checks all of the tags against the string in the search bar above-->
                         <span *ngFor="let tag of allTags| tagfilter:filter">
-                          <span *ngIf = "tag" class="input-group-addon pillButtons" (click)="addTagToQuestion(tag)">{{tag.tagName}}</span>
+                          <span *ngIf = "tag" class="input-group-addon revatureGray badge badge-pill" (click)="addTagToQuestion(tag)">{{tag.tagName}}</span>
                         </span>
                       </div>
                     </div>
