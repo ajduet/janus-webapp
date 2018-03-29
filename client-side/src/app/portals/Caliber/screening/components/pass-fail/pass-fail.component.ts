@@ -51,7 +51,7 @@ export class PassFailComponent implements OnInit {
               private screeningService: ScreeningService,
               private simpleTraineeService: SimpleTraineeService,
               private violationTypeService: ViolationTypeService,
-              private softSkillViolationService: SoftSkillsViolationService
+              public softSkillViolationService: SoftSkillsViolationService
   ) {
   }
 

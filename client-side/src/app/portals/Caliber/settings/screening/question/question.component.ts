@@ -52,6 +52,7 @@ export class QuestionComponent implements OnInit {
   currentBucket: Bucket;
   public answersCollapsed = true;
   public tagsCollapsed = true;
+  state;
 
 
 
