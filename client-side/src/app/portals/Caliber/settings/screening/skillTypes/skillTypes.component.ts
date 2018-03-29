@@ -218,7 +218,8 @@ export class SkillTypesComponent implements OnInit {
                 weights.push(this.bucketsAndWeights[index].weights);
             }
             this.skillTypeService.updateSkillTypeBuckets(this.skillType, bucketsId, weights).subscribe();
-            this.grabAllSkillTypes()
+            this.grabAllSkillTypes();
+            this.savedSuccessfully();
         }
         else {
             this.error = true;
@@ -231,6 +232,7 @@ export class SkillTypesComponent implements OnInit {
         this.skillTypeService.createSkillType(this.skillType).subscribe(results => {
             this.grabAllSkillTypes();
         })
+        this.savedSuccessfully();
     }
 
     checkBucketSum(){
