@@ -17,6 +17,9 @@
   <li class="nav-item" *ngIf="showReports">
     <a class="nav-link" routerLink="/Caliber/reports" routerLinkActive="activeLink">Reports</a>
   </li>
+  <li class="nav-item" *ngIf="showScreening">
+    <a class="nav-link" routerLink="/Caliber/screening/pendingScreeningsList" routerLinkActive="activeLink">Screening</a>
+  </li>
   <li class="nav-item" (click)="$event.stopPropagation()" routerLinkActive="activeLink">
       <ul class="navbar-nav mr-auto caliber-adj-onresize">
         <li #myDrop = "ngbDropdown" ngbDropdown class="d-inline-block">

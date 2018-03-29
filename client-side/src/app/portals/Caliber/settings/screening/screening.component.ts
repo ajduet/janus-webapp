@@ -5,7 +5,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
   templateUrl: './screening.component.html',
   styleUrls: ['./screening.component.css']
 })
-export class ScreeningComponent implements OnInit {
+export class ScreeningConfigComponent implements OnInit {
 
   constructor() {}
 
