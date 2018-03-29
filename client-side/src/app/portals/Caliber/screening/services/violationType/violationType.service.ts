@@ -16,10 +16,16 @@ export class ViolationTypeService {
   
   private ROOT_URL: string = this.urlUtilService.getBase();
 
-  constructor(private http: HttpClient, 
-              private urlUtilService: UrlUtilService) { }
+  constructor(
+    private http: HttpClient, 
+    private urlUtilService: UrlUtilService
+  ) { }
 
   getViolationTypes(): Observable<ViolationType[]> {
     return this.http.get<ViolationType[]>(this.ROOT_URL+'/screening-service/violation/all', {});
+  }
+
+  getAllViolationTypes(): Observable<any[]> {
+    return this.http.get<any[]>(this.ROOT_URL+'/screening-service/violation/all', {});
   }
 }

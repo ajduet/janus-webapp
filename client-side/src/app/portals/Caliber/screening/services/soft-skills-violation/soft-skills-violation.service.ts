@@ -67,7 +67,7 @@ export class SoftSkillsViolationService {
 
   submitViolation(typeID: number, comment: string, screeningID: string ):
   Observable<SoftSkillViolation[]>{
-      return this.http.post<SoftSkillViolation[]>(this.addViolationURL,
+      return this.http.post<any[]>(this.addViolationURL,
       {violationTypeId: [typeID],
         softSkillComment: comment,
         violationTime: new Date(),

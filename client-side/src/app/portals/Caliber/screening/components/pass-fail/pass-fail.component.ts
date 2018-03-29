@@ -6,6 +6,7 @@ import { SimpleTraineeService } from '../../services/simpleTrainee/simple-traine
 import { SoftSkillViolation } from '../../entities/softSkillViolation';
 import { SoftSkillsViolationService } from '../../services/soft-skills-violation/soft-skills-violation.service';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
 
 import { HttpParams } from '@angular/common/http';
@@ -35,7 +36,7 @@ export class PassFailComponent implements OnInit {
   public candidateName: string;
   previousViolations: Observable<SoftSkillViolation[]>;
   private passed: boolean;
-  violations: SoftSkillViolation[];
+  violations:any[] = [];  //Needs to be Observable<any[]>
   endScreening = false;
   public disabled = true;
   public passChecked: boolean;
@@ -49,16 +50,45 @@ export class PassFailComponent implements OnInit {
   constructor(private violationService: SoftSkillsViolationService,
               private screeningService: ScreeningService,
               private simpleTraineeService: SimpleTraineeService,
+              private violationTypeService: ViolationTypeService,
   ) {}
 
   ngOnInit() {
     this.disabled = true;
     this.passChecked = false;
     this.failChecked = false;
+    let violationArray: any[] = [];
     this.candidateName = this.simpleTraineeService.getSelectedCandidate().firstname + " " +
                           this.simpleTraineeService.getSelectedCandidate().lastname;
     this.screeningID = 1;
     this.previousViolations = this.getViolations();
+    this.violationTypeService.getAllViolationTypes().subscribe(violationTypes => {
+        this.getViolations().subscribe(data => {
+          // e = our violations
+          for (let e of data) {
+            // v = all violation types
+            for (let v of violationTypes) {
+              if (e.violationID == v.violationID) {
+                console.log("e");
+                console.log(e);
+                console.log("v");
+                console.log(v);
+                let thisTime = e.Time;
+                let thisComment = e.Comment;
+                violationArray.push ({
+                  violationType: { violationType: v.violationTypeText },
+                  Time: thisTime,
+                  Comment: thisComment
+                });
+              }
+            }
+          }
+          this.violations = violationArray;
+          console.log(this.violations);
+        });
+      }
+    );
+    
   }
 
   wasClicked(): boolean {

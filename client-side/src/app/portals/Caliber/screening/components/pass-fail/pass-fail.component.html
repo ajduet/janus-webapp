@@ -17,10 +17,10 @@
           <tr class="violation" *ngIf="!hasViolations()">
             <td colspan="4">No Violations Found</td>
           </tr>
-          <tr class="violation" *ngFor="let violation of violations; let i = index">
-            <td>{{violation.violationType.violationType | async }}</td>
-            <td>{{violation.Time | date:'shortTime' | async }}</td>
-            <td>{{violation.Comment | async }}</td>
+          <tr class="violation" *ngFor="let violation of violations | async; let i = index">
+            <td>{{violation.violationType.violationTypen}}</td>
+            <td>{{violation.Time | date:'shortTime'}}</td>
+            <td>{{violation.Comment}}</td>
             <td><button class="btn" (click)="deleteViolation(i)">Remove</button></td>
           </tr>
         </tbody>
