@@ -13,6 +13,7 @@ import { HttpClient } from '@angular/common/http';
 import { SimpleNotificationsModule } from 'angular2-notifications-lite';
 import { ScrollEventModule } from 'ngx-scroll-event';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
+import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
 
 // routing
@@ -43,6 +44,21 @@ import { AlertsService } from './services/alerts.service';
 import { EvaluationService } from './services/evaluation.service';
 import { QCStatusService } from './services/qcstatus.service';
 import { TraineeStatusService } from './services/trainee-status.service';
+import { SimpleTraineeService } from './screening/services/simpleTrainee/simple-trainee.service';
+import { BucketService } from './screening/services/bucket/bucket.service';
+import { QuestionService } from './screening/services/question/question.service';
+import { QuestionsToBucketsUtil } from './screening/util/questionsToBuckets.util';
+import { ScoresToBucketsUtil } from './screening/util/scoresToBuckets.util';
+import { QuestionScoreService } from './screening/services/question-score/question-score.service';
+import { SkillTypeService } from './screening/services/skillType/skill-type.service';
+import { TagService } from './screening/services/tag/tag.service';
+import { SoftSkillsService } from './screening/services/soft-skills/soft-skills.service';
+import { SoftSkillsViolationService } from './screening/services/soft-skills-violation/soft-skills-violation.service'
+import { ViolationTypeService } from './screening/services/violationType/violationType.service';
+import { ScreeningService } from './screening/services/screening/screening.service';
+import { ScreenerBucketsService } from './screening/services/screener-buckets/screener-buckets.service';
+import { SkillTypeBucketService } from './screening/services/skillTypeBucketLookup/skill-type-bucket.service';
+import { UrlUtilService } from './screening/services/UrlUtil/url-util.service';
 
 //1801-caliber-dev-angels services
 import { QuestionsService } from './settings/screening/services/questions.service';
@@ -73,6 +89,7 @@ import { FilterByPipe } from './pipes/filter-by.pipe';
 import { ToolbarFilterPipe } from './pipes/toolbar-filter.pipe';
 import { AddressToStringPipe } from './pipes/address-to-string.pipe';
 import { TraineeSearch } from './pipes/trainee-search.pipe';
+import { SearchPipe } from './screening/util/search.pipe';
 
 // components
 import { CaliberComponent } from './caliber.component';
@@ -131,7 +148,17 @@ import { DeleteBatchModalComponent } from './manage/delete-batch-modal/delete-ba
 import { CannotDeleteModalComponent } from './manage/cannot-delete-modal/cannot-delete-modal.component';
 import { DeleteTraineeModalComponent } from './manage/delete-trainee-modal/delete-trainee-modal.component';
 import { CannotDeleteTraineeModalComponent } from './manage/cannot-delete-trainee-modal/cannot-delete-trainee-modal.component';
-import { ScreeningComponent } from './settings/screening/screening.component';
+import { ScreeningComponent } from './screening/components/screening/screening.component';
+import { CandidatesScreeningListComponent } from './screening/components/candidates-screening-list/candidates-screening-list.component';
+import { QuestionsTableComponent } from './screening/components/questions-table/questions-table.component';
+import { FinalReportComponent } from './screening/components/final-report/final-report.component';
+import { IntroductionComponent } from './screening/components/introduction/introduction.component';
+import { AnswerComponent } from './screening/components/answer/answer.component';
+import { PassFailComponent } from './screening/components/pass-fail/pass-fail.component';
+import { ViolationFlagComponent } from './screening/components/violation-flag/violation-flag.component';
+import { ScheduleScreeningService } from './screening/services/schedule-screening/schedule-screening.service';
+// DevAngels
+import { ScreeningConfigComponent } from './settings/screening/screening.component';
 import {SkillTypesComponent} from './settings/screening/skillTypes/skillTypes.component';
 import { BucketComponent } from './settings/screening/bucket/bucket.component';
 import { SkillTypeBucketsComponent } from './settings/screening/skillType-buckets/skillType-buckets.component' ;
@@ -153,6 +180,7 @@ import {BucketFilterPipe} from './settings/screening/skillType-buckets/skillType
     SimpleNotificationsModule.forRoot(),
     ScrollEventModule,
     Ng2PageScrollModule,
+    NgxPaginationModule,
 
     //1801-caliber-dev-angels services
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
@@ -189,6 +217,7 @@ import {BucketFilterPipe} from './settings/screening/skillType-buckets/skillType
     ToolbarFilterPipe,
     TraineeSearch,
     ArrToStringPipe,
+    SearchPipe,
     TagFilterPipe,
     BucketFilterPipe,
 
@@ -251,11 +280,20 @@ import {BucketFilterPipe} from './settings/screening/skillType-buckets/skillType
     CannotDeleteModalComponent,
     DeleteTraineeModalComponent,
     CannotDeleteTraineeModalComponent,
-    ScreeningComponent,
+    // DevAngels
+    ScreeningConfigComponent,
+    CandidatesScreeningListComponent,
+    QuestionsTableComponent,
+    FinalReportComponent,
+    IntroductionComponent,
+    AnswerComponent,
+    PassFailComponent,
+    ViolationFlagComponent,
     SkillTypesComponent,
     BucketComponent,
     SkillTypeBucketsComponent,
-    QuestionComponent
+    QuestionComponent,
+    ScreeningComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: SpringInterceptor, multi: true },  // interceptor for all HTTP requests
@@ -287,6 +325,22 @@ import {BucketFilterPipe} from './settings/screening/skillType-buckets/skillType
     QCStatusService,
     TraineeStatusService,
     ApiService,
+    SimpleTraineeService,
+    BucketService,
+    QuestionService,
+    QuestionsToBucketsUtil,
+    ScoresToBucketsUtil,
+    TagService,
+    QuestionScoreService,
+    SkillTypeService,
+    SoftSkillsService,
+    SoftSkillsViolationService,
+    ViolationTypeService,
+    ScreeningService,
+    SkillTypeBucketService,
+    ScreenerBucketsService,
+    UrlUtilService,
+    ScheduleScreeningService,
     QuestionsService,
     SkillTypesService,
     BucketsService,
@@ -305,7 +359,9 @@ import {BucketFilterPipe} from './settings/screening/skillType-buckets/skillType
     DeleteBatchModalComponent,
     CannotDeleteModalComponent,
     DeleteTraineeModalComponent,
-    CannotDeleteTraineeModalComponent
+    CannotDeleteTraineeModalComponent,
+    AnswerComponent
   ],
 })
 export class CaliberModule { }
+// a comment

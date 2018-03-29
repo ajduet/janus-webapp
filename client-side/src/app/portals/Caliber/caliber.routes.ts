@@ -15,8 +15,14 @@ import { QualityComponent } from './quality/quality.component';
 import { PanelComponent } from './panel/panel/panel.component';
 import { TrainerProfilesComponent } from './settings/trainer-profile/trainer-profile.component';
 import { RoleGuard, roles } from '../../role-guard';
+import { ScreeningComponent } from './screening/components/screening/screening.component';
+import { CandidatesScreeningListComponent } from './screening/components/candidates-screening-list/candidates-screening-list.component';
+import { QuestionsTableComponent } from './screening/components/questions-table/questions-table.component';
+import { FinalReportComponent } from './screening/components/final-report/final-report.component';
+import { IntroductionComponent } from './screening/components/introduction/introduction.component';
+import { PassFailComponent } from './screening/components/pass-fail/pass-fail.component';
 
-import {ScreeningComponent} from './settings/screening/screening.component'
+import {ScreeningConfigComponent} from './settings/screening/screening.component'
 import { Component } from '@angular/core';
 import {BucketComponent} from './settings/screening/bucket/bucket.component';
 import {SkillTypeBucketsComponent} from './settings/screening/skillType-buckets/skillType-buckets.component';
@@ -73,6 +79,38 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'screening',
+        component: ScreeningComponent,
+        canActivate: [RoleGuard],
+        data: {
+          roles: [
+            roles.screenerRole, roles.vpRole
+          ]
+        },
+        children: [
+          {
+            path: 'pendingScreeningsList',
+            component: CandidatesScreeningListComponent,
+          },
+          {
+            path: 'questions',
+            component: QuestionsTableComponent,
+          },
+          {
+            path: 'finalReport',
+            component: FinalReportComponent,
+          },
+          {
+            path: 'introduction',
+            component: IntroductionComponent,
+          },
+          {
+            path: 'passFail',
+            component: PassFailComponent
+          }
+        ]
+      },
+      {
         path: 'settings',
         component: SettingsComponent,
         canActivate: [RoleGuard],
@@ -98,7 +136,7 @@ export const routes: Routes = [
           },
           {
             path:'screening',
-            component: ScreeningComponent,
+            component: ScreeningConfigComponent,
             children:[
 
             ]

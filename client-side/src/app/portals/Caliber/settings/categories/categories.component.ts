@@ -161,3 +161,4 @@ export class CategoriesComponent implements OnInit {
     this.modalService.open(content);
   }
 }
+// a comment
