@@ -114,8 +114,8 @@
  .switch {
   position: relative;
   display: inline-block;
-  width: 103px;
-  height: 34px;
+  width: 150px;
+  height: 70px;
 }
 
 /* Hide default HTML checkbox */
@@ -134,8 +134,8 @@
   right: 0;
   bottom: 0;
   background-color: #787878;
-  width: 103px;
-  height: 34px;
+  width: 150px;
+  height: 70px;
   -webkit-transition: .4s;
   transition: .4s;
 }

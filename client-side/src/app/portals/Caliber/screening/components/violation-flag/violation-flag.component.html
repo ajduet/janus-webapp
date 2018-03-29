@@ -8,7 +8,7 @@
     <br>
     <div class="violation" *ngFor="let violationType of violationTypes; let i = index">
       <!-- Create a checkbox for each tag using ngFor. Toggle buttons instead of checkboxes! -->
-      <span id="pass-fail-button">
+      <span id="pass-fail-button" >
         <label class="switch">
           <input type="radio" name="violations" (click)="selectedViolation = violationType">
           <div class="slider round">

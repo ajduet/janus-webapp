@@ -51,6 +51,5 @@ export class AnswerComponent implements OnInit {
       this.questionScores.push(this.questionScore);
       this.questionScoreService.updateQuestionScores(this.questionScores);
       let resp = this.questionScoreService.postQuestionScore(this.questionScore);
-      console.log("POST QUESTION RESPONSE IS "+resp);
   }
 }

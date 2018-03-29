@@ -31,6 +31,7 @@ export class ViolationFlagComponent implements OnInit {
 
   violationTypes: ViolationType[];
   violationTypesChecked: ViolationType[] = [];
+  softSkillViolations: SoftSkillViolation[];
   selectedViolation: ViolationType;
   public candidateName: string;
   public addViolation: boolean = false;
@@ -63,15 +64,23 @@ export class ViolationFlagComponent implements OnInit {
       let index = this.violationTypesChecked.findIndex(x => x == changedViolationType);
       this.violationTypesChecked.splice(index);
     }
-    console.log(changedViolationType.violationType);
   }
 
   submitViolation(violationType: ViolationType, comment: string): Observable<SoftSkillViolation[]> {
     //Send request with the violation + comments to database
     let screeningID = localStorage.getItem("screeningID");
     this.alertsService.success('Soft Skill Violation Added');
+    this.violationTypeService.getAllViolationTypes().subscribe(data => console.log(data));
     this.flagChange();
-    return this.violationService.submitViolation(violationType.violationID, comment, screeningID);
+
+    this.violationService.softSkillViolations.push({
+      violationID: undefined,
+      screeningID: +localStorage.getItem("screeningID"),
+      violationType: violationType,
+      Time: new Date(),
+      Comment: comment
+    });
+    return this.violationService.submitViolation(violationType.violationTypeId, comment, screeningID);
   }
 
   cancelViolation() {

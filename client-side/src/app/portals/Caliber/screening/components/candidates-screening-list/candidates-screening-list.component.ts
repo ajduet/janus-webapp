@@ -15,6 +15,7 @@ import { SimpleTraineeService } from "../../services/simpleTrainee/simple-traine
 import { SkillTypeService } from "../../services/skillType/skill-type.service";
 import { ScreeningService } from "../../services/screening/screening.service";
 import { ScheduleScreeningService } from "../../services/schedule-screening/schedule-screening.service";
+import { SoftSkillsViolationService } from '../../services/soft-skills-violation/soft-skills-violation.service';
 
 // Installed Modules
 // npm install ngx-pagination --save
@@ -54,10 +55,17 @@ export class CandidatesScreeningListComponent implements OnInit {
     private simpleTraineeService: SimpleTraineeService,
     private skillTypeService: SkillTypeService,
     private screeningService: ScreeningService,
-    private scheduleScreeningService: ScheduleScreeningService
-  ) {}
+    private scheduleScreeningService: ScheduleScreeningService,
+    private softSkillsViolationService: SoftSkillsViolationService
+  ) {
+    
+  }
 
   ngOnInit() {
+    if(this.softSkillsViolationService.softSkillViolations.length > 0) {
+      window.location.reload(true);
+    }
+      
     this.scheduleScreeningService.getScheduleScreenings().subscribe(data => {
       this.scheduledScreenings = data;
     });

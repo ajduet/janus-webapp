@@ -176,7 +176,6 @@ export class QuestionsTableComponent implements OnInit, OnDestroy {
 
   saveFeedback() {
     this.screeningService.generalComments = this.generalComment;
-    console.log(this.screeningService.generalComments);
     this.screeningService.submitGeneralComment();
   }
 

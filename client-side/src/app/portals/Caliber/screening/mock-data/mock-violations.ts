@@ -5,7 +5,7 @@ export const MOCK_VIOLATIONS: SoftSkillViolation[] = [
   { violationID: 11, 
     screeningID: 1, 
     violationType: {
-      violationID: 1, 
+      violationTypeId: 1, 
       violationType: "Profanity"
     },
     Time: new Date(),
@@ -14,7 +14,7 @@ export const MOCK_VIOLATIONS: SoftSkillViolation[] = [
   { violationID: 12, 
     screeningID: 1, 
     violationType: {
-      violationID: 2, 
+      violationTypeId: 2, 
       violationType: "Dress"
     },
     Time: new Date(), 
@@ -23,7 +23,7 @@ export const MOCK_VIOLATIONS: SoftSkillViolation[] = [
   { violationID: 13, 
     screeningID: 1, 
     violationType: {
-      violationID: 3, 
+      violationTypeId: 3, 
       violationType: "Speech"
     },
     Time: new Date(), 
@@ -33,7 +33,7 @@ export const MOCK_VIOLATIONS: SoftSkillViolation[] = [
   { violationID: 14, 
     screeningID: 1, 
     violationType: {
-      violationID: 4, 
+      violationTypeId: 4, 
       violationType: "Misc"
     },
     Time: new Date(), 

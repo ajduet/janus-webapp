@@ -17,8 +17,8 @@
           <tr class="violation" *ngIf="!hasViolations()">
             <td colspan="4">No Violations Found</td>
           </tr>
-          <tr class="violation" *ngFor="let violation of violations | async; let i = index">
-            <td>{{violation.violationType.violationTypen}}</td>
+          <tr class="violation" *ngFor="let violation of this.softSkillViolationService.softSkillViolations; let i = index">
+            <td>{{violation.violationType.violationTypeText}}</td>
             <td>{{violation.Time | date:'shortTime'}}</td>
             <td>{{violation.Comment}}</td>
             <td><button class="btn" (click)="deleteViolation(i)">Remove</button></td>

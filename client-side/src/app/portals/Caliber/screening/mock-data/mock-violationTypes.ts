@@ -1,8 +1,8 @@
 import { ViolationType } from '../entities/violationType';
 
 export const VIOLATION_TYPES: ViolationType[] = [
-  { violationID: 11, violationType: 'Profanity' },
-  { violationID: 12, violationType: 'Dress' },
-  { violationID: 13, violationType: 'Attitude' },
-  { violationID: 14, violationType: 'Conduct' },
+  { violationTypeId: 11, violationType: 'Profanity' },
+  { violationTypeId: 12, violationType: 'Dress' },
+  { violationTypeId: 13, violationType: 'Attitude' },
+  { violationTypeId: 14, violationType: 'Conduct' },
 ];

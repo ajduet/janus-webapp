@@ -51,7 +51,9 @@ export class PassFailComponent implements OnInit {
               private screeningService: ScreeningService,
               private simpleTraineeService: SimpleTraineeService,
               private violationTypeService: ViolationTypeService,
-  ) {}
+              private softSkillViolationService: SoftSkillsViolationService
+  ) {
+  }
 
   ngOnInit() {
     this.disabled = true;
@@ -60,8 +62,8 @@ export class PassFailComponent implements OnInit {
     let violationArray: any[] = [];
     this.candidateName = this.simpleTraineeService.getSelectedCandidate().firstname + " " +
                           this.simpleTraineeService.getSelectedCandidate().lastname;
-    this.screeningID = 1;
     this.previousViolations = this.getViolations();
+    this.previousViolations.subscribe(data => console.log(data));
     this.violationTypeService.getAllViolationTypes().subscribe(violationTypes => {
         this.getViolations().subscribe(data => {
           // e = our violations
@@ -69,10 +71,6 @@ export class PassFailComponent implements OnInit {
             // v = all violation types
             for (let v of violationTypes) {
               if (e.violationID == v.violationID) {
-                console.log("e");
-                console.log(e);
-                console.log("v");
-                console.log(v);
                 let thisTime = e.Time;
                 let thisComment = e.Comment;
                 violationArray.push ({
@@ -84,11 +82,9 @@ export class PassFailComponent implements OnInit {
             }
           }
           this.violations = violationArray;
-          console.log(this.violations);
         });
       }
     );
-    
   }
 
   wasClicked(): boolean {
@@ -122,7 +118,7 @@ export class PassFailComponent implements OnInit {
  
   
   getViolations(): Observable<SoftSkillViolation[]> {
-    return this.violationService.getPreviousViolations(this.screeningID);
+    return this.violationService.getPreviousViolations(+localStorage.getItem("screeningID"));
   }
 
   pass() {
@@ -150,10 +146,10 @@ export class PassFailComponent implements OnInit {
       }
     );
     */
-    if (this.violations.length > 1) {
-      this.violations.splice(violationIndex, 1);
+    if (this.softSkillViolationService.softSkillViolations.length > 1) {
+      this.softSkillViolationService.softSkillViolations.splice(violationIndex, 1);
     } else {
-      this.violations = [];
+      this.softSkillViolationService.softSkillViolations = [];
     }
   }
 
@@ -162,7 +158,7 @@ export class PassFailComponent implements OnInit {
   }
 
   hasViolations(): boolean {
-    if(this.violations == undefined || this.violations.length < 1){
+    if(this.softSkillViolationService.softSkillViolations == undefined || this.softSkillViolationService.softSkillViolations.length < 1){
       return false;
     }
     else{

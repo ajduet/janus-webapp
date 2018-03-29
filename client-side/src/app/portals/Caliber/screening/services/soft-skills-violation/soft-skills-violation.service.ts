@@ -8,6 +8,7 @@ import { SoftSkillViolation } from '../../entities/softSkillViolation'
 import { ViolationType } from '../../entities/violationType';
 import { MOCK_VIOLATIONS } from '../../mock-data/mock-violations';
 import { UrlUtilService } from '../UrlUtil/url-util.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 /*
 Separate from but related to the Soft Skills service, 
@@ -19,9 +20,15 @@ export class SoftSkillsViolationService {
 
   constructor(private http : HttpClient,
     private urlUtilService: UrlUtilService) { }
+  
+  softSkillViolations: SoftSkillViolation[] = [];
+  // questionsQuestionsSource tracks the value of answeredQuestions
+  // and allows values to be sent to answeredQuestions
+  private softSkillViolationSource = new BehaviorSubject<SoftSkillViolation[]>(this.softSkillViolations);
+  // used to retrieve populate answeredQuestions in the data table component
+  // and answer modal component
+  currentSoftSkillViolations = this.softSkillViolationSource.asObservable();
 
-  
-  
   // readonly because why wouldn't they be? 
   readonly getViolationTypeURL: string = this.urlUtilService.getBase() + "/violation/all"
   readonly getViolationURL: string = this.urlUtilService.getBase() + "/screening-service/screening/violation/";
@@ -38,7 +45,7 @@ export class SoftSkillsViolationService {
 
   // Fake local data for temp use
   getPreviousViolations(screeningID: number): Observable<SoftSkillViolation[]>{
-    return this.http.get<SoftSkillViolation[]>(this.getViolationURL+screeningID);
+    return this.http.get<SoftSkillViolation[]>(this.getViolationURL + screeningID);
   }
   
   addViolations(newViolations : ViolationType[], comment : string){
@@ -53,7 +60,7 @@ export class SoftSkillsViolationService {
     */
     let violationIdArray: number[];
     for(let i = 0; i < newViolations.length; i++){
-      violationIdArray[i] = newViolations[i].violationID;
+      violationIdArray[i] = newViolations[i].violationTypeId;
     }
 
     // create an Http parameter body with violationID array, append comment and date to body
@@ -88,6 +95,10 @@ export class SoftSkillsViolationService {
       in response to a change in the observable. Hence, deleteViolation returns an Observable. 
     */
     return this.http.get<SoftSkillViolation[]>(this.deleteViolationURL+`?violationId=${violationID}`);
+  }
+
+  updateSoftSkillViolations(softSkillviolations: SoftSkillViolation[]){
+    this.softSkillViolationSource.next(softSkillviolations);
   }
 
 }
