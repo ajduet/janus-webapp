@@ -1,0 +1,84 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormControl, FormArray, FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs';
+
+import { SimpleTraineeService } from "../../services/simpleTrainee/simple-trainee.service";
+import { SkillTypeService } from '../../services/skillType/skill-type.service';
+import { TagService } from '../../services/tag/tag.service';
+import { BucketService } from "../../services/bucket/bucket.service";
+import { ScreeningService } from '../../services/screening/screening.service';
+
+import { Tag } from '../../entities/tag';
+import { SkillType } from '../../entities/skillType';
+
+@Component({
+  selector: 'app-introduction',
+  templateUrl: './introduction.component.html',
+  styleUrls: ['./introduction.component.css']
+})
+
+/*
+  When the interview begins, candidate will give a short intro about themselves 
+  including a list of their technical skills (Java, SQL, HTML, etc). 
+  The screener will check the skills the candidate lists (required), 
+  flag any soft skill violations (optional) and give general 
+  feedback on the candidates introduction (optional).
+*/
+export class IntroductionComponent implements OnInit {
+
+  constructor(public tagService : TagService, private simpleTraineeService: SimpleTraineeService,
+    private skillTypeService: SkillTypeService, private bucketService: BucketService,
+    private screeningService: ScreeningService) { }
+
+
+  public traineeName: string;
+  public traineeTrack: string;
+
+  public tagList: Tag[];
+
+  public comment: string;
+
+  form = new FormGroup({
+    comment: new FormControl("", [])
+  })
+
+  ngOnInit() {
+    //Get candidate name from another component
+    this.tagService.tagListChecked = [];
+
+    this.traineeName = this.simpleTraineeService.getSelectedCandidate().firstname + " " + this.simpleTraineeService.getSelectedCandidate().lastname;
+    this.traineeTrack = this.simpleTraineeService.getSelectedCandidate().skillTypeName;
+
+    //Get all tags
+    this.getTags();
+  }
+
+  getTags(): void {
+    this.tagService.getAllTags().subscribe(
+      allTags => {
+        this.tagList = allTags;
+      }
+    );
+  }
+
+  updateTagList(changedTag : Tag, checked : boolean) {
+
+    if(checked) {
+      this.tagService.tagListChecked.push(changedTag);
+    } else {
+      let index = this.tagService.tagListChecked.findIndex(x => x == changedTag);
+      this.tagService.tagListChecked.splice(index,1);
+    }
+  }
+
+  onSubmit(){
+    //Send the comments to the appropriate service method saves them to the DB
+    this.screeningService.submitIntroComment(this.comment);
+  }
+
+  skillChosen(): boolean {
+    return (!(this.tagService.tagListChecked.length > 0));
+  }
+}
