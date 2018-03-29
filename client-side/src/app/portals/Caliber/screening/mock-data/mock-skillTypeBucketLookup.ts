@@ -1,5 +1,5 @@
-import {Bucket} from '../entities/bucket';
-import {SkillTypeBucketLookUp} from '../entities/skillTypeBucketLookUp';
+import { Bucket } from '../entities/bucket';
+import { SkillTypeBucketLookUp } from '../entities/skillTypeBucketLookup';
 import { SkillType } from "../entities/skillType";
 
 export const SKILL_TYPE_BUCKET_LOOKUP: SkillTypeBucketLookUp = 

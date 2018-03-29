@@ -46,6 +46,8 @@ export class CandidatesScreeningListComponent implements OnInit {
   selectedCandidate: SimpleTrainee;
   selectedScheduledScreening: ScheduledScreening;
   showBeginScreeningPrompt = false;
+  searchText; // text in search bar
+  p; // current page
   
   /* ###########################
        CONSTRUCTOR and INIT
