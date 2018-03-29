@@ -115,7 +115,7 @@
   position: relative;
   display: inline-block;
   width: 150px;
-  height: 70px;
+  height: 34px;
 }
 
 /* Hide default HTML checkbox */
@@ -135,7 +135,7 @@
   bottom: 0;
   background-color: #787878;
   width: 150px;
-  height: 70px;
+  height: 34px;
   -webkit-transition: .4s;
   transition: .4s;
 }

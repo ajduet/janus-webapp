@@ -16,6 +16,7 @@ import { SkillTypeService } from "../../services/skillType/skill-type.service";
 import { ScreeningService } from "../../services/screening/screening.service";
 import { ScheduleScreeningService } from "../../services/schedule-screening/schedule-screening.service";
 import { SoftSkillsViolationService } from '../../services/soft-skills-violation/soft-skills-violation.service';
+import { QuestionScoreService } from '../../services/question-score/question-score.service';
 
 // Installed Modules
 // npm install ngx-pagination --save
@@ -48,7 +49,7 @@ export class CandidatesScreeningListComponent implements OnInit {
   showBeginScreeningPrompt = false;
   searchText; // text in search bar
   p; // current page
-  
+
   /* ###########################
        CONSTRUCTOR and INIT
   ########################### */
@@ -58,13 +59,14 @@ export class CandidatesScreeningListComponent implements OnInit {
     private skillTypeService: SkillTypeService,
     private screeningService: ScreeningService,
     private scheduleScreeningService: ScheduleScreeningService,
-    private softSkillsViolationService: SoftSkillsViolationService
+    private softSkillsViolationService: SoftSkillsViolationService,
+    private questionScoreService: QuestionScoreService
   ) {
     
   }
 
   ngOnInit() {
-    if(this.softSkillsViolationService.softSkillViolations.length > 0) {
+    if(this.softSkillsViolationService.softSkillViolations.length > 0 || this.questionScoreService.questionScores.length > 0) {
       window.location.reload(true);
     }
       
