@@ -11,7 +11,7 @@ import { NavModule } from '../../nav/nav.module';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { HttpClient } from '@angular/common/http';
 import { SimpleNotificationsModule } from 'angular2-notifications-lite';
-import { ScrollEventModule } from 'ngx-scroll-event';
+// import { ScrollEventModule } from 'ngx-scroll-event';
 import { Ng2PageScrollModule } from 'ng2-page-scroll';
 import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 
@@ -178,7 +178,7 @@ import {BucketFilterPipe} from './settings/screening/skillType-buckets/skillType
     ChartsModule,
     ReactiveFormsModule,
     SimpleNotificationsModule.forRoot(),
-    ScrollEventModule,
+    // ScrollEventModule,
     Ng2PageScrollModule,
     NgxPaginationModule,
 
