@@ -34,9 +34,9 @@ export class PassFailComponent implements OnInit {
 
   //Candidate Name
   public candidateName: string;
-  previousViolations: Observable<SoftSkillViolation[]>;
+  previousViolations: any[];
   private passed: boolean;
-  violations:any[] = [];  //Needs to be Observable<any[]>
+  violations: any[] = [];  //Needs to be Observable<any[]>
   endScreening = false;
   public disabled = true;
   public passChecked: boolean;
@@ -48,10 +48,10 @@ export class PassFailComponent implements OnInit {
 
   // need a SoftSkillViolationService to get the data
   constructor(private violationService: SoftSkillsViolationService,
-              private screeningService: ScreeningService,
-              private simpleTraineeService: SimpleTraineeService,
-              private violationTypeService: ViolationTypeService,
-              public softSkillViolationService: SoftSkillsViolationService
+    private screeningService: ScreeningService,
+    private simpleTraineeService: SimpleTraineeService,
+    private violationTypeService: ViolationTypeService,
+    public softSkillViolationService: SoftSkillsViolationService
   ) {
   }
 
@@ -61,29 +61,32 @@ export class PassFailComponent implements OnInit {
     this.failChecked = false;
     let violationArray: any[] = [];
     this.candidateName = this.simpleTraineeService.getSelectedCandidate().firstname + " " +
-                          this.simpleTraineeService.getSelectedCandidate().lastname;
-    this.previousViolations = this.getViolations();
-    this.previousViolations.subscribe(data => console.log(data));
+      this.simpleTraineeService.getSelectedCandidate().lastname;
+    this.softSkillViolationService.getPreviousViolations(+localStorage.getItem("screeningID")).subscribe(data => {
+      this.previousViolations = data;
+      this.softSkillViolationService.softSkillViolations = this.previousViolations;
+    });
+
     this.violationTypeService.getAllViolationTypes().subscribe(violationTypes => {
-        this.getViolations().subscribe(data => {
-          // e = our violations
-          for (let e of data) {
-            // v = all violation types
-            for (let v of violationTypes) {
-              if (e.violationID == v.violationID) {
-                let thisTime = e.Time;
-                let thisComment = e.Comment;
-                violationArray.push ({
-                  violationType: { violationType: v.violationTypeText },
-                  Time: thisTime,
-                  Comment: thisComment
-                });
-              }
+      this.getViolations().subscribe(data => {
+        // e = our violations
+        for (let e of data) {
+          // v = all violation types
+          for (let v of violationTypes) {
+            if (e.violationID == v.violationID) {
+              let thisTime = e.Time;
+              let thisComment = e.Comment;
+              violationArray.push({
+                violationType: { violationType: v.violationTypeText },
+                Time: thisTime,
+                Comment: thisComment
+              });
             }
           }
-          this.violations = violationArray;
-        });
-      }
+        }
+        this.violations = violationArray;
+      });
+    }
     );
   }
 
@@ -91,32 +94,32 @@ export class PassFailComponent implements OnInit {
     return this.disabled;
   }
 
-  updateCheckedPass(checked : boolean) {
+  updateCheckedPass(checked: boolean) {
     this.passChecked = true;
-    if(this.failChecked === true) {
+    if (this.failChecked === true) {
       this.failChecked = false;
     }
     this.disabled = false;
   }
 
-  updateCheckedFail(checked : boolean) {
+  updateCheckedFail(checked: boolean) {
     this.failChecked = true;
-    if(this.passChecked === true){
+    if (this.passChecked === true) {
       this.passChecked = false;
     }
     this.disabled = false;
   }
 
-  submit(){
-    if(this.passChecked){
+  submit() {
+    if (this.passChecked) {
       this.pass();
-    } else if (this.failChecked){
+    } else if (this.failChecked) {
       this.fail();
     }
     this.screeningService.finalSoftSkillComment = this.softSkillFeedback;
   }
- 
-  
+
+
   getViolations(): Observable<SoftSkillViolation[]> {
     return this.violationService.getPreviousViolations(+localStorage.getItem("screeningID"));
   }
@@ -133,41 +136,36 @@ export class PassFailComponent implements OnInit {
     this.screeningService.softSkillsResult = "Fail";
   }
 
-  deleteViolation(violationIndex: number) {
-    /*
-    this.violationService.deleteViolation(this.violations[violationIndex].violationID).subscribe(
+  deleteViolation(violationId: number, i: number) {
+    this.violationService.deleteViolation(violationId).subscribe(
       data => {
-        // After subscribed observable returns update array
-        if (this.violations.length > 1) {
-          this.violations.splice(violationIndex, 1);
-        } else {
-          this.violations = [];
-        }
+        this.previousViolations = data;
+        this.softSkillViolationService.updateSoftSkillViolations(this.previousViolations);
       }
     );
-    */
+
     if (this.softSkillViolationService.softSkillViolations.length > 1) {
-      this.softSkillViolationService.softSkillViolations.splice(violationIndex, 1);
+      this.softSkillViolationService.softSkillViolations.splice(i, 1);
     } else {
       this.softSkillViolationService.softSkillViolations = [];
     }
   }
 
   getMessage($event) {
-    this.previousViolations = this.getViolations();
+    this.softSkillViolationService.getPreviousViolations(+localStorage.getItem("screeningID")).subscribe(data => this.previousViolations = data);
   }
 
   hasViolations(): boolean {
-    if(this.softSkillViolationService.softSkillViolations == undefined || this.softSkillViolationService.softSkillViolations.length < 1){
+    if (this.softSkillViolationService.softSkillViolations == undefined || this.softSkillViolationService.softSkillViolations.length < 1) {
       return false;
     }
-    else{
+    else {
       return true;
     }
   }
 
-  public getPassed(): string{
-    if(this.passed){
+  public getPassed(): string {
+    if (this.passed) {
       return "passed";
     }
     else {
@@ -183,7 +181,7 @@ export class PassFailComponent implements OnInit {
     }
   }
 
-  
+
 
 
 }
