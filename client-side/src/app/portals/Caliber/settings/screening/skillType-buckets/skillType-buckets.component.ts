@@ -37,9 +37,9 @@ export class SkillTypeBucketsComponent implements OnInit {
   }
 
   getBuckets(): void {
-      this.bucketService.getAllBuckets()
-        .subscribe(buckets =>
-           this.buckets = buckets);
+      this.bucketService.getAllBuckets().subscribe(buckets => {
+            this.buckets = buckets;
+       });
   }
 
 
@@ -49,8 +49,6 @@ export class SkillTypeBucketsComponent implements OnInit {
     */
   routeToBucket(item: Bucket) {
     this.bucketService.setBucket(item);
-    console.log("routing to category");
-    //console.log(this.bucketService.getCurrentBucket());
     this.router.navigate(["Caliber/settings/screening/category"]);
   }
 
@@ -61,20 +59,13 @@ export class SkillTypeBucketsComponent implements OnInit {
     this.currBucket.bucketId = bucket.bucketId;
     this.currBucket.bucketCategory = bucket.bucketCategory;
     this.currBucket.bucketDescription = bucket.bucketDescription;
-    console.log(this.currBucket);
   }
 
   updateBucket() {
     if (this.currBucket) {
-        console.log(this.currBucket);
-      this.bucketService.updateBucket(this.currBucket)
-        .subscribe(bucket => {
-          // replace the bucket in the buckets list with update from server
-          const ix = bucket ? this.buckets.findIndex(h => h.bucketId === bucket.bucketId) : -1;
-          if (ix > -1) { this.buckets[ix] = bucket; }
+      this.bucketService.updateBucket(this.currBucket).then(bucket => {
+          this.getBuckets();
         });
-      this.getBuckets();
-      this.currBucket = undefined;
       this.savedSuccessfully();
     }
   }
@@ -83,7 +74,9 @@ export class SkillTypeBucketsComponent implements OnInit {
   createBucket() {
     // The server will generate the id for this new hero
     this.bucketService.createNewBucket(this.newBucket)
-      .subscribe(bucket =>this.buckets.push(bucket));
+      .subscribe(bucket =>{
+          this.buckets.push(bucket)
+      });
   }
 
   savedSuccessfully(){

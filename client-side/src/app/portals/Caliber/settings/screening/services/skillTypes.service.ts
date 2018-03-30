@@ -25,7 +25,6 @@ export class SkillTypesService {
     url: string = "https://hydra-gateway-service.cfapps.io/skilltype-service/skillType/";
 
     createSkillType(skillType: SkillType) {
-        console.log(skillType);
         return this.http.post(this.url + "createSkillType", skillType, httpOptions);
     }
 

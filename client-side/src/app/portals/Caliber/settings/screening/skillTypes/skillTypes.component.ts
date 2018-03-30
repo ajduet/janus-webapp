@@ -217,8 +217,9 @@ export class SkillTypesComponent implements OnInit {
                 bucketsId.push(this.singleSkillTypeBucketIds[index]);
                 weights.push(this.bucketsAndWeights[index].weights);
             }
-            this.skillTypeService.updateSkillTypeBuckets(this.skillType, bucketsId, weights).subscribe();
-            this.grabAllSkillTypes();
+            this.skillTypeService.updateSkillTypeBuckets(this.skillType, bucketsId, weights).subscribe(results => {
+                this.grabAllSkillTypes();
+            });
             this.savedSuccessfully();
         }
         else {
@@ -236,7 +237,6 @@ export class SkillTypesComponent implements OnInit {
     }
 
     checkBucketSum(){
-        console.log(this.bucketWeightSum);
         this.bucketWeightSum = 0;
         for(let bucket of this.bucketsAndWeights){
             this.bucketWeightSum += bucket.weights;
@@ -281,11 +281,8 @@ export class SkillTypesComponent implements OnInit {
     }
 
   ngOnInit() {
-      console.log(this.bucketsService.routingToAllBuckets);
     this.grabAllSkillTypes();
     this.grabAllBuckets();
-    console.log(this.bucketsService.routingToAllBuckets);
-    console.log(this.tab.activeId);
     var thing:string;
     var signature:string;
     if (this.bucketsService.routingToAllBuckets === true){
