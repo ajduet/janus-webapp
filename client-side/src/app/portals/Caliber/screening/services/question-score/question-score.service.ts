@@ -16,7 +16,7 @@ export class QuestionScoreService {
   constructor(private httpClient: HttpClient,
               private urlUtil: UrlUtilService) { }
 
-  // BEGIN: EXCHANGING DATA BETWEEN QUESTION TABLE AND ANSWER MODAL
+  // Used for sharing data between question table and answer modal
   questionScores: QuestionScore[] = [];
 
   // questionsQuestionsSource tracks the value of answeredQuestions
@@ -25,30 +25,24 @@ export class QuestionScoreService {
 
   // used to retrieve populate answeredQuestions in the data table component
   // and answer modal component
-
   currentQuestionScores = this.questionScoresSource.asObservable();
-  //update the array of answered questions
 
+  //update the array of answered questions
   updateQuestionScores(questionScores: QuestionScore[]){
     this.questionScoresSource.next(questionScores);
   }
 
-  postQuestionScore(question: QuestionScore): any{ 
+  // save the question to the database
+  postQuestionScore(question: QuestionScore): void{ 
     let url = this.urlUtil.getBase()+'/question-score-service/question/score';
 
-    // the actual parameter to add 
-    //params.append("ScreeningID", question.screeningID.toString());
-
-    if( this.httpClient.post<QuestionScore>(url, { 
+    this.httpClient.post<QuestionScore>(url, { 
       Score: question.score,
       Comment: question.commentary,
       QuestionID: question.questionId,
       BeginTime: question.beginTime, 
-      ScreeningID: 280001 })){
-        return "SUCCESS!";
-    } else {
-      return "ERROR";
-    }
+      ScreeningID: question.screeningID}).subscribe(data => {
+      });
 
     /* 
       return this.httpClient.post<QuestionScore>(url, { 
@@ -60,10 +54,4 @@ export class QuestionScoreService {
       });
     */
   }
-
-  /* Uses currentQuestionScores Observable instead
-  getQuestions(): QuestionScore[] {
-    return this.questionScores;
-  }
-  */
 }

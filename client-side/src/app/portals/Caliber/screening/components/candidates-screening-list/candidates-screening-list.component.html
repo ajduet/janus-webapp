@@ -1,7 +1,6 @@
 <div id="pending-screening-list-container" class="animated fadeIn">
   <h1>Candidate List</h1>
   <div id="pending-screening-list-contents">
-    <!-- padding: 25px 5%; -->
     <div class="filters">
       <!-- Search Bar -->
       <input [(ngModel)]="searchText" placeholder="Search" class="search-bar">
@@ -16,6 +15,7 @@
         </tr>
       </thead>
       <tbody>
+        <!-- The paginate pipe must be at the end of all the filters -->
         <ng-container *ngFor="let i = index; let scheduledScreening of scheduledScreenings | searchPipe: searchText | paginate: { itemsPerPage: 10, currentPage: p } ">
           <tr (click)="showBeginScreeningPrompt = !showBeginScreeningPrompt; selectedCandidate = scheduledScreening.trainee; selectedScheduledScreening = scheduledScreening">
             <td>{{scheduledScreening.trainee.firstname}} {{scheduledScreening.trainee.lastname}}</td>

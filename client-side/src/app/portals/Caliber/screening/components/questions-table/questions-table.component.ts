@@ -65,6 +65,8 @@ export class QuestionsTableComponent implements OnInit, OnDestroy {
   // The candidate's name
   candidateName: string;
 
+  // used on ngOnDestroy. Will unsubscribe from all observables
+  // to prevent memory leaks
   subscriptions: Subscription[] = [];
 
   constructor(
