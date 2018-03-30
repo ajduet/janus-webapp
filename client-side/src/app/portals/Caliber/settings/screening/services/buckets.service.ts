@@ -46,8 +46,9 @@ export class BucketsService {
   }
 
   /** PUT: update the hero on the server. Returns the updated hero upon success. */
-  updateBucket (bucket: Bucket): Observable<Bucket> {
-    return this.http.post<Bucket>(this.url + "updateBucket", bucket, httpOptions)
+  updateBucket (bucket: Bucket) {
+    return this.http.post(this.url + "updateBucket", bucket, httpOptions).toPromise();
+    // return this.http.post(this.url + "updateBucket", bucket, httpOptions).toPromise();
   }
 
   /** POST: add a new bucket to the database */
@@ -60,12 +61,8 @@ export class BucketsService {
   }
 
   getCurrentBucket():Bucket {
-     // console.log("Current bucket called");
      if(this.currentBucket!=null){
-     return this.currentBucket;
-     }
-     else{
-         console.log("Bucket is null");
+         return this.currentBucket;
      }
   }
 
