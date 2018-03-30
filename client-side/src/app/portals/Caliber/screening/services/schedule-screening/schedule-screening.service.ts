@@ -6,6 +6,7 @@ import { HttpClient } from "@angular/common/http";
 import { ScheduledScreening } from "../../entities/scheduleScreening";
 import { UrlUtilService } from "../UrlUtil/url-util.service";
 import { SkillTypeService } from "../../services/skillType/skill-type.service";
+import { SkillType } from '../../entities/skillType';
 
 @Injectable()
 export class ScheduleScreeningService {
@@ -21,9 +22,6 @@ export class ScheduleScreeningService {
       this.httpClient.get<any[]>(this.urlUtilService.getBase() + "/screening-service/screening/scheduledScreenings").subscribe(allScheduledScreenings => {
         for (let e of allScheduledScreenings) {
           // Each simpleTrainee get random skillType
-          let randomSkillTypeIndex = Math.floor(Math.random() * allSkillTypes.length);
-          let thisSkillTypeId = allSkillTypes[randomSkillTypeIndex].skillTypeId;
-          let thisSkillTypeName = allSkillTypes[randomSkillTypeIndex].skillTypeName;
           // Parse name into first and last name
           let nameArray = e.trainee.name.split(" ");
           let thisLastName: string = '';
@@ -67,20 +65,25 @@ export class ScheduleScreeningService {
           }
           */
         
-
+          let skillTypes: SkillType[] = allSkillTypes;
+          // for testing
+          console.log(skillTypes);
+          console.log("number of skill types " + skillTypes.length);
+          console.log(e.skillTypeId);
+          console.log("index of " + skillTypes.indexOf(e.skillTypeId));
           scheduledScreenings.push({
             scheduledScreeningId: e.scheduledScreeningId,
             trainee: {
               traineeID: e.trainee.traineeId,
               firstname: thisFirstName,
               lastname: thisLastName,
-              skillTypeID: thisSkillTypeId,
-              skillTypeName: thisSkillTypeName,
+              skillTypeID: e.skillTypeId,
+              skillTypeName: skillTypes[skillTypes.indexOf(e.skillTypeId)].skillTypeName,
               schedule: e.scheduledDate,
             },
             track: {
-              skillTypeID: thisSkillTypeId,
-              skillTypeName: thisSkillTypeName,
+              skillTypeID: e.skillTypeId,
+              skillTypeName: skillTypes[skillTypes.indexOf(e.skillTypeId)].skillTypeName,
               isActive: true,
             },
             status: e.status,
