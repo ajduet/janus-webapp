@@ -66,11 +66,11 @@ export class ScheduleScreeningService {
           */
         
           let skillTypes: SkillType[] = allSkillTypes;
-          // for testing
-          console.log(skillTypes);
-          console.log("number of skill types " + skillTypes.length);
-          console.log(e.skillTypeId);
-          console.log("index of " + skillTypes.indexOf(e.skillTypeId));
+          let skillType: SkillType;
+          for(let s of allSkillTypes) {
+            if(s.skillTypeId == e.skillTypeId)
+              skillType = s;
+          }
           scheduledScreenings.push({
             scheduledScreeningId: e.scheduledScreeningId,
             trainee: {
@@ -78,12 +78,12 @@ export class ScheduleScreeningService {
               firstname: thisFirstName,
               lastname: thisLastName,
               skillTypeID: e.skillTypeId,
-              skillTypeName: skillTypes[skillTypes.indexOf(e.skillTypeId)].skillTypeName,
+              skillTypeName: skillType.skillTypeName,
               schedule: e.scheduledDate,
             },
             track: {
               skillTypeID: e.skillTypeId,
-              skillTypeName: skillTypes[skillTypes.indexOf(e.skillTypeId)].skillTypeName,
+              skillTypeName: skillType.skillTypeName,
               isActive: true,
             },
             status: e.status,
@@ -93,8 +93,6 @@ export class ScheduleScreeningService {
         }
       });
     });
-
-    console.log(scheduledScreenings);
     return of(scheduledScreenings);
   }
 }
