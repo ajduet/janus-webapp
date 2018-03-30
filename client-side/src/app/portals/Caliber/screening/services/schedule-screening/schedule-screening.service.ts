@@ -6,6 +6,7 @@ import { HttpClient } from "@angular/common/http";
 import { ScheduledScreening } from "../../entities/scheduleScreening";
 import { UrlUtilService } from "../UrlUtil/url-util.service";
 import { SkillTypeService } from "../../services/skillType/skill-type.service";
+import { SkillType } from '../../entities/skillType';
 
 @Injectable()
 export class ScheduleScreeningService {
@@ -22,9 +23,6 @@ export class ScheduleScreeningService {
       this.httpClient.get<any[]>(this.urlUtilService.getBase() + "/screening-service/screening/scheduledScreenings").subscribe(allScheduledScreenings => {
         for (let e of allScheduledScreenings) {
           // Each simpleTrainee get random skillType
-          let randomSkillTypeIndex = Math.floor(Math.random() * allSkillTypes.length);
-          let thisSkillTypeId = allSkillTypes[randomSkillTypeIndex].skillTypeId;
-          let thisSkillTypeName = allSkillTypes[randomSkillTypeIndex].skillTypeName;
           // Parse name into first and last name
           let nameArray = e.trainee.name.split(" ");
           let thisLastName: string = '';
@@ -55,21 +53,38 @@ export class ScheduleScreeningService {
             }
             thisLastName = thisLastName.trim();
           }
-                 
-
+          /*
+          // If the record is stored with lastname first, save it backwards without the comma
+          if (nameArray[0].charAt(nameArray[0].length-1) == ',') {
+            thisLastName = nameArray[0].substring(0, nameArray[0].length-1);
+            thisFirstName = nameArray[1];
+          }
+          // If there is no comma, the record was stored first name then last
+          else {
+            thisFirstName = nameArray[0];
+            thisLastName = nameArray[1];
+          }
+          */
+        
+          let skillTypes: SkillType[] = allSkillTypes;
+          let skillType: SkillType;
+          for(let s of allSkillTypes) {
+            if(s.skillTypeId == e.skillTypeId)
+              skillType = s;
+          }
           scheduledScreenings.push({
             scheduledScreeningId: e.scheduledScreeningId,
             trainee: {
               traineeID: e.trainee.traineeId,
               firstname: thisFirstName,
               lastname: thisLastName,
-              skillTypeID: thisSkillTypeId,
-              skillTypeName: thisSkillTypeName,
+              skillTypeID: e.skillTypeId,
+              skillTypeName: skillType.skillTypeName,
               schedule: e.scheduledDate,
             },
             track: {
-              skillTypeID: thisSkillTypeId,
-              skillTypeName: thisSkillTypeName,
+              skillTypeID: e.skillTypeId,
+              skillTypeName: skillType.skillTypeName,
               isActive: true,
             },
             status: e.status,
@@ -79,8 +94,6 @@ export class ScheduleScreeningService {
         }
       });
     });
-
-    console.log(scheduledScreenings);
     return of(scheduledScreenings);
   }
 }

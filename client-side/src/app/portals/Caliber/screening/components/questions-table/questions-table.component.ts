@@ -182,5 +182,4 @@ export class QuestionsTableComponent implements OnInit, OnDestroy {
     this.screeningService.generalComments = this.generalComment;
     this.screeningService.submitGeneralComment();
   }
-
 }
