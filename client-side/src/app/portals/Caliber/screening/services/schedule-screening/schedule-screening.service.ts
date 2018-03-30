@@ -16,6 +16,7 @@ export class ScheduleScreeningService {
     private skillTypeService: SkillTypeService,
   ) { }
 
+  // Returns an observable array of all scheduled screenings for the Candidate Screening List component
   getScheduleScreenings(): Observable<ScheduledScreening[]> {
     let scheduledScreenings: ScheduledScreening[] = [];
     this.skillTypeService.getSkillTypes().subscribe(allSkillTypes => {

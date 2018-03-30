@@ -26,6 +26,7 @@ export class SkillTypeService {
   }
   */
 
+  // Returns an observable array of all skill types 
   getSkillTypes(): Observable<any[]> {
     return this.httpClient.get<any[]>(this.ROOT_URL + '/skilltype-service/skillType/getSkillTypes/')
   }

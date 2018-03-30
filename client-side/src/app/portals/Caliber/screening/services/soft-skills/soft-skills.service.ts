@@ -24,11 +24,11 @@ export class SoftSkillsService {
   public checkedViolationIDList: number[];
 
 
-
-  getAllViolationTypes(){
-    this.violationTypeList$ = this.http.post<ViolationType[]>('<endpoint>/ViolationType/all', {});
-    return this.violationTypeList$;
-  }
+  // Deprecated
+  // getAllViolationTypes(){
+  //   this.violationTypeList$ = this.http.post<ViolationType[]>('<endpoint>/ViolationType/all', {});
+  //   return this.violationTypeList$;
+  // }
 
   // getAllTestSoftSkillViolations(): ViolationType[]{
 

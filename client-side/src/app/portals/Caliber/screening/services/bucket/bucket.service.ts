@@ -28,19 +28,13 @@ export class BucketService {
   constructor(private httpClient: HttpClient,
               private urlUtilService: UrlUtilService) { }
   
-  // getBuckets(skillTypeID: number): Observable<Bucket[]>{
-            // change the url to match the service endpoint
-  //   this.httpClient.post<Bucket[]>(this.ROOT_URL + `/${skillTypeID}`);
-  // }
-
+  
+  // Return a mock observable array of buckets (categories)
   getBuckets(): Observable<Bucket[]> {
     return of(BUCKETS);
   }
 
-  // getBuckets(): Bucket[] {
-  //   return this.filteredBuckets;
-  // }
-
+  // Set the filteredBuckets array to the input
   setBuckets(buckets: Bucket[]): void {
     this.filteredBuckets = buckets;
   }
