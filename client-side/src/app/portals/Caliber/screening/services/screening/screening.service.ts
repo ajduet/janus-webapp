@@ -51,18 +51,6 @@ export class ScreeningService {
   }
 
   endScreening(softSkillComment: string): void {
-    // this.httpClient.post(this.ROOT_URL + '/screening-service/screening/end',
-    //   {
-    //     "status" : "COMPLETED", 
-    //     "softSkillVerdict" : this.convertToBoolean(this.softSkillsResult), 
-    //     "softSkillCommentary" : this.finalSoftSkillComment, 
-    //     "endDateTime" : new Date(), 
-    //     "screeningId" : localStorage.getItem("screeningID"), 
-    //     "scheduledScreeningId" : localStorage.getItem("scheduledScreeningID"),
-    //     "compositeScore" : this.compositeScore
-    //   },
-    //   { headers : this.headers }
-    // );
     this.httpClient.post(this.ROOT_URL + '/screening-service/screening/end',
       {
         "status" : "Completed", 
