@@ -62,12 +62,6 @@ export class ScreeningService {
         "compositeScore" : this.compositeScore
       }
     ).subscribe();
-    console.log(this.softSkillsResult);
-    console.log(this.finalSoftSkillComment);
-    console.log(new Date());
-    console.log(localStorage.getItem("screeningID"));
-    console.log(localStorage.getItem("scheduledScreeningID"));
-    console.log(this.compositeScore);
   }
 
   convertToBoolean(input: string): boolean | undefined {
