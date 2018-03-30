@@ -53,6 +53,7 @@ export class SoftSkillsViolationService {
     return this.http.get<SoftSkillViolation[]>(this.getViolationURL + screeningID);
   }
   
+
   addViolations(newViolations : ViolationType[], comment : string){
     /*
       Screener can use a UI element to select multiple types of violation in the same element
@@ -77,6 +78,7 @@ export class SoftSkillsViolationService {
     this.http.post(this.addViolationURL, { params });
   }
 
+  // Submit a violation with the appropriate comment, screening ID and timestamp.
   submitViolation(typeID: number, comment: string, screeningID: number ): Observable<SoftSkillViolation[]> {
     return this.http.post<any[]>(
       this.addViolationURL,

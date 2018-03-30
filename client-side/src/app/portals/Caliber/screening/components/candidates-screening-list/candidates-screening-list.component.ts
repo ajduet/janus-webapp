@@ -95,6 +95,7 @@ export class CandidatesScreeningListComponent implements OnInit {
   // clicking "Begin Interview" will save the candidate for later use
   confirmSelectedCandidate(): void {
     this.simpleTraineeService.setSelectedCandidate(this.selectedCandidate);
+    localStorage.setItem("scheduledScreeningID", this.selectedScheduledScreening.scheduledScreeningId.toString());
   }
 
   // clicking "Begin Interview" will create a new screening entry in the database
@@ -109,8 +110,7 @@ export class CandidatesScreeningListComponent implements OnInit {
         // This was not part of our iteration, but the "1" must be replaced
         // with the trainer's ID so that their is an association
         // between the interviewer and the person who screened them.
-        // At the moment, we hardcoded a value to 1.
-        1,
+        this.selectedScheduledScreening.trainer,
         // provide the track of the selected candidate for later use.
         this.selectedCandidate.skillTypeID
       )

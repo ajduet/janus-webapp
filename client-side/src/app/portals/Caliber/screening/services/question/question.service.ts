@@ -33,17 +33,14 @@ export class QuestionService {
     "Content-type": "application/json"
   });
 
-  // getQuestions(): Observable<Question[]> {
-  //   return of(QUESTIONS);
-  // }
 
-
+  // Returns an observable array of questions, filtered by the selected tags and 
+  // candidate's skillTypeID
   getQuestions(): Observable<Question[]> {
     let tagArray: number[] = [];
     for(let tag of this.tagService.getCheckedTags()){
       tagArray.push(tag.tagId);
     }
-    console.log(tagArray);
     let currSkillTypeID = this.simpleTraineeService.getSelectedCandidate().skillTypeID;
     // let currSkillTypeID = this.simpleTraineeService.getSelectedCandidate().skillTypeID;
     let tagsAndSkill: TagsAndSkill = { tagList : tagArray, skillTypeId : currSkillTypeID };

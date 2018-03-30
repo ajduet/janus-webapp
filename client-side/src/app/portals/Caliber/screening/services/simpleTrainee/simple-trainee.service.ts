@@ -28,20 +28,17 @@ export class SimpleTraineeService {
 
   selectedCandidate: SimpleTrainee;
 
+  // Set the current selected candidate to the candidate input
   setSelectedCandidate(candidate: SimpleTrainee): void {
     this.selectedCandidate = candidate;
   }
 
+  // Return the current selected candidate
   getSelectedCandidate(): SimpleTrainee{
     return this.selectedCandidate;
   }
 
-  /*
-  getSimpleTrainees(): Observable<SimpleTrainee[]> {
-    return of(TRAINEES);
-  }
-  */
-
+  // Get an Observable array of all simple trainees.
   getSimpleTrainees(): Observable<SimpleTrainee[]> {
     let allSimpleTrainees: SimpleTrainee[] = [];
     // Get array of skillTypeIds, apply random skillTypeId's to each new SimpleTrainee
@@ -84,18 +81,7 @@ export class SimpleTraineeService {
             }
             thisLastName = thisLastName.trim();
           }
-          /*
-          // If the record is stored with lastname first, save it backwards without the comma
-          if (nameArray[0].charAt(nameArray[0].length-1) == ',') {
-            thisLastName = nameArray[0].substring(0, nameArray[0].length-1);
-            thisFirstName = nameArray[1];
-          }
-          // If there is no comma, the record was stored first name then last
-          else {
-            thisFirstName = nameArray[0];
-            thisLastName = nameArray[1];
-          }
-          */
+          
           allSimpleTrainees.push({
             traineeID: e.traineeId,
             firstname: thisFirstName,
@@ -111,9 +97,4 @@ export class SimpleTraineeService {
     return of(allSimpleTrainees);
   }
   
-
-  // Eric
-  // getSimpleTrainees(): Observable<SimpleTrainee[]> {
-  //   return this.httpClient.get<SimpleTrainee[]>(this.ROOT_URL + '/all/trainee/all.json');
-  // }
 }

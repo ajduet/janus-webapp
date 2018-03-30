@@ -61,7 +61,7 @@ subscriptions: Subscription[] = [];
         this.questionScores = questionScores;
         this.bucketStringArray = this.scoresToBucketsUtil.getFinalBreakdown(this.questionScores, this.skillTypeBucketService.bucketsByWeight);
         
-        //set the composite score in the screening service
+        // Set the composite score in the screening service
         this.screeningService.compositeScore = +this.bucketStringArray[this.bucketStringArray.length-1];
         this.bucketStringArray.splice(this.bucketStringArray.length-1, 1);
 
@@ -73,7 +73,7 @@ subscriptions: Subscription[] = [];
         });
         this.allTextString += this.overallScoreString + "\n";
       });
-    //this.overallScoreString = "Overall: 71%";
+    // this.overallScoreString = "Overall: 71%";
     this.generalNotesString = this.screeningService.generalComments;
     this.allTextString += "\"" + this.generalNotesString + "\"";
     
@@ -83,7 +83,7 @@ subscriptions: Subscription[] = [];
     ));
   }
 
-  //Used for copying the data to the clipboard (this is done using ngx-clipboard)
+  // Used for copying the data to the clipboard (this is done using ngx-clipboard)
   copyToClipboard(){
     this.checked = 'true';
     let selBox = document.createElement('textarea');
@@ -101,13 +101,15 @@ subscriptions: Subscription[] = [];
   }
 
   ngOnDestroy() {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
+    // Called once before the instance is destroyed.
+    // Add 'implements OnDestroy' to the class.
+    // Empty the appropriate arrays, clean local storage and unsubscribe from subscriptions in this component.
     this.questionScores = [];
     this.questionScoreService.updateQuestionScores(this.questionScores);
     this.softSkillViolations = [];
     this.softSkillsViolationService.updateSoftSkillViolations(this.softSkillViolations);
     localStorage.removeItem('screeningID');
+    localStorage.removeItem('scheduledScreeningID');
     this.subscriptions.forEach(s => s.unsubscribe);
   }  
 }

@@ -6,6 +6,7 @@ import { HttpClient } from "@angular/common/http";
 import { ScheduledScreening } from "../../entities/scheduleScreening";
 import { UrlUtilService } from "../UrlUtil/url-util.service";
 import { SkillTypeService } from "../../services/skillType/skill-type.service";
+import { SkillType } from '../../entities/skillType';
 
 @Injectable()
 export class ScheduleScreeningService {
@@ -15,15 +16,13 @@ export class ScheduleScreeningService {
     private skillTypeService: SkillTypeService,
   ) { }
 
+  // Returns an observable array of all scheduled screenings for the Candidate Screening List component
   getScheduleScreenings(): Observable<ScheduledScreening[]> {
     let scheduledScreenings: ScheduledScreening[] = [];
     this.skillTypeService.getSkillTypes().subscribe(allSkillTypes => {
       this.httpClient.get<any[]>(this.urlUtilService.getBase() + "/screening-service/screening/scheduledScreenings").subscribe(allScheduledScreenings => {
         for (let e of allScheduledScreenings) {
           // Each simpleTrainee get random skillType
-          let randomSkillTypeIndex = Math.floor(Math.random() * allSkillTypes.length);
-          let thisSkillTypeId = allSkillTypes[randomSkillTypeIndex].skillTypeId;
-          let thisSkillTypeName = allSkillTypes[randomSkillTypeIndex].skillTypeName;
           // Parse name into first and last name
           let nameArray = e.trainee.name.split(" ");
           let thisLastName: string = '';
@@ -67,20 +66,25 @@ export class ScheduleScreeningService {
           }
           */
         
-
+          let skillTypes: SkillType[] = allSkillTypes;
+          let skillType: SkillType;
+          for(let s of allSkillTypes) {
+            if(s.skillTypeId == e.skillTypeId)
+              skillType = s;
+          }
           scheduledScreenings.push({
             scheduledScreeningId: e.scheduledScreeningId,
             trainee: {
               traineeID: e.trainee.traineeId,
               firstname: thisFirstName,
               lastname: thisLastName,
-              skillTypeID: thisSkillTypeId,
-              skillTypeName: thisSkillTypeName,
+              skillTypeID: e.skillTypeId,
+              skillTypeName: skillType.skillTypeName,
               schedule: e.scheduledDate,
             },
             track: {
-              skillTypeID: thisSkillTypeId,
-              skillTypeName: thisSkillTypeName,
+              skillTypeID: e.skillTypeId,
+              skillTypeName: skillType.skillTypeName,
               isActive: true,
             },
             status: e.status,
@@ -90,8 +94,6 @@ export class ScheduleScreeningService {
         }
       });
     });
-
-    console.log(scheduledScreenings);
     return of(scheduledScreenings);
   }
 }
