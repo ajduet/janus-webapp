@@ -38,7 +38,10 @@ export class ScreeningService {
     return this.httpClient
       .post<Number>(
         this.ROOT_URL + "/screening-service/screening/start",
-        { "scheduledScreening": scheduledScreening, "beginTime" : beginTime, "trainerId" : trainerId, "skillTypeId" : skillTypeId },
+        { "scheduledScreening": scheduledScreening.scheduledScreeningId,
+          "beginTime" : beginTime,
+          "trainerId" : trainerId,
+          "skillTypeId" : skillTypeId },
         { headers: this.headers }
       );
   }
@@ -48,7 +51,35 @@ export class ScreeningService {
   }
 
   endScreening(softSkillComment: string): void {
-    this.httpClient.post(this.ROOT_URL + '/screening-service/screening/end', Object.assign({}, "complete", this.convertToBoolean(this.softSkillsResult), this.finalSoftSkillComment, new Date(), localStorage.getItem("screeningID"), this.compositeScore))
+    // this.httpClient.post(this.ROOT_URL + '/screening-service/screening/end',
+    //   {
+    //     "status" : "COMPLETED", 
+    //     "softSkillVerdict" : this.convertToBoolean(this.softSkillsResult), 
+    //     "softSkillCommentary" : this.finalSoftSkillComment, 
+    //     "endDateTime" : new Date(), 
+    //     "screeningId" : localStorage.getItem("screeningID"), 
+    //     "scheduledScreeningId" : localStorage.getItem("scheduledScreeningID"),
+    //     "compositeScore" : this.compositeScore
+    //   },
+    //   { headers : this.headers }
+    // );
+    this.httpClient.post(this.ROOT_URL + '/screening-service/screening/end',
+      {
+        "status" : "Completed", 
+        "softSkillVerdict" : 0, 
+        "softSkillCommentary" : this.finalSoftSkillComment, 
+        "endDateTime" : new Date(), 
+        "screeningId" : localStorage.getItem("screeningID"), 
+        "scheduledScreeningId" : localStorage.getItem("scheduledScreeningID"),
+        "compositeScore" : this.compositeScore
+      }
+    ).subscribe();
+    console.log(this.softSkillsResult);
+    console.log(this.finalSoftSkillComment);
+    console.log(new Date());
+    console.log(localStorage.getItem("screeningID"));
+    console.log(localStorage.getItem("scheduledScreeningID"));
+    console.log(this.compositeScore);
   }
 
   convertToBoolean(input: string): boolean | undefined {
@@ -64,13 +95,13 @@ export class ScreeningService {
     this.httpClient.post<String>(
       this.ROOT_URL + "/screening-service/screening/introcomment",
       { traineeId : localStorage.getItem("screeningID"), softSkillCommentary : comment }
-    );
+    ).subscribe();
   }
 
   submitGeneralComment() {
     this.httpClient.post<String>(
       this.ROOT_URL + "/screening-service/screening/generalcomment",
       { comment : this.generalComments, screeningId : localStorage.getItem("screeningID")}
-    )
+    ).subscribe();
   }
 }

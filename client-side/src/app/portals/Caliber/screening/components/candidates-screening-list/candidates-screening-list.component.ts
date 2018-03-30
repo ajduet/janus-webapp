@@ -66,9 +66,9 @@ export class CandidatesScreeningListComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.softSkillsViolationService.softSkillViolations.length > 0 || this.questionScoreService.questionScores.length > 0) {
-      window.location.reload(true);
-    }
+    // if(this.softSkillsViolationService.softSkillViolations.length > 0 || this.questionScoreService.questionScores.length > 0) {
+    //   window.location.reload(true);
+    // }
       
     this.scheduleScreeningService.getScheduleScreenings().subscribe(data => {
       this.scheduledScreenings = data;
@@ -95,18 +95,20 @@ export class CandidatesScreeningListComponent implements OnInit {
 
   confirmSelectedCandidate(): void {
     this.simpleTraineeService.setSelectedCandidate(this.selectedCandidate);
+    localStorage.setItem("scheduledScreeningID", this.selectedScheduledScreening.scheduledScreeningId.toString());
   }
   
   beginScreening(): void {
     // create a new screening entry in the database
     this.screeningService.beginScreening(
         this.selectedScheduledScreening,
-        new Date(), 1,
+        new Date(), this.selectedScheduledScreening.trainer,
         this.selectedCandidate.skillTypeID,
       ).subscribe(data => {
         // retrieve the screening ID from the screening service
         // and save the screening ID as a cookie to localStorage.
         localStorage.setItem("screeningID", data.toString());
+        console.log(localStorage.getItem("screeningID"));
       }
     );
     // localStorage.setItem("screeningID", this.screeningService.getScreeningID.toString());
