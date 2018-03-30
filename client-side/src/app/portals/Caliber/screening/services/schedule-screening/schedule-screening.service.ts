@@ -15,6 +15,7 @@ export class ScheduleScreeningService {
     private skillTypeService: SkillTypeService,
   ) { }
 
+  // Returns an observable array of all scheduled screenings for the Candidate Screening List component
   getScheduleScreenings(): Observable<ScheduledScreening[]> {
     let scheduledScreenings: ScheduledScreening[] = [];
     this.skillTypeService.getSkillTypes().subscribe(allSkillTypes => {
@@ -54,19 +55,7 @@ export class ScheduleScreeningService {
             }
             thisLastName = thisLastName.trim();
           }
-          /*
-          // If the record is stored with lastname first, save it backwards without the comma
-          if (nameArray[0].charAt(nameArray[0].length-1) == ',') {
-            thisLastName = nameArray[0].substring(0, nameArray[0].length-1);
-            thisFirstName = nameArray[1];
-          }
-          // If there is no comma, the record was stored first name then last
-          else {
-            thisFirstName = nameArray[0];
-            thisLastName = nameArray[1];
-          }
-          */
-        
+                 
 
           scheduledScreenings.push({
             scheduledScreeningId: e.scheduledScreeningId,

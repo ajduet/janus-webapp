@@ -163,6 +163,7 @@ export class QuestionsTableComponent implements OnInit, OnDestroy {
     }
   }
 
+  // Method that controls whether the user is allowed to click the submit button
   submitAllowed(): boolean {
     let allowed: boolean = true;
 
@@ -176,6 +177,7 @@ export class QuestionsTableComponent implements OnInit, OnDestroy {
     return !allowed;
   }
 
+  // Method that calls the servce method, submitting the screener's general comments.
   saveFeedback() {
     this.screeningService.generalComments = this.generalComment;
     this.screeningService.submitGeneralComment();

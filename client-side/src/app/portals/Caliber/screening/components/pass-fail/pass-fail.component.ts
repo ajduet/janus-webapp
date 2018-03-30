@@ -87,10 +87,13 @@ export class PassFailComponent implements OnInit {
     );
   }
 
+  // Returns a boolean denoting whether either the "Pass" or "Fail" button was clicked.
+  // Controls whether the submit button can be clicked.
   wasClicked(): boolean {
     return this.disabled;
   }
 
+  // Enables the submit button if the "Pass" button is clicked
   updateCheckedPass(checked : boolean) {
     this.passChecked = true;
     if(this.failChecked === true) {
@@ -99,6 +102,7 @@ export class PassFailComponent implements OnInit {
     this.disabled = false;
   }
 
+  // Enables the submit button if the "Fail" button is clicked
   updateCheckedFail(checked : boolean) {
     this.failChecked = true;
     if(this.passChecked === true){
@@ -107,6 +111,7 @@ export class PassFailComponent implements OnInit {
     this.disabled = false;
   }
 
+  // Sets the softSkillsResult field in the ScreeningService to the appropriate value
   submit(){
     if(this.passChecked){
       this.pass();
@@ -114,11 +119,6 @@ export class PassFailComponent implements OnInit {
       this.fail();
     }
     this.screeningService.finalSoftSkillComment = this.softSkillFeedback;
-  }
- 
-  
-  getViolations(): Observable<SoftSkillViolation[]> {
-    return this.violationService.getPreviousViolations(+localStorage.getItem("screeningID"));
   }
 
   pass() {
@@ -133,6 +133,14 @@ export class PassFailComponent implements OnInit {
     this.screeningService.softSkillsResult = "Fail";
   }
 
+
+  // Returns an Observable with an array of violations associated with the provided screeningID.
+  getViolations(): Observable<SoftSkillViolation[]> {
+    return this.violationService.getPreviousViolations(+localStorage.getItem("screeningID"));
+  }
+
+
+  // Method to delete a violation when clicking the "Remove" button
   deleteViolation(violationIndex: number) {
     /*
     this.violationService.deleteViolation(this.violations[violationIndex].violationID).subscribe(
@@ -157,6 +165,7 @@ export class PassFailComponent implements OnInit {
     this.previousViolations = this.getViolations();
   }
 
+  // Method that detects whether there are any violations exist for the current screening
   hasViolations(): boolean {
     if(this.softSkillViolationService.softSkillViolations == undefined || this.softSkillViolationService.softSkillViolations.length < 1){
       return false;
@@ -166,15 +175,7 @@ export class PassFailComponent implements OnInit {
     }
   }
 
-  public getPassed(): string{
-    if(this.passed){
-      return "passed";
-    }
-    else {
-      return "failed";
-    }
-  }
-
+  // Returns the string that's assigned to the [style.display] attribute.
   endScreeningPrompt() {
     if (this.endScreening) {
       return "block";

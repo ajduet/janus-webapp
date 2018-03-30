@@ -55,6 +55,7 @@ export class IntroductionComponent implements OnInit {
     this.getTags();
   }
 
+  // Get an array of all tags and assign it to tagList
   getTags(): void {
     this.tagService.getAllTags().subscribe(
       allTags => {
@@ -63,6 +64,9 @@ export class IntroductionComponent implements OnInit {
     );
   }
 
+  // When a tag is checked or unchecked on the Introduction view, update the list of checked tags.
+  // Push checked tags to the tagListChecked array
+  // Splice unchecked tags from the tagListChecked array
   updateTagList(changedTag : Tag, checked : boolean) {
 
     if(checked) {
@@ -73,11 +77,14 @@ export class IntroductionComponent implements OnInit {
     }
   }
 
+  // Submit the comments on the Introduction view when the "Begin Questions" buton is clicked
   onSubmit(){
-    //Send the comments to the appropriate service method saves them to the DB
+    // Send the comments to the appropriate service method saves them to the DB
     this.screeningService.submitIntroComment(this.comment);
   }
 
+  // Returns a boolean depending on whether a tag was checked.
+  // Returns false if there are checked tags.
   skillChosen(): boolean {
     return (!(this.tagService.tagListChecked.length > 0));
   }
