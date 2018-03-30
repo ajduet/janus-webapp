@@ -97,8 +97,7 @@ export class CandidatesScreeningListComponent implements OnInit {
     this.simpleTraineeService.setSelectedCandidate(this.selectedCandidate);
   }
 
-  // clicking "Begin Interview" will create a new screening entry
-  // in the database
+  // clicking "Begin Interview" will create a new screening entry in the database
   beginScreening(): void {
     // create a new screening entry in the database by calling the screening service
     this.screeningService
@@ -110,15 +109,17 @@ export class CandidatesScreeningListComponent implements OnInit {
         // This was not part of our iteration, but the "1" must be replaced
         // with the trainer's ID so that their is an association
         // between the interviewer and the person who screened them.
+        // At the moment, we hardcoded a value to 1.
         1,
         // provide the track of the selected candidate for later use.
         this.selectedCandidate.skillTypeID
       )
       .subscribe(
-        // take the data that was retrieved from the database
+        // take the data from the response from the database
         data => {
         // and save the screening ID as a cookie to localStorage.
         localStorage.setItem("screeningID", data.toString());
+        console.log(localStorage.getItem("screeningID"));
       });
   }
 }

@@ -31,7 +31,7 @@ export class AnswerComponent implements OnInit {
     this.questionScore = {
       qSID: null,
       questionId: this.question.questionId,  
-      screeningID: null,
+      screeningID: +localStorage.getItem("screeningID"),
       score: 0,
       commentary: '',
       beginTime: new Date()
@@ -41,15 +41,24 @@ export class AnswerComponent implements OnInit {
   }
   // when a score is set and submitted, update the array of questions scores
   saveQuestionScore(): void{
+      // Want to allow screener's to update the score of a candidate.
+      // Need to check if the current array of question scores is not empty
       if(this.questionScores.length > 0 ) {
+        // iterate through each question score
         for(let q of this.questionScores) {
+          // if the current question score has the same questionID as the selected question
           if(q.questionId == this.questionScore.questionId) {
+            // remove that question score.
             this.questionScores.splice(this.questionScores.indexOf(q), 1);
           }
         }
       }
+      console.log(this.questionScore);
+      // add the new question score to the array of question scores
       this.questionScores.push(this.questionScore);
+      // update our services question score array with the array with this components question score array
       this.questionScoreService.updateQuestionScores(this.questionScores);
-      let resp = this.questionScoreService.postQuestionScore(this.questionScore);
+      // Save the question score to the database.
+      this.questionScoreService.postQuestionScore(this.questionScore);
   }
 }

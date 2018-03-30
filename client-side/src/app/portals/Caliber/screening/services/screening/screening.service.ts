@@ -48,7 +48,7 @@ export class ScreeningService {
   }
 
   endScreening(softSkillComment: string): void {
-    this.httpClient.post(this.ROOT_URL + '/screening-service/screening/end', Object.assign({}, "complete", this.convertToBoolean(this.softSkillsResult), this.finalSoftSkillComment, new Date(), localStorage.getItem("screeningID"), this.compositeScore))
+    this.httpClient.post(this.ROOT_URL + '/screening-service/screening/end', Object.assign({}, "complete", this.convertToBoolean(this.softSkillsResult), this.finalSoftSkillComment, new Date(), +localStorage.getItem("screeningID"), this.compositeScore))
   }
 
   convertToBoolean(input: string): boolean | undefined {
