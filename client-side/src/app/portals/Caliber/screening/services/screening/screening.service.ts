@@ -51,10 +51,16 @@ export class ScreeningService {
   }
 
   endScreening(softSkillComment: string): void {
+    let verdict;
+    if(this.softSkillsResult === "Pass"){
+      verdict = 1;
+    } else if (this.softSkillsResult === "Fail"){
+      verdict = 0;
+    }
     this.httpClient.post(this.ROOT_URL + '/screening-service/screening/end',
       {
         "status" : "Completed", 
-        "softSkillVerdict" : 0, 
+        "softSkillVerdict" : verdict, 
         "softSkillCommentary" : this.finalSoftSkillComment, 
         "endDateTime" : new Date(), 
         "screeningId" : localStorage.getItem("screeningID"), 
