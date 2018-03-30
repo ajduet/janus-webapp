@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
@@ -18,13 +17,19 @@ Each time the screener flags a violation, this service is invoked
 @Injectable()
 export class SoftSkillsViolationService {
 
-  constructor(private http : HttpClient,
-    private urlUtilService: UrlUtilService) { }
+  constructor(
+    private http : HttpClient,
+    private urlUtilService: UrlUtilService
+  ) { }
+
+  headers = new HttpHeaders({
+    "Content-type": "application/json"
+  });
   
-  softSkillViolations: SoftSkillViolation[] = [];
+  softSkillViolations: any[] = [];
   // questionsQuestionsSource tracks the value of answeredQuestions
   // and allows values to be sent to answeredQuestions
-  private softSkillViolationSource = new BehaviorSubject<SoftSkillViolation[]>(this.softSkillViolations);
+  private softSkillViolationSource = new BehaviorSubject<any[]>(this.softSkillViolations);
   // used to retrieve populate answeredQuestions in the data table component
   // and answer modal component
   currentSoftSkillViolations = this.softSkillViolationSource.asObservable();
@@ -74,19 +79,20 @@ export class SoftSkillsViolationService {
   }
 
   // Submit a violation with the appropriate comment, screening ID and timestamp.
-  submitViolation(typeID: number, comment: string, screeningID: string ):
-  Observable<SoftSkillViolation[]>{
-      return this.http.post<any[]>(this.addViolationURL,
+  submitViolation(typeID: number, comment: string, screeningID: number ): Observable<SoftSkillViolation[]> {
+    return this.http.post<any[]>(
+      this.addViolationURL,
       {
         "violationTypeId": [typeID],
         "softSkillComment": comment,
         "violationTime": new Date(),
         "screeningId": screeningID
       },
+      { headers: this.headers }
     );
   }
 
-  deleteViolation(violationID: number): Observable<SoftSkillViolation[]>{
+  deleteViolation(violationID: number): Observable<any[]>{
     /*
       Once the screener has completed the question-asking portion, they are directed 
       to a new component that allows them to view all flagged violation, add a new violation, 
@@ -97,10 +103,10 @@ export class SoftSkillsViolationService {
       pipe requires the binding of an observable in the template, but allows the template to be changed
       in response to a change in the observable. Hence, deleteViolation returns an Observable. 
     */
-    return this.http.get<SoftSkillViolation[]>(this.deleteViolationURL+`?violationId=${violationID}`);
+    return this.http.get<any[]>(this.deleteViolationURL+violationID);
   }
 
-  updateSoftSkillViolations(softSkillviolations: SoftSkillViolation[]){
+  updateSoftSkillViolations(softSkillviolations: any[]){
     this.softSkillViolationSource.next(softSkillviolations);
   }
 

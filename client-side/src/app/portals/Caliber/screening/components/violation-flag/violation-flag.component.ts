@@ -66,9 +66,9 @@ export class ViolationFlagComponent implements OnInit {
     }
   }
 
-  submitViolation(violationType: ViolationType, comment: string): Observable<SoftSkillViolation[]> {
+  submitViolation(violationType: ViolationType, comment: string): void {
     //Send request with the violation + comments to database
-    let screeningID = localStorage.getItem("screeningID");
+    let screeningID = Number.parseInt(localStorage.getItem("screeningID"));
     this.alertsService.success('Soft Skill Violation Added');
     this.violationTypeService.getAllViolationTypes().subscribe(data => console.log(data));
     this.flagChange();
@@ -80,7 +80,10 @@ export class ViolationFlagComponent implements OnInit {
       Time: new Date(),
       Comment: comment
     });
-    return this.violationService.submitViolation(violationType.violationTypeId, comment, screeningID);
+    this.violationService.submitViolation(violationType.violationTypeId, comment, screeningID).subscribe(data => {
+      //returns nothing but a 200 response to add a flag to the database
+      console.log(data);
+    });
   }
 
   cancelViolation() {
