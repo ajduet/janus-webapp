@@ -27,6 +27,7 @@
     "@angular/router": "^4.2.4",
     "@ng-bootstrap/ng-bootstrap": "1.0.0-beta.6",
     "angular2-notifications-lite": "^0.1.2",
+    "auth0-js": "^9.4.2",
     "bootstrap": "4.0.0-beta.2",
     "chart.js": "^2.7.1",
     "clean": "^4.0.2",

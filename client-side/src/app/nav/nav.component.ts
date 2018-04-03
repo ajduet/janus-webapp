@@ -6,6 +6,7 @@ import { Title } from '@angular/platform-browser';
 import { App } from '../entities/App';
 import { environment } from '../../environments/environment';
 import { janusGlobal } from '../../environments/janusGlobal';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-nav',
@@ -18,7 +19,7 @@ export class NavComponent implements OnInit, OnDestroy {
   apps: Array<App> = janusGlobal.apps;
   urlSubscription: Subscription;
 
-  constructor(private title: Title, private router: Router) { }
+  constructor(private title: Title, private router: Router, public authService: AuthService) { }
 
   ngOnInit() {
     this.processUrl(this.router.url);
@@ -57,4 +58,7 @@ export class NavComponent implements OnInit, OnDestroy {
     this.urlSubscription.unsubscribe();
   }
 
+  public checkForDisplay(secConfigName: string, exp: string) :boolean {
+    return eval(exp);
+  }
 }

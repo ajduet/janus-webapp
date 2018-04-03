@@ -10,14 +10,21 @@
 
   <div [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}">
     
-    <ul class="navbar-nav mr-auto module-select">
+    <ul *ngIf="authService.isAuthenticated()" class="navbar-nav mr-auto module-select">
       <li ngbDropdown class="d-inline-block">
         <a class="nav-link dropdown-toggle c-pointer janus-links-collapse-support shift-down" id="dropdownBasic1" ngbDropdownToggle>{{currentApp}}</a>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1" (click)="toggleCollapse()">
-          <a *ngFor="let app of apps" class="dropdown-item dropdown-size" [routerLink]="app.homeUrl" (click)="keepLinkActive()"> {{ app.name }} </a>
+          <a *ngFor="let app of apps" class="dropdown-item dropdown-size" [routerLink]="app.homeUrl"> {{ app.name }} </a>
         </div>
       </li>
     </ul>
+
+    <div *ngIf="!authService.isAuthenticated()">
+      <a href="javascript:void(0)" (click)="authService.login()" class="nav-link c-pointer">Log In</a>
+    </div>
+    <div *ngIf="authService.isAuthenticated()">
+      <a href="javascript:void(0)" (click)="authService.logout()" class="nav-link c-pointer">Log Out</a>
+    </div>
 
     <div class="shift-dropdown toggable-shadow calibar-nav-bg" (click)="toggleCollapse()">
       <app-caliber-nav class="align-v-janus-links" [collapsed]="collapsed" (collapse)="toggleClose($event)" *ngIf="currentApp==='Caliber'"></app-caliber-nav>

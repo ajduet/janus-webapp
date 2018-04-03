@@ -1,5 +1,6 @@
-<p>
-  assign force home works!
-</p>
-{{ joke.value.joke }}
-<button class="btn btn-primary" (click)="newJoke()">New Joke</button>
+<div *ngIf="!userIsAuthenticated">
+  <p>You don't have the required permissions to view this application</p>
+</div>
+<div *ngIf="userIsAuthenticated">
+  <p>Welcome to Assign Force</p>
+</div>

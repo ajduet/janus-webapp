@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { ChuckNorrisService } from '../../../services/chuck-norris.service';
+import { SecurityContext } from '../../../services/security-context.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,24 +10,24 @@ import { ChuckNorrisService } from '../../../services/chuck-norris.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  private jokeSubscription: Subscription;
-  joke;
+  private userIsAuthenticated = false;
 
-  constructor(private chuckNorrisService: ChuckNorrisService) { }
+  constructor(private securityContext: SecurityContext, 
+    private authService: AuthService) { }
 
   ngOnInit() {
-    this.jokeSubscription = this.chuckNorrisService.joke$.subscribe( (resp) => {
-      this.joke = resp;
-    });
+
+    if (this.authService.isAuthenticated() &&
+      this.authService.userHasRole(this.securityContext.getSecurityConfig().roles)) {
+      this.userIsAuthenticated = true;
+    }
   }
 
   newJoke() {
-    this.chuckNorrisService.fetch();
   }
 
   // clean up subscriptions
   ngOnDestroy() {
-    this.jokeSubscription.unsubscribe();
   }
 
 }
