@@ -32,7 +32,7 @@
                     <!-- Load all categories -->
                     <tr *ngFor="let category of categories; let i=index;">
                         <td *ngIf='nextColumn(c,i)' (click)='editopen(editCategory,category);' class='pointer'>
-                            {{category.skillCategory}}
+                            {{category.skill}}
                         </td>
                         <!-- Display active condition -->
                         <td class='text-center' *ngIf='!category.active && nextColumn(c,i)'>
@@ -87,18 +87,14 @@
             <div class="row">
                 <div class="form-group col-md-6 col-sm-6">
                     <label for="categoryName"><b>Category:</b></label>
-                    <input name="skillCategory" type="text" class="form-control" #name='ngModel' [ngModel]="currentCategory.skillCategory" id="editCategory"
+                    <input name="skillCategory" type="text" class="form-control" #name='ngModel' [(ngModel)]="currentCategory.skill" id="editCategory"
                         placeholder="Category" required>
                 </div>
             
                 <div class="form-group col-sm-1 col-md-1">
                     <label for="categoryName"><b>Active:</b></label>
                     <br />
-                    <input type="checkbox" name='active' style="text-align: left" [ngModel]="currentCategory.active" 
-                    (ngModelChange)="activeChange($event)" *ngIf="currentCategory.active===true"
-                    [checked]="true"/>
-                    <input type="checkbox" name='active' style="text-align: left" [ngModel]="currentCategory.active"
-                    (ngModelChange)="activeChange($event)" *ngIf="currentCategory.active===false"/>
+                    <input type="checkbox" name='active' style="text-align: left" (change)="currentCategory.active = !currentCategory.active" [checked]="true"/>
                 </div>
             </div>
         </div>

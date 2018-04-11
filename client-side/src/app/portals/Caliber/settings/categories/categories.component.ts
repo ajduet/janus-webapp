@@ -8,34 +8,35 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 
 // services
-import { CategoriesService } from '../../services/categories.service';
-import { CategoryService } from '../../services/category.service';
 import { environment } from '../../../../../environments/environment';
 
 // entities
 import { Category } from '../../entities/Category';
 import { NgForm } from '@angular/forms/src/directives/ng_form';
+import { HydraSkill } from '../../../../hydra-client/entities/HydraSkill';
+import { HydraSkillService } from '../../../../hydra-client/services/skill/hydra-skill.service';
+
 
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
-
 export class CategoriesComponent implements OnInit {
-  newCategory: Category = new Category();
+  newCategory: HydraSkill = {
+    skillId: 0,
+    skill: '',
+    active: true
+  };
 
   addForm: FormGroup;
-  private categorySubscription: Subscription;
 
-  categories: Category[];
-  currentCategory: Category;
-  isActive: boolean;
-  tableLogic: any = [];
+  categories: HydraSkill[];
+  currentCategory: HydraSkill;
+
   columns;
   numColumns: number;
-  constructor(private categoriesService: CategoriesService, private categoryService: CategoryService, private modalService: NgbModal,
-    private fb: FormBuilder) {
+  constructor(private modalService: NgbModal, private hydraSkillService: HydraSkillService, private fb: FormBuilder) {
   }
 
   /**
@@ -44,7 +45,7 @@ export class CategoriesComponent implements OnInit {
    */
   ngOnInit() {
     this.initFormControl();
-    this.categorySubscription = this.categoriesService.fetchAll().subscribe((resp) => {
+    this.hydraSkillService.findAll().subscribe((resp) => {
       this.categories = resp;
       this.numColumns = this.categories.length / 8 + 1;
       if (this.numColumns > 3) {
@@ -61,7 +62,7 @@ export class CategoriesComponent implements OnInit {
   }
   initFormControl() {
     this.addForm = this.fb.group({
-      'name': [this.newCategory.skillCategory, Validators.required]
+      'name': [this.newCategory.skill, Validators.required]
     });
   }
 
@@ -71,21 +72,13 @@ export class CategoriesComponent implements OnInit {
    * @memberof CategoriesComponent
    */
   addNewCategory(value) {
-    this.newCategory.skillCategory = value.name;
+    this.newCategory.skill = value.name;
     this.newCategory.active = true;
-    this.categoryService.create(this.newCategory).subscribe((succ) =>
-      this.categoriesService.fetchAll());
+    this.hydraSkillService.save(this.newCategory).subscribe((succ) => {
+      this.categories.push(succ);
+    });
     // may not need this statement without all of the inherited subjects
     this.resetFormControl();
-  }
-
-  /**
-   * Change the active status of Category
-   * @param {any} activeValue
-   * @memberof CategoriesComponent
-   */
-  activeChange(activeValue) {
-    this.isActive = activeValue;
   }
 
   /**
@@ -94,10 +87,14 @@ export class CategoriesComponent implements OnInit {
    * @memberof CategoriesComponent
    */
   editCurrentCategory(nameChange) {
-    this.currentCategory.skillCategory = nameChange.value.skillCategory;
-    this.currentCategory.active = this.isActive;
-    this.categoryService.update(this.currentCategory).subscribe((resp) =>
-      this.categoriesService.fetchAll());
+    this.hydraSkillService.update(this.currentCategory).subscribe((resp) => {
+      this.categories.some( cat => {
+        if (cat.skillId === resp.skillId) {
+          cat = resp;
+          return true;
+        }
+      });
+    });
 
   }
 
@@ -155,9 +152,8 @@ export class CategoriesComponent implements OnInit {
    * @param {Category} index
    * @memberof CategoriesComponent
    */
-  editopen(content, index: Category) {
-    this.currentCategory = index;
-    this.isActive = index.active;
+  editopen(content, index: HydraSkill) {
+    this.currentCategory = JSON.parse(JSON.stringify(index)); // essentially clone the object, there may be a better way
     this.modalService.open(content);
   }
 }
