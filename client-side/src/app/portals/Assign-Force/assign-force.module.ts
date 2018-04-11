@@ -25,7 +25,6 @@ import { SecurityContext } from '../../services/security-context.service';
   ],
   declarations: [
     AssignForceComponent,
-    HomeComponent,
     CalendarComponent,
   ],
   providers: [

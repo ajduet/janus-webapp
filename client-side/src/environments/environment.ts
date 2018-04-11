@@ -10,6 +10,7 @@ export const environment = {
   bam: bam,
   url: 'http://localhost:8085/',
   clientId: "tjQhcs0O4mRV2iry6SAO0Gy1YQcBrWCa",
+  //clientId: "tjQhcs0O4mRV2iry6SAO0Gy1YQcBrWCa",
   authDomain: "revature.auth0.com",
   apiAudience: "hydra-gateway",
   authNamespace: "https://revature.com/",

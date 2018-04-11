@@ -9,6 +9,7 @@ import { environment } from '../environments/environment';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit{
+
   constructor(private authService:AuthService) {
     authService.handleAuthentication();
     authService.scheduleRenewal();

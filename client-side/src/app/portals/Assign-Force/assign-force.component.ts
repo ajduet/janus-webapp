@@ -14,6 +14,7 @@ export class AssignForceComponent implements OnInit {
 
   constructor(private securityContext: SecurityContext, private authService: AuthService) {
     let securityConfig = new SecurityConfig();
+    
     securityConfig.roles = environment.security_config.assignForce.roles;
     securityConfig.permissions = environment.security_config.assignForce.permissions;
     securityConfig.groups = environment.security_config.assignForce.groups;
