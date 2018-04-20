@@ -12,7 +12,7 @@ import { AuthService } from '../../../services/auth.service';
 export class HomeComponent implements OnInit, OnDestroy {
   private userIsAuthenticated = false;
 
-  constructor(private securityContext: SecurityContext, 
+  constructor(private securityContext: SecurityContext,
     private authService: AuthService) { }
 
   ngOnInit() {

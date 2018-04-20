@@ -8,7 +8,7 @@ describe('SecurityContext', () => {
       providers: [SecurityContext]
     });
 
-    
+
   });
 
   it('should be created', inject([SecurityContext], (service: SecurityContext) => {

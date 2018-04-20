@@ -58,7 +58,7 @@ export class NavComponent implements OnInit, OnDestroy {
     this.urlSubscription.unsubscribe();
   }
 
-  public checkForDisplay(secConfigName: string, exp: string) :boolean {
+  public checkForDisplay(secConfigName: string, exp: string): boolean {
     return eval(exp);
   }
 }
