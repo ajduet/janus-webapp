@@ -1,0 +1,63 @@
+/* ---------- FOCI STYLING ---------- */
+
+/* ---------- MAT TOOLBAR ---------- */
+
+/* #38464E #3D5360*/
+
+.toolbar-curricula-sub {
+  background-color: #37474f;
+  color: white;
+}
+
+.toolbar-mat-buttons {
+  margin: 12px 6px;
+}
+
+/* ---------- PANEL ---------- */
+
+.panel-title-fix {
+  padding-top: 8px;
+}
+
+/* ---------- ICON ---------- */
+
+.icon-margin-fix {
+  margin: 2%;
+  color: white;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.button-orange {
+  background-color: #fb8c00;
+  margin: 5px;
+}
+
+/* ---------- FOCUS ITEM DETAIL ---------- */
+
+.item-detail {
+  margin: 2%;
+  display: inline;
+}
+
+/* --------- STYLES INCONSISTENT ---------- */
+
+/* #mat-expansion-panel-header-1:hover mat-panel-title {
+  color: black;
+}
+
+#mat-expansion-panel-header-1:focus {
+  background-color: #3d5360;
+  color: white;
+}
+
+#mat-expansion-panel-header-1:focus:hover {
+  background-color: white;
+  color: black;
+}
+
+.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled='true']).cdk-keyboard-focused,
+.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled='true']).cdk-program-focused,
+.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled='true']):hover {
+  background: white;
+} */

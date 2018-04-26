@@ -1,0 +1,50 @@
+<div id="profileDiv" class="container">
+  <!--<mat-card *ngIf="tId == -1" md-whiteframe="8" ng-cloak>-->
+  <mat-card>
+    <mat-toolbar-row>
+      <mat-toolbar class="md-toolbar" layout="columns">
+        <span class="mat-expansion-panel-header-title">Profile</span>
+        <span class="md-toolbar-spacer"></span>
+        <button mat-icon-button [disabled]="trainer.firstName == 'Failed to load'" (click)="updateTrainerInfo()">
+          <mat-icon matTooltip="Save" class="material-icons" *ngIf="!lockProfile">save</mat-icon>
+          <mat-icon matTooltip="Edit" class="material-icons" *ngIf="lockProfile">edit</mat-icon>
+        </button>
+      </mat-toolbar>
+    </mat-toolbar-row>
+    <!--info section-->
+    <mat-card-content id="profileContent">
+      <div class="row">
+        <div class="col-lg-2" *ngIf="trainer.firstName != 'Failed to load'">
+          <img layout="column" style="border-radius: 50%;" alt="" ng-src="https://app.revature.com/core/resources/download/default/interns/image?t=1486138020884"
+            id="displayImage" class="width-200 height-200" src="https://app.revature.com/core/resources/download/default/interns/image?t=1486138020884">
+        </div>
+        <div class="center col-lg-10">
+            <h1>{{this.trainer.firstName}} {{this.trainer.lastName}}</h1>
+            <!-- <div layout="row">
+              <label> Current Resume: </label>
+              <label *ngIf="trainer.resume != null">{{trainer.resume}}</label>
+              <label *ngIf="trainer.resume == null">No resume on file</label>
+              <br>
+            </div> -->
+            <div *ngIf="!lockProfile">
+            <form [formGroup]="nameForm">
+              <mat-form-field flex>
+                <input matInput class="formControl" placeholder="First Name" formControlName="firstName" required>
+              </mat-form-field>
+              <mat-form-field flex>
+                <input matInput class="formControl" placeholder="Last Name" name="lastLast" formControlName="lastName" required>
+              </mat-form-field>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="loading===true" class="center">
+        <div fxFlex="100"> &nbsp;</div>
+        <mat-progress-spinner class="center" mode="indeterminate"></mat-progress-spinner>
+        <div fxFlex="100"> &nbsp;</div>
+      </div>
+      <app-skills [trainer]="trainer"></app-skills>
+      <!-- <app-certifications></app-certifications> -->
+      </mat-card-content>
+    </mat-card>
+</div>

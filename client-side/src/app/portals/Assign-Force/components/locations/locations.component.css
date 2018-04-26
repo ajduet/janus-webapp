@@ -1,0 +1,17 @@
+/* ---------- LOCATIONS STYLING ----------- */
+
+/* ---------- BUTTONS ----------- */
+.mat-icon {
+  margin-left: 10px;
+}
+
+#download {
+  position: relative;
+  bottom: 30px;
+  left: 0px;
+  visibility: hidden;
+}
+
+#download:hover .downloadText {
+  visibility: visible;
+}

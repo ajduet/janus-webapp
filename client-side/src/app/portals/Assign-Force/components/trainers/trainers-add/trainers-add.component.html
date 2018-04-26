@@ -1,0 +1,20 @@
+<form #addForm="ngForm">
+      <h2 mat-dialog-title>Add New Trainer</h2>
+      <div mat-dialog-content>
+            <p>First Name:</p>
+            <mat-form-field class="update-form" style="width: 100%">
+                  <input matInput tabindex="1" [(ngModel)]="data.trainer.firstName" minlength="1" pattern="[^' '0-9\!\@\#\$\%\^\&\*\(\)\_\+\=\{\}\[\]\?\.\,]+[A-Z a-z]{1,25}"
+                        name="firstName" required>
+
+            </mat-form-field>
+            <p>Last Name:</p>
+            <mat-form-field class="update-form" style="width: 100%">
+                  <input matInput tabindex="2" [(ngModel)]="data.trainer.lastName" minlength="1" pattern="[^' '0-9\!\@\#\$\%\^\&\*\(\)\_\+\=\{\}\[\]\?\.\,]+[A-Z a-z]{1,25}"
+                        name="lastName" required>
+            </mat-form-field>
+      </div>
+      <div mat-dialog-actions>
+            <button mat-button [mat-dialog-close]="data.trainer" tabindex="4" [disabled]="!addForm.form.valid" (click)="onSubmit()">Add</button>
+            <button mat-button (click)="onNoClick($event)" tabindex="-1">Cancel</button>
+      </div>
+</form>

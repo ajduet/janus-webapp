@@ -1,0 +1,24 @@
+<mat-card-content>
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header class="toolbar-curricula-sub">
+        <mat-panel-title>
+          <span class="panel-title-fix">Core Curricula</span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="mat-panel-content">
+        <mat-list>
+          <mat-list-item class="item-detail" *ngFor="let core of coreData; last as last">
+            <div>
+              <h3 mat-line class="core-name">{{core.name}}</h3>
+              <span class="core-skills-label">Skills: </span>
+              <span *ngFor="let skill of core.skills; first as first" class="core-skills">{{skill.name}}, </span>
+              <br><br><br>
+              <mat-divider *ngIf="!last"></mat-divider>
+            </div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card-content>

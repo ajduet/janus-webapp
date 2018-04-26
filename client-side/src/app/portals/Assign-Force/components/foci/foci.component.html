@@ -1,0 +1,40 @@
+<mat-card-content>
+  <mat-accordion>
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header class="toolbar-curricula-sub">
+        <mat-panel-title>
+          <span class="panel-title-fix">Focuses</span>
+        </mat-panel-title>
+        <mat-panel-description>
+          <span class="fill-space"></span>
+          <button mat-icon-button (click)="openAddFocusDialog()">
+            <mat-icon class="icon-margin-fix" matTooltip="Add New Focus">add_circle_outline</mat-icon>
+          </button>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <div class="mat-panel-content">
+        <mat-list>
+          <mat-list-item class="item-detail" *ngFor="let focus of focusData; last as last">
+            <div>
+              <h3 mat-line class="focus-name">{{focus.name}}</h3>
+              <span>Skills: </span>
+              <span *ngFor="let skill of focus.skills; lasty as last">
+                <span *ngIf="!lasty" class="focus-skills">{{skill.name}}, </span>
+                <span *ngIf="lasty" class="focus-skills">{{skill.name}}</span>
+              </span>
+              <br><br><br>
+            </div>
+            <span class="fill-space"></span>
+            <button mat-icon-button class="edit-button button-orange" (click)="openEditFocusDialog(focus)">
+              <mat-icon class="icon-margin-fix" matTooltip="Edit Focus">mode_edit</mat-icon>
+            </button>
+            <button mat-icon-button class="remove-button button-orange" (click)="confirmRemoveFocus(focus)">
+              <mat-icon class="icon-margin-fix" matTooltip="Remove Focus">remove_circle</mat-icon>
+            </button>
+            <mat-divider *ngIf="!last"></mat-divider>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</mat-card-content>

@@ -1,0 +1,26 @@
+
+  <mat-list-item mat-ripple="#ff0000" *ngIf="trainer.active" (click)="goToprofile(trainer.trainerId)">
+    <mat-icon class="peopleIcon" matListIcon>people</mat-icon>
+    <h4 matLine> {{ trainer.firstName }} {{ trainer.lastName }} </h4>
+    <p *ngIf="trainer.skills.length > 0" matLine>Skills: {{skillsList}}</p>
+    <p *ngIf="trainer.skills.length <= 0" matLine> Skills: {{skillsList}} </p>
+    <span class="md-toolbar-spacer"> </span>
+
+    <button mat-icon-button (click)="grabS3Resume(trainer)" matTooltip="Download Resume">
+      <mat-icon class="revOrange">file_download</mat-icon>
+    </button>
+    <button mat-icon-button (click)="removeTrainer(trainer)" *ngIf="isManager==true" matTooltip="Deactivate Trainer">
+      <mat-icon class="revOrange">remove_circle</mat-icon>
+    </button>
+  </mat-list-item>
+<mat-list-item class="md-2-line" mat-ripple="#ff0000" *ngIf="!trainer.active">
+  <mat-icon class="peopleIcon" matListIcon>people</mat-icon>
+    <h4 matLine> {{ trainer.firstName }} {{ trainer.lastName }} </h4>
+    <p *ngIf="trainer.skills" matLine>Skills: {{skillsList}}</p>
+    <p *ngIf="!trainer.skills" matLine> Skills: {{skillsList}} </p>
+  <span class="md-toolbar-spacer"> </span>
+  <!--button activates a Trainer-->
+  <button mat-icon-button (click)="activateTrainer(trainer)" *ngIf="isManager==true" matTooltip="Reactivate Trainer">
+    <mat-icon class="revOrange">add_circle</mat-icon>
+  </button>
+</mat-list-item>

@@ -1,0 +1,183 @@
+<div class="container-curricula">
+  
+    <mat-toolbar-row>
+      <mat-toolbar class="toolbar-curricula">
+        <span class="mat-expansion-panel-header-title">Curricula</span>
+        <span class="fill-space"></span>
+      </mat-toolbar>
+    </mat-toolbar-row>
+
+    <br/>
+
+    <mat-card>
+      <app-core></app-core>
+    </mat-card>
+    
+    <mat-card>
+      <app-foci></app-foci>
+    </mat-card>
+    
+    <mat-card>
+      <app-curriculum-skills></app-curriculum-skills>
+    </mat-card>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="container-curricula">
+  <mat-card>
+    <mat-card-content>
+      <mat-toolbar class="toolbar-curricula">
+        <span>Curricula</span>
+        <span class="fill-space"></span>
+      </mat-toolbar>
+      <!-- Expandable Content Core Curricula-->
+      <!-- <mat-card>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="toolbar-curricula-sub">
+            <mat-panel-title>
+              <span class="panel-title-fix">Core Curricula</span>
+            </mat-panel-title>
+            <mat-panel-description>
+              <span class="fill-space"></span>
+              <button mat-icon-button (click)="clickTest($event)" [hidden]="!isAdmin">
+                <mat-icon class="icon-margin-fix" matTooltip="Add New Curriculum">add_circle_outline</mat-icon>
+              </button>
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+            <div class="mat-panel-content">
+              <mat-list>
+                <div class="item-detail" *ngFor="let curr of currData">
+                  <div *ngIf="curr.active && curr.core">
+                    <mat-list-item>
+                      <div>
+                        <h3> {{curr.name}}</h3>
+                        <p>Skills: {{curr.skills}}</p>
+                      </div>
+                      <span class="fill-space"></span>
+                      <button mat-icon-button class="button-orange" (click)="clickTest($event)" [hidden]="!isAdmin">
+                        <mat-icon class="icon-margin-fix" matTooltip="Edit Curriculum">mode_edit</mat-icon>
+                      </button>
+                      <button mat-icon-button class="button-orange" (click)="clickTest($event)" [hidden]="!isAdmin">
+                        <mat-icon class="icon-margin-fix" matTooltip="Remove Core">remove_circle</mat-icon>
+                      </button>
+                    </mat-list-item>
+                    <hr>
+                  </div>
+                </div>
+
+            </mat-list>
+          </div>
+        </mat-expansion-panel>
+      </mat-accordion>
+      </mat-card> -->
+
+      <!-- Focuses-->
+      <!-- <mat-card>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="toolbar-curricula-sub">
+              <mat-panel-title>
+                <span class="panel-title-fix">Focuses</span>
+              </mat-panel-title>
+              <mat-panel-description>
+                <span class="fill-space"></span>
+                <button mat-icon-button (click)="clickTest($event)" [hidden]="!isAdmin">
+                  <mat-icon class="icon-margin-fix" matTooltip="Add New Focus">add_circle_outline</mat-icon>
+                </button>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="mat-panel-content">
+              <mat-list>
+                <div class="item-detail" *ngFor="let curr of currData">
+                  <div *ngIf="curr.active && !curr.core">
+                    <mat-list-item>
+                      <div>
+                        <h3> {{curr.name}}</h3>
+                        <p>Skills: {{curr.skills}}</p>
+                      </div>
+                      <span class="fill-space"></span>
+                      <button mat-icon-button class="button-orange" (click)="clickTest($event)" [hidden]="!isAdmin">
+                        <mat-icon class="icon-margin-fix" matTooltip="Edit Curriculum">mode_edit</mat-icon>
+                      </button>
+                      <button mat-icon-button class="button-orange" (click)="clickTest($event)" [hidden]="!isAdmin">
+                        <mat-icon class="icon-margin-fix" matTooltip="Remove Core">remove_circle</mat-icon>
+                      </button>
+                    </mat-list-item>
+                    <hr>
+                  </div>
+                </div>
+              </mat-list>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-card> -->
+
+      <!-- Skills -->
+      <!-- <mat-card>
+        <mat-accordion>
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class="toolbar-curricula-sub">
+              <mat-panel-title>
+                <span class="panel-title-fix">Skills</span>
+              </mat-panel-title>
+              <mat-panel-description>
+                <span class="fill-space"></span>
+                <button mat-icon-button (click)="clickTest($event)">
+                  <mat-icon class="icon-margin-fix" matTooltip="Add New Skill">add_circle_outline</mat-icon>
+                </button>
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            <div class="mat-panel-content">
+              <mat-list>
+                <mat-list-item>
+
+                </mat-list-item>
+              </mat-list>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </mat-card>
+
+    </mat-card-content>
+  </mat-card> -->
+  <!--<mat-card>
+    <mat-card-content>
+      <mat-toolbar class="toolbar-curriculum">
+        <span>Curricula</span>
+        <span class="fill-space"></span>
+      </mat-toolbar>
+
+      &lt;!&ndash; Core Curricula Content&ndash;&gt;
+      <mat-card>
+        <mat-toolbar class="toolbar-curriculum-sub">
+          <span>Curricula</span>
+          <span class="fill-space"></span>
+
+          &lt;!&ndash; New Curriculum Button if isManager is true&ndash;&gt;
+          &lt;!&ndash;<button mat-icon-button="" *ngIf = "isManager" (click)="showAddCore($event)" >&ndash;&gt;
+          <button mat-icon-button class="toolbar-mat-buttons">
+            <mat-icon title="New Curriculum" (click)="clickTest($event)">add_circle_outline</mat-icon>
+          </button>
+        </mat-toolbar>
+
+
+      </mat-card>
+    </mat-card-content>
+  </mat-card>-->
+<!-- </div> -->

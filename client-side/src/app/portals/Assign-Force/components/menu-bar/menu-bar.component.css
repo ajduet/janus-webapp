@@ -1,0 +1,14 @@
+.mat-tab-label {
+  background-color: transparent;
+  color: black;
+}
+
+/* Styles for the active tab label */
+.mat-tab-label.mat-tab-label-active {
+  outline-color: orangered;
+  color: orangered;
+}
+
+.mat-ink-bar {
+  background-color: orangered !important;
+}

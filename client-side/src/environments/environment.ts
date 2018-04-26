@@ -13,11 +13,10 @@ export const environment = {
   context: context, // change for what the production environment would actually be
   bam: bam,
   url: 'http://localhost:8085/',
-  clientId: "tjQhcs0O4mRV2iry6SAO0Gy1YQcBrWCa",
-  //clientId: "tjQhcs0O4mRV2iry6SAO0Gy1YQcBrWCa",
-  authDomain: "revature.auth0.com",
-  apiAudience: "hydra-gateway",
-  authNamespace: "https://revature.com/",
+  clientId: 'tjQhcs0O4mRV2iry6SAO0Gy1YQcBrWCa',
+  authDomain: 'revature.auth0.com',
+  apiAudience: 'hydra-gateway',
+  authNamespace: 'https://revature.com/',
 
   assessment: {
     fetchByBatchIdByWeek: (batchId: number, week: number) => `${context}trainer/assessment/${batchId}/${week}`,
@@ -280,10 +279,10 @@ export const environment = {
                       `${bam}/calendar/dateupdate/${subtopicId}/${batchId}/${date}`
   },
 
-  security_config:{
+  security_config: {
     assignForce: {
-      roles: ["SVP of Technology", "Trainer"],
-      groups: ["Operations"],
+      roles: ['SVP of Technology', 'Trainer'],
+      groups: ['Operations'],
       permissions: []
     },
     trackForce: {
@@ -298,5 +297,122 @@ export const environment = {
       roles: [],
       groups: []
     }
-  }
+  },
+
+  ROUTEPATHS: {
+    'assignforceRoutes': {
+      'overview': 'overview',
+      'batches': 'batches',
+      'locations': 'locations',
+      'curricula': 'curricula',
+      'trainers': 'trainers',
+      'profile': 'profile',
+      'reports': 'reports',
+      'settings': 'settings'
+    }
+  },
+
+  apiUrls: {
+    addressController: {
+      baseUrl: 'api/address',
+      create: '',
+      update: '/',
+      findAll: '',
+      find: '/',
+      remove: '/'
+    },
+
+    batchController: {
+      baseUrl: 'api/batch',
+      create: '',
+      update: '/',
+      findAll: '',
+      find: '/',
+      remove: '/'
+    },
+
+    buildingController: {
+      baseUrl: 'api/building',
+      create: '',
+      update: '/',
+      findAll: '',
+      find: '/',
+      remove: '/'
+    },
+
+    locationController: {
+      baseUrl: 'api/location',
+      create: '',
+      update: '/',
+      findAll: '',
+      find: '/',
+      remove: '/'
+    },
+
+    roomController: {
+      baseUrl: 'api/room',
+      create: '',
+      update: '/',
+      findAll: '',
+      find: '/',
+      remove: '/'
+    },
+
+    curriculumController: {
+      baseUrl: 'api/curriculum',
+      create: '',
+      update: '/',
+      findAll: '',
+      find: '/',
+      remove: '/'
+    },
+
+    focusController: {
+      baseUrl: 'api/focus',
+      create: '',
+      update: '/',
+      findAll: '',
+      find: '/',
+      remove: '/'
+    },
+
+    skillController: {
+      baseUrl: 'api/skill',
+      create: '',
+      update: '/',
+      findAll: '',
+      find: '/',
+      remove: '/'
+    },
+
+    trainerController: {
+      baseUrl: 'api/trainer',
+      create: '',
+      update: '/',
+      findAll: '',
+      find: '/',
+      remove: '/'
+    },
+
+    settingController: {
+      baseUrl: 'api/setting',
+      create: '',
+      update: '/',
+      findAll: '',
+      find: '/',
+      remove: '/'
+    },
+
+    unavailableController: {
+      baseUrl: 'api/unavailable',
+      create: '',
+      update: '/',
+      findAll: '',
+      find: '/',
+      remove: '/'
+    }
+  },
+
+  baseUrl: 'https://localhost:4200'
 };
+

@@ -1,0 +1,185 @@
+<div id="reportsDiv">
+
+  <!--Main Toolbar -->
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <span class="mat-expansion-panel-header-title"> Reports </span>
+      <span flex> </span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <!--Future Projection Tab-->
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Batch Projection</mat-panel-title>
+      </mat-expansion-panel-header>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <!--Graduates Table and Graph Accordion-->
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Graduate Summary for 2017</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSource" matSort>
+
+          <!-- Position Column -->
+          <ng-container class="column" matColumnDef="skill">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Curriculum </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.skill}} </mat-cell>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container class="column" matColumnDef="jan">
+            <mat-header-cell *matHeaderCellDef > Jan </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.jan}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="feb">
+            <mat-header-cell *matHeaderCellDef > Feb </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.feb}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="mar">
+            <mat-header-cell *matHeaderCellDef > Mar </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.mar}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="apr">
+            <mat-header-cell *matHeaderCellDef > Apr </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.apr}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="may">
+            <mat-header-cell *matHeaderCellDef > May </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.may}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="jun">
+            <mat-header-cell *matHeaderCellDef > Jun </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.jun}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="jul">
+            <mat-header-cell *matHeaderCellDef > Jul </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.oct}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="aug">
+            <mat-header-cell *matHeaderCellDef > Aug </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.aug}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="sep">
+            <mat-header-cell *matHeaderCellDef > Sep </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.sep}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="oct">
+            <mat-header-cell *matHeaderCellDef > Oct </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.oct}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="nov">
+            <mat-header-cell *matHeaderCellDef > Nov </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.nov}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="dec">
+            <mat-header-cell *matHeaderCellDef > Dec </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.dec}} </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+  <!--Incoming Trianee Table and Graph Accordion-->
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Incoming Trainee Summary for 2018</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="example-container mat-elevation-z8">
+        <mat-table #table [dataSource]="dataSource" matSort>
+
+          <!-- Position Column -->
+          <ng-container class="column" matColumnDef="skill">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Curriculum </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.skill}} </mat-cell>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container class="column" matColumnDef="jan">
+            <mat-header-cell *matHeaderCellDef > Jan </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.jan}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="feb">
+            <mat-header-cell *matHeaderCellDef > Feb </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.feb}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="mar">
+            <mat-header-cell *matHeaderCellDef > Mar </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.mar}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="apr">
+            <mat-header-cell *matHeaderCellDef > Apr </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.apr}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="may">
+            <mat-header-cell *matHeaderCellDef > May </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.may}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="jun">
+            <mat-header-cell *matHeaderCellDef > Jun </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.jun}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="jul">
+            <mat-header-cell *matHeaderCellDef > Jul </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.jul}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="aug">
+            <mat-header-cell *matHeaderCellDef > Aug </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.aug}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="sep">
+            <mat-header-cell *matHeaderCellDef > Sep </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.sep}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="oct">
+            <mat-header-cell *matHeaderCellDef > Oct </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.oct}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="nov">
+            <mat-header-cell *matHeaderCellDef > Nov </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.nov}} </mat-cell>
+          </ng-container>
+
+          <ng-container class="column" matColumnDef="dec">
+            <mat-header-cell *matHeaderCellDef > Dec </mat-header-cell>
+            <mat-cell *matCellDef="let Report"> {{Report.dec}} </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>
